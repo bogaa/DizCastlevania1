@@ -232,7 +232,7 @@
                        entity_various = $0004DF             ;      |        |      ;  
                        candleIndexForSlots = $0004EA        ;      |        |      ;  
                        simon_subweaponCollisionID = $0004F0 ;      |        |      ;  
-                       verticalVectorAddressHi = $0004F8    ;      |        |      ;  
+                       verticalVectorAddressHiFIXME = $0004F8;      |        |      ;  
                        entity_VariousOffsetY = $0004FB      ;      |        |      ;  
                        simon_IndividualSubweaponKills = $00050C;      |        |      ;  
                        movingPlatform_xPosSub = $00050F     ;      |        |      ;  
@@ -279,12 +279,9 @@
                        LOOSE_OP_0083A3 = $0083A3            ;      |        |      ;  
                        LOOSE_OP_0083ED = $0083ED            ;      |        |      ;  
                        LOOSE_OP_0086CE = $0086CE            ;      |        |      ;  
-                       LOOSE_OP_068C33 = $068C33            ;      |        |      ;  
                        PTR16_0090A5 = $0090A5               ;      |        |      ;  
-                       LOOSE_OP_069044 = $069044            ;      |        |      ;  
                        PTR16_0090EB = $0090EB               ;      |        |      ;  
                        LOOSE_OP_00815D = $00815D            ;      |        |      ;  
-                       CODE_0781F2 = $0781F2                ;      |        |      ;  
                        LOOSE_OP_0081EF = $0081EF            ;      |        |      ;  
                        LOOSE_OP_008303 = $008303            ;      |        |      ;  
                        LOOSE_OP_00836A = $00836A            ;      |        |      ;  

@@ -2,7 +2,7 @@
                        ORG $078000                          ;      |        |      ;  
                                                             ;      |        |      ;  
                                                             ;      |        |      ;  
-                bank7: db $00,$01,$02,$03,$04,$05,$06,$07   ;078000|        |      ;  
+                bank6: db $00,$01,$02,$03,$04,$05,$06,$07   ;078000|        |      ;  
                        db $00,$C0                           ;078008|        |      ;  
                                                             ;      |        |      ;  
          DATA8_07800A: db $72,$82,$AA,$80,$D2,$62,$EA,$63   ;07800A|        |      ;  
@@ -13,9 +13,9 @@
                        db $71,$A0,$B2,$82,$CA,$00,$B6,$DA   ;078032|        |      ;  
                        db $1A                               ;07803A|        |      ;  
                                                             ;      |        |      ;  
-    levelSecretsTable: db $00,$BA,$31,$1A                   ;07803B|        |      ;  
+  levelSecretsTable00: db $00,$BA,$31,$1A                   ;07803B|        |      ;  
                                                             ;      |        |      ;  
-    levelSecretsTable: db $00,$FF,$B2,$D1,$D9               ;07803F|        |      ; Iteam00 lvl 01 crouch Second quest
+  levelSecretsTable01: db $00,$FF,$B2,$D1,$D9               ;07803F|        |      ; Iteam00 lvl 01 crouch Second quest
                                                             ;      |        |      ;  
          DATA8_078044: db $00,$8D,$80,$FA,$01,$FF,$68,$43   ;078044|        |      ;  
                        db $1C,$00,$FF,$FF,$93,$F3           ;07804C|        |      ;  
@@ -148,7 +148,7 @@
                        LDY.B #$20                           ;078135|A020    |      ;  
                        JSR.W CODE_07EC72                    ;078137|2072EC  |07EC72;  
                        JSR.W CODE_07F1D2                    ;07813A|20D2F1  |07F1D2;  
-                       STA.W verticalVectorAddressHi,X      ;07813D|9DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,X ;07813D|9DF804  |0004F8;  
                        LDA.B frame_Counter                  ;078140|A51A    |00001A;  
                        AND.B #$03                           ;078142|2903    |      ;  
                        TAY                                  ;078144|A8      |      ;  
@@ -223,15 +223,9 @@
                        JMP.W CODE_07F484                    ;0781C7|4C84F4  |07F484;  
                                                             ;      |        |      ;  
                                                             ;      |        |      ;  
-          CODE_0781CA: LDA.B current_Stage                  ;0781CA|A528    |000028;  
-                       CMP.B #$06                           ;0781CC|C906    |      ;  
-                       BNE CODE_0781F2                      ;0781CE|D022    |0781F2;  
-                       LDA.B stageRoomNumber                ;0781D0|A546    |000046;  
-                       BNE CODE_0781F2                      ;0781D2|D01E    |0781F2;  
-                       LDA.W $0560                          ;0781D4|AD6005  |000560;  
-                       BNE CODE_0781F2                      ;0781D7|D019    |0781F2;  
-                       LDX.B #$00                           ;0781D9|A200    |      ;  
-                       STX.B various_data02                 ;0781DB|864E    |00004E;  
+         DATA8_0781CA: db $A5,$28,$C9,$06,$D0,$22,$A5,$46   ;0781CA|        |      ;  
+                       db $D0,$1E,$AD,$60,$05,$D0,$19,$A2   ;0781D2|        |      ;  
+                       db $00,$86,$4E                       ;0781DA|        |      ;  
                                                             ;      |        |      ;  
           CODE_0781DD: LDX.B various_data02                 ;0781DD|A64E    |00004E;  
                        LDA.W Crusher00_State,X              ;0781DF|BD4A01  |00014A;  
@@ -552,7 +546,7 @@
                        LDY.B #$40                           ;078478|A040    |      ;  
                        JSR.W CODE_07EC72                    ;07847A|2072EC  |07EC72;  
                        JSR.W CODE_07F1D2                    ;07847D|20D2F1  |07F1D2;  
-                       STA.W verticalVectorAddressHi,X      ;078480|9DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,X ;078480|9DF804  |0004F8;  
                        LDA.W entity_Y_Pos                   ;078483|AD5403  |000354;  
                        SBC.B #$20                           ;078486|E920    |      ;  
                        STA.W entity_Y_Pos,X                 ;078488|9D5403  |000354;  
@@ -780,7 +774,7 @@
                        LDY.B #$40                           ;078642|A040    |      ;  
                        JSR.W CODE_07EC72                    ;078644|2072EC  |07EC72;  
                        JSR.W CODE_07F1D2                    ;078647|20D2F1  |07F1D2;  
-                       STA.W verticalVectorAddressHi,X      ;07864A|9DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,X ;07864A|9DF804  |0004F8;  
                        LDA.W entity_Y_Pos                   ;07864D|AD5403  |000354;  
                        SBC.B #$20                           ;078650|E920    |      ;  
                        STA.W entity_Y_Pos,X                 ;078652|9D5403  |000354;  
@@ -1056,7 +1050,7 @@ mainGameState0e_falling: LDX.B game_sub_state                 ;0786EE|A619    |0
                        LDY.B #$20                           ;07883B|A020    |      ;  
                        JSR.W CODE_07EC72                    ;07883D|2072EC  |07EC72;  
                        JSR.W CODE_07F1D2                    ;078840|20D2F1  |07F1D2;  
-                       STA.W verticalVectorAddressHi,X      ;078843|9DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,X ;078843|9DF804  |0004F8;  
                        LDA.B frame_Counter                  ;078846|A51A    |00001A;  
                        AND.B #$03                           ;078848|2903    |      ;  
                        TAY                                  ;07884A|A8      |      ;  
@@ -1085,7 +1079,7 @@ mainGameState0e_falling: LDX.B game_sub_state                 ;0786EE|A619    |0
                        TYA                                  ;078882|98      |      ;  
                        JSR.W CODE_07EF04                    ;078883|2004EF  |07EF04;  
                        LDA.B #$00                           ;078886|A900    |      ;  
-                       STA.W verticalVectorAddressHi,X      ;078888|9DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,X ;078888|9DF804  |0004F8;  
                        STA.W verticalDirection,X            ;07888B|9D1405  |000514;  
                        STA.W verticalVectorAddressLo,X      ;07888E|9DDC04  |0004DC;  
                        LDA.B #$01                           ;078891|A901    |      ;  
@@ -1322,7 +1316,7 @@ mainGameState0e_falling: LDX.B game_sub_state                 ;0786EE|A619    |0
                        LDY.B #$40                           ;078A87|A040    |      ;  
                        JSR.W CODE_07EC72                    ;078A89|2072EC  |07EC72;  
                        JSR.W CODE_07F1D2                    ;078A8C|20D2F1  |07F1D2;  
-                       STA.W verticalVectorAddressHi,X      ;078A8F|9DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,X ;078A8F|9DF804  |0004F8;  
                        LDA.W entity_Y_Pos                   ;078A92|AD5403  |000354;  
                        SBC.B #$20                           ;078A95|E920    |      ;  
                        STA.W entity_Y_Pos,X                 ;078A97|9D5403  |000354;  
@@ -2013,7 +2007,7 @@ mainGameState0f_endingScene: LDX.B game_sub_state                 ;078B4B|A619  
                        LDA.W DATA8_009B8D                   ;07940C|AD8D9B  |009B8D;  
                        STA.W verticalVectorAddressLo        ;07940F|8DDC04  |0004DC;  
                        LDA.W DATA8_009B8E                   ;079412|AD8E9B  |009B8E;  
-                       STA.W verticalVectorAddressHi        ;079415|8DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME   ;079415|8DF804  |0004F8;  
                        LDA.B #$00                           ;079418|A900    |      ;  
                        STA.W verticalDirection              ;07941A|8D1405  |000514;  
                        STA.W fallDistance                   ;07941D|8D4301  |000143;  
@@ -2398,7 +2392,7 @@ mainGameState0f_endingScene: LDX.B game_sub_state                 ;078B4B|A619  
                        LDA.W DATA8_009BA5                   ;0796E1|ADA59B  |009BA5;  
                        STA.W verticalVectorAddressLo        ;0796E4|8DDC04  |0004DC;  
                        LDA.W DATA8_009BA6                   ;0796E7|ADA69B  |009BA6;  
-                       STA.W verticalVectorAddressHi        ;0796EA|8DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME   ;0796EA|8DF804  |0004F8;  
                        LDA.B #$00                           ;0796ED|A900    |      ;  
                        STA.W verticalDirection              ;0796EF|8D1405  |000514;  
                        STA.W simon_jumpState                ;0796F2|8D8804  |000488;  
@@ -3030,7 +3024,7 @@ mainGameState0f_endingScene: LDX.B game_sub_state                 ;078B4B|A619  
                                                             ;      |        |      ;  
           CODE_079B1F: LDA.W verticalVectorAddressLo,X      ;079B1F|BDDC04  |0004DC;  
                        STA.B $10                            ;079B22|8510    |000010;  
-                       LDA.W verticalVectorAddressHi,X      ;079B24|BDF804  |0004F8;  
+                       LDA.W verticalVectorAddressHiFIXME,X ;079B24|BDF804  |0004F8;  
                        STA.B $11                            ;079B27|8511    |000011;  
                        LDY.B #$00                           ;079B29|A000    |      ;  
                        LDA.B ($10),Y                        ;079B2B|B110    |000010;  
@@ -3075,8 +3069,8 @@ mainGameState0f_endingScene: LDX.B game_sub_state                 ;078B4B|A619  
                        ADC.W verticalVectorAddressLo,X      ;079B6C|7DDC04  |0004DC;  
                        STA.W verticalVectorAddressLo,X      ;079B6F|9DDC04  |0004DC;  
                        LDA.B #$00                           ;079B72|A900    |      ;  
-                       ADC.W verticalVectorAddressHi,X      ;079B74|7DF804  |0004F8;  
-                       STA.W verticalVectorAddressHi,X      ;079B77|9DF804  |0004F8;  
+                       ADC.W verticalVectorAddressHiFIXME,X ;079B74|7DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,X ;079B77|9DF804  |0004F8;  
                        CLC                                  ;079B7A|18      |      ;  
                        RTS                                  ;079B7B|60      |      ;  
                                                             ;      |        |      ;  
@@ -3085,7 +3079,7 @@ mainGameState0f_endingScene: LDX.B game_sub_state                 ;078B4B|A619  
                        LDA.W verticalVectorAddressLo,X      ;079B7F|BDDC04  |0004DC;  
                        CMP.B #$FF                           ;079B82|C9FF    |      ;  
                        BNE CODE_079B89                      ;079B84|D003    |079B89;  
-                       DEC.W verticalVectorAddressHi,X      ;079B86|DEF804  |0004F8;  
+                       DEC.W verticalVectorAddressHiFIXME,X ;079B86|DEF804  |0004F8;  
                                                             ;      |        |      ;  
           CODE_079B89: CLC                                  ;079B89|18      |      ;  
                        RTS                                  ;079B8A|60      |      ;  
@@ -5650,7 +5644,7 @@ mainGameState0f_endingScene: LDX.B game_sub_state                 ;078B4B|A619  
                        LDA.B #$00                           ;07ADF8|A900    |      ;  
                        STA.W entity_HorizontalSpeedSub,X    ;07ADFA|9D1804  |000418;  
                        STA.W entity_HorizontalSpeed,X       ;07ADFD|9DFC03  |0003FC;  
-                       STA.W verticalVectorAddressHi,X      ;07AE00|9DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,X ;07AE00|9DF804  |0004F8;  
                        STA.W joyPad_1_Input_HeldCopy,X      ;07AE03|9D8405  |000584;  
                        STA.W entity_SpriteIndexDirection,X  ;07AE06|9DC004  |0004C0;  
                        STA.W simon_AirAttack,X              ;07AE09|9D4C05  |00054C;  
@@ -6523,7 +6517,7 @@ mainGameState03_endingScreen: LDX.B game_sub_state                 ;07B8D2|A619 
                        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;07BFF7|        |      ;  
                        db $FF                               ;07BFFF|        |      ;  
                                                             ;      |        |      ;  
-                bank7: db $00,$01,$02,$03,$04,$05,$06,$07   ;07C000|        |      ;  
+                bank7: db $00,$01,$02,$03,$04,$05,$06,$07   ;07C000|        |      ; table to fix bank conflict when swapping
                                                             ;      |        |      ;  
            resetStart: CLD                                  ;07C008|D8      |      ;  
                        SEI                                  ;07C009|78      |      ;  
@@ -8475,7 +8469,7 @@ mainGameState0d_gameOver: LDA.B joypad_1_InputPressed          ;07C847|A5F5    |
                        LDA.B current_Stage                  ;07CF0B|A528    |000028;  
                        CMP.B #$06                           ;07CF0D|C906    |      ;  
                        BNE CODE_07CF14                      ;07CF0F|D003    |07CF14;  
-                       JSR.W CODE_0781CA                    ;07CF11|20CA81  |0781CA;  
+                       JSR.W DATA8_0781CA                   ;07CF11|20CA81  |0781CA;  
                                                             ;      |        |      ;  
           CODE_07CF14: LDY.B #$05                           ;07CF14|A005    |      ;  
                        JSR.W bankSwapWbkp27                 ;07CF16|20D6C1  |07C1D6;  
@@ -8710,7 +8704,7 @@ mainGameState0d_gameOver: LDA.B joypad_1_InputPressed          ;07C847|A5F5    |
                        STA.W entity_HorizontalSpeed,X       ;07D0A7|9DFC03  |0003FC;  
                        INY                                  ;07D0AA|C8      |      ;  
                        LDA.B ($00),Y                        ;07D0AB|B100    |000000;  
-                       STA.W verticalVectorAddressHi,X      ;07D0AD|9DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,X ;07D0AD|9DF804  |0004F8;  
                        INY                                  ;07D0B0|C8      |      ;  
                        LDA.B ($00),Y                        ;07D0B1|B100    |000000;  
                        STA.W verticalDirection,X            ;07D0B3|9D1405  |000514;  
@@ -9406,7 +9400,7 @@ entityTracker_lvl11_2: db $00,$00,$00,$B9,$00,$B6,$00,$B6   ;07D68E|        |   
                        STA.W entity_Y_Pos,X                 ;07DADA|9D5403  |000354;  
                        LDA.B #$00                           ;07DADD|A900    |      ;  
                        STA.W verticalVectorAddressLo,X      ;07DADF|9DDC04  |0004DC;  
-                       STA.W verticalVectorAddressHi,X      ;07DAE2|9DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,X ;07DAE2|9DF804  |0004F8;  
                        TYA                                  ;07DAE5|98      |      ;  
                        JMP.W CODE_07EF04                    ;07DAE6|4C04EF  |07EF04;  
                                                             ;      |        |      ;  
@@ -9849,7 +9843,7 @@ enemyAI_subweaponThrow: LDY.W joyPad_1_Input_HeldCopy,X      ;07DBA1|BC8405  |00
                        LDA.W joyPad_1_Input_HeldCopy,X      ;07DE17|BD8405  |000584;  
                        CMP.B #$06                           ;07DE1A|C906    |      ;  
                        BEQ CODE_07DE2B                      ;07DE1C|F00D    |07DE2B;  
-                       DEC.W verticalVectorAddressHi,X      ;07DE1E|DEF804  |0004F8;  
+                       DEC.W verticalVectorAddressHiFIXME,X ;07DE1E|DEF804  |0004F8;  
                        BNE CODE_07DE2B                      ;07DE21|D008    |07DE2B;  
                        LDA.W entity_State,X                 ;07DE23|BD6C04  |00046C;  
                        AND.B #$7F                           ;07DE26|297F    |      ;  
@@ -10098,7 +10092,7 @@ enemyAI_subweaponThrow: LDY.W joyPad_1_Input_HeldCopy,X      ;07DBA1|BC8405  |00
                        CMP.B #$FF                           ;07E028|C9FF    |      ;  
                        BEQ CODE_07E08A                      ;07E02A|F05E    |07E08A;  
                        LDY.B $0F                            ;07E02C|A40F    |00000F;  
-                       LDA.W verticalVectorAddressHi,Y      ;07E02E|B9F804  |0004F8;  
+                       LDA.W verticalVectorAddressHiFIXME,Y ;07E02E|B9F804  |0004F8;  
                        BEQ CODE_07E07A                      ;07E031|F047    |07E07A;  
                        STA.B various_Processing_ID          ;07E033|854B    |00004B;  
                        LDY.B #$0D                           ;07E035|A00D    |      ;  
@@ -10135,14 +10129,14 @@ enemyAI_subweaponThrow: LDY.W joyPad_1_Input_HeldCopy,X      ;07DBA1|BC8405  |00
                        JSR.W CODE_07DF0E                    ;07E077|200EDF  |07DF0E;  
                                                             ;      |        |      ;  
           CODE_07E07A: LDY.B $0F                            ;07E07A|A40F    |00000F;  
-                       LDX.W verticalVectorAddressHi,Y      ;07E07C|BEF804  |0004F8;  
+                       LDX.W verticalVectorAddressHiFIXME,Y ;07E07C|BEF804  |0004F8;  
                        INX                                  ;07E07F|E8      |      ;  
                        CPX.B #$05                           ;07E080|E005    |      ;  
                        BCC CODE_07E086                      ;07E082|9002    |07E086;  
                        LDX.B #$04                           ;07E084|A204    |      ;  
                                                             ;      |        |      ;  
           CODE_07E086: TXA                                  ;07E086|8A      |      ;  
-                       STA.W verticalVectorAddressHi,Y      ;07E087|99F804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,Y ;07E087|99F804  |0004F8;  
                                                             ;      |        |      ;  
           CODE_07E08A: LDX.B various_data02                 ;07E08A|A64E    |00004E;  
                        RTS                                  ;07E08C|60      |      ;  
@@ -11657,7 +11651,7 @@ getEntetyID_VeriousChecks: LDA.W entity_ObjectIndex,X           ;07E9E6|BD3404  
                        LDA.B #$80                           ;07EB74|A980    |      ;  
                        STA.W entity_State,X                 ;07EB76|9D6C04  |00046C;  
                        LDA.B #$0C                           ;07EB79|A90C    |      ;  
-                       STA.W verticalVectorAddressHi,X      ;07EB7B|9DF804  |0004F8;  
+                       STA.W verticalVectorAddressHiFIXME,X ;07EB7B|9DF804  |0004F8;  
                        LDA.W joyPad_1_Input_HeldCopy,X      ;07EB7E|BD8405  |000584;  
                        BEQ CODE_07EBBD                      ;07EB81|F03A    |07EBBD;  
                        AND.B #$0F                           ;07EB83|290F    |      ;  
@@ -12034,7 +12028,7 @@ enemyAI_10_blueSkelly: LDA.B current_Stage                  ;07ED6F|A528    |000
           CODE_07EE16: JSR.W CODE_07EF56                    ;07EE16|2056EF  |07EF56;  
                        JMP.W CODE_07EE48                    ;07EE19|4C48EE  |07EE48;  
                                                             ;      |        |      ;  
-                       LDA.W verticalVectorAddressHi,X      ;07EE1C|BDF804  |0004F8;  
+                       LDA.W verticalVectorAddressHiFIXME,X ;07EE1C|BDF804  |0004F8;  
                        JMP.W CODE_07EE4B                    ;07EE1F|4C4BEE  |07EE4B;  
                                                             ;      |        |      ;  
                                                             ;      |        |      ;  
@@ -12078,7 +12072,7 @@ enemyAI_10_blueSkelly: LDA.B current_Stage                  ;07ED6F|A528    |000
                                                             ;      |        |      ;  
           CODE_07EE6E: RTS                                  ;07EE6E|60      |      ;  
                                                             ;      |        |      ;  
-                       LDA.W verticalVectorAddressHi,X      ;07EE6F|BDF804  |0004F8;  
+                       LDA.W verticalVectorAddressHiFIXME,X ;07EE6F|BDF804  |0004F8;  
                        JMP.W CODE_07EE78                    ;07EE72|4C78EE  |07EE78;  
                                                             ;      |        |      ;  
                        LDA.W entity_SpriteMirrored,X        ;07EE75|BD5004  |000450;  
@@ -12184,7 +12178,7 @@ enemyAI_10_blueSkelly: LDA.B current_Stage                  ;07ED6F|A528    |000
                        DEY                                  ;07EF1E|88      |      ;  
                                                             ;      |        |      ;  
           CODE_07EF1F: STY.B $01                            ;07EF1F|8401    |000001;  
-                       LDY.W verticalVectorAddressHi,X      ;07EF21|BCF804  |0004F8;  
+                       LDY.W verticalVectorAddressHiFIXME,X ;07EF21|BCF804  |0004F8;  
                        BEQ CODE_07EF30                      ;07EF24|F00A    |07EF30;  
                                                             ;      |        |      ;  
           CODE_07EF26: CLC                                  ;07EF26|18      |      ;  
