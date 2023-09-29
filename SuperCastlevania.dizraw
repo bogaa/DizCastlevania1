@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ProjectXmlSerializer-Root xmlns:exs="https://extendedxmlserializer.github.io/v2" xmlns:ns1="clr-namespace:Diz.Core.model;assembly=Diz.Core" xmlns:ns2="clr-namespace:Diz.Core.model.snes;assembly=Diz.Core" xmlns:sys="https://extendedxmlserializer.github.io/system" xmlns:ns3="clr-namespace:IX.Observable;assembly=IX.Observable" xmlns:ns4="clr-namespace:Diz.Core.export;assembly=Diz.Core" SaveVersion="101" Watermark="DiztinGUIsh" Extra1="" Extra2="" xmlns="clr-namespace:Diz.Core.serialization.xml_serializer;assembly=Diz.Core">
-  <Project AttachedRomFilename="C:\GitHub\.dizProjects\dizASM_Castlevania\SuperCastlevania.sfc" InternalRomGameName="Super Castlevania    " InternalCheckSum="2011465755" CurrentViewOffset="229710">
+  <Project AttachedRomFilename="C:\GitHub\.dizProjects\dizASM_Castlevania\SuperCastlevania.sfc" InternalRomGameName="Super Castlevania    " InternalCheckSum="2011465755" CurrentViewOffset="245711">
     <LogWriterSettings Format="%label:-22% %code:37%;%pc%|%bytes%|%ia%; %comment%" DataPerLine="8" Unlabeled="ShowInPoints" Structure="OneBankPerFile" IncludeUnusedLabels="false" PrintLabelSpecificComments="false" OutputExtraWhitespace="true" RomSizeOverride="-1" FileOrFolderOutPath="C:\GitHub\.dizProjects\dizASM_Castlevania\export" OutputToString="false" ErrorFilename="errors.txt" />
     <Data RomMapMode="LoRom" RomSpeed="SlowRom">
       <Comments AutomaticallyCaptureSubItems="false" HistoryLevels="50">
@@ -18,6 +18,7 @@
         <sys:Item Key="520764" Value="leangth, StartSpriteID,speed" />
         <sys:Item Key="432159" Value="cookyMonster jump speed Y" />
         <sys:Item Key="432169" Value="cookyMonster jump speed X" />
+        <sys:Item Key="507904" Value="table to fix bank conflict when swapping" />
       </Comments>
       <Labels>
         <sys:Item Key="24">
@@ -723,7 +724,7 @@
           <Value exs:type="ns1:Label" Name="simon_subweaponCollisionID" Comment="" />
         </sys:Item>
         <sys:Item Key="1272">
-          <Value exs:type="ns1:Label" Name="verticalVectorAddressHi" Comment="" />
+          <Value exs:type="ns1:Label" Name="verticalVectorAddressHiFIXME" Comment="" />
         </sys:Item>
         <sys:Item Key="1275">
           <Value exs:type="ns1:Label" Name="entity_VariousOffsetY" Comment="" />
@@ -837,31 +838,31 @@
           <Value exs:type="ns1:Label" Name="gJumpTableFromStack" Comment="" />
         </sys:Item>
         <sys:Item Key="379501">
-          <Value exs:type="ns1:Label" Name="05jumpTableFromStack" Comment="" />
+          <Value exs:type="ns1:Label" Name="jumpTableFromStackB5" Comment="" />
         </sys:Item>
         <sys:Item Key="445037">
-          <Value exs:type="ns1:Label" Name="06jumpTableFromStack" Comment="" />
+          <Value exs:type="ns1:Label" Name="jumpTableFromStackB6" Comment="" />
         </sys:Item>
         <sys:Item Key="507912">
           <Value exs:type="ns1:Label" Name="resetStart" Comment="" />
         </sys:Item>
         <sys:Item Key="491520">
-          <Value exs:type="ns1:Label" Name="bank7" Comment="" />
-        </sys:Item>
-        <sys:Item Key="425984">
           <Value exs:type="ns1:Label" Name="bank6" Comment="" />
         </sys:Item>
-        <sys:Item Key="360448">
+        <sys:Item Key="425984">
           <Value exs:type="ns1:Label" Name="bank5" Comment="" />
         </sys:Item>
-        <sys:Item Key="294912">
+        <sys:Item Key="360448">
           <Value exs:type="ns1:Label" Name="bank4" Comment="" />
         </sys:Item>
-        <sys:Item Key="229376">
+        <sys:Item Key="294912">
           <Value exs:type="ns1:Label" Name="bank3" Comment="" />
         </sys:Item>
-        <sys:Item Key="163840">
+        <sys:Item Key="229376">
           <Value exs:type="ns1:Label" Name="bank2" Comment="" />
+        </sys:Item>
+        <sys:Item Key="163840">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
         </sys:Item>
         <sys:Item Key="98304">
           <Value exs:type="ns1:Label" Name="bank1" Comment="" />
@@ -1128,13 +1129,13 @@
           <Value exs:type="ns1:Label" Name="palletForEachStage" Comment="" />
         </sys:Item>
         <sys:Item Key="491583">
-          <Value exs:type="ns1:Label" Name="levelSecretsTable" Comment="" />
+          <Value exs:type="ns1:Label" Name="levelSecretsTable01" Comment="" />
         </sys:Item>
         <sys:Item Key="491580">
           <Value exs:type="ns1:Label" Name="" Comment="" />
         </sys:Item>
         <sys:Item Key="491579">
-          <Value exs:type="ns1:Label" Name="levelSecretsTable" Comment="" />
+          <Value exs:type="ns1:Label" Name="levelSecretsTable00" Comment="" />
         </sys:Item>
         <sys:Item Key="518508">
           <Value exs:type="ns1:Label" Name="" Comment="" />
@@ -3910,9 +3911,7 @@ r 8 AD
 r 16376 GD
 r 13953 XD
 Xj
-r 2430 XD
-r 16384 AD
-r 16384 XD
+r 35198 XD
 r 8 AD
 r 4142 GD
 Gj
@@ -7008,20 +7007,20 @@ ED06
 +L
 .D
 .D
-+D
-.D
-+L
-.D
-+D
-.D
-.D
-+D
-.D
-.D
-+T
-+D
-.D
-.D
+ED06
+ED06
+EL06
+ED06
+ED06
+ED06
+ED06
+ED06
+ED06
+ED06
+ET06
+ED06
+ED06
+ED06
 +H
 .D
 .D
@@ -8022,16 +8021,16 @@ EL06
 +D
 .D
 +T
-+D
-.D
-+L
-.D
-+L
-.D
-.D
-+D
-+L
-.D
+AD
+AD
+AL
+AD
+AL
+AD
+AD
+AD
+AL
+AD
 +L
 .D
 .D
@@ -10840,25 +10839,25 @@ AD
 +b
 .D
 .D
-+H
-.D
-+D
-.D
-+L
-.D
-+D
-.D
-+L
-.D
-+D
-.D
-.D
-+L
-.D
-+D
-.D
-+D
-.D
+AH
+AD
+AD
+AD
+AL
+AD
+AD
+AD
+AL
+AD
+AD
+AD
+AD
+AL
+AD
+AD
+AD
+AD
+AD
 +H
 .D
 +D
