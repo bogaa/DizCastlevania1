@@ -2130,7 +2130,6 @@
                        PTR16_00FFFF = $00FFFF               ;      |        |      ;  
                        LOOSE_OP_07824C = $07824C            ;      |        |      ;  
                        PTR16_07A46F = $07A46F               ;      |        |      ;  
-                       LOOSE_OP_07AEAD = $07AEAD            ;      |        |      ;  
                        EMPTY_08A9FB = $08A9FB               ;      |        |      ;  
                        CODE_07C216 = $07C216                ;      |        |      ;  
                        PTR16_07CBF2 = $07CBF2               ;      |        |      ;  
