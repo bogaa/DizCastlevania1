@@ -2128,6 +2128,8 @@
                        RAM_6_scoreHigh = $0707FE            ;      |        |      ;  
                        eventTrackerPointer01 = $07D291      ;      |        |      ;  
                        levelDataPointerHi = $07FC39         ;      |        |      ;  
+                       ;      |        |      ;  
+                       ;      |        |      ;  
                        PTR16_00FFFF = $00FFFF               ;      |        |      ;  
                        LOOSE_OP_07824C = $07824C            ;      |        |      ;  
                        PTR16_07A46F = $07A46F               ;      |        |      ;  
