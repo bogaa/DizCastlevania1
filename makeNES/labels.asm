@@ -2128,9 +2128,11 @@
                        RAM_6_scoreHigh = $0707FE            ;      |        |      ;  
                        eventTrackerPointer01 = $07D291      ;      |        |      ;  
                        levelDataPointerHi = $07FC39         ;      |        |      ;  
-                       ;      |        |      ;  
-                       ;      |        |      ;  
+                       spriteAssemblyPointers00Lo = $018FBF ;      |        |      ;  
+                       spriteAssemblyPointers01Lo = $0190BF ;      |        |      ;  
                        PTR16_00FFFF = $00FFFF               ;      |        |      ;  
+                       DATA16_01879F = $01879F              ;      |        |      ;  
+                       PTR16_018186 = $018186               ;      |        |      ;  
                        LOOSE_OP_07824C = $07824C            ;      |        |      ;  
                        PTR16_07A46F = $07A46F               ;      |        |      ;  
                        EMPTY_08A9FB = $08A9FB               ;      |        |      ;  
@@ -2141,8 +2143,7 @@
                        LOOSE_OP_07872C = $07872C            ;      |        |      ;  
                        PTR16_07F23B = $07F23B               ;      |        |      ;  
                        PTR16_07F239 = $07F239               ;      |        |      ;  
-                       PTR16_07F41E = $07F41E               ;      |        |      ;  
-                       LOOSE_OP_07F37C = $07F37C            ;      |        |      ;  
+                       DATA16_07F41E = $07F41E              ;      |        |      ;  
                        PTR16_07F9FB = $07F9FB               ;      |        |      ;  
                        LOOSE_OP_07830A = $07830A            ;      |        |      ;  
                        LOOSE_OP_07975B = $07975B            ;      |        |      ;  

@@ -30,5 +30,6 @@ type nesHeader.bin mainNES.sfc > castlevania.nes
 
 ::cleanup
 del mainNES.sfc
+
 timeout 2 
 exit
