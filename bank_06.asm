@@ -204,12 +204,11 @@
          DATA8_068176: db $7B,$20,$3D,$C7                   ;068176|        |      ;  
                                                             ;      |        |      ;  
           CODE_06817A: DEC.W RAM_5_entity_counter,X         ;06817A|DE4C05  |06054C;  
-                       BNE LOOSE_OP_068182                  ;06817D|D003    |068182;  
+                       BNE CODE_068182                      ;06817D|D003    |068182;  
                        JMP.W CODE_0681DE                    ;06817F|4CDE81  |0681DE;  
                                                             ;      |        |      ;  
                                                             ;      |        |      ;  
-      LOOSE_OP_068182: db $A5                               ;068182|        |      ;  
-                       INC A                                ;068183|1A      |      ;  
+          CODE_068182: LDA.B frame_Counter                  ;068182|A51A    |00001A;  
                        AND.B #$0F                           ;068184|290F    |      ;  
                        BNE CODE_06818B                      ;068186|D003    |06818B;  
                        JSR.W CODE_068224                    ;068188|202482  |068224;  
