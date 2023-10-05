@@ -2023,7 +2023,8 @@ gfxData_spritePanthomBat_tilesStage6: db $00,$00,$01,$03,$06,$0D,$0B,$17   ;048E
                        db $FF,$00,$00,$00,$00,$00,$00,$00   ;04BEF0|        |      ;  
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;04BEF8|        |      ;  
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;04BF00|        |      ;  
-                       db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;04BF08|        |      ;  
+                                                            ;      |        |      ;  
+         emptySpace03: db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;04BF08|        |      ;  
                        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;04BF10|        |      ;  
                        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;04BF18|        |      ;  
                        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;04BF20|        |      ;  

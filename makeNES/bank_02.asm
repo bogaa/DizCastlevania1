@@ -1960,7 +1960,8 @@
                        db $FF,$00,$00,$00,$00,$00,$00,$00   ;02BCF0|        |      ;  
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;02BCF8|        |      ;  
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;02BD00|        |      ;  
-                       db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;02BD08|        |      ;  
+                                                            ;      |        |      ;  
+         emptySpace01: db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;02BD08|        |      ;  
                        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;02BD10|        |      ;  
                        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;02BD18|        |      ;  
                        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;02BD20|        |      ;  

@@ -232,7 +232,7 @@
                        entity_various = $0004DF             ;      |        |      ;  
                        candleIndexForSlots = $0004EA        ;      |        |      ;  
                        simon_subweaponCollisionID = $0004F0 ;      |        |      ;  
-                       verticalVectorAddressHiFIXME = $0004F8;      |        |      ;  
+                       verticalVectorAddressHiher = $0004F8 ;      |        |      ;  
                        entity_VariousOffsetY = $0004FB      ;      |        |      ;  
                        simon_IndividualSubweaponKills = $00050C;      |        |      ;  
                        movingPlatform_xPosSub = $00050F     ;      |        |      ;  
@@ -498,7 +498,7 @@
                        RAM_0_entity_various = $0104DF       ;      |        |      ;  
                        RAM_0_candleIndexForSlots = $0104EA  ;      |        |      ;  
                        RAM_0_simon_subweaponCollisionID = $0104F0;      |        |      ;  
-                       RAM_0_verticalVectorAddressHiFIXME = $0104F8;      |        |      ;  
+                       RAM_0_verticalVectorAddressHiher = $0104F8;      |        |      ;  
                        RAM_0_entity_VariousOffsetY = $0104FB;      |        |      ;  
                        RAM_0_simon_IndividualSubweaponKills = $01050C;      |        |      ;  
                        RAM_0_movingPlatform_xPosSub = $01050F;      |        |      ;  
@@ -764,7 +764,7 @@
                        RAM_1_entity_various = $0204DF       ;      |        |      ;  
                        RAM_1_candleIndexForSlots = $0204EA  ;      |        |      ;  
                        RAM_1_simon_subweaponCollisionID = $0204F0;      |        |      ;  
-                       RAM_1_verticalVectorAddressHiFIXME = $0204F8;      |        |      ;  
+                       RAM_1_verticalVectorAddressHiher = $0204F8;      |        |      ;  
                        RAM_1_entity_VariousOffsetY = $0204FB;      |        |      ;  
                        RAM_1_simon_IndividualSubweaponKills = $02050C;      |        |      ;  
                        RAM_1_movingPlatform_xPosSub = $02050F;      |        |      ;  
@@ -1030,7 +1030,7 @@
                        RAM_2_entity_various = $0304DF       ;      |        |      ;  
                        RAM_2_candleIndexForSlots = $0304EA  ;      |        |      ;  
                        RAM_2_simon_subweaponCollisionID = $0304F0;      |        |      ;  
-                       RAM_2_verticalVectorAddressHiFIXME = $0304F8;      |        |      ;  
+                       RAM_2_verticalVectorAddressHiher = $0304F8;      |        |      ;  
                        RAM_2_entity_VariousOffsetY = $0304FB;      |        |      ;  
                        RAM_2_simon_IndividualSubweaponKills = $03050C;      |        |      ;  
                        RAM_2_movingPlatform_xPosSub = $03050F;      |        |      ;  
@@ -1296,7 +1296,7 @@
                        RAM_3_entity_various = $0404DF       ;      |        |      ;  
                        RAM_3_candleIndexForSlots = $0404EA  ;      |        |      ;  
                        RAM_3_simon_subweaponCollisionID = $0404F0;      |        |      ;  
-                       RAM_3_verticalVectorAddressHiFIXME = $0404F8;      |        |      ;  
+                       RAM_3_verticalVectorAddressHiher = $0404F8;      |        |      ;  
                        RAM_3_entity_VariousOffsetY = $0404FB;      |        |      ;  
                        RAM_3_simon_IndividualSubweaponKills = $04050C;      |        |      ;  
                        RAM_3_movingPlatform_xPosSub = $04050F;      |        |      ;  
@@ -1562,7 +1562,7 @@
                        RAM_4_entity_various = $0504DF       ;      |        |      ;  
                        RAM_4_candleIndexForSlots = $0504EA  ;      |        |      ;  
                        RAM_4_simon_subweaponCollisionID = $0504F0;      |        |      ;  
-                       RAM_4_verticalVectorAddressHiFIXME = $0504F8;      |        |      ;  
+                       RAM_4_verticalVectorAddressHiher = $0504F8;      |        |      ;  
                        RAM_4_entity_VariousOffsetY = $0504FB;      |        |      ;  
                        RAM_4_simon_IndividualSubweaponKills = $05050C;      |        |      ;  
                        RAM_4_movingPlatform_xPosSub = $05050F;      |        |      ;  
@@ -1828,7 +1828,7 @@
                        RAM_5_entity_various = $0604DF       ;      |        |      ;  
                        RAM_5_candleIndexForSlots = $0604EA  ;      |        |      ;  
                        RAM_5_simon_subweaponCollisionID = $0604F0;      |        |      ;  
-                       RAM_5_verticalVectorAddressHiFIXME = $0604F8;      |        |      ;  
+                       RAM_5_verticalVectorAddressHiher = $0604F8;      |        |      ;  
                        RAM_5_entity_VariousOffsetY = $0604FB;      |        |      ;  
                        RAM_5_simon_IndividualSubweaponKills = $06050C;      |        |      ;  
                        RAM_5_movingPlatform_xPosSub = $06050F;      |        |      ;  
@@ -2094,7 +2094,7 @@
                        RAM_6_entity_various = $0704DF       ;      |        |      ;  
                        RAM_6_candleIndexForSlots = $0704EA  ;      |        |      ;  
                        RAM_6_simon_subweaponCollisionID = $0704F0;      |        |      ;  
-                       RAM_6_verticalVectorAddressHiFIXME = $0704F8;      |        |      ;  
+                       RAM_6_verticalVectorAddressHiher = $0704F8;      |        |      ;  
                        RAM_6_entity_VariousOffsetY = $0704FB;      |        |      ;  
                        RAM_6_simon_IndividualSubweaponKills = $07050C;      |        |      ;  
                        RAM_6_movingPlatform_xPosSub = $07050F;      |        |      ;  
@@ -2128,15 +2128,21 @@
                        RAM_6_scoreHigh = $0707FE            ;      |        |      ;  
                        eventTrackerPointer01 = $07D291      ;      |        |      ;  
                        levelDataPointerHi = $07FC39         ;      |        |      ;  
+                       ;      |        |      ;  
                        spriteAssemblyPointers00Lo = $018FBF ;      |        |      ;  
                        spriteAssemblyPointers01Lo = $0190BF ;      |        |      ;  
                        pointerTableGFXLo = $07FDBC          ;      |        |      ;  
                        tileMapPointerTableHi = $07CBF2      ;      |        |      ;  
                        breakableBlockDataLo = $07FC72       ;      |        |      ;  
+                       ;      |        |      ;  
+                       ;      |        |      ;  
+                       levelScenePoHi = $07FB24             ;      |        |      ;  
+                       ;      |        |      ;  
+                       ;      |        |      ;  
+                       ;      |        |      ;  
+                       TSA_blockPointersHi = $07F9FB        ;      |        |      ;  
                        PTR16_00FFFF = $00FFFF               ;      |        |      ;  
-                       DATA16_01879F = $01879F              ;      |        |      ;  
                        PTR16_018186 = $018186               ;      |        |      ;  
-                       LOOSE_OP_07824C = $07824C            ;      |        |      ;  
                        PTR16_07FBED = $07FBED               ;      |        |      ;  
                        PTR16_07A46F = $07A46F               ;      |        |      ;  
                        PTR16_07CCFA = $07CCFA               ;      |        |      ;  
@@ -2144,6 +2150,5 @@
                        LOOSE_OP_07872C = $07872C            ;      |        |      ;  
                        PTR16_07F23B = $07F23B               ;      |        |      ;  
                        PTR16_07F239 = $07F239               ;      |        |      ;  
-                       DATA16_07F9FB = $07F9FB              ;      |        |      ;  
                        LOOSE_OP_078910 = $078910            ;      |        |      ;  
                        PTR16_07FF25 = $07FF25               ;      |        |      ;  

@@ -1958,7 +1958,8 @@ gfxData_spriteDeath_boneP_medusa: db $07,$08,$0B,$0B,$0B,$16,$1C,$16   ;03BA08| 
                        db $00,$00,$00,$00,$00,$C0,$70,$1C   ;03BCD0|        |      ;  
                        db $07,$07,$07,$0F,$1F,$3E,$FC,$F0   ;03BCD8|        |      ;  
                        db $1F,$1F,$1F,$3E,$FE,$FC,$F0,$00   ;03BCE0|        |      ;  
-                       db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;03BCE8|        |      ;  
+                                                            ;      |        |      ;  
+         emptySpace02: db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;03BCE8|        |      ;  
                        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;03BCF0|        |      ;  
                        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;03BCF8|        |      ;  
                        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;03BD00|        |      ;  

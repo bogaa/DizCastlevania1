@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ProjectXmlSerializer-Root xmlns:exs="https://extendedxmlserializer.github.io/v2" xmlns:ns1="clr-namespace:Diz.Core.model;assembly=Diz.Core" xmlns:ns2="clr-namespace:Diz.Core.model.snes;assembly=Diz.Core" xmlns:sys="https://extendedxmlserializer.github.io/system" xmlns:ns3="clr-namespace:IX.Observable;assembly=IX.Observable" xmlns:ns4="clr-namespace:Diz.Core.export;assembly=Diz.Core" SaveVersion="101" Watermark="DiztinGUIsh" Extra1="" Extra2="" xmlns="clr-namespace:Diz.Core.serialization.xml_serializer;assembly=Diz.Core">
-  <Project AttachedRomFilename="C:\GitHub\.dizProjects\dizASM_Castlevania\main.sfc" InternalRomGameName="Super Castlevania    " InternalCheckSum="1321054530" CurrentViewOffset="38492">
+  <Project AttachedRomFilename="C:\GitHub\.dizProjects\dizASM_Castlevania\main.sfc" InternalRomGameName="Super Castlevania    " InternalCheckSum="1321054530" CurrentViewOffset="243264">
     <LogWriterSettings Format="%label:-22% %code:37%;%pc%|%bytes%|%ia%; %comment%" DataPerLine="8" Unlabeled="ShowInPoints" Structure="OneBankPerFile" IncludeUnusedLabels="false" PrintLabelSpecificComments="false" OutputExtraWhitespace="true" RomSizeOverride="-1" FileOrFolderOutPath="C:\GitHub\.dizProjects\dizASM_Castlevania\export" OutputToString="false" ErrorFilename="errors.txt" />
     <Data RomMapMode="LoRom" RomSpeed="SlowRom">
       <Comments AutomaticallyCaptureSubItems="false" HistoryLevels="50">
         <sys:Item Key="98304" Value="bus conflict fix" />
-        <sys:Item Key="519513" Value="jumpBank specific " />
+        <sys:Item Key="519513" Value="FIXME" />
         <sys:Item Key="517593" Value="small" />
         <sys:Item Key="517595" Value="middle" />
         <sys:Item Key="517597" Value="large" />
@@ -33,6 +33,67 @@
         <sys:Item Key="229384" Value="GFX_bank2" />
         <sys:Item Key="294920" Value="GFX_bank4" />
         <sys:Item Key="509968" Value="set stage to initiate drop down the tower" />
+        <sys:Item Key="491528" Value="null terminator " />
+        <sys:Item Key="491529" Value="Format AB. A = yPos trigger B = 0 right up, 1 left up, 2 left down, 3 right down&#x9; " />
+        <sys:Item Key="491530" Value="Format CD.Trigger C = XposLo D = XposHi   " />
+        <sys:Item Key="523601" Value="store gfxRom pointer 2 $00" />
+        <sys:Item Key="523614" Value="storePPU dest 2 $02" />
+        <sys:Item Key="523625" Value="storePPU size 2 $04" />
+        <sys:Item Key="523646" Value="backup gfxRomPointer 2 $08" />
+        <sys:Item Key="523654" Value="set ppu dest" />
+        <sys:Item Key="523664" Value="init load loop" />
+        <sys:Item Key="523685" Value="size counter" />
+        <sys:Item Key="523689" Value="count 255 junk blocks " />
+        <sys:Item Key="523731" Value="bank offset" />
+        <sys:Item Key="523732" Value="src offset" />
+        <sys:Item Key="523734" Value="dest" />
+        <sys:Item Key="523736" Value="size" />
+        <sys:Item Key="523738" Value="bank " />
+        <sys:Item Key="523739" Value="src offset" />
+        <sys:Item Key="523741" Value="dest" />
+        <sys:Item Key="523743" Value="size" />
+        <sys:Item Key="523745" Value="terminator" />
+        <sys:Item Key="508162" Value="sprite size 8x16, nmi and pattern at $1000" />
+        <sys:Item Key="511036" Value="terminatorByte" />
+        <sys:Item Key="507929" Value="set/reset stack pointer" />
+        <sys:Item Key="511344" Value="ppu offset" />
+        <sys:Item Key="511346" Value="heartPattern" />
+        <sys:Item Key="511347" Value="minusPattern" />
+        <sys:Item Key="511348" Value="terminator" />
+        <sys:Item Key="522716" Value="calculate range of collusion tiles" />
+        <sys:Item Key="522459" Value="not cleard is drawing the HUD (sprite 0, sprite zero hit)" />
+        <sys:Item Key="522470" Value="cleared means we got a hit and sprite zerp hit is cleared. Set timer and continue" />
+        <sys:Item Key="510476" Value="YposSimon AND F8. CamXpos AND 07" />
+        <sys:Item Key="510477" Value="SimonXpos AND FE. AND 1 spriteMirror" />
+        <sys:Item Key="523361" Value="second screen" />
+        <sys:Item Key="523364" Value="first screen second room" />
+        <sys:Item Key="523367" Value="5th screen" />
+        <sys:Item Key="523370" Value="3th screen" />
+        <sys:Item Key="523373" Value="first screen second room" />
+        <sys:Item Key="523376" Value="first screen second room" />
+        <sys:Item Key="523358" Value="no boss" />
+        <sys:Item Key="519847" Value="used for mummy boss" />
+        <sys:Item Key="523460" Value="FIXME" />
+        <sys:Item Key="508017" Value="FIXME" />
+        <sys:Item Key="508076" Value="FIXME" />
+        <sys:Item Key="506427" Value="terminateBat movment" />
+        <sys:Item Key="508132" Value="FIXME" />
+        <sys:Item Key="492410" Value="probably crusher routine.. " />
+        <sys:Item Key="491978" Value="more crusher stuff ??" />
+        <sys:Item Key="517958" Value="check level 13" />
+        <sys:Item Key="517964" Value="check level 7" />
+        <sys:Item Key="517950" Value="set Max Damage Value " />
+        <sys:Item Key="518273" Value="meat healing Points" />
+        <sys:Item Key="510352" Value="starting Hearts " />
+        <sys:Item Key="510329" Value="starting lifes " />
+        <sys:Item Key="518006" Value="smallHeartValue " />
+        <sys:Item Key="518255" Value="big Heart Value " />
+        <sys:Item Key="514686" Value="clock cost" />
+        <sys:Item Key="100321" Value="soundEffect" />
+        <sys:Item Key="100234" Value="not sure!! FIXME" />
+        <sys:Item Key="519522" Value="FIXME" />
+        <sys:Item Key="519529" Value="FIXME" />
+        <sys:Item Key="519532" Value="FIXME" />
       </Comments>
       <Labels>
         <sys:Item Key="24">
@@ -738,7 +799,7 @@
           <Value exs:type="ns1:Label" Name="simon_subweaponCollisionID" Comment="" />
         </sys:Item>
         <sys:Item Key="1272">
-          <Value exs:type="ns1:Label" Name="verticalVectorAddressHiFIXME" Comment="" />
+          <Value exs:type="ns1:Label" Name="verticalVectorAddressHiher" Comment="" />
         </sys:Item>
         <sys:Item Key="1275">
           <Value exs:type="ns1:Label" Name="entity_VariousOffsetY" Comment="" />
@@ -1536,7 +1597,7 @@
           <Value exs:type="ns1:Label" Name="RAM_0_simon_subweaponCollisionID" Comment="" />
         </sys:Item>
         <sys:Item Key="66808">
-          <Value exs:type="ns1:Label" Name="RAM_0_verticalVectorAddressHiFIXME" Comment="" />
+          <Value exs:type="ns1:Label" Name="RAM_0_verticalVectorAddressHiher" Comment="" />
         </sys:Item>
         <sys:Item Key="66811">
           <Value exs:type="ns1:Label" Name="RAM_0_entity_VariousOffsetY" Comment="" />
@@ -2334,7 +2395,7 @@
           <Value exs:type="ns1:Label" Name="RAM_1_simon_subweaponCollisionID" Comment="" />
         </sys:Item>
         <sys:Item Key="132344">
-          <Value exs:type="ns1:Label" Name="RAM_1_verticalVectorAddressHiFIXME" Comment="" />
+          <Value exs:type="ns1:Label" Name="RAM_1_verticalVectorAddressHiher" Comment="" />
         </sys:Item>
         <sys:Item Key="132347">
           <Value exs:type="ns1:Label" Name="RAM_1_entity_VariousOffsetY" Comment="" />
@@ -3132,7 +3193,7 @@
           <Value exs:type="ns1:Label" Name="RAM_2_simon_subweaponCollisionID" Comment="" />
         </sys:Item>
         <sys:Item Key="197880">
-          <Value exs:type="ns1:Label" Name="RAM_2_verticalVectorAddressHiFIXME" Comment="" />
+          <Value exs:type="ns1:Label" Name="RAM_2_verticalVectorAddressHiher" Comment="" />
         </sys:Item>
         <sys:Item Key="197883">
           <Value exs:type="ns1:Label" Name="RAM_2_entity_VariousOffsetY" Comment="" />
@@ -3930,7 +3991,7 @@
           <Value exs:type="ns1:Label" Name="RAM_3_simon_subweaponCollisionID" Comment="" />
         </sys:Item>
         <sys:Item Key="263416">
-          <Value exs:type="ns1:Label" Name="RAM_3_verticalVectorAddressHiFIXME" Comment="" />
+          <Value exs:type="ns1:Label" Name="RAM_3_verticalVectorAddressHiher" Comment="" />
         </sys:Item>
         <sys:Item Key="263419">
           <Value exs:type="ns1:Label" Name="RAM_3_entity_VariousOffsetY" Comment="" />
@@ -4728,7 +4789,7 @@
           <Value exs:type="ns1:Label" Name="RAM_4_simon_subweaponCollisionID" Comment="" />
         </sys:Item>
         <sys:Item Key="328952">
-          <Value exs:type="ns1:Label" Name="RAM_4_verticalVectorAddressHiFIXME" Comment="" />
+          <Value exs:type="ns1:Label" Name="RAM_4_verticalVectorAddressHiher" Comment="" />
         </sys:Item>
         <sys:Item Key="328955">
           <Value exs:type="ns1:Label" Name="RAM_4_entity_VariousOffsetY" Comment="" />
@@ -5526,7 +5587,7 @@
           <Value exs:type="ns1:Label" Name="RAM_5_simon_subweaponCollisionID" Comment="" />
         </sys:Item>
         <sys:Item Key="394488">
-          <Value exs:type="ns1:Label" Name="RAM_5_verticalVectorAddressHiFIXME" Comment="" />
+          <Value exs:type="ns1:Label" Name="RAM_5_verticalVectorAddressHiher" Comment="" />
         </sys:Item>
         <sys:Item Key="394491">
           <Value exs:type="ns1:Label" Name="RAM_5_entity_VariousOffsetY" Comment="" />
@@ -6324,7 +6385,7 @@
           <Value exs:type="ns1:Label" Name="RAM_6_simon_subweaponCollisionID" Comment="" />
         </sys:Item>
         <sys:Item Key="460024">
-          <Value exs:type="ns1:Label" Name="RAM_6_verticalVectorAddressHiFIXME" Comment="" />
+          <Value exs:type="ns1:Label" Name="RAM_6_verticalVectorAddressHiher" Comment="" />
         </sys:Item>
         <sys:Item Key="460027">
           <Value exs:type="ns1:Label" Name="RAM_6_entity_VariousOffsetY" Comment="" />
@@ -6441,7 +6502,7 @@
           <Value exs:type="ns1:Label" Name="jumpTableFromStackB5" Comment="" />
         </sys:Item>
         <sys:Item Key="445037">
-          <Value exs:type="ns1:Label" Name="jumpTableFromStackB6" Comment="" />
+          <Value exs:type="ns1:Label" Name="FIXME_ca6d_jump4stack" Comment="" />
         </sys:Item>
         <sys:Item Key="507912">
           <Value exs:type="ns1:Label" Name="resetStart" Comment="" />
@@ -6453,7 +6514,7 @@
           <Value exs:type="ns1:Label" Name="bank5" Comment="" />
         </sys:Item>
         <sys:Item Key="360448">
-          <Value exs:type="ns1:Label" Name="bank4" Comment="" />
+          <Value exs:type="ns1:Label" Name="lvl0_scenePointer" Comment="" />
         </sys:Item>
         <sys:Item Key="294912">
           <Value exs:type="ns1:Label" Name="bank3" Comment="" />
@@ -6498,10 +6559,10 @@
           <Value exs:type="ns1:Label" Name="storeEntityStateX" Comment="" />
         </sys:Item>
         <sys:Item Key="508374">
-          <Value exs:type="ns1:Label" Name="bankSwapWbkp27" Comment="" />
+          <Value exs:type="ns1:Label" Name="bankSwap_backupYto27" Comment="" />
         </sys:Item>
         <sys:Item Key="508372">
-          <Value exs:type="ns1:Label" Name="bankSwapFromBefore24" Comment="" />
+          <Value exs:type="ns1:Label" Name="bankSwap_restoreFrom24" Comment="" />
         </sys:Item>
         <sys:Item Key="508376">
           <Value exs:type="ns1:Label" Name="bankSwap" Comment="" />
@@ -6654,7 +6715,7 @@
           <Value exs:type="ns1:Label" Name="subWeaponDamage" Comment="" />
         </sys:Item>
         <sys:Item Key="523707">
-          <Value exs:type="ns1:Label" Name="pointerTableGFX" Comment="" />
+          <Value exs:type="ns1:Label" Name="pointerTableGFXHi" Comment="" />
         </sys:Item>
         <sys:Item Key="523731">
           <Value exs:type="ns1:Label" Name="TitelScreenGFX" Comment="" />
@@ -7112,20 +7173,8 @@
         <sys:Item Key="495197">
           <Value exs:type="ns1:Label" Name="level0f_Routine" Comment="" />
         </sys:Item>
-        <sys:Item Key="102812">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_00_empty" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102813">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_01" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102824">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_02" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102838">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_03" Comment="" />
-        </sys:Item>
         <sys:Item Key="491528">
-          <Value exs:type="ns1:Label" Name="someData00" Comment="" />
+          <Value exs:type="ns1:Label" Name="stairDataLevel_00" Comment="" />
         </sys:Item>
         <sys:Item Key="511080">
           <Value exs:type="ns1:Label" Name="number2PPUupdate" Comment="" />
@@ -7176,7 +7225,7 @@
           <Value exs:type="ns1:Label" Name="offsetData03" Comment="" />
         </sys:Item>
         <sys:Item Key="511344">
-          <Value exs:type="ns1:Label" Name="offsetData04" Comment="" />
+          <Value exs:type="ns1:Label" Name="textHud_Heart_04" Comment="" />
         </sys:Item>
         <sys:Item Key="511349">
           <Value exs:type="ns1:Label" Name="offsetData05" Comment="" />
@@ -7404,7 +7453,7 @@
           <Value exs:type="ns1:Label" Name="VampireKillerSq2" Comment="" />
         </sys:Item>
         <sys:Item Key="105819">
-          <Value exs:type="ns1:Label" Name="VampireKillerTri" Comment="" />
+          <Value exs:type="ns1:Label" Name="" Comment="" />
         </sys:Item>
         <sys:Item Key="101840">
           <Value exs:type="ns1:Label" Name="StalkerSq1" Comment="" />
@@ -7529,42 +7578,6 @@
         <sys:Item Key="100536">
           <Value exs:type="ns1:Label" Name="MusicEmpty00Sq2Tri2" Comment="" />
         </sys:Item>
-        <sys:Item Key="102852">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_04" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102866">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_05" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102877">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_06" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102885">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_07" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102899">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_08" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102918">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_0a" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102932">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_0b" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102937">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_0c" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102951">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_0d" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102965">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_0e" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102973">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_0f" Comment="" />
-        </sys:Item>
-        <sys:Item Key="102981">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_10" Comment="" />
-        </sys:Item>
         <sys:Item Key="102334">
           <Value exs:type="ns1:Label" Name="spriteAssemblyPointers00Hi" Comment="" />
         </sys:Item>
@@ -7577,557 +7590,605 @@
         <sys:Item Key="102591">
           <Value exs:type="ns1:Label" Name="spriteAssemblyPointers01Lo" Comment="" />
         </sys:Item>
+        <sys:Item Key="102812">
+          <Value exs:type="ns1:Label" Name="sprAss_00_invisible" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102813">
+          <Value exs:type="ns1:Label" Name="sprAss_01_simonWalk" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102824">
+          <Value exs:type="ns1:Label" Name="sprAss_02_simonWalk" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102838">
+          <Value exs:type="ns1:Label" Name="sprAss_03_simonWalk" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102852">
+          <Value exs:type="ns1:Label" Name="sprAss_05_simonCrouch" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102866">
+          <Value exs:type="ns1:Label" Name="sprAss_06_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102877">
+          <Value exs:type="ns1:Label" Name="sprAss_07_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102885">
+          <Value exs:type="ns1:Label" Name="sprAss_08_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102899">
+          <Value exs:type="ns1:Label" Name="sprAss_09_" Comment="" />
+        </sys:Item>
         <sys:Item Key="102910">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_09" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_0a_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102918">
+          <Value exs:type="ns1:Label" Name="sprAss_0b_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102932">
+          <Value exs:type="ns1:Label" Name="sprAss_0c_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102937">
+          <Value exs:type="ns1:Label" Name="sprAss_0d_simonStairUp" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102951">
+          <Value exs:type="ns1:Label" Name="sprAss_0f_simonStairDown" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102965">
+          <Value exs:type="ns1:Label" Name="sprAss_10_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102973">
+          <Value exs:type="ns1:Label" Name="sprAss_11_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="102981">
+          <Value exs:type="ns1:Label" Name="sprAss_12_whipHand" Comment="" />
         </sys:Item>
         <sys:Item Key="102990">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_11" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_13_whipShort" Comment="" />
         </sys:Item>
         <sys:Item Key="102998">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_12" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_14_whipWind" Comment="" />
         </sys:Item>
         <sys:Item Key="103006">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_13" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_15_whipWind" Comment="" />
         </sys:Item>
         <sys:Item Key="103014">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_14" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_16_whipChainHand" Comment="" />
         </sys:Item>
         <sys:Item Key="103023">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_15" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_17_whipChainShort" Comment="" />
         </sys:Item>
         <sys:Item Key="103031">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_16" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103045">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_1b" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103065">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_1c" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_18_whipChainLong" Comment="" />
         </sys:Item>
         <sys:Item Key="103935">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_17" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_19_" Comment="" />
         </sys:Item>
         <sys:Item Key="103949">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_18" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103968">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_1a" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_1a_" Comment="" />
         </sys:Item>
         <sys:Item Key="103963">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_19" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_1b_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103968">
+          <Value exs:type="ns1:Label" Name="sprAss_1c_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103045">
+          <Value exs:type="ns1:Label" Name="sprAss_1d_door" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103065">
+          <Value exs:type="ns1:Label" Name="sprAss_1e_doorOpen" Comment="" />
         </sys:Item>
         <sys:Item Key="103094">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_1d" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_1f_zombie" Comment="" />
         </sys:Item>
         <sys:Item Key="103108">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_1e" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_20_zombie" Comment="" />
         </sys:Item>
         <sys:Item Key="104553">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_1f" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_22_redSkelly" Comment="" />
         </sys:Item>
         <sys:Item Key="104567">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_20" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_23_redSkelly" Comment="" />
         </sys:Item>
         <sys:Item Key="104770">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_21" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_24_2ndDracula" Comment="" />
         </sys:Item>
         <sys:Item Key="103452">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_22" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_25_holyWaterShot" Comment="" />
         </sys:Item>
         <sys:Item Key="103482">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_23" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_26_bigHeart" Comment="" />
         </sys:Item>
         <sys:Item Key="103457">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_24" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_27_boomerangShot" Comment="" />
         </sys:Item>
         <sys:Item Key="103466">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_25" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_28_boomerangCollectable" Comment="" />
         </sys:Item>
         <sys:Item Key="103474">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_26" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_29_" Comment="" />
         </sys:Item>
         <sys:Item Key="103491">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_27" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_2a_" Comment="" />
         </sys:Item>
         <sys:Item Key="103499">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_28" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_2b_" Comment="" />
         </sys:Item>
         <sys:Item Key="103507">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_29" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_2c_potion" Comment="" />
         </sys:Item>
         <sys:Item Key="103515">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_2a" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103523">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_1g" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103528">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_1k" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_2d_clock" Comment="" />
         </sys:Item>
         <sys:Item Key="103122">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_2b" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_2e_enemyFlame" Comment="" />
         </sys:Item>
         <sys:Item Key="103127">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_2c" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_2f_" Comment="" />
         </sys:Item>
         <sys:Item Key="103132">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_2d" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103137">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_4b" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103146">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_4c" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_30_" Comment="" />
         </sys:Item>
         <sys:Item Key="103155">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_2e" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_31_candle" Comment="" />
         </sys:Item>
         <sys:Item Key="103160">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_2f" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_32_" Comment="" />
         </sys:Item>
         <sys:Item Key="103170">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_30" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_37_candle" Comment="" />
         </sys:Item>
         <sys:Item Key="103184">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_31" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_38_" Comment="" />
         </sys:Item>
         <sys:Item Key="103195">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_32" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103227">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_33" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_39_merman" Comment="" />
         </sys:Item>
         <sys:Item Key="103739">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_3n" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103799">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_3f" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_3a_eagle" Comment="" />
         </sys:Item>
         <sys:Item Key="103765">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_34" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_3b_" Comment="" />
         </sys:Item>
         <sys:Item Key="103209">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_35" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_3d_" Comment="" />
         </sys:Item>
         <sys:Item Key="104381">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_36" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_3d_splash" Comment="" />
         </sys:Item>
         <sys:Item Key="104389">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_37" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103165">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_39" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_40_" Comment="" />
         </sys:Item>
         <sys:Item Key="104397">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_38" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_41_raven" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103165">
+          <Value exs:type="ns1:Label" Name="sprAss_42_" Comment="" />
         </sys:Item>
         <sys:Item Key="103344">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_3g" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_44_bat" Comment="" />
         </sys:Item>
         <sys:Item Key="103352">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_3a" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_45_medusa" Comment="" />
         </sys:Item>
         <sys:Item Key="103360">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_3b" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_46_" Comment="" />
         </sys:Item>
         <sys:Item Key="104373">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_3c" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_48_raven" Comment="" />
         </sys:Item>
         <sys:Item Key="103214">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_3d" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_49_moneybag" Comment="" />
         </sys:Item>
         <sys:Item Key="103222">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_3e" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_4a_heart" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103227">
+          <Value exs:type="ns1:Label" Name="sprAss_4b_meatChop" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103799">
+          <Value exs:type="ns1:Label" Name="sprAss_4c_axe" Comment="" />
         </sys:Item>
         <sys:Item Key="103807">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_40" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_4d_" Comment="" />
         </sys:Item>
         <sys:Item Key="103815">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_41" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_4e_" Comment="" />
         </sys:Item>
         <sys:Item Key="103823">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_42" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103831">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_43" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103839">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_44" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103847">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_45" Comment="" />
-        </sys:Item>
-        <sys:Item Key="103861">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_46" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_4f_" Comment="" />
         </sys:Item>
         <sys:Item Key="103791">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_4g" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_50_dagger" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103831">
+          <Value exs:type="ns1:Label" Name="sprAss_51_doubleShot" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103839">
+          <Value exs:type="ns1:Label" Name="sprAss_52_tripleShot" Comment="" />
         </sys:Item>
         <sys:Item Key="104357">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_4h" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_53_mummyShot" Comment="" />
         </sys:Item>
         <sys:Item Key="104365">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_47" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_54_" Comment="" />
         </sys:Item>
         <sys:Item Key="104030">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_48" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_55_candleDtand" Comment="" />
         </sys:Item>
         <sys:Item Key="104047">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_49" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_56_" Comment="" />
         </sys:Item>
         <sys:Item Key="104762">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_4a" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_57_draculaChunk" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103146">
+          <Value exs:type="ns1:Label" Name="sprAss_5e_" Comment="" />
         </sys:Item>
         <sys:Item Key="103258">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_4d" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_5f_" Comment="" />
         </sys:Item>
-        <sys:Item Key="103274">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_4f" Comment="" />
+        <sys:Item Key="103137">
+          <Value exs:type="ns1:Label" Name="sprAss_5d_" Comment="" />
         </sys:Item>
         <sys:Item Key="103266">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_4e" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_60_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103274">
+          <Value exs:type="ns1:Label" Name="sprAss_61_" Comment="" />
         </sys:Item>
         <sys:Item Key="103282">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_50" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_62_" Comment="" />
         </sys:Item>
         <sys:Item Key="103290">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_51" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_63_" Comment="" />
         </sys:Item>
         <sys:Item Key="103298">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_1y" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_ad" Comment="" />
         </sys:Item>
         <sys:Item Key="103306">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_1z" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_ae" Comment="" />
         </sys:Item>
         <sys:Item Key="104112">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_5g" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_64_ghost" Comment="" />
         </sys:Item>
         <sys:Item Key="104120">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_52" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_65_" Comment="" />
         </sys:Item>
         <sys:Item Key="103314">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_53" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_66_spark" Comment="" />
         </sys:Item>
         <sys:Item Key="104297">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_54" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_67_mummy" Comment="" />
         </sys:Item>
         <sys:Item Key="104317">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_56" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_68_" Comment="" />
         </sys:Item>
         <sys:Item Key="104337">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_57" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_69_" Comment="" />
         </sys:Item>
         <sys:Item Key="104894">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_5b" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_6d_2ndDracula3" Comment="" />
         </sys:Item>
         <sys:Item Key="103236">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_5c" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_6e_whipUpgrade" Comment="" />
         </sys:Item>
         <sys:Item Key="103235">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_5e" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_70_ani70" Comment="" />
         </sys:Item>
         <sys:Item Key="103244">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_5f" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_71_" Comment="" />
         </sys:Item>
         <sys:Item Key="103245">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_60" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_72_cross" Comment="" />
         </sys:Item>
         <sys:Item Key="103319">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_61" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_73_" Comment="" />
         </sys:Item>
         <sys:Item Key="103327">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_62" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_74_" Comment="" />
         </sys:Item>
         <sys:Item Key="104128">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_63" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_75_snake" Comment="" />
         </sys:Item>
         <sys:Item Key="104136">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_64" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_76_" Comment="" />
         </sys:Item>
         <sys:Item Key="104144">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_65" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_77_ani77" Comment="" />
         </sys:Item>
         <sys:Item Key="104171">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_66" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_78_medusaBoss" Comment="" />
         </sys:Item>
         <sys:Item Key="104198">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_67" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_79_" Comment="" />
         </sys:Item>
         <sys:Item Key="104912">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_68" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_7a_2ndDracula4" Comment="" />
         </sys:Item>
         <sys:Item Key="104930">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_69" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_7b_" Comment="" />
         </sys:Item>
         <sys:Item Key="103253">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_6a" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_7c_" Comment="" />
         </sys:Item>
         <sys:Item Key="104264">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_6b" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_7d_" Comment="" />
         </sys:Item>
         <sys:Item Key="104648">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_6d" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_7f_sleepingBat" Comment="" />
         </sys:Item>
         <sys:Item Key="104662">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_100" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_80_" Comment="" />
         </sys:Item>
         <sys:Item Key="104676">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_101" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_81_" Comment="" />
         </sys:Item>
         <sys:Item Key="103368">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_102" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_82_anim" Comment="" />
         </sys:Item>
         <sys:Item Key="103376">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_103" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_83_" Comment="" />
         </sys:Item>
         <sys:Item Key="103384">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_104" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_84_" Comment="" />
         </sys:Item>
         <sys:Item Key="104504">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_105" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_85_axeArmor" Comment="" />
         </sys:Item>
         <sys:Item Key="104518">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_106" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_86_" Comment="" />
         </sys:Item>
         <sys:Item Key="104273">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_107" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_88_hunchback" Comment="" />
         </sys:Item>
         <sys:Item Key="104281">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_108" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_89_" Comment="" />
         </sys:Item>
         <sys:Item Key="104289">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_109" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_8a_" Comment="" />
         </sys:Item>
         <sys:Item Key="103392">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_10b" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_8c_bossFlames" Comment="" />
         </sys:Item>
         <sys:Item Key="103412">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_10c" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_8d_" Comment="" />
         </sys:Item>
         <sys:Item Key="103432">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_10d" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_8e_" Comment="" />
         </sys:Item>
         <sys:Item Key="104405">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_10e" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_8f_frankenstein" Comment="" />
         </sys:Item>
         <sys:Item Key="104425">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_10f" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_90_" Comment="" />
         </sys:Item>
         <sys:Item Key="104445">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_110" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_91_" Comment="" />
         </sys:Item>
         <sys:Item Key="105129">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_112" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_94_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103523">
+          <Value exs:type="ns1:Label" Name="sprAss_95_" Comment="" />
         </sys:Item>
         <sys:Item Key="105178">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_113" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_96_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103528">
+          <Value exs:type="ns1:Label" Name="sprAss_97_" Comment="" />
         </sys:Item>
         <sys:Item Key="103543">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_114" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_98_" Comment="" />
         </sys:Item>
         <sys:Item Key="103558">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_115" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_99_" Comment="" />
         </sys:Item>
         <sys:Item Key="104225">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_116" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_9a_knight" Comment="" />
         </sys:Item>
         <sys:Item Key="104239">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_117" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_9b_" Comment="" />
         </sys:Item>
         <sys:Item Key="104253">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_118" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_9c_" Comment="" />
         </sys:Item>
         <sys:Item Key="103573">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_11a" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_9e_anim" Comment="" />
         </sys:Item>
         <sys:Item Key="103973">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_11b" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_9f_sleepingBatBoss" Comment="" />
         </sys:Item>
         <sys:Item Key="103982">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_11c" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_a0_phantomBat" Comment="" />
         </sys:Item>
         <sys:Item Key="104009">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_11d" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_a1_" Comment="" />
         </sys:Item>
         <sys:Item Key="103588">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_11e" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_a2_magicBall" Comment="" />
         </sys:Item>
         <sys:Item Key="103597">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_11f" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_a3_" Comment="" />
         </sys:Item>
         <sys:Item Key="103606">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_120" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_a4_" Comment="" />
         </sys:Item>
         <sys:Item Key="103621">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_121" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_a5_" Comment="" />
         </sys:Item>
         <sys:Item Key="103633">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_122" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_a6_" Comment="" />
         </sys:Item>
         <sys:Item Key="103648">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_123" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_a7_" Comment="" />
         </sys:Item>
         <sys:Item Key="103663">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_127" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_ab_" Comment="" />
         </sys:Item>
         <sys:Item Key="103675">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_128" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_ac_" Comment="" />
         </sys:Item>
         <sys:Item Key="103690">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_129" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_b1_skeleton" Comment="" />
         </sys:Item>
         <sys:Item Key="103704">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_12a" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_b2_" Comment="" />
         </sys:Item>
         <sys:Item Key="103734">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_12b" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_b3_skeletonBone" Comment="" />
         </sys:Item>
         <sys:Item Key="103726">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_12c" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_b4_" Comment="" />
         </sys:Item>
         <sys:Item Key="103718">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_12d" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_b5_" Comment="" />
         </sys:Item>
         <sys:Item Key="104059">
-          <Value exs:type="ns1:Label" Name="spriteAss_zombie_12e" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_b6_sittingDog" Comment="" />
         </sys:Item>
         <sys:Item Key="104070">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_12f" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_b7_runningDog" Comment="" />
         </sys:Item>
         <sys:Item Key="104084">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_131" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_b8_jumpingDog" Comment="" />
         </sys:Item>
         <sys:Item Key="104098">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_132" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_b9_" Comment="" />
         </sys:Item>
         <sys:Item Key="104488">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_133" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_ba_" Comment="" />
         </sys:Item>
         <sys:Item Key="104496">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_134" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_bb_" Comment="" />
         </sys:Item>
         <sys:Item Key="104581">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_13b" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_c2_hatchet" Comment="" />
         </sys:Item>
         <sys:Item Key="104616">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_13d" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_c4_" Comment="" />
         </sys:Item>
         <sys:Item Key="104624">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_13f" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_c6_grimReaper" Comment="" />
         </sys:Item>
         <sys:Item Key="104632">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_141" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_c7_" Comment="" />
         </sys:Item>
         <sys:Item Key="104640">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_142" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_c8_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103847">
+          <Value exs:type="ns1:Label" Name="sprAss_c9_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="103861">
+          <Value exs:type="ns1:Label" Name="sprAss_ca_" Comment="" />
         </sys:Item>
         <sys:Item Key="103872">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_143" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_cb_" Comment="" />
         </sys:Item>
         <sys:Item Key="103880">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_144" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_cc_" Comment="" />
         </sys:Item>
         <sys:Item Key="104465">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_145" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_cd_" Comment="" />
         </sys:Item>
         <sys:Item Key="104473">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_146" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_ce_" Comment="" />
         </sys:Item>
         <sys:Item Key="104481">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_147" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_cf_" Comment="" />
         </sys:Item>
         <sys:Item Key="104690">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_148" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_d0_Dracula" Comment="" />
         </sys:Item>
         <sys:Item Key="104719">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_149" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_d1_Dracula1" Comment="" />
         </sys:Item>
         <sys:Item Key="104757">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_14a" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_d2_Dracula2" Comment="" />
         </sys:Item>
         <sys:Item Key="104965">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_14b" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_d3_2ndDracula5" Comment="" />
         </sys:Item>
         <sys:Item Key="104994">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_14c" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_d4_" Comment="" />
         </sys:Item>
         <sys:Item Key="104826">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_14d" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_d5_2ndDracula2" Comment="" />
         </sys:Item>
         <sys:Item Key="105088">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_14e" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_d6_" Comment="" />
         </sys:Item>
         <sys:Item Key="105093">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_14f" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_d7_" Comment="" />
         </sys:Item>
         <sys:Item Key="105102">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_150" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_d8_" Comment="" />
         </sys:Item>
         <sys:Item Key="105111">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_151" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_d9_" Comment="" />
         </sys:Item>
         <sys:Item Key="105120">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_152" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_da_" Comment="" />
         </sys:Item>
         <sys:Item Key="105029">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_153" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_db_" Comment="" />
         </sys:Item>
         <sys:Item Key="105037">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_154" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_dc_" Comment="" />
         </sys:Item>
         <sys:Item Key="105048">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_155" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_dd_" Comment="" />
         </sys:Item>
         <sys:Item Key="105068">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_156" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_de_" Comment="" />
         </sys:Item>
         <sys:Item Key="103885">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_157" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_df_" Comment="" />
         </sys:Item>
         <sys:Item Key="103893">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_158" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e0_" Comment="" />
         </sys:Item>
         <sys:Item Key="103901">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_159" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e1_" Comment="" />
         </sys:Item>
         <sys:Item Key="103909">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_15a" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e2_" Comment="" />
         </sys:Item>
         <sys:Item Key="103914">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_15b" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e3_" Comment="" />
         </sys:Item>
         <sys:Item Key="103922">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_15c" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e4_" Comment="" />
         </sys:Item>
         <sys:Item Key="103927">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_15d" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e5_" Comment="" />
         </sys:Item>
         <sys:Item Key="105219">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_15e" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e6_" Comment="" />
         </sys:Item>
         <sys:Item Key="105240">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_15f" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e7_" Comment="" />
         </sys:Item>
         <sys:Item Key="105269">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_160" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e8_" Comment="" />
         </sys:Item>
         <sys:Item Key="105294">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_161" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e9_" Comment="" />
         </sys:Item>
         <sys:Item Key="105303">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_162" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_ea_" Comment="" />
         </sys:Item>
         <sys:Item Key="105312">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_163" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_eb_" Comment="" />
         </sys:Item>
         <sys:Item Key="105321">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_164" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_ec_" Comment="" />
         </sys:Item>
         <sys:Item Key="105330">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_165" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_ed_" Comment="" />
         </sys:Item>
         <sys:Item Key="105339">
-          <Value exs:type="ns1:Label" Name="spriteAssembly_166" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_ee_" Comment="" />
         </sys:Item>
         <sys:Item Key="102091">
           <Value exs:type="ns1:Label" Name="StalkerTri_loop00" Comment="" />
@@ -8398,6 +8459,1149 @@
         </sys:Item>
         <sys:Item Key="521034">
           <Value exs:type="ns1:Label" Name="spAni_59_" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523244">
+          <Value exs:type="ns1:Label" Name="stairDataPointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491529">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491546">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_02" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491563">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_03" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492516">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492530">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_06" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492525">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_05" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492846">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_07" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492863">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_08" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492871">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_09" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493477">
+          <Value exs:type="ns1:Label" Name="empty_stairBlockEntery" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493936">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_0d" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493957">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_0e" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493990">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_0f" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494261">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_10" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494266">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_11" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494388">
+          <Value exs:type="ns1:Label" Name="stairDataLevel_12" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523708">
+          <Value exs:type="ns1:Label" Name="pointerTableGFXLo" Comment="" />
+        </sys:Item>
+        <sys:Item Key="508210">
+          <Value exs:type="ns1:Label" Name="resetPPUControll" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523639">
+          <Value exs:type="ns1:Label" Name="endGFXload" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523555">
+          <Value exs:type="ns1:Label" Name="loadGFX_main" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523646">
+          <Value exs:type="ns1:Label" Name="startGFXload" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523706">
+          <Value exs:type="ns1:Label" Name="endGFXloadLoop" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523674">
+          <Value exs:type="ns1:Label" Name="gfxLoadLoop" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523573">
+          <Value exs:type="ns1:Label" Name="gfxPointerLoadLoop" Comment="" />
+        </sys:Item>
+        <sys:Item Key="504087">
+          <Value exs:type="ns1:Label" Name="gfxData_castleOpeningScene" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510971">
+          <Value exs:type="ns1:Label" Name="tilemapData_00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="503516">
+          <Value exs:type="ns1:Label" Name="tilemapData_01_titleScreen" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510961">
+          <Value exs:type="ns1:Label" Name="tileMapPointerTableLo" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511010">
+          <Value exs:type="ns1:Label" Name="tilemapData_02" Comment="" />
+        </sys:Item>
+        <sys:Item Key="505399">
+          <Value exs:type="ns1:Label" Name="tilemapData_03_intro" Comment="" />
+        </sys:Item>
+        <sys:Item Key="496013">
+          <Value exs:type="ns1:Label" Name="tilemapData_04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510900">
+          <Value exs:type="ns1:Label" Name="decompLoad" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510927">
+          <Value exs:type="ns1:Label" Name="decomp_readBlock" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510946">
+          <Value exs:type="ns1:Label" Name="RLE_D4_repeatTile" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510929">
+          <Value exs:type="ns1:Label" Name="decomp_loadLoop" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510945">
+          <Value exs:type="ns1:Label" Name="RLE_D9_end" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510864">
+          <Value exs:type="ns1:Label" Name="ppuTilemapLoad_RLEdecomp" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510851">
+          <Value exs:type="ns1:Label" Name="setDynamicOAM_slotsUnused" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510853">
+          <Value exs:type="ns1:Label" Name="OAM_clearLoop" Comment="" />
+        </sys:Item>
+        <sys:Item Key="508162">
+          <Value exs:type="ns1:Label" Name="setPPU2FadeIn" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510924">
+          <Value exs:type="ns1:Label" Name="endDecompLoad" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510962">
+          <Value exs:type="ns1:Label" Name="tileMapPointerTableHi" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510942">
+          <Value exs:type="ns1:Label" Name="RLE_nextBlock" Comment="" />
+        </sys:Item>
+        <sys:Item Key="507919">
+          <Value exs:type="ns1:Label" Name="wait4PPU" Comment="" />
+        </sys:Item>
+        <sys:Item Key="508269">
+          <Value exs:type="ns1:Label" Name="clearPPU_updateTable" Comment="" />
+        </sys:Item>
+        <sys:Item Key="508302">
+          <Value exs:type="ns1:Label" Name="clearRam100to1b0" Comment="" />
+        </sys:Item>
+        <sys:Item Key="508315">
+          <Value exs:type="ns1:Label" Name="clearZeroPage" Comment="" />
+        </sys:Item>
+        <sys:Item Key="508151">
+          <Value exs:type="ns1:Label" Name="setSoundChannelAll" Comment="" />
+        </sys:Item>
+        <sys:Item Key="508235">
+          <Value exs:type="ns1:Label" Name="initSound" Comment="" />
+        </sys:Item>
+        <sys:Item Key="507952">
+          <Value exs:type="ns1:Label" Name="wait4_NMI" Comment="" />
+        </sys:Item>
+        <sys:Item Key="163848">
+          <Value exs:type="ns1:Label" Name="titleScreenGFXdata" Comment="" />
+        </sys:Item>
+        <sys:Item Key="111873">
+          <Value exs:type="ns1:Label" Name="titleScreenGFX_sprite" Comment="" />
+        </sys:Item>
+        <sys:Item Key="167944">
+          <Value exs:type="ns1:Label" Name="gfxData_simonSprite" Comment="" />
+        </sys:Item>
+        <sys:Item Key="310280">
+          <Value exs:type="ns1:Label" Name="gfxData_textHud" Comment="" />
+        </sys:Item>
+        <sys:Item Key="174344">
+          <Value exs:type="ns1:Label" Name="gfxData_00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="306568">
+          <Value exs:type="ns1:Label" Name="gfxData_tilesMap" Comment="" />
+        </sys:Item>
+        <sys:Item Key="172008">
+          <Value exs:type="ns1:Label" Name="gfxData_stage1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="229512">
+          <Value exs:type="ns1:Label" Name="gfxData_castleMap" Comment="" />
+        </sys:Item>
+        <sys:Item Key="242824">
+          <Value exs:type="ns1:Label" Name="gfxData_spriteHunchBag_skelly" Comment="" />
+        </sys:Item>
+        <sys:Item Key="234504">
+          <Value exs:type="ns1:Label" Name="gfxData_sprite_tilesStage3" Comment="" />
+        </sys:Item>
+        <sys:Item Key="238344">
+          <Value exs:type="ns1:Label" Name="gfxData_04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="244232">
+          <Value exs:type="ns1:Label" Name="gfxData_spriteDeath_boneP_medusa" Comment="" />
+        </sys:Item>
+        <sys:Item Key="294920">
+          <Value exs:type="ns1:Label" Name="gfxData_tilesStage5" Comment="" />
+        </sys:Item>
+        <sys:Item Key="243464">
+          <Value exs:type="ns1:Label" Name="gfxData_spriteAxeArmor" Comment="" />
+        </sys:Item>
+        <sys:Item Key="298632">
+          <Value exs:type="ns1:Label" Name="gfxData_spritePanthomBat_tilesStage6" Comment="" />
+        </sys:Item>
+        <sys:Item Key="233096">
+          <Value exs:type="ns1:Label" Name="gfxData_09" Comment="" />
+        </sys:Item>
+        <sys:Item Key="177288">
+          <Value exs:type="ns1:Label" Name="gfxData_0a" Comment="" />
+        </sys:Item>
+        <sys:Item Key="301704">
+          <Value exs:type="ns1:Label" Name="gfxData_0b" Comment="" />
+        </sys:Item>
+        <sys:Item Key="229384">
+          <Value exs:type="ns1:Label" Name="gfxData_tilesStage2" Comment="" />
+        </sys:Item>
+        <sys:Item Key="175368">
+          <Value exs:type="ns1:Label" Name="gfxData_endingScreen" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521406">
+          <Value exs:type="ns1:Label" Name="spawnerGetInitID" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491613">
+          <Value exs:type="ns1:Label" Name="spawner01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521548">
+          <Value exs:type="ns1:Label" Name="spawner02" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521523">
+          <Value exs:type="ns1:Label" Name="spawner03" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521535">
+          <Value exs:type="ns1:Label" Name="spawner04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521560">
+          <Value exs:type="ns1:Label" Name="spawner05" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521582">
+          <Value exs:type="ns1:Label" Name="spawner06" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492698">
+          <Value exs:type="ns1:Label" Name="spawner07" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492729">
+          <Value exs:type="ns1:Label" Name="spawner08" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521245">
+          <Value exs:type="ns1:Label" Name="spawnerError" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494069">
+          <Value exs:type="ns1:Label" Name="spawner0a" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521601">
+          <Value exs:type="ns1:Label" Name="spawner0c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521639">
+          <Value exs:type="ns1:Label" Name="spawner0d" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521651">
+          <Value exs:type="ns1:Label" Name="spawner0e" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521287">
+          <Value exs:type="ns1:Label" Name="spawnerPlace00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493007">
+          <Value exs:type="ns1:Label" Name="spawner0f" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521687">
+          <Value exs:type="ns1:Label" Name="spawner10" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491873">
+          <Value exs:type="ns1:Label" Name="spawner11" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521426">
+          <Value exs:type="ns1:Label" Name="spawner12" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494102">
+          <Value exs:type="ns1:Label" Name="spawner13" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493671">
+          <Value exs:type="ns1:Label" Name="spawner14" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494249">
+          <Value exs:type="ns1:Label" Name="spawner18" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491966">
+          <Value exs:type="ns1:Label" Name="spawner19" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493156">
+          <Value exs:type="ns1:Label" Name="spawner1a" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492581">
+          <Value exs:type="ns1:Label" Name="spawner1b" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493765">
+          <Value exs:type="ns1:Label" Name="spawner1c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494395">
+          <Value exs:type="ns1:Label" Name="spawner1d" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494317">
+          <Value exs:type="ns1:Label" Name="spawner1e" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491751">
+          <Value exs:type="ns1:Label" Name="spawnerPlace01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493542">
+          <Value exs:type="ns1:Label" Name="spawnerPlace03" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493051">
+          <Value exs:type="ns1:Label" Name="spawnerPlace04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494144">
+          <Value exs:type="ns1:Label" Name="spawnerPlace05" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510109">
+          <Value exs:type="ns1:Label" Name="spawnerData4EachLevel" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492593">
+          <Value exs:type="ns1:Label" Name="spawnerPlace06" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521247">
+          <Value exs:type="ns1:Label" Name="findEmptySlot" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521315">
+          <Value exs:type="ns1:Label" Name="markSpawnerSlot" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493874">
+          <Value exs:type="ns1:Label" Name="tsaUpdateLoop" Comment="" />
+        </sys:Item>
+        <sys:Item Key="522708">
+          <Value exs:type="ns1:Label" Name="checkCollusionCurrentTile" Comment="" />
+        </sys:Item>
+        <sys:Item Key="522453">
+          <Value exs:type="ns1:Label" Name="sprite0HitLoop" Comment="" />
+        </sys:Item>
+        <sys:Item Key="522472">
+          <Value exs:type="ns1:Label" Name="updateScroll_Xpos" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523222">
+          <Value exs:type="ns1:Label" Name="levelTableLeftExit" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523203">
+          <Value exs:type="ns1:Label" Name="levelScrollDirections" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510476">
+          <Value exs:type="ns1:Label" Name="checkPoint_data" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510356">
+          <Value exs:type="ns1:Label" Name="checkPointLoad" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510454">
+          <Value exs:type="ns1:Label" Name="levelTimerHi" Comment="" />
+        </sys:Item>
+        <sys:Item Key="497918">
+          <Value exs:type="ns1:Label" Name="calculateSimonSpawnPos" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510442">
+          <Value exs:type="ns1:Label" Name="setLevelTimerNew" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510346">
+          <Value exs:type="ns1:Label" Name="refillHealthLoadCheckpoint" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523377">
+          <Value exs:type="ns1:Label" Name="breakableBlockDataHi" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523378">
+          <Value exs:type="ns1:Label" Name="breakableBlockDataLo" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491612">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_empty" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491600">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491603">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_02" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491610">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_03" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492562">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492573">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_05" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492576">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_06" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492895">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_07" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492902">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_08" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492900">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_09" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493473">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_0c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494017">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_0d" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494022">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_0e" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494027">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_0f" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494316">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_10" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494310">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_11" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494394">
+          <Value exs:type="ns1:Label" Name="breakableBlockData_12" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454216">
+          <Value exs:type="ns1:Label" Name="FIXME_ee48" Comment="" />
+        </sys:Item>
+        <sys:Item Key="453665">
+          <Value exs:type="ns1:Label" Name="FIXME_EC21" Comment="" />
+        </sys:Item>
+        <sys:Item Key="455122">
+          <Value exs:type="ns1:Label" Name="FIXME_F1d2" Comment="" />
+        </sys:Item>
+        <sys:Item Key="453712">
+          <Value exs:type="ns1:Label" Name="FIXME_ec50" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454556">
+          <Value exs:type="ns1:Label" Name="FIXME_ef9c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454575">
+          <Value exs:type="ns1:Label" Name="FIXME_efaf" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454018">
+          <Value exs:type="ns1:Label" Name="FIXME_ed82" Comment="" />
+        </sys:Item>
+        <sys:Item Key="453940">
+          <Value exs:type="ns1:Label" Name="FIXME_ed34" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454311">
+          <Value exs:type="ns1:Label" Name="FIXME_eea7" Comment="" />
+        </sys:Item>
+        <sys:Item Key="519847">
+          <Value exs:type="ns1:Label" Name="exitCurrentEntityRoutine" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454331">
+          <Value exs:type="ns1:Label" Name="FIXME_eebb" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454053">
+          <Value exs:type="ns1:Label" Name="FIXME_eda5" Comment="" />
+        </sys:Item>
+        <sys:Item Key="453866">
+          <Value exs:type="ns1:Label" Name="FIXME_ecea" Comment="" />
+        </sys:Item>
+        <sys:Item Key="453746">
+          <Value exs:type="ns1:Label" Name="FIXME_ec72" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454404">
+          <Value exs:type="ns1:Label" Name="FIXME_ef04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454961">
+          <Value exs:type="ns1:Label" Name="FIXME_f131" Comment="" />
+        </sys:Item>
+        <sys:Item Key="453757">
+          <Value exs:type="ns1:Label" Name="FIXME_ec7d" Comment="" />
+        </sys:Item>
+        <sys:Item Key="426358">
+          <Value exs:type="ns1:Label" Name="enemyPatternTime" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454486">
+          <Value exs:type="ns1:Label" Name="FIXME_ef56" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454467">
+          <Value exs:type="ns1:Label" Name="FIXME_ef43" Comment="" />
+        </sys:Item>
+        <sys:Item Key="453768">
+          <Value exs:type="ns1:Label" Name="FIXME_ec88" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454532">
+          <Value exs:type="ns1:Label" Name="FIXME_ef84" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454524">
+          <Value exs:type="ns1:Label" Name="FIXME_ef7c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="33219">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454552">
+          <Value exs:type="ns1:Label" Name="FIXME_ef98" Comment="" />
+        </sys:Item>
+        <sys:Item Key="457396">
+          <Value exs:type="ns1:Label" Name="FIXME_fab4" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454419">
+          <Value exs:type="ns1:Label" Name="FIXME_ef13" Comment="" />
+        </sys:Item>
+        <sys:Item Key="453289">
+          <Value exs:type="ns1:Label" Name="FIXME_eaa9" Comment="" />
+        </sys:Item>
+        <sys:Item Key="453980">
+          <Value exs:type="ns1:Label" Name="FIXME_ed5c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454255">
+          <Value exs:type="ns1:Label" Name="FIXME_ee6f" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454292">
+          <Value exs:type="ns1:Label" Name="FIXME_ee94" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454505">
+          <Value exs:type="ns1:Label" Name="FIXME_ef69" Comment="" />
+        </sys:Item>
+        <sys:Item Key="457988">
+          <Value exs:type="ns1:Label" Name="FIXME_fd04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454172">
+          <Value exs:type="ns1:Label" Name="FIXME_ee1c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="453658">
+          <Value exs:type="ns1:Label" Name="FIXME_ec1a" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454765">
+          <Value exs:type="ns1:Label" Name="FIXME_f06d" Comment="" />
+        </sys:Item>
+        <sys:Item Key="449856">
+          <Value exs:type="ns1:Label" Name="FIXME_dd40" Comment="" />
+        </sys:Item>
+        <sys:Item Key="455724">
+          <Value exs:type="ns1:Label" Name="FIXME_f42c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="454261">
+          <Value exs:type="ns1:Label" Name="FIXME_ee75" Comment="" />
+        </sys:Item>
+        <sys:Item Key="457968">
+          <Value exs:type="ns1:Label" Name="FIXME_fcf0" Comment="" />
+        </sys:Item>
+        <sys:Item Key="457998">
+          <Value exs:type="ns1:Label" Name="FIXME_fd0e" Comment="" />
+        </sys:Item>
+        <sys:Item Key="457978">
+          <Value exs:type="ns1:Label" Name="FIXME_fcfa" Comment="" />
+        </sys:Item>
+        <sys:Item Key="98314">
+          <Value exs:type="ns1:Label" Name="updateTablePPUsetDest" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511214">
+          <Value exs:type="ns1:Label" Name="mainPPUstuffs" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492410">
+          <Value exs:type="ns1:Label" Name="level6Stuff" Comment="" />
+        </sys:Item>
+        <sys:Item Key="491978">
+          <Value exs:type="ns1:Label" Name="level6StuffToo" Comment="" />
+        </sys:Item>
+        <sys:Item Key="508191">
+          <Value exs:type="ns1:Label" Name="updatePPUscrollFromRam" Comment="" />
+        </sys:Item>
+        <sys:Item Key="508178">
+          <Value exs:type="ns1:Label" Name="ResetUpdatePPUscrollFromRam" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492426">
+          <Value exs:type="ns1:Label" Name="moreCrusherStuffAgain" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492423">
+          <Value exs:type="ns1:Label" Name="loadStateCrusher" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492436">
+          <Value exs:type="ns1:Label" Name="crusherStatesData" Comment="" />
+        </sys:Item>
+        <sys:Item Key="98386">
+          <Value exs:type="ns1:Label" Name="OAMstuffs" Comment="" />
+        </sys:Item>
+        <sys:Item Key="99210">
+          <Value exs:type="ns1:Label" Name="musicStuffs" Comment="" />
+        </sys:Item>
+        <sys:Item Key="426052">
+          <Value exs:type="ns1:Label" Name="entityStuffs" Comment="" />
+        </sys:Item>
+        <sys:Item Key="506391">
+          <Value exs:type="ns1:Label" Name="titlescreenBatPosData" Comment="" />
+        </sys:Item>
+        <sys:Item Key="506428">
+          <Value exs:type="ns1:Label" Name="emptySpace06" Comment="" />
+        </sys:Item>
+        <sys:Item Key="433735">
+          <Value exs:type="ns1:Label" Name="emptySpace05" Comment="" />
+        </sys:Item>
+        <sys:Item Key="373768">
+          <Value exs:type="ns1:Label" Name="emptySpace04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="311048">
+          <Value exs:type="ns1:Label" Name="emptySpace03" Comment="" />
+        </sys:Item>
+        <sys:Item Key="244968">
+          <Value exs:type="ns1:Label" Name="emptySpace02" Comment="" />
+        </sys:Item>
+        <sys:Item Key="179464">
+          <Value exs:type="ns1:Label" Name="emptySpace01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="113409">
+          <Value exs:type="ns1:Label" Name="emptySpace00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="506269">
+          <Value exs:type="ns1:Label" Name="titleScreenBatRoutine" Comment="" />
+        </sys:Item>
+        <sys:Item Key="506348">
+          <Value exs:type="ns1:Label" Name="stitleScreenBatSpriteIDs" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511467">
+          <Value exs:type="ns1:Label" Name="palette_Simon" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511471">
+          <Value exs:type="ns1:Label" Name="palette_Entity01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511475">
+          <Value exs:type="ns1:Label" Name="palette_Entity02" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511479">
+          <Value exs:type="ns1:Label" Name="palette_Entity03" Comment="" />
+        </sys:Item>
+        <sys:Item Key="505874">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="505858">
+          <Value exs:type="ns1:Label" Name="palette_titleScreen" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511663">
+          <Value exs:type="ns1:Label" Name="palette_endingScreen" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511492">
+          <Value exs:type="ns1:Label" Name="palette_castleMap" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511483">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511530">
+          <Value exs:type="ns1:Label" Name="palette_tilesStage1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511549">
+          <Value exs:type="ns1:Label" Name="palette_tilesStage2" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511568">
+          <Value exs:type="ns1:Label" Name="palette_tilesStage3" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511587">
+          <Value exs:type="ns1:Label" Name="palette_tilesStage4" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511606">
+          <Value exs:type="ns1:Label" Name="palette_tilesStage5" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511625">
+          <Value exs:type="ns1:Label" Name="palette_tilesStage6" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511644">
+          <Value exs:type="ns1:Label" Name="palette_tilesDracula" Comment="" />
+        </sys:Item>
+        <sys:Item Key="360450">
+          <Value exs:type="ns1:Label" Name="lvl1_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521869">
+          <Value exs:type="ns1:Label" Name="TSA_data" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521881">
+          <Value exs:type="ns1:Label" Name="getTSAdata" Comment="" />
+        </sys:Item>
+        <sys:Item Key="360578">
+          <Value exs:type="ns1:Label" Name="scene_lvl_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="360866">
+          <Value exs:type="ns1:Label" Name="scene_lvl_2_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="360962">
+          <Value exs:type="ns1:Label" Name="scene_lvl_3" Comment="" />
+        </sys:Item>
+        <sys:Item Key="361106">
+          <Value exs:type="ns1:Label" Name="scene_lvl_2" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492015">
+          <Value exs:type="ns1:Label" Name="crusherState00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492022">
+          <Value exs:type="ns1:Label" Name="crusherState01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="492291">
+          <Value exs:type="ns1:Label" Name="crusherStateEmptyEnd" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517970">
+          <Value exs:type="ns1:Label" Name="setDamage4Update" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510310">
+          <Value exs:type="ns1:Label" Name="starterStats" Comment="" />
+        </sys:Item>
+        <sys:Item Key="510520">
+          <Value exs:type="ns1:Label" Name="setPPUClearTabels" Comment="" />
+        </sys:Item>
+        <sys:Item Key="518008">
+          <Value exs:type="ns1:Label" Name="addUpdateHeartValue" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523472">
+          <Value exs:type="ns1:Label" Name="updateHUD_harts" Comment="" />
+        </sys:Item>
+        <sys:Item Key="500536">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="500531">
+          <Value exs:type="ns1:Label" Name="ppuHUD_updateStart" Comment="" />
+        </sys:Item>
+        <sys:Item Key="518094">
+          <Value exs:type="ns1:Label" Name="getCurrentEntitySlot" Comment="" />
+        </sys:Item>
+        <sys:Item Key="519264">
+          <Value exs:type="ns1:Label" Name="clearEntityID_pullStackPointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="518443">
+          <Value exs:type="ns1:Label" Name="decEntirySlotExit" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514717">
+          <Value exs:type="ns1:Label" Name="notEnoughHearts_clock" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514658">
+          <Value exs:type="ns1:Label" Name="subWeaponInit" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514674">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514732">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514683">
+          <Value exs:type="ns1:Label" Name="clock_init" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100234">
+          <Value exs:type="ns1:Label" Name="soundEffectIndex" Comment="" />
+        </sys:Item>
+        <sys:Item Key="512208">
+          <Value exs:type="ns1:Label" Name="floatPlatformPo" Comment="" />
+        </sys:Item>
+        <sys:Item Key="512214">
+          <Value exs:type="ns1:Label" Name="floatPlatformData00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="512222">
+          <Value exs:type="ns1:Label" Name="floatPlatformData01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="512238">
+          <Value exs:type="ns1:Label" Name="floatPlatformData02" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362581">
+          <Value exs:type="ns1:Label" Name="scene_Lvl0" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362629">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362677">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362725">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362773">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362821">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362869">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362917">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362965">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362981">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363013">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363061">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363109">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363157">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363205">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363253">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363301">
+          <Value exs:type="ns1:Label" Name="TSA_Stage2" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523043">
+          <Value exs:type="ns1:Label" Name="levelScenePoLo" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523044">
+          <Value exs:type="ns1:Label" Name="levelScenePoHi" Comment="" />
+        </sys:Item>
+        <sys:Item Key="360452">
+          <Value exs:type="ns1:Label" Name="lvl2_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="360454">
+          <Value exs:type="ns1:Label" Name="lvl2_room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="360456">
+          <Value exs:type="ns1:Label" Name="lvl3_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="511993">
+          <Value exs:type="ns1:Label" Name="loadStartingScenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362569">
+          <Value exs:type="ns1:Label" Name="lvl4_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362573">
+          <Value exs:type="ns1:Label" Name="lvl5_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362571">
+          <Value exs:type="ns1:Label" Name="lvl4_Room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362577">
+          <Value exs:type="ns1:Label" Name="lvl6_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362575">
+          <Value exs:type="ns1:Label" Name="lvl5_Room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362579">
+          <Value exs:type="ns1:Label" Name="lvl6_room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363964">
+          <Value exs:type="ns1:Label" Name="lvl7_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363968">
+          <Value exs:type="ns1:Label" Name="lvl8_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363972">
+          <Value exs:type="ns1:Label" Name="lvl9_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363966">
+          <Value exs:type="ns1:Label" Name="lvl7_room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363970">
+          <Value exs:type="ns1:Label" Name="lvl8_room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="365651">
+          <Value exs:type="ns1:Label" Name="lvl10_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="365655">
+          <Value exs:type="ns1:Label" Name="lvl11_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="365657">
+          <Value exs:type="ns1:Label" Name="lvl12_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="365653">
+          <Value exs:type="ns1:Label" Name="lvl10_room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="367413">
+          <Value exs:type="ns1:Label" Name="lvl13_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="367417">
+          <Value exs:type="ns1:Label" Name="lvl14_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="367421">
+          <Value exs:type="ns1:Label" Name="lvl15_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="367415">
+          <Value exs:type="ns1:Label" Name="lvl13_room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="367419">
+          <Value exs:type="ns1:Label" Name="lvl14_room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="367423">
+          <Value exs:type="ns1:Label" Name="lvl15_room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="369153">
+          <Value exs:type="ns1:Label" Name="lvl16_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="369155">
+          <Value exs:type="ns1:Label" Name="lvl17_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="369157">
+          <Value exs:type="ns1:Label" Name="lvl17_room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="370944">
+          <Value exs:type="ns1:Label" Name="lvl18_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="370946">
+          <Value exs:type="ns1:Label" Name="lvl18_room" Comment="" />
+        </sys:Item>
+        <sys:Item Key="371936">
+          <Value exs:type="ns1:Label" Name="lvl19_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="372840">
+          <Value exs:type="ns1:Label" Name="lvl20_scenePointer" Comment="" />
+        </sys:Item>
+        <sys:Item Key="372818">
+          <Value exs:type="ns1:Label" Name="mapSceneData" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362509">
+          <Value exs:type="ns1:Label" Name="scene_lvl_4" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362749">
+          <Value exs:type="ns1:Label" Name="scene_lvl_4_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362605">
+          <Value exs:type="ns1:Label" Name="scene_lvl_5" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362989">
+          <Value exs:type="ns1:Label" Name="scene_lvl_6" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363133">
+          <Value exs:type="ns1:Label" Name="scene_lvl_5_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="362845">
+          <Value exs:type="ns1:Label" Name="scene_lvl_6_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="363950">
+          <Value exs:type="ns1:Label" Name="scene_lvl_7" Comment="" />
+        </sys:Item>
+        <sys:Item Key="364094">
+          <Value exs:type="ns1:Label" Name="scene_lvl_7_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="364238">
+          <Value exs:type="ns1:Label" Name="scene_lvl_8" Comment="" />
+        </sys:Item>
+        <sys:Item Key="364334">
+          <Value exs:type="ns1:Label" Name="scene_lvl_8_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="364574">
+          <Value exs:type="ns1:Label" Name="scene_lvl_9" Comment="" />
+        </sys:Item>
+        <sys:Item Key="365635">
+          <Value exs:type="ns1:Label" Name="scene_lvl_10" Comment="" />
+        </sys:Item>
+        <sys:Item Key="365923">
+          <Value exs:type="ns1:Label" Name="scene_lvl_11" Comment="" />
+        </sys:Item>
+        <sys:Item Key="366211">
+          <Value exs:type="ns1:Label" Name="scene_lvl_12" Comment="" />
+        </sys:Item>
+        <sys:Item Key="367401">
+          <Value exs:type="ns1:Label" Name="scene_lvl_13" Comment="" />
+        </sys:Item>
+        <sys:Item Key="367497">
+          <Value exs:type="ns1:Label" Name="scene_lvl_13_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="367545">
+          <Value exs:type="ns1:Label" Name="scene_lvl_14" Comment="" />
+        </sys:Item>
+        <sys:Item Key="367881">
+          <Value exs:type="ns1:Label" Name="scene_lvl_14_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="368121">
+          <Value exs:type="ns1:Label" Name="scene_lvl_15_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="367689">
+          <Value exs:type="ns1:Label" Name="scene_lvl_15" Comment="" />
+        </sys:Item>
+        <sys:Item Key="369279">
+          <Value exs:type="ns1:Label" Name="scene_lvl_16" Comment="" />
+        </sys:Item>
+        <sys:Item Key="369135">
+          <Value exs:type="ns1:Label" Name="scene_lvl_17" Comment="" />
+        </sys:Item>
+        <sys:Item Key="369663">
+          <Value exs:type="ns1:Label" Name="scene_lvl_17_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="370876">
+          <Value exs:type="ns1:Label" Name="scene_lvl_18" Comment="" />
+        </sys:Item>
+        <sys:Item Key="371020">
+          <Value exs:type="ns1:Label" Name="scene_lvl_18_1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="371914">
+          <Value exs:type="ns1:Label" Name="scene_lvl_data00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="361243">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="361227">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="522746">
+          <Value exs:type="ns1:Label" Name="TSA_blockPointersLo" Comment="" />
+        </sys:Item>
+        <sys:Item Key="361226">
+          <Value exs:type="ns1:Label" Name="TSA_Stage1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="364886">
+          <Value exs:type="ns1:Label" Name="TSA_Stage3" Comment="" />
+        </sys:Item>
+        <sys:Item Key="366427">
+          <Value exs:type="ns1:Label" Name="TSA_Stage4" Comment="" />
+        </sys:Item>
+        <sys:Item Key="368337">
+          <Value exs:type="ns1:Label" Name="TSA_Stage5" Comment="" />
+        </sys:Item>
+        <sys:Item Key="369970">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="372986">
+          <Value exs:type="ns1:Label" Name="TSA_MAP" Comment="" />
+        </sys:Item>
+        <sys:Item Key="369975">
+          <Value exs:type="ns1:Label" Name="TSA_Stage6" Comment="" />
+        </sys:Item>
+        <sys:Item Key="371188">
+          <Value exs:type="ns1:Label" Name="TSA_DraculasRoom" Comment="" />
+        </sys:Item>
+        <sys:Item Key="372058">
+          <Value exs:type="ns1:Label" Name="TSA_Data00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="522747">
+          <Value exs:type="ns1:Label" Name="TSA_blockPointersHi" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100255">
+          <Value exs:type="ns1:Label" Name="soundEffectTablePo" Comment="" />
+        </sys:Item>
+        <sys:Item Key="105909">
+          <Value exs:type="ns1:Label" Name="VampireKillerTri" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100867">
+          <Value exs:type="ns1:Label" Name="sfx_00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100572">
+          <Value exs:type="ns1:Label" Name="sfx_01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100561">
+          <Value exs:type="ns1:Label" Name="sfx_02" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100659">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100665">
+          <Value exs:type="ns1:Label" Name="sfx_03" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100637">
+          <Value exs:type="ns1:Label" Name="sfx_04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100651">
+          <Value exs:type="ns1:Label" Name="sfx_05" Comment="" />
+        </sys:Item>
+        <sys:Item Key="111055">
+          <Value exs:type="ns1:Label" Name="sfx_06" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100990">
+          <Value exs:type="ns1:Label" Name="sfx_07" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101359">
+          <Value exs:type="ns1:Label" Name="sfx_08" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100704">
+          <Value exs:type="ns1:Label" Name="sfx_09" Comment="" />
+        </sys:Item>
+        <sys:Item Key="110774">
+          <Value exs:type="ns1:Label" Name="sfx_0b" Comment="" />
+        </sys:Item>
+        <sys:Item Key="110823">
+          <Value exs:type="ns1:Label" Name="srx_0c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100725">
+          <Value exs:type="ns1:Label" Name="sfx_0d" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101283">
+          <Value exs:type="ns1:Label" Name="sfx_0e" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101322">
+          <Value exs:type="ns1:Label" Name="sfx_0f" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101216">
+          <Value exs:type="ns1:Label" Name="sfx_10" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101233">
+          <Value exs:type="ns1:Label" Name="sfx_11" Comment="" />
+        </sys:Item>
+        <sys:Item Key="110869">
+          <Value exs:type="ns1:Label" Name="sfx_12" Comment="" />
+        </sys:Item>
+        <sys:Item Key="110746">
+          <Value exs:type="ns1:Label" Name="sfx_13" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100789">
+          <Value exs:type="ns1:Label" Name="sfx_14" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100738">
+          <Value exs:type="ns1:Label" Name="sfx_15" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101143">
+          <Value exs:type="ns1:Label" Name="sfx_16" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100904">
+          <Value exs:type="ns1:Label" Name="sfx_17" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101250">
+          <Value exs:type="ns1:Label" Name="sfx_18" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101001">
+          <Value exs:type="ns1:Label" Name="sfx_19" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101038">
+          <Value exs:type="ns1:Label" Name="sfx_1a" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101063">
+          <Value exs:type="ns1:Label" Name="sfx_1b" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101103">
+          <Value exs:type="ns1:Label" Name="sfx_1c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100941">
+          <Value exs:type="ns1:Label" Name="sfx_1d" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100824">
+          <Value exs:type="ns1:Label" Name="sfx_1e" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100857">
+          <Value exs:type="ns1:Label" Name="sfx_1f" Comment="" />
+        </sys:Item>
+        <sys:Item Key="111666">
+          <Value exs:type="ns1:Label" Name="sfx_20" Comment="" />
+        </sys:Item>
+        <sys:Item Key="111730">
+          <Value exs:type="ns1:Label" Name="sfx_21" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100582">
+          <Value exs:type="ns1:Label" Name="sfx_22" Comment="" />
+        </sys:Item>
+        <sys:Item Key="100603">
+          <Value exs:type="ns1:Label" Name="sfx_23" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101170">
+          <Value exs:type="ns1:Label" Name="sfx_24" Comment="" />
+        </sys:Item>
+        <sys:Item Key="101268">
+          <Value exs:type="ns1:Label" Name="sfx_25" Comment="" />
+        </sys:Item>
+        <sys:Item Key="105585">
+          <Value exs:type="ns1:Label" Name="sfx_26" Comment="" />
+        </sys:Item>
+        <sys:Item Key="521260">
+          <Value exs:type="ns1:Label" Name="storeID_resetStats" Comment="" />
         </sys:Item>
       </Labels>
       <RomBytes>
@@ -10528,9 +11732,9 @@ r 10 AD01
 +D01
 .D01
 +L01
+.D01
 +D01
-.D01
-.D01
++D01
 .D01
 +D01
 +D01
@@ -12035,14 +13239,14 @@ r 8 +D01
 .D01
 +L01
 .D01
-+D01
+.D01
++L01
 .D01
 +D01
 .D01
 +D01
 .D01
-.D01
-+T01
+.T01
 +D01
 .D01
 +H01
@@ -12147,8 +13351,124 @@ r 8 +D01
 .D01
 +D01
 +T01
-Bj01
-r 137 BD01
+Aj01
+r 21 AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
+AD01
+ED01
+ED01
 AD01
 ED01
 ED01
@@ -12330,42 +13650,69 @@ ED01
 ED01
 r 282 MD01
 r 480 ED01
-r 69 AD01
-BD01
-BD01
-ED01
-ED01
-r 31 AD01
-ED01
-ED01
-r 2426 AD01
-r 8066 MD01
-r 1278 AD01
-r 4296 XD
+r 2532 AD01
+r 6529 MD01
+r 1536 GD01
+r 1279 AD01
+r 1706 XD
+Xj
+r 2589 XD
 XH
 r 9656 XD
 Xj
 r 2430 XD
 r 8 AD02
-r 16376 GD02
+r 15616 GD02
+r 760 AD02
 r 16384 XD
 r 8 AD03
 r 4142 GD03
 Gj03
 r 10068 GD03
 Gj03
-r 2164 GD03
+r 1372 GD03
+r 792 AD03
 r 10880 XD
 Xj
 r 4991 XD
 XH
 r 511 XD
 r 8 AD04
-r 16376 GD04
+r 16128 GD04
+r 248 AD04
 r 16384 XD
-r 1415 AD05
+BD05
+BD05
+r 8 ED05
+r 1405 AD05
 Aj05
-r 14968 AD05
+r 705 AD05
+r 12 ED05
+r 1383 AD05
+r 10 ED05
+r 1677 AD05
+r 8 ED05
+r 1754 AD05
+r 12 ED05
+r 1728 AD05
+ED05
+ED05
+ED05
+ED05
+ED05
+ED05
+r 1785 AD05
+ED05
+ED05
+ED05
+ED05
+r 988 AD05
+ED05
+ED05
+r 902 AD05
+ED05
+ED05
+r 3990 AD05
 r 12001 XD
 Xj
 r 4382 XD
@@ -12720,8 +14067,8 @@ AD06
 +b06
 .D06
 .D06
-.H06
-+D06
++H06
+.D06
 +D06
 .D06
 +L06
@@ -14312,11 +15659,11 @@ r 10 ED06
 .D06
 +T06
 r 8 AD06
-AH06
-AD06
-AD06
-AL06
-AD06
++H06
+.D06
+.D06
++L06
+.D06
 +b06
 .D06
 .D06
@@ -18789,8 +20136,9 @@ r 43 AD06
 AH06
 r 9628 AD06
 r 2669 XD
-XH
-r 1431 XD
++H
+.D
+r 1430 XD
 XH
 r 26 XD
 XH
@@ -18798,107 +20146,142 @@ r 3356 XD
 XH
 XD
 XD
-XH
-r 3382 XD
++H
+.D
+r 3381 XD
 XH
 r 49 XD
-XH
-r 368 XD
-XH
++H
+.D
+r 367 XD
++H
+.D
 XD
 XD
 XD
 XD
 XD
-XD
-XH
-r 46 XD
-XH
-r 33 XD
-XH
-r 10 XD
-XH
-r 10 XD
-XH
-r 97 XD
-XH
-r 73 XD
-XH
-r 39 XD
-XH
-r 37 XD
-XH
-r 34 XD
-XH
-r 118 XD
-XH
-r 43 XD
-XH
-r 38 XD
-XH
-XD
-XD
-XD
-XD
-XD
-XH
-r 30 XD
-XH
-r 18 XD
-XH
-r 19 XD
-XH
++H
+.D
+r 45 XD
++H
+.D
+r 32 XD
++H
+.D
+r 9 XD
++H
+.D
+r 9 XD
++H
+.D
+r 96 XD
++H
+.D
 r 72 XD
-XH
-r 14 XD
-XH
-r 47 XD
-XH
++H
+.D
+r 38 XD
++H
+.D
+r 36 XD
++H
+.D
+r 33 XD
++H
+.D
+r 117 XD
++H
+.D
+r 42 XD
++H
+.D
+r 37 XD
++H
+.D
+XD
+XD
+XD
+XD
++H
+.D
+r 29 XD
++H
+.D
+r 17 XD
++H
+.D
 r 18 XD
-XH
++H
+.D
+r 71 XD
++H
+.D
+r 13 XD
++H
+.D
+r 46 XD
++H
+.D
+r 17 XD
++H
+.D
+r 17 XD
++H
+.D
+r 17 XD
++H
+.D
+XD
+XD
+XD
+XD
+XD
+XD
++H
+.D
 r 18 XD
-XH
-r 18 XD
-XH
++H
+.D
 XD
 XD
-XD
-XD
-XD
-XD
-XD
-XH
-r 19 XD
-XH
-XD
-XD
-XD
-XH
-r 18 XD
-XH
-r 85 XD
++H
+.D
+r 17 XD
++H
+.D
+r 84 XD
 XH
 r 103 XD
-XH
-r 195 XD
-XH
-r 160 XD
-XH
-r 601 XD
-XH
-r 1272 XD
++H
+.D
+r 194 XD
++H
+.D
+r 159 XD
++H
+.D
+r 600 XD
++H
+.D
+r 1271 XD
 Xj
 r 398 XD
-XH
-r 571 XD
-XH
-r 9 XD
-XH
-r 9 XD
-XH
-r 9 XD
-XH
-r 753 XD
++H
+.D
+r 570 XD
++H
+.D
+r 8 XD
++H
+.D
+r 8 XD
++H
+.D
+r 8 XD
++H
+.D
+r 752 XD
 r 10 AD07
 AH07
 r 57 AD07
@@ -19271,25 +20654,25 @@ AD07
 +b07
 .D07
 .D07
-AH07
-AD07
-AD07
-AD07
-AL07
-AD07
-AD07
-AD07
-AL07
-AD07
-AD07
-AD07
-AD07
-AL07
-AD07
-AD07
-AD07
-AD07
-AD07
++H07
+.D07
++D07
+.D07
++L07
+.D07
++D07
+.D07
++L07
+.D07
++D07
+.D07
+.D07
++L07
+.D07
++D07
+.D07
++D07
+.D07
 +H07
 .D07
 +D07
@@ -19301,9 +20684,9 @@ AD07
 .D07
 .D07
 r 8 ED07
-Eb07
-ED07
-ED07
++b07
+.D07
+.D07
 +X07
 +b07
 .D07
@@ -19681,10 +21064,34 @@ ED07
 .D07
 +T07
 r 16 AD07
-AH07
-r 15 AD07
-AH07
-r 24 AD07
++H07
+.D07
++D07
+.D07
++L07
+.D07
++D07
+.D07
++D07
+.D07
+.D07
++D07
+.D07
++H07
+.D07
+.D07
++H07
+.D07
+.D07
++D07
++D07
++D07
+.D07
++L07
+.D07
++X07
+Aj07
+r 14 AD07
 +H07
 .D07
 +D07
@@ -20790,13 +22197,13 @@ AD07
 AD07
 AD07
 AD07
-AD07
-AT07
-AD07
-AD07
-AD07
-AD07
 +D07
+.T07
+.D07
++L07
+.D07
++T07
++H07
 .D07
 .D07
 +D07
@@ -21443,22 +22850,22 @@ AD07
 +D07
 .D07
 .D07
-+D05
-+D05
++D07
++D07
 .D05
 .D05
-+D05
++D07
 .D05
 .D05
-+D05
-+D05
++D07
++D07
 .D05
 .D05
-+D05
++D07
 .D05
 .D05
-+D05
-+D05
++D07
++D07
 .D07
 .D07
 +D07
@@ -21607,19 +23014,26 @@ r 84 AD07
 .D07
 +X07
 r 8 AD07
-AH07
-r 8 AD07
-AH07
-AD07
-AL07
-AD07
-AD07
-AT07
++H07
++L07
+.D07
++D07
+.D07
++L07
+.D07
++D07
+.D07
++H07
+.D07
++L07
+.D07
+.D07
++X07
 r 18 AD07
 +f07
 .D07
 .D07
-+D07
++H07
 +L07
 .D07
 +D07
@@ -24109,8 +25523,8 @@ r 31 AD07
 +D07
 +T07
 r 8 AD07
-AH07
-AD07
++H07
++T07
 +H07
 .D07
 .D07
@@ -24163,8 +25577,18 @@ AD07
 .D07
 .D07
 +X07
-AH07
-r 25 AD07
++H07
++D07
+.D07
++D07
++D07
+.D07
++D07
++b07
+.D07
+.D07
+Aj07
+r 15 AD07
 +H07
 .D07
 +D07
@@ -27444,7 +28868,7 @@ AD07
 +b07
 .D07
 .D07
-AH07
++X07
 r 8 AD07
 +H07
 .D07
@@ -28580,7 +30004,9 @@ AD07
 .D07
 .D07
 +T07
-r 2304 AD07
+r 571 AD07
+r 1312 GD07
+r 421 AD07
 +D07
 .D07
 +D07
@@ -29193,9 +30619,9 @@ r 19 AD07
 +L07
 .D07
 .D07
-+L07
-.D07
-.D07
+AL01
+ED01
+ED01
 +L07
 .D07
 .D07
@@ -29252,9 +30678,9 @@ r 19 AD07
 +L07
 .D07
 .D07
-+L07
-.D07
-.D07
+AL07
+ED01
+ED01
 +L07
 .D07
 .D07
@@ -29308,9 +30734,9 @@ r 19 AD07
 +L07
 .D07
 .D07
-+L07
-.D07
-.D07
+AL01
+ED01
+ED01
 +L07
 .D07
 .D07
@@ -29582,8 +31008,8 @@ r 19 AD07
 .D07
 ET07
 r 31 ED07
-+L07
-.D07
+EL07
+ED07
 +H07
 .D07
 +D07
@@ -31029,9 +32455,9 @@ AD07
 .D07
 +T07
 r 24 AD07
-AH07
-AD07
-AD07
++f07
+.D07
+.D07
 +H07
 +L07
 .D07
@@ -31103,7 +32529,7 @@ AD07
 +f07
 .D07
 .D07
-+D07
++H07
 +L07
 .D07
 +D07
@@ -31218,7 +32644,7 @@ AD07
 +D07
 .D07
 +T07
-AX07
++X07
 r 38 AD07
 +H07
 .D07
@@ -31298,14 +32724,14 @@ r 38 AD07
 .D07
 +L07
 .D07
-AD07
-AD07
-AH07
-AD07
-AD07
-AD07
-AH07
-AD07
++D07
+.D07
++H07
+.D07
++D07
+.D07
++H07
+.D07
 +b07
 .D07
 .D07
@@ -31971,16 +33397,15 @@ r 66 AD07
 .D07
 ED07
 ED07
-BT07
-BD07
-BD07
-BD07
-BD07
-BD07
-BD07
-BD07
-r 8 ED07
-r 58 BD07
+ET07
+ED07
+ED07
+ED07
+ED07
+ED07
+ED07
+ED07
+r 66 AD07
 +H07
 .D07
 +D07
@@ -32172,7 +33597,10 @@ r 58 BD07
 r 22 ED07
 ET07
 r 85 ED07
-r 363 AD07
+r 11 AD07
+BD07
+BD07
+r 350 AD07
 +H07
 .D07
 +D07
@@ -37453,28 +38881,28 @@ r 23 AD07
 +b07
 .D07
 .D07
-+f07
-.D07
-.D07
+Af07
+ED07
+ED07
 +D07
 .D07
 +D07
 .D07
 +L07
 .D07
-+b07
-.D07
-.D07
+Ab07
+ED06
+ED06
 +H07
 .D07
 +L07
 .D07
-+b07
-.D07
-.D07
-+f07
-.D07
-.D07
+Ab07
+ED06
+ED06
+Af07
+ED06
+ED06
 +D07
 .D07
 +D07
@@ -38832,8 +40260,8 @@ r 268 AD07
 .D07
 .D07
 r 64 ED07
-BT07
-BD07
+AT07
+AD07
 +H07
 .D07
 .D07
@@ -39456,11 +40884,11 @@ AD07
 .D07
 .D07
 +X07
-r 12 AD07
-+H07
-.D07
-+D07
-.D07
+r 12 BD
++H
+.D
++D
+.D
 +T07
 +P07
 .D07
@@ -40322,7 +41750,7 @@ r 12 AD07
 +D07
 .D07
 +T07
-r 44 ED07
+r 44 ED05
 +H07
 .D07
 +L07
@@ -40538,9 +41966,13 @@ r 32 AD07
 .D07
 .D07
 +T07
-r 277 AD07
+r 44 ED05
+r 157 AD07
 r 38 ED07
-r 57 AD07
+r 38 BD07
+r 38 ED07
+r 19 AD07
+r 38 ED07
 +P07
 .D07
 .D07
@@ -40586,9 +42018,9 @@ r 57 AD07
 .D07
 +L07
 .D07
-+L07
-.D07
-.D07
+AL06
+ED06
+ED06
 +b07
 .D07
 .D07
@@ -40834,7 +42266,201 @@ r 57 AD07
 .D07
 +X07
 r 24 ED07
-r 195 AD07
+AD07
+ED02
+ED02
+BD07
+BD07
+BD07
+BD07
+AD07
+ED01
+ED01
+BD07
+BD07
+BD07
+BD07
+AD07
+AD07
+ED07
+ED07
+BD07
+BD07
+BD07
+BD07
+AD07
+ED02
+ED02
+BD07
+BD07
+BD07
+BD07
+AD07
+ED04
+ED04
+BD07
+BD07
+BD07
+BD07
+AD07
+ED02
+ED02
+BD07
+BD07
+BD07
+BD07
+AD07
+AD07
+ED04
+ED04
+BD07
+BD07
+BD07
+BD07
+AD07
+AD07
+AD07
+ED02
+ED02
+BD07
+BD07
+BD07
+BD07
+AD07
+ED02
+ED02
+BD07
+BD07
+BD07
+BD07
+AD07
+ED04
+ED04
+BD07
+BD07
+BD07
+BD07
+AD07
+AD07
+ED03
+ED03
+BD07
+BD07
+BD07
+BD07
+AD07
+AD07
+ED03
+ED03
+BD07
+BD07
+BD07
+BD07
+AD07
+ED03
+ED03
+BD07
+BD07
+BD07
+BD07
+AD07
+AD07
+ED03
+ED03
+BD07
+BD07
+BD07
+BD07
+AD07
+AD07
+ED03
+ED03
+BD07
+BD07
+BD07
+BD07
+AD07
+ED04
+ED04
+BD07
+BD07
+BD07
+BD07
+AD07
+ED03
+ED03
+BD07
+BD07
+BD07
+BD07
+AD07
+ED03
+ED03
+BD07
+BD07
+BD07
+BD07
+AD07
+AD07
+ED04
+ED04
+BD07
+BD07
+BD07
+BD07
+AD07
+ED03
+ED03
+BD07
+BD07
+BD07
+BD07
+AD07
+ED03
+ED03
+BD07
+BD07
+BD07
+BD07
+AD07
+ED02
+ED02
+BD07
+BD07
+BD07
+BD07
+AD07
+AD07
+ED04
+ED04
+BD07
+BD07
+BD07
+BD07
+AD07
+AD07
+ED02
+ED02
+BD07
+BD07
+BD07
+BD07
+AD07
+AD07
+ED03
+ED03
+BD07
+BD07
+BD07
+BD07
+AD07
+ED02
+ED02
+BD07
+BD07
+BD07
+BD07
+AD07
 +H07
 .D07
 +D07
