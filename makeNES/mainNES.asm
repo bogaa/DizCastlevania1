@@ -39,12 +39,12 @@ BASE $8000
 
 ORG $028000					 	; 10000 
 BASE $8000 
-	incsrc "bank_05.asm"              
+	incsrc "bank_05.asm"            		; TSA, LevelScenes   
 ORG $02c000					 	; 14000
 BASE $8000 
-	incsrc "bank_06.asm"              
+	incsrc "bank_06.asm"              		; code
 
 ORG $038000					 	; 18000
 BASE $8000 
-	incsrc "bank_07.asm"     	; 1C000          		       
+	incsrc "bank_07.asm"     	; 1C000     ; code pointers       		       
 	incsrc "labels.asm"               
