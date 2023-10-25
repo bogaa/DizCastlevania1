@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ProjectXmlSerializer-Root xmlns:exs="https://extendedxmlserializer.github.io/v2" xmlns:ns1="clr-namespace:Diz.Core.model;assembly=Diz.Core" xmlns:ns2="clr-namespace:Diz.Core.model.snes;assembly=Diz.Core" xmlns:sys="https://extendedxmlserializer.github.io/system" xmlns:ns3="clr-namespace:IX.Observable;assembly=IX.Observable" xmlns:ns4="clr-namespace:Diz.Core.export;assembly=Diz.Core" SaveVersion="101" Watermark="DiztinGUIsh" Extra1="" Extra2="" xmlns="clr-namespace:Diz.Core.serialization.xml_serializer;assembly=Diz.Core">
-  <Project AttachedRomFilename="C:\GitHub\.dizProjects\dizASM_Castlevania\main.sfc" InternalRomGameName="Super Castlevania    " InternalCheckSum="1321054530" CurrentViewOffset="243264">
-    <LogWriterSettings Format="%label:-22% %code:37%;%pc%|%bytes%|%ia%; %comment%" DataPerLine="8" Unlabeled="ShowInPoints" Structure="OneBankPerFile" IncludeUnusedLabels="false" PrintLabelSpecificComments="false" OutputExtraWhitespace="true" RomSizeOverride="-1" FileOrFolderOutPath="C:\GitHub\.dizProjects\dizASM_Castlevania\export" OutputToString="false" ErrorFilename="errors.txt" />
+  <Project AttachedRomFilename="C:\bogaa\projects\_dizProjects\dizASM_Castlevania\export\main.sfc" InternalRomGameName="Super Castlevania    " InternalCheckSum="1321054530" CurrentViewOffset="260673">
+    <LogWriterSettings Format="%label:-22% %code:37%;%pc%|%bytes%|%ia%; %comment%" DataPerLine="8" Unlabeled="ShowInPoints" Structure="OneBankPerFile" IncludeUnusedLabels="false" PrintLabelSpecificComments="false" OutputExtraWhitespace="true" RomSizeOverride="-1" FileOrFolderOutPath="..\export" OutputToString="false" ErrorFilename="errors.txt" />
     <Data RomMapMode="LoRom" RomSpeed="SlowRom">
       <Comments AutomaticallyCaptureSubItems="false" HistoryLevels="50">
         <sys:Item Key="98304" Value="bus conflict fix" />
@@ -88,12 +88,14 @@
         <sys:Item Key="510329" Value="starting lifes " />
         <sys:Item Key="518006" Value="smallHeartValue " />
         <sys:Item Key="518255" Value="big Heart Value " />
-        <sys:Item Key="514686" Value="clock cost" />
+        <sys:Item Key="514686" Value="clockCost" />
         <sys:Item Key="100321" Value="soundEffect" />
         <sys:Item Key="100234" Value="not sure!! FIXME" />
         <sys:Item Key="519522" Value="FIXME" />
         <sys:Item Key="519529" Value="FIXME" />
         <sys:Item Key="519532" Value="FIXME" />
+        <sys:Item Key="514683" Value="initRossery_0a" />
+        <sys:Item Key="522827" Value="rossery flasth fur ID02 " />
       </Comments>
       <Labels>
         <sys:Item Key="24">
@@ -9181,13 +9183,13 @@
           <Value exs:type="ns1:Label" Name="subWeaponInit" Comment="" />
         </sys:Item>
         <sys:Item Key="514674">
-          <Value exs:type="ns1:Label" Name="" Comment="" />
+          <Value exs:type="ns1:Label" Name="initDager_08" Comment="" />
         </sys:Item>
         <sys:Item Key="514732">
-          <Value exs:type="ns1:Label" Name="" Comment="" />
+          <Value exs:type="ns1:Label" Name="initCross_09" Comment="" />
         </sys:Item>
         <sys:Item Key="514683">
-          <Value exs:type="ns1:Label" Name="clock_init" Comment="" />
+          <Value exs:type="ns1:Label" Name="heartCountCheck_05" Comment="" />
         </sys:Item>
         <sys:Item Key="100234">
           <Value exs:type="ns1:Label" Name="soundEffectIndex" Comment="" />
@@ -9602,6 +9604,54 @@
         </sys:Item>
         <sys:Item Key="521260">
           <Value exs:type="ns1:Label" Name="storeID_resetStats" Comment="" />
+        </sys:Item>
+        <sys:Item Key="430638">
+          <Value exs:type="ns1:Label" Name="blueSkellyStateS11" Comment="" />
+        </sys:Item>
+        <sys:Item Key="427263">
+          <Value exs:type="ns1:Label" Name="blueSkellyStates" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514704">
+          <Value exs:type="ns1:Label" Name="subWeMultipCheck" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514748">
+          <Value exs:type="ns1:Label" Name="spawnSubwe" Comment="" />
+        </sys:Item>
+        <sys:Item Key="522850">
+          <Value exs:type="ns1:Label" Name="subWeUseSlot" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514643">
+          <Value exs:type="ns1:Label" Name="heartCountCheck_01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514641">
+          <Value exs:type="ns1:Label" Name="notEnoughHearts" Comment="" />
+        </sys:Item>
+        <sys:Item Key="500176">
+          <Value exs:type="ns1:Label" Name="updateHUD_heartCount" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514723">
+          <Value exs:type="ns1:Label" Name="initHolyWater_0b" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514741">
+          <Value exs:type="ns1:Label" Name="initHolyAxe_0c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514793">
+          <Value exs:type="ns1:Label" Name="initClock_0f" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514655">
+          <Value exs:type="ns1:Label" Name="initiateSubwThrow" Comment="" />
+        </sys:Item>
+        <sys:Item Key="519940">
+          <Value exs:type="ns1:Label" Name="resetObjStates_spriteIndexPal" Comment="" />
+        </sys:Item>
+        <sys:Item Key="522790">
+          <Value exs:type="ns1:Label" Name="subweaponInit_main" Comment="" />
+        </sys:Item>
+        <sys:Item Key="514628">
+          <Value exs:type="ns1:Label" Name="subwSpawnHeartSubstract" Comment="" />
+        </sys:Item>
+        <sys:Item Key="522837">
+          <Value exs:type="ns1:Label" Name="subWeHeartCalcu" Comment="" />
         </sys:Item>
       </Labels>
       <RomBytes>
@@ -14954,13 +15004,13 @@ ED06
 +L06
 .D06
 .D06
-r 8 AD06
-AL06
-AD06
-AT06
-AD06
-AD06
-AD06
+r 8 ED06
+EL06
+ED06
+ET06
+ED06
+ED06
+ED06
 +H06
 .D06
 .D06
@@ -38916,12 +38966,12 @@ ED06
 .D07
 +L07
 .D07
-+b07
-.D07
-.D07
-+f07
-.D07
-.D07
+Ab06
+ED06
+ED06
+Af06
+ED06
+ED06
 +H07
 .D07
 +D07
