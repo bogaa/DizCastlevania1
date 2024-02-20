@@ -1,0 +1,70 @@
+
+;pos=007800
+r 143 XD
+Xj
+r 44 XD
+Xj
+r 316 XD
+Xj
+Xj
+r 102 XD
+Xj
+r 108 XD
+Xj
+r 83 XD
+Xj
+Xj
+r 42 XD
+Xj
+r 18 XD
+Xj
+r 18 XD
+Xj
+Xj
+r 36 XD
+Xj
+r 20 XD
+Xj
+r 18 XD
+Xj
+r 18 XD
+Xj
+r 21 XD
+Xj
+Xj
+r 36 XD
+Xj
+r 37 XD
+Xj
+Xj
+r 36 XD
+Xj
+r 18 XD
+Xj
+Xj
+r 129 XD
+Xj
+r 154 XD
+Xj
+r 43 XD
+Xj
+Xj
+r 359 XD
+Xj
+Xj
+r 26 XD
++b
+.D
+.D
+.D
+r 60 XD
++b
+.D
+.D
+.D
+r 60 XD
+r 22 TD
+r 14 AD
+r 27 ED
+Ej
+AD01

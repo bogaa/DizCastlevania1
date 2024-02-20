@@ -1,0 +1,95 @@
+<Comments>
+        <sys:Item Key="98304" Value="bus conflict fix" />
+        <sys:Item Key="100234" Value="not sure!! FIXME" />
+        <sys:Item Key="100321" Value="soundEffect" />
+        <sys:Item Key="163840" Value="bus conflict table " />
+        <sys:Item Key="163848" Value="GFX_bank1" />
+        <sys:Item Key="229376" Value="bus cunflict table" />
+        <sys:Item Key="229384" Value="GFX_bank2" />
+        <sys:Item Key="294912" Value="bus cunflict table" />
+        <sys:Item Key="294920" Value="GFX_bank4" />
+        <sys:Item Key="425984" Value="bus cunflict table" />
+        <sys:Item Key="432159" Value="cookyMonster jump speed Y" />
+        <sys:Item Key="432169" Value="cookyMonster jump speed X" />
+        <sys:Item Key="491520" Value="bus cunflict table" />
+        <sys:Item Key="491528" Value="null terminator " />
+        <sys:Item Key="491529" Value="Format AB. A = yPos trigger B = 0 right up, 1 left up, 2 left down, 3 right down&#x9; " />
+        <sys:Item Key="491530" Value="Format CD.Trigger C = XposLo D = XposHi   " />
+        <sys:Item Key="491583" Value="Iteam00 lvl 01 crouch Second quest" />
+        <sys:Item Key="491978" Value="more crusher stuff ??" />
+        <sys:Item Key="492410" Value="probably crusher routine.. " />
+        <sys:Item Key="500461" Value="select blank multiplayer" />
+        <sys:Item Key="500473" Value="get current multiplayer and store Y" />
+        <sys:Item Key="506427" Value="terminateBat movment" />
+        <sys:Item Key="507904" Value="bus cunflict table" />
+        <sys:Item Key="507929" Value="set/reset stack pointer" />
+        <sys:Item Key="508017" Value="FIXME" />
+        <sys:Item Key="508076" Value="FIXME" />
+        <sys:Item Key="508132" Value="FIXME" />
+        <sys:Item Key="508162" Value="sprite size 8x16, nmi and pattern at $1000" />
+        <sys:Item Key="509968" Value="set stage to initiate drop down the tower" />
+        <sys:Item Key="510329" Value="starting lifes " />
+        <sys:Item Key="510352" Value="starting Hearts " />
+        <sys:Item Key="510476" Value="YposSimon AND F8. CamXpos AND 07" />
+        <sys:Item Key="510477" Value="SimonXpos AND FE. AND 1 spriteMirror" />
+        <sys:Item Key="510699" Value="store lower score Half 06" />
+        <sys:Item Key="510703" Value="store higher score Half 07" />
+        <sys:Item Key="511036" Value="terminatorByte" />
+        <sys:Item Key="511080" Value="used for score and timer" />
+        <sys:Item Key="511344" Value="ppu offset" />
+        <sys:Item Key="511346" Value="heartPattern" />
+        <sys:Item Key="511347" Value="minusPattern" />
+        <sys:Item Key="511348" Value="terminator" />
+        <sys:Item Key="514683" Value="initRossery_0a" />
+        <sys:Item Key="514686" Value="clockCost" />
+        <sys:Item Key="517593" Value="small" />
+        <sys:Item Key="517595" Value="middle" />
+        <sys:Item Key="517597" Value="large" />
+        <sys:Item Key="517599" Value="?? dager" />
+        <sys:Item Key="517601" Value="cross" />
+        <sys:Item Key="517603" Value="?? Clock" />
+        <sys:Item Key="517605" Value="??holywater" />
+        <sys:Item Key="517609" Value="axe" />
+        <sys:Item Key="517950" Value="set Max Damage Value " />
+        <sys:Item Key="517958" Value="check level 13" />
+        <sys:Item Key="517964" Value="check level 7" />
+        <sys:Item Key="518006" Value="smallHeartValue " />
+        <sys:Item Key="518255" Value="big Heart Value " />
+        <sys:Item Key="518273" Value="meat healing Points" />
+        <sys:Item Key="519513" Value="FIXME" />
+        <sys:Item Key="519522" Value="FIXME" />
+        <sys:Item Key="519529" Value="FIXME" />
+        <sys:Item Key="519532" Value="FIXME" />
+        <sys:Item Key="519847" Value="used for mummy boss" />
+        <sys:Item Key="520764" Value="leangth, StartSpriteID,speed" />
+        <sys:Item Key="522459" Value="not cleard is drawing the HUD (sprite 0, sprite zero hit)" />
+        <sys:Item Key="522470" Value="cleared means we got a hit and sprite zerp hit is cleared. Set timer and continue" />
+        <sys:Item Key="522716" Value="calculate range of collusion tiles" />
+        <sys:Item Key="522827" Value="rossery flasth fur ID02 " />
+        <sys:Item Key="523358" Value="no boss" />
+        <sys:Item Key="523361" Value="second screen" />
+        <sys:Item Key="523364" Value="first screen second room" />
+        <sys:Item Key="523367" Value="5th screen" />
+        <sys:Item Key="523370" Value="3th screen" />
+        <sys:Item Key="523373" Value="first screen second room" />
+        <sys:Item Key="523376" Value="first screen second room" />
+        <sys:Item Key="523460" Value="FIXME" />
+        <sys:Item Key="523601" Value="store gfxRom pointer 2 $00" />
+        <sys:Item Key="523614" Value="storePPU dest 2 $02" />
+        <sys:Item Key="523625" Value="storePPU size 2 $04" />
+        <sys:Item Key="523646" Value="backup gfxRomPointer 2 $08" />
+        <sys:Item Key="523654" Value="set ppu dest" />
+        <sys:Item Key="523664" Value="init load loop" />
+        <sys:Item Key="523685" Value="size counter" />
+        <sys:Item Key="523689" Value="count 255 junk blocks " />
+        <sys:Item Key="523731" Value="bank offset" />
+        <sys:Item Key="523732" Value="src offset" />
+        <sys:Item Key="523734" Value="dest" />
+        <sys:Item Key="523736" Value="size" />
+        <sys:Item Key="523738" Value="bank " />
+        <sys:Item Key="523739" Value="src offset" />
+        <sys:Item Key="523741" Value="dest" />
+        <sys:Item Key="523743" Value="size" />
+        <sys:Item Key="523745" Value="terminator" />
+      </Comments>
+      

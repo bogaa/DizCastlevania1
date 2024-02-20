@@ -1,0 +1,63 @@
+
+;pos=000800
+r 26 XD
+Xj
+r 53 XD
+Xj
+r 17 XD
+Xj
+r 156 XD
+Xj
+Xj
+XD
+XD
+XD
+XD
+XD
+XD
+Xj
+Xj
+r 86 XD
+Xj
+r 125 XD
+Xj
+r 115 XD
+Xj
+r 175 XD
+Xj
+r 176 XD
+Xj
+r 13 XD
+Xj
+r 19 XD
+Xj
+r 179 XD
+Xj
+r 22 XD
+Xj
+r 28 XD
+Xj
+r 46 XD
+Xj
+r 114 XD
+Xj
+XD
+XD
+XD
+XD
+XD
+Xj
+r 66 XD
+Xj
+Xj
+r 33 XD
+Xj
+Xj
+r 292 XD
+Xj
+r 45 XD
+Xj
+r 158 XD
+Xj
+Xj
+r 65 XD

@@ -1,0 +1,20 @@
+
+;pos=037000
+XD
+XD
+XD
+XD
+XH
+r 103 XD
++H
+.D
+r 194 XD
++H
+.D
+r 159 XD
++H
+.D
+r 600 XD
++H
+.D
+r 979 XD

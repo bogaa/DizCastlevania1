@@ -1,0 +1,21 @@
+
+;pos=037800
+r 292 XD
+Xj
+r 398 XD
++H
+.D
+r 570 XD
++H
+.D
+r 8 XD
++H
+.D
+r 8 XD
++H
+.D
+r 8 XD
++H
+.D
+r 752 XD
+AD07

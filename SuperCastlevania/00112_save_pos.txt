@@ -1,0 +1,9 @@
+
+;pos=035800
+r 1340 XD
+XH
+XD
+XD
++H
+.D
+r 703 XD

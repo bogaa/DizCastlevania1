@@ -1,0 +1,105 @@
+
+;pos=036800
+r 630 XD
+XH
+r 49 XD
++H
+.D
+r 367 XD
++H
+.D
+XD
+XD
+XD
+XD
+XD
++H
+.D
+r 45 XD
++H
+.D
+r 32 XD
++H
+.D
+r 9 XD
++H
+.D
+r 9 XD
++H
+.D
+r 96 XD
++H
+.D
+r 72 XD
++H
+.D
+r 38 XD
++H
+.D
+r 36 XD
++H
+.D
+r 33 XD
++H
+.D
+r 117 XD
++H
+.D
+r 42 XD
++H
+.D
+r 37 XD
++H
+.D
+XD
+XD
+XD
+XD
++H
+.D
+r 29 XD
++H
+.D
+r 17 XD
++H
+.D
+r 18 XD
++H
+.D
+r 71 XD
++H
+.D
+r 13 XD
++H
+.D
+r 46 XD
++H
+.D
+r 17 XD
++H
+.D
+r 17 XD
++H
+.D
+r 17 XD
++H
+.D
+XD
+XD
+XD
+XD
+XD
+XD
++H
+.D
+r 18 XD
++H
+.D
+XD
+XD
++H
+.D
+r 17 XD
++H
+.D
+r 80 XD

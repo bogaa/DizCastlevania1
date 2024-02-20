@@ -12,18 +12,18 @@
 if exist castlevania.nes (del castlevania.nes)
 
 ::copy ..\export\bank_00.asm bank_00.asm
-findstr /V "ORG " ..\bank_00.asm > bank_00.asm
-findstr /V "ORG " ..\bank_01.asm > bank_01.asm
-findstr /V "ORG " ..\bank_02.asm > bank_02.asm
-findstr /V "ORG " ..\bank_03.asm > bank_03.asm
-findstr /V "ORG " ..\bank_04.asm > bank_04.asm
-findstr /V "ORG " ..\bank_05.asm > bank_05.asm
-findstr /V "ORG " ..\bank_06.asm > bank_06.asm
-findstr /V "ORG " ..\bank_07.asm > bank_07.asm
-copy ..\labels.asm labels.asm
+findstr /V "ORG " ..\export\bank_00.asm > bank_00.asm
+findstr /V "ORG " ..\export\bank_01.asm > bank_01.asm
+findstr /V "ORG " ..\export\bank_02.asm > bank_02.asm
+findstr /V "ORG " ..\export\bank_03.asm > bank_03.asm
+findstr /V "ORG " ..\export\bank_04.asm > bank_04.asm
+findstr /V "ORG " ..\export\bank_05.asm > bank_05.asm
+findstr /V "ORG " ..\export\bank_06.asm > bank_06.asm
+findstr /V "ORG " ..\export\bank_07.asm > bank_07.asm
+copy ..\expor\labels.asm labels.asm
 
 ::assembleGame
-..\asar\asar.exe --fix-checksum=off mainNES.asm
+..\export\asar\asar.exe --fix-checksum=off mainNES.asm
 
 ::copy /b "nesHeader.bin" + "mainNES.sfc" castlevania.nes
 type nesHeader.bin mainNES.sfc > castlevania.nes				

@@ -1,0 +1,23 @@
+
+;pos=002800
+r 209 XD
+Xj
+Xj
+r 288 XD
+Xj
+XD
+XD
+XD
+XD
+XD
+XD
+XH
+r 83 XD
+Xj
+r 121 XD
+Xj
+r 264 XD
+Xj
+r 730 XD
+Xj
+r 339 XD
