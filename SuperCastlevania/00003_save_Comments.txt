@@ -9,6 +9,13 @@
         <sys:Item Key="294912" Value="bus cunflict table" />
         <sys:Item Key="294920" Value="GFX_bank4" />
         <sys:Item Key="425984" Value="bus cunflict table" />
+        <sys:Item Key="426452" Value="shoots fireball when above player" />
+        <sys:Item Key="426719" Value="first boss state" />
+        <sys:Item Key="426721" Value="timer till medusa spawns" />
+        <sys:Item Key="429791" Value="deathAnimID" />
+        <sys:Item Key="431443" Value="head Sprite ID" />
+        <sys:Item Key="431631" Value="animation ID" />
+        <sys:Item Key="431644" Value="state 6 " />
         <sys:Item Key="432159" Value="cookyMonster jump speed Y" />
         <sys:Item Key="432169" Value="cookyMonster jump speed X" />
         <sys:Item Key="491520" Value="bus cunflict table" />
@@ -18,6 +25,8 @@
         <sys:Item Key="491583" Value="Iteam00 lvl 01 crouch Second quest" />
         <sys:Item Key="491978" Value="more crusher stuff ??" />
         <sys:Item Key="492410" Value="probably crusher routine.. " />
+        <sys:Item Key="493784" Value="igor anim boss " />
+        <sys:Item Key="499628" Value="init transit " />
         <sys:Item Key="500461" Value="select blank multiplayer" />
         <sys:Item Key="500473" Value="get current multiplayer and store Y" />
         <sys:Item Key="506427" Value="terminateBat movment" />
@@ -31,7 +40,7 @@
         <sys:Item Key="510329" Value="starting lifes " />
         <sys:Item Key="510352" Value="starting Hearts " />
         <sys:Item Key="510476" Value="YposSimon AND F8. CamXpos AND 07" />
-        <sys:Item Key="510477" Value="SimonXpos AND FE. AND 1 spriteMirror" />
+        <sys:Item Key="510477" Value="SimonXpos AND FE. AND 1 spriteMirror and room number " />
         <sys:Item Key="510699" Value="store lower score Half 06" />
         <sys:Item Key="510703" Value="store higher score Half 07" />
         <sys:Item Key="511036" Value="terminatorByte" />
@@ -42,6 +51,7 @@
         <sys:Item Key="511348" Value="terminator" />
         <sys:Item Key="514683" Value="initRossery_0a" />
         <sys:Item Key="514686" Value="clockCost" />
+        <sys:Item Key="515397" Value="game devides in 2 screens to scroll along" />
         <sys:Item Key="517593" Value="small" />
         <sys:Item Key="517595" Value="middle" />
         <sys:Item Key="517597" Value="large" />
@@ -56,12 +66,15 @@
         <sys:Item Key="518006" Value="smallHeartValue " />
         <sys:Item Key="518255" Value="big Heart Value " />
         <sys:Item Key="518273" Value="meat healing Points" />
+        <sys:Item Key="518558" Value="dracs cloaths " />
+        <sys:Item Key="519290" Value=" " />
         <sys:Item Key="519513" Value="FIXME" />
         <sys:Item Key="519522" Value="FIXME" />
         <sys:Item Key="519529" Value="FIXME" />
         <sys:Item Key="519532" Value="FIXME" />
         <sys:Item Key="519847" Value="used for mummy boss" />
         <sys:Item Key="520764" Value="leangth, StartSpriteID,speed" />
+        <sys:Item Key="521630" Value="hunch back sitting animation" />
         <sys:Item Key="522459" Value="not cleard is drawing the HUD (sprite 0, sprite zero hit)" />
         <sys:Item Key="522470" Value="cleared means we got a hit and sprite zerp hit is cleared. Set timer and continue" />
         <sys:Item Key="522716" Value="calculate range of collusion tiles" />
@@ -74,6 +87,7 @@
         <sys:Item Key="523373" Value="first screen second room" />
         <sys:Item Key="523376" Value="first screen second room" />
         <sys:Item Key="523460" Value="FIXME" />
+        <sys:Item Key="523504" Value="boss defeats??" />
         <sys:Item Key="523601" Value="store gfxRom pointer 2 $00" />
         <sys:Item Key="523614" Value="storePPU dest 2 $02" />
         <sys:Item Key="523625" Value="storePPU size 2 $04" />

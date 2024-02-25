@@ -6,46 +6,46 @@
                        db $00,$01,$02,$03,$04,$05,$06,$07   ;068000|        |      ; bus cunflict table
                                                             ;      |        |      ;
     enemyAI_01_zombie:
-                       LDA.W RAM_5_entity_State,X           ;068008|BD6C04  |06046C;
+                       LDA.W r6_entity_State,X              ;068008|BD6C04  |06046C;
                        BNE CODE_068032                      ;06800B|D025    |068032;
-                       JSR.W FIXME_ee48                     ;06800D|2048EE  |06EE48;
+                       JSR.W FIXME_ee48_entityKeepWalking   ;06800D|2048EE  |06EE48;
                        LDA.B #$10                           ;068010|A910    |      ;
-                       STA.B various_data00                 ;068012|854C    |00004C;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;068014|BD5403  |060354;
-                       STA.B various_data01                 ;068017|854D    |00004D;
-                       JSR.W FIXME_EC21                     ;068019|2021EC  |06EC21;
+                       STA.B r_temp_data00                  ;068012|854C    |00004C;
+                       LDA.W r6_entity_Y_Pos,X              ;068014|BD5403  |060354;
+                       STA.B r_temp_data01                  ;068017|854D    |00004D;
+                       JSR.W FIXME_EC21_findGround_to14     ;068019|2021EC  |06EC21;
                        LDA.B $14                            ;06801C|A514    |000014;
                        BEQ CODE_068023                      ;06801E|F003    |068023;
-                       JMP.W FIXME_eaa9                     ;068020|4CA9EA  |06EAA9;
+                       JMP.W FIXME_eaa9_switchSpritMirroring;068020|4CA9EA  |06EAA9;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068023:
-                       JSR.W FIXME_ef9c                     ;068023|209CEF  |06EF9C;
+                       JSR.W FIXME_ef9c_findGround_10       ;068023|209CEF  |06EF9C;
                        LDA.B $14                            ;068026|A514    |000014;
                        BNE CODE_068056                      ;068028|D02C    |068056;
                        LDA.B #$01                           ;06802A|A901    |      ;
-                       STA.W RAM_5_entity_State,X           ;06802C|9D6C04  |06046C;
-                       JMP.W FIXME_F1d2                     ;06802F|4CD2F1  |06F1D2;
+                       STA.W r6_entity_State,X              ;06802C|9D6C04  |06046C;
+                       JMP.W FIXME_F1d2_resetFallSpeed      ;06802F|4CD2F1  |06F1D2;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068032:
-                       JSR.W FIXME_ec50                     ;068032|2050EC  |06EC50;
-                       JSR.W FIXME_ef9c                     ;068035|209CEF  |06EF9C;
+                       JSR.W FIXME_ec50_gravity_00          ;068032|2050EC  |06EC50;
+                       JSR.W FIXME_ef9c_findGround_10       ;068035|209CEF  |06EF9C;
                        LDA.B $14                            ;068038|A514    |000014;
                        BEQ CODE_068056                      ;06803A|F01A    |068056;
                        LDA.B #$00                           ;06803C|A900    |      ;
-                       STA.W RAM_5_entity_State,X           ;06803E|9D6C04  |06046C;
-                       JMP.W FIXME_efaf                     ;068041|4CAFEF  |06EFAF;
+                       STA.W r6_entity_State,X              ;06803E|9D6C04  |06046C;
+                       JMP.W FIXME_efaf_YposMask            ;068041|4CAFEF  |06EFAF;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          entityStuffs:
-                       STX.B various_data02                 ;068044|864E    |00004E;
+                       STX.B r_temp_data02                  ;068044|864E    |00004E;
                        LDA.B #$03                           ;068046|A903    |      ;
                        STA.B $08                            ;068048|8508    |000008;
                        LDY.B #$04                           ;06804A|A004    |      ;
                                                             ;      |        |      ;
           CODE_06804C:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;06804C|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;06804C|B93404  |060434;
                        BEQ CODE_068057                      ;06804F|F006    |068057;
                                                             ;      |        |      ;
           CODE_068051:
@@ -61,23 +61,23 @@
                        LDA.B #$25                           ;068057|A925    |      ;
                        STA.B $16                            ;068059|8516    |000016;
                        LDA.B #$50                           ;06805B|A950    |      ;
-                       JSR.W FIXME_ed82                     ;06805D|2082ED  |06ED82;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;06805D|2082ED  |06ED82;
                        LDA.B #$00                           ;068060|A900    |      ;
-                       STA.W RAM_5_entity_SpriteMirrored,Y  ;068062|995004  |060450;
+                       STA.W r6_entity_spriteMirror,Y       ;068062|995004  |060450;
                        LDA.B $08                            ;068065|A508    |000008;
                        ASL A                                ;068067|0A      |      ;
                        TAX                                  ;068068|AA      |      ;
                        LDA.W DATA8_068088,X                 ;068069|BD8880  |068088;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;06806C|99FC03  |0603FC;
+                       STA.W r6_entity_X_Speed,Y            ;06806C|99FC03  |0603FC;
                        LDA.W DATA8_068089,X                 ;06806F|BD8980  |068089;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;068072|991804  |060418;
+                       STA.W r6_entity_X_SpeedSub,Y         ;068072|991804  |060418;
                        LDA.W DATA8_068090,X                 ;068075|BD9080  |068090;
-                       STA.W RAM_5_entity_Vertical_Speed,Y  ;068078|99C403  |0603C4;
+                       STA.W r6_entity_Y_speed,Y            ;068078|99C403  |0603C4;
                        LDA.W DATA8_068091,X                 ;06807B|BD9180  |068091;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,Y;06807E|99E003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,Y         ;06807E|99E003  |0603E0;
                        DEC.B $08                            ;068081|C608    |000008;
                        BNE CODE_068051                      ;068083|D0CC    |068051;
-                       LDX.B various_data02                 ;068085|A64E    |00004E;
+                       LDX.B r_temp_data02                  ;068085|A64E    |00004E;
                        RTS                                  ;068087|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -93,12 +93,12 @@
          DATA8_068091:
                        db $80,$01,$40,$01,$40,$02,$80       ;068091|        |      ;
                        LDA.B #$08                           ;068098|A908    |      ;
-                       STA.B various_data00                 ;06809A|854C    |00004C;
-                       STX.B various_data02                 ;06809C|864E    |00004E;
+                       STA.B r_temp_data00                  ;06809A|854C    |00004C;
+                       STX.B r_temp_data02                  ;06809C|864E    |00004E;
                        LDY.B #$0C                           ;06809E|A00C    |      ;
                                                             ;      |        |      ;
           CODE_0680A0:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;0680A0|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;0680A0|B93404  |060434;
                        BEQ CODE_0680AA                      ;0680A3|F005    |0680AA;
                        INY                                  ;0680A5|C8      |      ;
                        CPY.B #$0E                           ;0680A6|C00E    |      ;
@@ -108,138 +108,138 @@
                        LDA.B #$26                           ;0680AA|A926    |      ;
                        STA.B $16                            ;0680AC|8516    |000016;
                        LDA.B #$08                           ;0680AE|A908    |      ;
-                       JSR.W FIXME_ed82                     ;0680B0|2082ED  |06ED82;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0680B3|BD5403  |060354;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;0680B0|2082ED  |06ED82;
+                       LDA.W r6_entity_Y_Pos,X              ;0680B3|BD5403  |060354;
                        SEC                                  ;0680B6|38      |      ;
-                       SBC.B various_data00                 ;0680B7|E54C    |00004C;
-                       STA.W RAM_5_entity_Y_Pos,Y           ;0680B9|995403  |060354;
+                       SBC.B r_temp_data00                  ;0680B7|E54C    |00004C;
+                       STA.W r6_entity_Y_Pos,Y              ;0680B9|995403  |060354;
                        LDA.B #$01                           ;0680BC|A901    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;0680BE|99FC03  |0603FC;
+                       STA.W r6_entity_X_Speed,Y            ;0680BE|99FC03  |0603FC;
                        LDA.B #$C0                           ;0680C1|A9C0    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;0680C3|991804  |060418;
+                       STA.W r6_entity_X_SpeedSub,Y         ;0680C3|991804  |060418;
                        RTS                                  ;0680C6|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
- enemyAI_1a_bossMummy:
-                       JSR.W FIXME_eea7                     ;0680C7|20A7EE  |06EEA7;
-                       LDA.W RAM_5_entity_State,X           ;0680CA|BD6C04  |06046C;
+enemyAI_1a_bossPhantimBat:
+                       JSR.W FIXME_eea7_endRoutineWhileTimer;0680C7|20A7EE  |06EEA7;
+                       LDA.W r6_entity_State,X              ;0680CA|BD6C04  |06046C;
                        AND.B #$7F                           ;0680CD|297F    |      ;
                        JSR.W FIXME_ca6d_jump4stack          ;0680CF|206DCA  |06CA6D;
-                       dw bossMummy_state00                 ;0680D2|        |0680E0;
-                       dw bossMummy_state01                 ;0680D4|        |0680F7;
-                       dw CODE_068156                       ;0680D6|        |068156;
-                       dw CODE_06817A                       ;0680D8|        |06817A;
-                       dw CODE_06818C                       ;0680DA|        |06818C;
-                       dw CODE_068194                       ;0680DC|        |068194;
-                       dw CODE_0681CB                       ;0680DE|        |0681CB;
+                       dw bossBat_state00                   ;0680D2|        |0680E0;
+                       dw bossBat_state01                   ;0680D4|        |0680F7;
+                       dw bossBat_state02                   ;0680D6|        |068156;
+                       dw bossBat_state03                   ;0680D8|        |06817A;
+                       dw bossBat_state04                   ;0680DA|        |06818C;
+                       dw bossBat_state05                   ;0680DC|        |068194;
+                       dw bossBat_state06                   ;0680DE|        |0681CB;
                                                             ;      |        |      ;
-    bossMummy_state00:
-                       LDA.B bossScreen_Flag                ;0680E0|A548    |000048;
+      bossBat_state00:
+                       LDA.B r_bossScreen_Flag              ;0680E0|A548    |000048;
                        BNE CODE_0680E5                      ;0680E2|D001    |0680E5;
                        RTS                                  ;0680E4|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0680E5:
-                       STX.B various_data02                 ;0680E5|864E    |00004E;
+                       STX.B r_temp_data02                  ;0680E5|864E    |00004E;
                        LDY.B #$81                           ;0680E7|A081    |      ;
                        LDA.B #$78                           ;0680E9|A978    |      ;
-                       JMP.W FIXME_ed34                     ;0680EB|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0680EB|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0680EE:
-                       LDA.B various_Processing_ID          ;0680EE|A54B    |00004B;
+                       LDA.B r_temp_processing_ID           ;0680EE|A54B    |00004B;
                        EOR.B #$01                           ;0680F0|4901    |      ;
-                       STA.B various_Processing_ID          ;0680F2|854B    |00004B;
+                       STA.B r_temp_processing_ID           ;0680F2|854B    |00004B;
                        JMP.W CODE_068103                    ;0680F4|4C0381  |068103;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-    bossMummy_state01:
-                       DEC.W RAM_5_entity_counter,X         ;0680F7|DE4C05  |06054C;
+      bossBat_state01:
+                       DEC.W r6_entity_counter,X            ;0680F7|DE4C05  |06054C;
                        BEQ CODE_0680FD                      ;0680FA|F001    |0680FD;
                        RTS                                  ;0680FC|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0680FD:
-                       LDA.B frame_Counter                  ;0680FD|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;0680FD|A51A    |00001A;
                        AND.B #$01                           ;0680FF|2901    |      ;
-                       STA.B various_Processing_ID          ;068101|854B    |00004B;
+                       STA.B r_temp_processing_ID           ;068101|854B    |00004B;
                                                             ;      |        |      ;
           CODE_068103:
                        LDA.B #$48                           ;068103|A948    |      ;
-                       LDY.B various_Processing_ID          ;068105|A44B    |00004B;
+                       LDY.B r_temp_processing_ID           ;068105|A44B    |00004B;
                        BEQ CODE_06810B                      ;068107|F002    |06810B;
                        EOR.B #$FF                           ;068109|49FF    |      ;
                                                             ;      |        |      ;
           CODE_06810B:
-                       ADC.W RAM_5_entity_X_Pos             ;06810B|6D8C03  |06038C;
+                       ADC.W r6_entity_X_Pos                ;06810B|6D8C03  |06038C;
                        CMP.B #$10                           ;06810E|C910    |      ;
                        BCC CODE_0680EE                      ;068110|90DC    |0680EE;
                        CMP.B #$F0                           ;068112|C9F0    |      ;
                        BCS CODE_0680EE                      ;068114|B0D8    |0680EE;
                        STA.B $01                            ;068116|8501    |000001;
                        STA.B $59                            ;068118|8559    |000059;
-                       LDA.W RAM_5_entity_Y_Pos             ;06811A|AD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;06811A|AD5403  |060354;
                        SBC.B #$28                           ;06811D|E928    |      ;
                        STA.B $00                            ;06811F|8500    |000000;
-                       JSR.W FIXME_eebb                     ;068121|20BBEE  |06EEBB;
-                       JSR.W FIXME_eda5                     ;068124|20A5ED  |06EDA5;
-                       LDX.B various_data02                 ;068127|A64E    |00004E;
+                       JSR.W FIXME_eebb_aOtherScreenR00     ;068121|20BBEE  |06EEBB;
+                       JSR.W FIXME_eda5_bitTrick2InitBoss   ;068124|20A5ED  |06EDA5;
+                       LDX.B r_temp_data02                  ;068127|A64E    |00004E;
                        LDA.B $09                            ;068129|A509    |000009;
                        BNE CODE_06813E                      ;06812B|D011    |06813E;
                        LDA.B $01                            ;06812D|A501    |000001;
                        LDY.B $02                            ;06812F|A402    |000002;
-                       JSR.W FIXME_ecea                     ;068131|20EAEC  |06ECEA;
+                       JSR.W FIXME_ecea_storeSpeed_AYSub_Ypos;068131|20EAEC  |06ECEA;
                        LDY.B #$C0                           ;068134|A0C0    |      ;
                        LDA.B #$00                           ;068136|A900    |      ;
-                       JSR.W FIXME_ec72                     ;068138|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068138|2072EC  |06EC72;
                        JMP.W CODE_06814C                    ;06813B|4C4C81  |06814C;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06813E:
                        LDY.B $02                            ;06813E|A402    |000002;
                        LDA.B $01                            ;068140|A501    |000001;
-                       JSR.W FIXME_ec72                     ;068142|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068142|2072EC  |06EC72;
                        LDA.B #$00                           ;068145|A900    |      ;
                        LDY.B #$C0                           ;068147|A0C0    |      ;
-                       JSR.W FIXME_ecea                     ;068149|20EAEC  |06ECEA;
+                       JSR.W FIXME_ecea_storeSpeed_AYSub_Ypos;068149|20EAEC  |06ECEA;
                                                             ;      |        |      ;
           CODE_06814C:
                        LDA.B #$4A                           ;06814C|A94A    |      ;
-                       JSR.W FIXME_ef04                     ;06814E|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;06814E|2004EF  |06EF04;
                        LDA.B #$02                           ;068151|A902    |      ;
-                       JMP.W FIXME_f131                     ;068153|4C31F1  |06F131;
+                       JMP.W FIXME_f131_storeEntityState    ;068153|4C31F1  |06F131;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_068156:
-                       JSR.W FIXME_ec7d                     ;068156|207DEC  |06EC7D;
-                       JSR.W FIXME_ee48                     ;068159|2048EE  |06EE48;
+      bossBat_state02:
+                       JSR.W FIXME_ec7d_updateSpriteSpeedLeftOrRight;068156|207DEC  |06EC7D;
+                       JSR.W FIXME_ee48_entityKeepWalking   ;068159|2048EE  |06EE48;
                        LDA.B $59                            ;06815C|A559    |000059;
-                       SBC.W RAM_5_entity_X_Pos,X           ;06815E|FD8C03  |06038C;
+                       SBC.W r6_entity_X_Pos,X              ;06815E|FD8C03  |06038C;
                        BCS CODE_068165                      ;068161|B002    |068165;
                        EOR.B #$FF                           ;068163|49FF    |      ;
                                                             ;      |        |      ;
           CODE_068165:
                        CMP.B #$04                           ;068165|C904    |      ;
                        BCS CODE_06818B                      ;068167|B022    |06818B;
-                       LDA.B frame_Counter                  ;068169|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;068169|A51A    |00001A;
                        AND.B #$03                           ;06816B|2903    |      ;
                        TAY                                  ;06816D|A8      |      ;
-                       LDA.W enemyPatternTime,Y             ;06816E|B97681  |068176;
+                       LDA.W bossBat_Time,Y                 ;06816E|B97681  |068176;
                        LDY.B #$03                           ;068171|A003    |      ;
-                       JMP.W FIXME_ed34                     ;068173|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068173|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-     enemyPatternTime:
+         bossBat_Time:
                        db $7B,$20,$3D,$C7                   ;068176|        |      ;
                                                             ;      |        |      ;
-          CODE_06817A:
-                       DEC.W RAM_5_entity_counter,X         ;06817A|DE4C05  |06054C;
+      bossBat_state03:
+                       DEC.W r6_entity_counter,X            ;06817A|DE4C05  |06054C;
                        BNE CODE_068182                      ;06817D|D003    |068182;
-                       JMP.W CODE_0681DE                    ;06817F|4CDE81  |0681DE;
+                       JMP.W batBossScript                  ;06817F|4CDE81  |0681DE;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068182:
-                       LDA.B frame_Counter                  ;068182|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;068182|A51A    |00001A;
                        AND.B #$0F                           ;068184|290F    |      ;
                        BNE CODE_06818B                      ;068186|D003    |06818B;
                        JSR.W CODE_068224                    ;068188|202482  |068224;
@@ -248,28 +248,28 @@
                        RTS                                  ;06818B|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_06818C:
-                       DEC.W RAM_5_entity_counter,X         ;06818C|DE4C05  |06054C;
-                       BEQ CODE_0681DE                      ;06818F|F04D    |0681DE;
-                       JMP.W FIXME_ef56                     ;068191|4C56EF  |06EF56;
+      bossBat_state04:
+                       DEC.W r6_entity_counter,X            ;06818C|DE4C05  |06054C;
+                       BEQ batBossScript                    ;06818F|F04D    |0681DE;
+                       JMP.W FIXME_ef56_updateYposSpeed_minus;068191|4C56EF  |06EF56;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_068194:
-                       LDA.W RAM_5_entity_Vertical_SpeedSub,X;068194|BDE003  |0603E0;
+      bossBat_state05:
+                       LDA.W r6_entity_Y_speedSub,X         ;068194|BDE003  |0603E0;
                        SBC.B #$06                           ;068197|E906    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;068199|9DE003  |0603E0;
-                       LDA.W RAM_5_entity_Vertical_Speed,X  ;06819C|BDC403  |0603C4;
+                       STA.W r6_entity_Y_speedSub,X         ;068199|9DE003  |0603E0;
+                       LDA.W r6_entity_Y_speed,X            ;06819C|BDC403  |0603C4;
                        SBC.B #$00                           ;06819F|E900    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;0681A1|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;0681A1|9DC403  |0603C4;
                        BPL CODE_0681AD                      ;0681A4|1007    |0681AD;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0681A6|BD5403  |060354;
+                       LDA.W r6_entity_Y_Pos,X              ;0681A6|BD5403  |060354;
                        CMP.B #$70                           ;0681A9|C970    |      ;
                        BCC CODE_0681D1                      ;0681AB|9024    |0681D1;
                                                             ;      |        |      ;
           CODE_0681AD:
-                       JSR.W FIXME_ef43                     ;0681AD|2043EF  |06EF43;
-                       JSR.W FIXME_ee48                     ;0681B0|2048EE  |06EE48;
-                       LDA.W RAM_5_entity_X_Pos,X           ;0681B3|BD8C03  |06038C;
+                       JSR.W FIXME_ef43_updateYposSpeed_plus;0681AD|2043EF  |06EF43;
+                       JSR.W FIXME_ee48_entityKeepWalking   ;0681B0|2048EE  |06EE48;
+                       LDA.W r6_entity_X_Pos,X              ;0681B3|BD8C03  |06038C;
                        CMP.B #$10                           ;0681B6|C910    |      ;
                        BCC CODE_0681C7                      ;0681B8|900D    |0681C7;
                        CMP.B #$F0                           ;0681BA|C9F0    |      ;
@@ -277,8 +277,8 @@
                        LDA.B #$F0                           ;0681BE|A9F0    |      ;
                                                             ;      |        |      ;
           CODE_0681C0:
-                       STA.W RAM_5_entity_X_Pos,X           ;0681C0|9D8C03  |06038C;
-                       JSR.W FIXME_eaa9                     ;0681C3|20A9EA  |06EAA9;
+                       STA.W r6_entity_X_Pos,X              ;0681C0|9D8C03  |06038C;
+                       JSR.W FIXME_eaa9_switchSpritMirroring;0681C3|20A9EA  |06EAA9;
                                                             ;      |        |      ;
           CODE_0681C6:
                        RTS                                  ;0681C6|60      |      ;
@@ -288,8 +288,8 @@
                        LDA.B #$10                           ;0681C7|A910    |      ;
                        BNE CODE_0681C0                      ;0681C9|D0F5    |0681C0;
                                                             ;      |        |      ;
-          CODE_0681CB:
-                       DEC.W RAM_5_entity_counter,X         ;0681CB|DE4C05  |06054C;
+      bossBat_state06:
+                       DEC.W r6_entity_counter,X            ;0681CB|DE4C05  |06054C;
                        BEQ CODE_0681D1                      ;0681CE|F001    |0681D1;
                        RTS                                  ;0681D0|60      |      ;
                                                             ;      |        |      ;
@@ -298,129 +298,129 @@
                        JMP.W CODE_0680FD                    ;0681D1|4CFD80  |0680FD;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0681D4:
-                       JSR.W FIXME_ec88                     ;0681D4|2088EC  |06EC88;
+         batBossShoot:
+                       JSR.W FIXME_ec88_findPlayerPos       ;0681D4|2088EC  |06EC88; shoots fireball when above player
                        LDY.B #$06                           ;0681D7|A006    |      ;
                        LDA.B #$18                           ;0681D9|A918    |      ;
-                       JMP.W FIXME_ed34                     ;0681DB|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0681DB|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0681DE:
-                       LDA.W RAM_5_entity_Y_Pos             ;0681DE|AD5403  |060354;
-                       SBC.W RAM_5_entity_Y_Pos,X           ;0681E1|FD5403  |060354;
-                       BCC CODE_0681D4                      ;0681E4|90EE    |0681D4;
-                       LDA.W RAM_5_entity_Y_Pos             ;0681E6|AD5403  |060354;
+        batBossScript:
+                       LDA.W r6_entity_Y_Pos                ;0681DE|AD5403  |060354;
+                       SBC.W r6_entity_Y_Pos,X              ;0681E1|FD5403  |060354;
+                       BCC batBossShoot                     ;0681E4|90EE    |0681D4;
+                       LDA.W r6_entity_Y_Pos                ;0681E6|AD5403  |060354;
                        ADC.B #$18                           ;0681E9|6918    |      ;
                        STA.B $00                            ;0681EB|8500    |000000;
-                       LDA.W RAM_5_entity_X_Pos             ;0681ED|AD8C03  |06038C;
+                       LDA.W r6_entity_X_Pos                ;0681ED|AD8C03  |06038C;
                        STA.B $01                            ;0681F0|8501    |000001;
-                       JSR.W FIXME_eebb                     ;0681F2|20BBEE  |06EEBB;
-                       LDX.B various_data02                 ;0681F5|A64E    |00004E;
+                       JSR.W FIXME_eebb_aOtherScreenR00     ;0681F2|20BBEE  |06EEBB;
+                       LDX.B r_temp_data02                  ;0681F5|A64E    |00004E;
                        ASL.B $02                            ;0681F7|0602    |000002;
                        ROL.B $01                            ;0681F9|2601    |000001;
                        LDA.B $09                            ;0681FB|A509    |000009;
                        BNE CODE_068210                      ;0681FD|D011    |068210;
                        LDY.B #$00                           ;0681FF|A000    |      ;
                        LDA.B #$02                           ;068201|A902    |      ;
-                       JSR.W FIXME_ec72                     ;068203|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068203|2072EC  |06EC72;
                        LDA.B $01                            ;068206|A501    |000001;
                        LDY.B $02                            ;068208|A402    |000002;
-                       JSR.W FIXME_ecea                     ;06820A|20EAEC  |06ECEA;
+                       JSR.W FIXME_ecea_storeSpeed_AYSub_Ypos;06820A|20EAEC  |06ECEA;
                        JMP.W CODE_06821E                    ;06820D|4C1E82  |06821E;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068210:
                        LDA.B #$01                           ;068210|A901    |      ;
                        LDY.B #$80                           ;068212|A080    |      ;
-                       JSR.W FIXME_ecea                     ;068214|20EAEC  |06ECEA;
+                       JSR.W FIXME_ecea_storeSpeed_AYSub_Ypos;068214|20EAEC  |06ECEA;
                        LDY.B $02                            ;068217|A402    |000002;
                        LDA.B $01                            ;068219|A501    |000001;
-                       JSR.W FIXME_ec72                     ;06821B|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;06821B|2072EC  |06EC72;
                                                             ;      |        |      ;
           CODE_06821E:
                        LDA.B #$05                           ;06821E|A905    |      ;
-                       STA.W RAM_5_entity_State,X           ;068220|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068220|9D6C04  |06046C;
                                                             ;      |        |      ;
           CODE_068223:
                        RTS                                  ;068223|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068224:
-                       LDA.W RAM_5_entity_Y_Pos             ;068224|AD5403  |060354;
-                       SBC.W RAM_5_entity_Y_Pos,X           ;068227|FD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;068224|AD5403  |060354;
+                       SBC.W r6_entity_Y_Pos,X              ;068227|FD5403  |060354;
                        BCS CODE_06822E                      ;06822A|B002    |06822E;
                        EOR.B #$FF                           ;06822C|49FF    |      ;
                                                             ;      |        |      ;
           CODE_06822E:
                        CMP.B #$14                           ;06822E|C914    |      ;
                        BCS CODE_068223                      ;068230|B0F1    |068223;
-                       JSR.W FIXME_ef84                     ;068232|2084EF  |06EF84;
+                       JSR.W FIXME_ef84_findPlayer          ;068232|2084EF  |06EF84;
                        CMP.B #$58                           ;068235|C958    |      ;
                        BCS CODE_068223                      ;068237|B0EA    |068223;
                        TYA                                  ;068239|98      |      ;
-                       CMP.W RAM_5_entity_SpriteMirrored    ;06823A|CD5004  |060450;
+                       CMP.W r6_entity_spriteMirror         ;06823A|CD5004  |060450;
                        BEQ CODE_068223                      ;06823D|F0E4    |068223;
                        LDA.B #$02                           ;06823F|A902    |      ;
                        LDY.B #$80                           ;068241|A080    |      ;
-                       JSR.W FIXME_ecea                     ;068243|20EAEC  |06ECEA;
+                       JSR.W FIXME_ecea_storeSpeed_AYSub_Ypos;068243|20EAEC  |06ECEA;
                        LDY.B #$04                           ;068246|A004    |      ;
                        LDA.B #$08                           ;068248|A908    |      ;
-                       JMP.W FIXME_ed34                     ;06824A|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06824A|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
        enemyAI_11_dog:
-                       LDY.W RAM_5_entity_State,X           ;06824D|BC6C04  |06046C;
+                       LDY.W r6_entity_State,X              ;06824D|BC6C04  |06046C;
                        BEQ CODE_068268                      ;068250|F016    |068268;
                        DEY                                  ;068252|88      |      ;
                        BEQ CODE_068287                      ;068253|F032    |068287;
-                       JSR.W FIXME_ee48                     ;068255|2048EE  |06EE48;
-                       JSR.W FIXME_ec50                     ;068258|2050EC  |06EC50;
-                       JSR.W FIXME_ef98                     ;06825B|2098EF  |06EF98;
+                       JSR.W FIXME_ee48_entityKeepWalking   ;068255|2048EE  |06EE48;
+                       JSR.W FIXME_ec50_gravity_00          ;068258|2050EC  |06EC50;
+                       JSR.W FIXME_ef98_findGround_08       ;06825B|2098EF  |06EF98;
                        LDA.B $14                            ;06825E|A514    |000014;
                        BEQ CODE_068286                      ;068260|F024    |068286;
-                       JSR.W FIXME_efaf                     ;068262|20AFEF  |06EFAF;
+                       JSR.W FIXME_efaf_YposMask            ;068262|20AFEF  |06EFAF;
                        JMP.W CODE_068272                    ;068265|4C7282  |068272;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068268:
-                       JSR.W FIXME_ef84                     ;068268|2084EF  |06EF84;
+                       JSR.W FIXME_ef84_findPlayer          ;068268|2084EF  |06EF84;
                        CMP.B #$40                           ;06826B|C940    |      ;
                        BCC CODE_068272                      ;06826D|9003    |068272;
-                       JMP.W FIXME_ee94                     ;06826F|4C94EE  |06EE94;
+                       JMP.W FIXME_ee94_entityLoadStuff     ;06826F|4C94EE  |06EE94;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068272:
-                       JSR.W FIXME_ef7c                     ;068272|207CEF  |06EF7C;
+                       JSR.W FIXME_ef7c_facePlayer          ;068272|207CEF  |06EF7C;
                        LDY.B #$00                           ;068275|A000    |      ;
                        LDA.B #$02                           ;068277|A902    |      ;
-                       JSR.W FIXME_ec72                     ;068279|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068279|2072EC  |06EC72;
                        LDA.B #$52                           ;06827C|A952    |      ;
-                       JSR.W FIXME_ef04                     ;06827E|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;06827E|2004EF  |06EF04;
                        LDA.B #$01                           ;068281|A901    |      ;
-                       STA.W RAM_5_entity_State,X           ;068283|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068283|9D6C04  |06046C;
                                                             ;      |        |      ;
           CODE_068286:
                        RTS                                  ;068286|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068287:
-                       JSR.W FIXME_ee48                     ;068287|2048EE  |06EE48;
-                       JSR.W FIXME_ef98                     ;06828A|2098EF  |06EF98;
+                       JSR.W FIXME_ee48_entityKeepWalking   ;068287|2048EE  |06EE48;
+                       JSR.W FIXME_ef98_findGround_08       ;06828A|2098EF  |06EF98;
                        LDA.B $14                            ;06828D|A514    |000014;
                        BNE CODE_068286                      ;06828F|D0F5    |068286;
                        LDA.B #$1E                           ;068291|A91E    |      ;
-                       JSR.W FIXME_ef04                     ;068293|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;068293|2004EF  |06EF04;
                        LDA.B #$01                           ;068296|A901    |      ;
                        LDY.B #$80                           ;068298|A080    |      ;
-                       JSR.W FIXME_ecea                     ;06829A|20EAEC  |06ECEA;
+                       JSR.W FIXME_ecea_storeSpeed_AYSub_Ypos;06829A|20EAEC  |06ECEA;
                        LDA.B #$02                           ;06829D|A902    |      ;
-                       JMP.W FIXME_f131                     ;06829F|4C31F1  |06F131;
+                       JMP.W FIXME_f131_storeEntityState    ;06829F|4C31F1  |06F131;
                                                             ;      |        |      ;
-                       STX.B various_data02                 ;0682A2|864E    |00004E;
+                       STX.B r_temp_data02                  ;0682A2|864E    |00004E;
                        LDY.B #$0D                           ;0682A4|A00D    |      ;
                                                             ;      |        |      ;
           CODE_0682A6:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;0682A6|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;0682A6|B93404  |060434;
                        BEQ CODE_0682B1                      ;0682A9|F006    |0682B1;
                        DEY                                  ;0682AB|88      |      ;
                        CPY.B #$0B                           ;0682AC|C00B    |      ;
@@ -432,27 +432,27 @@
                        LDA.B #$23                           ;0682B1|A923    |      ;
                        STA.B $16                            ;0682B3|8516    |000016;
                        LDA.B #$08                           ;0682B5|A908    |      ;
-                       JSR.W FIXME_ed82                     ;0682B7|2082ED  |06ED82;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;0682B7|2082ED  |06ED82;
                        LDA.B #$02                           ;0682BA|A902    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;0682BC|99FC03  |0603FC;
+                       STA.W r6_entity_X_Speed,Y            ;0682BC|99FC03  |0603FC;
                        LDA.B #$00                           ;0682BF|A900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;0682C1|991804  |060418;
+                       STA.W r6_entity_X_SpeedSub,Y         ;0682C1|991804  |060418;
                        RTS                                  ;0682C4|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-enemyAI_1c_bossMonster:
-                       JSR.W FIXME_eea7                     ;0682C5|20A7EE  |06EEA7;
-                       LDA.W RAM_5_entity_State,X           ;0682C8|BD6C04  |06046C;
+enemyAI_1c_bossMedusa:
+                       JSR.W FIXME_eea7_endRoutineWhileTimer;0682C5|20A7EE  |06EEA7;
+                       LDA.W r6_entity_State,X              ;0682C8|BD6C04  |06046C;
                        AND.B #$7F                           ;0682CB|297F    |      ;
                        JSR.W FIXME_ca6d_jump4stack          ;0682CD|206DCA  |06CA6D;
-                       dw bossMonster_state00               ;0682D0|        |0682DA;
-                       dw bossMonster_state01               ;0682D2|        |0682E6;
-                       dw bossMonster_state02               ;0682D4|        |068304;
-                       dw CODE_068356                       ;0682D6|        |068356;
-                       dw CODE_068369                       ;0682D8|        |068369;
+                       dw bossMedusa_state00                ;0682D0|        |0682DA;
+                       dw bossMedusa_state01                ;0682D2|        |0682E6;
+                       dw bossMedusa_state02                ;0682D4|        |068304;
+                       dw bossMedusa_state03                ;0682D6|        |068356;
+                       dw bossMedusa_state04                ;0682D8|        |068369;
                                                             ;      |        |      ;
-  bossMonster_state00:
-                       LDA.B bossScreen_Flag                ;0682DA|A548    |000048;
+   bossMedusa_state00:
+                       LDA.B r_bossScreen_Flag              ;0682DA|A548    |000048;
                        BNE CODE_0682DF                      ;0682DC|D001    |0682DF;
                                                             ;      |        |      ;
           CODE_0682DE:
@@ -460,31 +460,31 @@ enemyAI_1c_bossMonster:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0682DF:
-                       LDY.B #$81                           ;0682DF|A081    |      ;
-                       LDA.B #$B4                           ;0682E1|A9B4    |      ;
-                       JMP.W FIXME_ed34                     ;0682E3|4C34ED  |06ED34;
+                       LDY.B #$81                           ;0682DF|A081    |      ; first boss state
+                       LDA.B #$B4                           ;0682E1|A9B4    |      ; timer till medusa spawns
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0682E3|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-  bossMonster_state01:
-                       DEC.W RAM_5_entity_counter,X         ;0682E6|DE4C05  |06054C;
+   bossMedusa_state01:
+                       DEC.W r6_entity_counter,X            ;0682E6|DE4C05  |06054C;
                        BNE CODE_0682DE                      ;0682E9|D0F3    |0682DE;
-                       JSR.W FIXME_fab4                     ;0682EB|20B4FA  |06FAB4;
-                       LDA.B frame_Counter                  ;0682EE|A51A    |00001A;
+                       JSR.W FIXME_fab4_PPU_updateEmpty     ;0682EB|20B4FA  |06FAB4;
+                       LDA.B r_frame_Counter                ;0682EE|A51A    |00001A;
                        AND.B #$03                           ;0682F0|2903    |      ;
                        STA.B $55                            ;0682F2|8555    |000055;
                                                             ;      |        |      ;
           CODE_0682F4:
                        LDA.B #$00                           ;0682F4|A900    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;0682F6|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;0682F6|9DC403  |0603C4;
                        LDA.B #$80                           ;0682F9|A980    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;0682FB|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;0682FB|9DE003  |0603E0;
                        LDA.B #$02                           ;0682FE|A902    |      ;
-                       STA.W RAM_5_entity_State,X           ;068300|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068300|9D6C04  |06046C;
                        RTS                                  ;068303|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-  bossMonster_state02:
-                       JSR.W FIXME_ef56                     ;068304|2056EF  |06EF56;
+   bossMedusa_state02:
+                       JSR.W FIXME_ef56_updateYposSpeed_minus;068304|2056EF  |06EF56;
                        CMP.B #$A8                           ;068307|C9A8    |      ;
                        BCC CODE_06830C                      ;068309|9001    |06830C;
                        RTS                                  ;06830B|60      |      ;
@@ -492,33 +492,33 @@ enemyAI_1c_bossMonster:
                                                             ;      |        |      ;
           CODE_06830C:
                        JSR.W CODE_068371                    ;06830C|207183  |068371;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;06830F|BD5403  |060354;
+                       LDA.W r6_entity_Y_Pos,X              ;06830F|BD5403  |060354;
                        ADC.B #$04                           ;068312|6904    |      ;
-                       STA.W RAM_5_verticalVectorAddressLo,X;068314|9DDC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,X        ;068314|9DDC04  |0604DC;
                        LDA.B #$00                           ;068317|A900    |      ;
-                       STA.W RAM_5_verticalVectorAddressHiher,X;068319|9DF804  |0604F8;
-                       JSR.W FIXME_ef7c                     ;06831C|207CEF  |06EF7C;
+                       STA.W r6_X_screen_AddressHiher,X     ;068319|9DF804  |0604F8;
+                       JSR.W FIXME_ef7c_facePlayer          ;06831C|207CEF  |06EF7C;
                        LDY.B #$E0                           ;06831F|A0E0    |      ;
                        LDA.B #$00                           ;068321|A900    |      ;
-                       JSR.W FIXME_ec72                     ;068323|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068323|2072EC  |06EC72;
                        LDA.B #$1F                           ;068326|A91F    |      ;
-                       JSR.W FIXME_ef04                     ;068328|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;068328|2004EF  |06EF04;
                        INC.B $55                            ;06832B|E655    |000055;
                        LDA.B $55                            ;06832D|A555    |000055;
                        AND.B #$03                           ;06832F|2903    |      ;
                        TAY                                  ;068331|A8      |      ;
-                       LDA.W DATA8_06833A,Y                 ;068332|B93A83  |06833A;
+                       LDA.W medusaTiming,Y                 ;068332|B93A83  |06833A;
                        LDY.B #$03                           ;068335|A003    |      ;
-                       JMP.W FIXME_ed34                     ;068337|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068337|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-         DATA8_06833A:
+         medusaTiming:
                        db $10,$80,$40,$A0                   ;06833A|        |      ;
                                                             ;      |        |      ;
           CODE_06833E:
-                       JSR.W FIXME_ee48                     ;06833E|2048EE  |06EE48;
-                       LDA.W RAM_5_entity_X_Pos,X           ;068341|BD8C03  |06038C;
-                       LDY.W RAM_5_entity_SpriteMirrored,X  ;068344|BC5004  |060450;
+                       JSR.W FIXME_ee48_entityKeepWalking   ;06833E|2048EE  |06EE48;
+                       LDA.W r6_entity_X_Pos,X              ;068341|BD8C03  |06038C;
+                       LDY.W r6_entity_spriteMirror,X       ;068344|BC5004  |060450;
                        BEQ CODE_06834F                      ;068347|F006    |06834F;
                        CMP.B #$10                           ;068349|C910    |      ;
                        BCS CODE_068368                      ;06834B|B01B    |068368;
@@ -529,37 +529,37 @@ enemyAI_1c_bossMonster:
                        BCC CODE_068368                      ;068351|9015    |068368;
                                                             ;      |        |      ;
           CODE_068353:
-                       JMP.W FIXME_eaa9                     ;068353|4CA9EA  |06EAA9;
+                       JMP.W FIXME_eaa9_switchSpritMirroring;068353|4CA9EA  |06EAA9;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_068356:
-                       DEC.W RAM_5_entity_counter,X         ;068356|DE4C05  |06054C;
+   bossMedusa_state03:
+                       DEC.W r6_entity_counter,X            ;068356|DE4C05  |06054C;
                        BEQ CODE_068361                      ;068359|F006    |068361;
-                       JSR.W FIXME_ef13                     ;06835B|2013EF  |06EF13;
+                       JSR.W FIXME_ef13_aOtherScreenR01     ;06835B|2013EF  |06EF13;
                        JMP.W CODE_06833E                    ;06835E|4C3E83  |06833E;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068361:
                        LDY.B #$04                           ;068361|A004    |      ;
                        LDA.B #$3C                           ;068363|A93C    |      ;
-                       JSR.W FIXME_ed34                     ;068365|2034ED  |06ED34;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;068365|2034ED  |06ED34;
                                                             ;      |        |      ;
           CODE_068368:
                        RTS                                  ;068368|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_068369:
-                       DEC.W RAM_5_entity_counter,X         ;068369|DE4C05  |06054C;
+   bossMedusa_state04:
+                       DEC.W r6_entity_counter,X            ;068369|DE4C05  |06054C;
                        BNE CODE_068368                      ;06836C|D0FA    |068368;
                        JMP.W CODE_0682F4                    ;06836E|4CF482  |0682F4;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068371:
-                       STX.B various_data02                 ;068371|864E    |00004E;
+                       STX.B r_temp_data02                  ;068371|864E    |00004E;
                        LDY.B #$0D                           ;068373|A00D    |      ;
                                                             ;      |        |      ;
           CODE_068375:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;068375|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;068375|B93404  |060434;
                        BEQ CODE_068380                      ;068378|F006    |068380;
                        DEY                                  ;06837A|88      |      ;
                        CPY.B #$08                           ;06837B|C008    |      ;
@@ -571,11 +571,11 @@ enemyAI_1c_bossMonster:
                        LDA.B #$09                           ;068380|A909    |      ;
                        STA.B $16                            ;068382|8516    |000016;
                        LDA.B #$1D                           ;068384|A91D    |      ;
-                       JMP.W FIXME_ed82                     ;068386|4C82ED  |06ED82;
+                       JMP.W FIXME_ed82_spawnEntetyAtCurPos ;068386|4C82ED  |06ED82;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
 enemyAI_09_medusaSnake:
-                       LDA.W RAM_5_entity_State,X           ;068389|BD6C04  |06046C;
+                       LDA.W r6_entity_State,X              ;068389|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;06838C|206DCA  |06CA6D;
                        dw CODE_068397                       ;06838F|        |068397;
                        dw CODE_0683A3                       ;068391|        |0683A3;
@@ -583,46 +583,46 @@ enemyAI_09_medusaSnake:
                        dw CODE_0683ED                       ;068395|        |0683ED;
                                                             ;      |        |      ;
           CODE_068397:
-                       JSR.W FIXME_ef7c                     ;068397|207CEF  |06EF7C;
-                       JSR.W FIXME_F1d2                     ;06839A|20D2F1  |06F1D2;
+                       JSR.W FIXME_ef7c_facePlayer          ;068397|207CEF  |06EF7C;
+                       JSR.W FIXME_F1d2_resetFallSpeed      ;06839A|20D2F1  |06F1D2;
                        LDA.B #$01                           ;06839D|A901    |      ;
-                       STA.W RAM_5_entity_State,X           ;06839F|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;06839F|9D6C04  |06046C;
                                                             ;      |        |      ;
           CODE_0683A2:
                        RTS                                  ;0683A2|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0683A3:
-                       JSR.W FIXME_ec50                     ;0683A3|2050EC  |06EC50;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0683A6|BD5403  |060354;
+                       JSR.W FIXME_ec50_gravity_00          ;0683A3|2050EC  |06EC50;
+                       LDA.W r6_entity_Y_Pos,X              ;0683A6|BD5403  |060354;
                        ADC.B #$08                           ;0683A9|6908    |      ;
-                       STA.B various_data01                 ;0683AB|854D    |00004D;
+                       STA.B r_temp_data01                  ;0683AB|854D    |00004D;
                        LDA.B #$00                           ;0683AD|A900    |      ;
-                       STA.B various_data00                 ;0683AF|854C    |00004C;
-                       JSR.W FIXME_EC21                     ;0683B1|2021EC  |06EC21;
+                       STA.B r_temp_data00                  ;0683AF|854C    |00004C;
+                       JSR.W FIXME_EC21_findGround_to14     ;0683B1|2021EC  |06EC21;
                        LDA.B $14                            ;0683B4|A514    |000014;
                        BEQ CODE_0683A2                      ;0683B6|F0EA    |0683A2;
-                       JSR.W FIXME_efaf                     ;0683B8|20AFEF  |06EFAF;
+                       JSR.W FIXME_efaf_YposMask            ;0683B8|20AFEF  |06EFAF;
                                                             ;      |        |      ;
           CODE_0683BB:
                        LDY.B #$80                           ;0683BB|A080    |      ;
                        LDA.B #$01                           ;0683BD|A901    |      ;
-                       JSR.W FIXME_ec72                     ;0683BF|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;0683BF|2072EC  |06EC72;
                        LDY.B #$02                           ;0683C2|A002    |      ;
                        LDA.B #$18                           ;0683C4|A918    |      ;
-                       JMP.W FIXME_ed34                     ;0683C6|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0683C6|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0683C9:
-                       DEC.W RAM_5_entity_counter,X         ;0683C9|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0683C9|DE4C05  |06054C;
                        BEQ CODE_0683E6                      ;0683CC|F018    |0683E6;
-                       JSR.W FIXME_ee48                     ;0683CE|2048EE  |06EE48;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0683D1|BD5403  |060354;
+                       JSR.W FIXME_ee48_entityKeepWalking   ;0683CE|2048EE  |06EE48;
+                       LDA.W r6_entity_Y_Pos,X              ;0683D1|BD5403  |060354;
                        ADC.B #$08                           ;0683D4|6908    |      ;
-                       STA.B various_data01                 ;0683D6|854D    |00004D;
+                       STA.B r_temp_data01                  ;0683D6|854D    |00004D;
                        LDA.B #$00                           ;0683D8|A900    |      ;
-                       STA.B various_data00                 ;0683DA|854C    |00004C;
-                       JSR.W FIXME_EC21                     ;0683DC|2021EC  |06EC21;
+                       STA.B r_temp_data00                  ;0683DA|854C    |00004C;
+                       JSR.W FIXME_EC21_findGround_to14     ;0683DC|2021EC  |06EC21;
                        LDA.B $14                            ;0683DF|A514    |000014;
                        BNE CODE_0683A2                      ;0683E1|D0BF    |0683A2;
                        JMP.W CODE_068397                    ;0683E3|4C9783  |068397;
@@ -631,80 +631,80 @@ enemyAI_09_medusaSnake:
           CODE_0683E6:
                        LDY.B #$03                           ;0683E6|A003    |      ;
                        LDA.B #$01                           ;0683E8|A901    |      ;
-                       JMP.W FIXME_ed34                     ;0683EA|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0683EA|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0683ED:
-                       DEC.W RAM_5_entity_counter,X         ;0683ED|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0683ED|DE4C05  |06054C;
                        BEQ CODE_0683BB                      ;0683F0|F0C9    |0683BB;
                        RTS                                  ;0683F2|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
 enemyAI_07_hangingBat:
-                       LDA.W RAM_5_entity_State,X           ;0683F3|BD6C04  |06046C;
+                       LDA.W r6_entity_State,X              ;0683F3|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;0683F6|206DCA  |06CA6D;
                        dw hangingBat_state00                ;0683F9|        |0683FF;
                        dw hangingBat_state01                ;0683FB|        |068437;
                        dw CODE_068453                       ;0683FD|        |068453;
                                                             ;      |        |      ;
    hangingBat_state00:
-                       LDA.W RAM_5_entity_Y_Pos             ;0683FF|AD5403  |060354;
-                       SBC.W RAM_5_entity_Y_Pos,X           ;068402|FD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;0683FF|AD5403  |060354;
+                       SBC.W r6_entity_Y_Pos,X              ;068402|FD5403  |060354;
                        CMP.B #$38                           ;068405|C938    |      ;
                        BCC CODE_06840C                      ;068407|9003    |06840C;
-                       JMP.W FIXME_ee94                     ;068409|4C94EE  |06EE94;
+                       JMP.W FIXME_ee94_entityLoadStuff     ;068409|4C94EE  |06EE94;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06840C:
-                       JSR.W FIXME_ef84                     ;06840C|2084EF  |06EF84;
+                       JSR.W FIXME_ef84_findPlayer          ;06840C|2084EF  |06EF84;
                        CMP.B #$60                           ;06840F|C960    |      ;
                        BCC CODE_068416                      ;068411|9003    |068416;
-                       JMP.W FIXME_ee94                     ;068413|4C94EE  |06EE94;
+                       JMP.W FIXME_ee94_entityLoadStuff     ;068413|4C94EE  |06EE94;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068416:
                        LDA.B #$01                           ;068416|A901    |      ;
-                       STA.W RAM_5_entity_State,X           ;068418|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068418|9D6C04  |06046C;
                        TYA                                  ;06841B|98      |      ;
-                       STA.W RAM_5_entity_SpriteMirrored,X  ;06841C|9D5004  |060450;
+                       STA.W r6_entity_spriteMirror,X       ;06841C|9D5004  |060450;
                        LDA.B #$01                           ;06841F|A901    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,X ;068421|9DFC03  |0603FC;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;068424|9DC403  |0603C4;
+                       STA.W r6_entity_X_Speed,X            ;068421|9DFC03  |0603FC;
+                       STA.W r6_entity_Y_speed,X            ;068424|9DC403  |0603C4;
                        LDA.B #$80                           ;068427|A980    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,X;068429|9D1804  |060418;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;06842C|9DE003  |0603E0;
+                       STA.W r6_entity_X_SpeedSub,X         ;068429|9D1804  |060418;
+                       STA.W r6_entity_Y_speedSub,X         ;06842C|9DE003  |0603E0;
                        LDA.B #$3B                           ;06842F|A93B    |      ;
-                       JSR.W FIXME_ef04                     ;068431|2004EF  |06EF04;
-                       JMP.W FIXME_ee94                     ;068434|4C94EE  |06EE94;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;068431|2004EF  |06EF04;
+                       JMP.W FIXME_ee94_entityLoadStuff     ;068434|4C94EE  |06EE94;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
    hangingBat_state01:
-                       LDA.W RAM_5_entity_Vertical_SpeedSub,X;068437|BDE003  |0603E0;
+                       LDA.W r6_entity_Y_speedSub,X         ;068437|BDE003  |0603E0;
                        SBC.B #$08                           ;06843A|E908    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;06843C|9DE003  |0603E0;
-                       LDA.W RAM_5_entity_Vertical_Speed,X  ;06843F|BDC403  |0603C4;
+                       STA.W r6_entity_Y_speedSub,X         ;06843C|9DE003  |0603E0;
+                       LDA.W r6_entity_Y_speed,X            ;06843F|BDC403  |0603C4;
                        SBC.B #$00                           ;068442|E900    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;068444|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;068444|9DC403  |0603C4;
                        BPL CODE_068450                      ;068447|1007    |068450;
                        LDA.B #$02                           ;068449|A902    |      ;
-                       STA.W RAM_5_entity_State,X           ;06844B|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;06844B|9D6C04  |06046C;
                        BNE CODE_068453                      ;06844E|D003    |068453;
                                                             ;      |        |      ;
           CODE_068450:
-                       JSR.W FIXME_ef43                     ;068450|2043EF  |06EF43;
+                       JSR.W FIXME_ef43_updateYposSpeed_plus;068450|2043EF  |06EF43;
                                                             ;      |        |      ;
           CODE_068453:
-                       JMP.W FIXME_ee48                     ;068453|4C48EE  |06EE48;
+                       JMP.W FIXME_ee48_entityKeepWalking   ;068453|4C48EE  |06EE48;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
     enemyAI_08_knight:
-                       JSR.W FIXME_eea7                     ;068456|20A7EE  |06EEA7;
-                       LDY.W RAM_5_entity_State,X           ;068459|BC6C04  |06046C;
+                       JSR.W FIXME_eea7_endRoutineWhileTimer;068456|20A7EE  |06EEA7;
+                       LDY.W r6_entity_State,X              ;068459|BC6C04  |06046C;
                        BEQ CODE_06849A                      ;06845C|F03C    |06849A;
                        DEY                                  ;06845E|88      |      ;
                        BEQ CODE_06847A                      ;06845F|F019    |06847A;
-                       JSR.W FIXME_ec50                     ;068461|2050EC  |06EC50;
-                       JSR.W FIXME_ef9c                     ;068464|209CEF  |06EF9C;
+                       JSR.W FIXME_ec50_gravity_00          ;068461|2050EC  |06EC50;
+                       JSR.W FIXME_ef9c_findGround_10       ;068464|209CEF  |06EF9C;
                        LDA.B $14                            ;068467|A514    |000014;
                        BNE CODE_06846C                      ;068469|D001    |06846C;
                        RTS                                  ;06846B|60      |      ;
@@ -712,16 +712,16 @@ enemyAI_07_hangingBat:
                                                             ;      |        |      ;
           CODE_06846C:
                        LDA.B #$00                           ;06846C|A900    |      ;
-                       STA.W RAM_5_entity_State,X           ;06846E|9D6C04  |06046C;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;068471|BD5403  |060354;
+                       STA.W r6_entity_State,X              ;06846E|9D6C04  |06046C;
+                       LDA.W r6_entity_Y_Pos,X              ;068471|BD5403  |060354;
                        AND.B #$F0                           ;068474|29F0    |      ;
-                       STA.W RAM_5_entity_Y_Pos,X           ;068476|9D5403  |060354;
+                       STA.W r6_entity_Y_Pos,X              ;068476|9D5403  |060354;
                        RTS                                  ;068479|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06847A:
-                       LDA.W RAM_5_entity_Y_Pos             ;06847A|AD5403  |060354;
-                       SBC.W RAM_5_entity_Y_Pos,X           ;06847D|FD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;06847A|AD5403  |060354;
+                       SBC.W r6_entity_Y_Pos,X              ;06847D|FD5403  |060354;
                        BCS CODE_068484                      ;068480|B002    |068484;
                        EOR.B #$FF                           ;068482|49FF    |      ;
                                                             ;      |        |      ;
@@ -730,11 +730,11 @@ enemyAI_07_hangingBat:
                        BCC CODE_06848F                      ;068486|9007    |06848F;
                        LDY.B #$00                           ;068488|A000    |      ;
                        LDA.B #$C0                           ;06848A|A9C0    |      ;
-                       JMP.W FIXME_ed34                     ;06848C|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06848C|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06848F:
-                       DEC.W RAM_5_entity_counter,X         ;06848F|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;06848F|DE4C05  |06054C;
                        BNE CODE_068497                      ;068492|D003    |068497;
                        JSR.W CODE_0684F5                    ;068494|20F584  |0684F5;
                                                             ;      |        |      ;
@@ -743,41 +743,41 @@ enemyAI_07_hangingBat:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06849A:
-                       LDA.W RAM_5_entity_Y_Pos             ;06849A|AD5403  |060354;
-                       SBC.W RAM_5_entity_Y_Pos,X           ;06849D|FD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;06849A|AD5403  |060354;
+                       SBC.W r6_entity_Y_Pos,X              ;06849D|FD5403  |060354;
                        BCS CODE_0684A4                      ;0684A0|B002    |0684A4;
                        EOR.B #$FF                           ;0684A2|49FF    |      ;
                                                             ;      |        |      ;
           CODE_0684A4:
                        CMP.B #$04                           ;0684A4|C904    |      ;
                        BCC CODE_0684F5                      ;0684A6|904D    |0684F5;
-                       DEC.W RAM_5_entity_counter,X         ;0684A8|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0684A8|DE4C05  |06054C;
                        BNE CODE_0684B5                      ;0684AB|D008    |0684B5;
-                       JSR.W FIXME_eaa9                     ;0684AD|20A9EA  |06EAA9;
+                       JSR.W FIXME_eaa9_switchSpritMirroring;0684AD|20A9EA  |06EAA9;
                        LDA.B #$C0                           ;0684B0|A9C0    |      ;
-                       STA.W RAM_5_entity_counter,X         ;0684B2|9D4C05  |06054C;
+                       STA.W r6_entity_counter,X            ;0684B2|9D4C05  |06054C;
                                                             ;      |        |      ;
           CODE_0684B5:
-                       JSR.W FIXME_ee75                     ;0684B5|2075EE  |06EE75;
-                       LDA.W RAM_5_entity_Attributes,X      ;0684B8|BD0003  |060300;
+                       JSR.W FIXME_ee75_setEntityAtr00      ;0684B5|2075EE  |06EE75;
+                       LDA.W r6_entity_spAtr,X              ;0684B8|BD0003  |060300;
                        BNE CODE_0684CC                      ;0684BB|D00F    |0684CC;
-                       JSR.W FIXME_ef9c                     ;0684BD|209CEF  |06EF9C;
+                       JSR.W FIXME_ef9c_findGround_10       ;0684BD|209CEF  |06EF9C;
                        LDA.B $14                            ;0684C0|A514    |000014;
                        BNE CODE_0684CC                      ;0684C2|D008    |0684CC;
                        LDA.B #$02                           ;0684C4|A902    |      ;
-                       STA.W RAM_5_entity_State,X           ;0684C6|9D6C04  |06046C;
-                       JMP.W FIXME_F1d2                     ;0684C9|4CD2F1  |06F1D2;
+                       STA.W r6_entity_State,X              ;0684C6|9D6C04  |06046C;
+                       JMP.W FIXME_F1d2_resetFallSpeed      ;0684C9|4CD2F1  |06F1D2;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0684CC:
                        LDA.B #$10                           ;0684CC|A910    |      ;
-                       STA.B various_data00                 ;0684CE|854C    |00004C;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0684D0|BD5403  |060354;
-                       STA.B various_data01                 ;0684D3|854D    |00004D;
-                       JSR.W FIXME_EC21                     ;0684D5|2021EC  |06EC21;
+                       STA.B r_temp_data00                  ;0684CE|854C    |00004C;
+                       LDA.W r6_entity_Y_Pos,X              ;0684D0|BD5403  |060354;
+                       STA.B r_temp_data01                  ;0684D3|854D    |00004D;
+                       JSR.W FIXME_EC21_findGround_to14     ;0684D5|2021EC  |06EC21;
                        LDA.B $14                            ;0684D8|A514    |000014;
                        BEQ CODE_0684E0                      ;0684DA|F004    |0684E0;
-                       JSR.W FIXME_eaa9                     ;0684DC|20A9EA  |06EAA9;
+                       JSR.W FIXME_eaa9_switchSpritMirroring;0684DC|20A9EA  |06EAA9;
                                                             ;      |        |      ;
           CODE_0684DF:
                        RTS                                  ;0684DF|60      |      ;
@@ -785,26 +785,26 @@ enemyAI_07_hangingBat:
                                                             ;      |        |      ;
           CODE_0684E0:
                        LDA.B #$04                           ;0684E0|A904    |      ;
-                       STA.B various_data00                 ;0684E2|854C    |00004C;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0684E4|BD5403  |060354;
+                       STA.B r_temp_data00                  ;0684E2|854C    |00004C;
+                       LDA.W r6_entity_Y_Pos,X              ;0684E4|BD5403  |060354;
                        ADC.B #$14                           ;0684E7|6914    |      ;
-                       STA.B various_data01                 ;0684E9|854D    |00004D;
-                       JSR.W FIXME_EC21                     ;0684EB|2021EC  |06EC21;
+                       STA.B r_temp_data01                  ;0684E9|854D    |00004D;
+                       JSR.W FIXME_EC21_findGround_to14     ;0684EB|2021EC  |06EC21;
                        LDA.B $14                            ;0684EE|A514    |000014;
                        BNE CODE_0684DF                      ;0684F0|D0ED    |0684DF;
-                       JMP.W FIXME_eaa9                     ;0684F2|4CA9EA  |06EAA9;
+                       JMP.W FIXME_eaa9_switchSpritMirroring;0684F2|4CA9EA  |06EAA9;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0684F5:
-                       JSR.W FIXME_ef7c                     ;0684F5|207CEF  |06EF7C;
+                       JSR.W FIXME_ef7c_facePlayer          ;0684F5|207CEF  |06EF7C;
                        LDY.B #$01                           ;0684F8|A001    |      ;
                        LDA.B #$C0                           ;0684FA|A9C0    |      ;
-                       JMP.W FIXME_ed34                     ;0684FC|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0684FC|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
      blueSkellyStates:
-                       JSR.W FIXME_ef69                     ;0684FF|2069EF  |06EF69;
-                       LDA.W RAM_5_entity_State,X           ;068502|BD6C04  |06046C;
+                       JSR.W FIXME_ef69_aOtherScreenR02     ;0684FF|2069EF  |06EF69;
+                       LDA.W r6_entity_State,X              ;068502|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;068505|206DCA  |06CA6D;
                        dw CODE_068538                       ;068508|        |068538;
                        dw CODE_068555                       ;06850A|        |068555;
@@ -816,16 +816,16 @@ enemyAI_07_hangingBat:
                        dw CODE_0685D6                       ;068514|        |0685D6;
                                                             ;      |        |      ;
           CODE_068516:
-                       LDA.W RAM_5_entity_Attributes,X      ;068516|BD0003  |060300;
+                       LDA.W r6_entity_spAtr,X              ;068516|BD0003  |060300;
                        AND.B #$01                           ;068519|2901    |      ;
                        BEQ CODE_068523                      ;06851B|F006    |068523;
-                       LDA.W RAM_5_entity_SpriteMirrored,X  ;06851D|BD5004  |060450;
+                       LDA.W r6_entity_spriteMirror,X       ;06851D|BD5004  |060450;
                        JMP.W CODE_068534                    ;068520|4C3485  |068534;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068523:
-                       JSR.W FIXME_ef84                     ;068523|2084EF  |06EF84;
-                       LDY.W RAM_5_entity_SpriteMirrored,X  ;068526|BC5004  |060450;
+                       JSR.W FIXME_ef84_findPlayer          ;068523|2084EF  |06EF84;
+                       LDY.W r6_entity_spriteMirror,X       ;068526|BC5004  |060450;
                        CMP.B #$48                           ;068529|C948    |      ;
                        BCC CODE_068531                      ;06852B|9004    |068531;
                        TYA                                  ;06852D|98      |      ;
@@ -837,142 +837,142 @@ enemyAI_07_hangingBat:
                        EOR.B #$01                           ;068532|4901    |      ;
                                                             ;      |        |      ;
           CODE_068534:
-                       STA.W RAM_5_verticalVectorAddressHiher,X;068534|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;068534|9DF804  |0604F8;
                        RTS                                  ;068537|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068538:
-                       LDA.B randomValue                    ;068538|A56F    |00006F;
+                       LDA.B r_randomValue                  ;068538|A56F    |00006F;
                        AND.B #$03                           ;06853A|2903    |      ;
                        TAY                                  ;06853C|A8      |      ;
                        LDA.W DATA8_068551,Y                 ;06853D|B95185  |068551;
-                       STA.W RAM_5_verticalVectorAddressLo,X;068540|9DDC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,X        ;068540|9DDC04  |0604DC;
                        LDY.B #$80                           ;068543|A080    |      ;
                        LDA.B #$01                           ;068545|A901    |      ;
-                       JSR.W FIXME_ec72                     ;068547|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068547|2072EC  |06EC72;
                        LDY.B #$01                           ;06854A|A001    |      ;
                        LDA.B #$04                           ;06854C|A904    |      ;
-                       JMP.W FIXME_ed34                     ;06854E|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06854E|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          DATA8_068551:
                        db $04,$02,$03,$01                   ;068551|        |      ;
                                                             ;      |        |      ;
           CODE_068555:
-                       DEC.W RAM_5_entity_counter,X         ;068555|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068555|DE4C05  |06054C;
                        BEQ CODE_06855B                      ;068558|F001    |06855B;
                        RTS                                  ;06855A|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06855B:
-                       DEC.W RAM_5_verticalVectorAddressLo,X;06855B|DEDC04  |0604DC;
+                       DEC.W r6_X_screen_AddressLo,X        ;06855B|DEDC04  |0604DC;
                        BEQ CODE_06856A                      ;06855E|F00A    |06856A;
                        JSR.W CODE_068516                    ;068560|201685  |068516;
                        LDY.B #$02                           ;068563|A002    |      ;
                        LDA.B #$10                           ;068565|A910    |      ;
-                       JMP.W FIXME_ed34                     ;068567|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068567|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06856A:
                        LDY.B #$03                           ;06856A|A003    |      ;
                        LDA.B #$04                           ;06856C|A904    |      ;
-                       JMP.W FIXME_ed34                     ;06856E|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06856E|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068571:
-                       DEC.W RAM_5_entity_counter,X         ;068571|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068571|DE4C05  |06054C;
                        BEQ CODE_0685B0                      ;068574|F03A    |0685B0;
-                       JSR.W FIXME_ee6f                     ;068576|206FEE  |06EE6F;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;068579|BD5403  |060354;
-                       STA.B various_data01                 ;06857C|854D    |00004D;
+                       JSR.W FIXME_ee6f_setEntityAtr01      ;068576|206FEE  |06EE6F;
+                       LDA.W r6_entity_Y_Pos,X              ;068579|BD5403  |060354;
+                       STA.B r_temp_data01                  ;06857C|854D    |00004D;
                        LDA.B #$0C                           ;06857E|A90C    |      ;
-                       STA.B various_data00                 ;068580|854C    |00004C;
-                       JSR.W FIXME_ec1a                     ;068582|201AEC  |06EC1A;
+                       STA.B r_temp_data00                  ;068580|854C    |00004C;
+                       JSR.W FIXME_ec1a_findScreenAndGround ;068582|201AEC  |06EC1A;
                        LDA.B $14                            ;068585|A514    |000014;
                        BEQ CODE_068592                      ;068587|F009    |068592;
-                       LDA.W RAM_5_verticalVectorAddressHiher,X;068589|BDF804  |0604F8;
+                       LDA.W r6_X_screen_AddressHiher,X     ;068589|BDF804  |0604F8;
                        EOR.B #$01                           ;06858C|4901    |      ;
-                       STA.W RAM_5_verticalVectorAddressHiher,X;06858E|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;06858E|9DF804  |0604F8;
                                                             ;      |        |      ;
           CODE_068591:
                        RTS                                  ;068591|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068592:
-                       JSR.W FIXME_ef9c                     ;068592|209CEF  |06EF9C;
+                       JSR.W FIXME_ef9c_findGround_10       ;068592|209CEF  |06EF9C;
                        LDA.B $14                            ;068595|A514    |000014;
                        BNE CODE_068591                      ;068597|D0F8    |068591;
                        LDY.B #$40                           ;068599|A040    |      ;
                        LDA.B #$01                           ;06859B|A901    |      ;
-                       JSR.W FIXME_ec72                     ;06859D|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;06859D|2072EC  |06EC72;
                        LDA.B #$02                           ;0685A0|A902    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;0685A2|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;0685A2|9DC403  |0603C4;
                        LDA.B #$80                           ;0685A5|A980    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;0685A7|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;0685A7|9DE003  |0603E0;
                        LDA.B #$05                           ;0685AA|A905    |      ;
-                       STA.W RAM_5_entity_State,X           ;0685AC|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;0685AC|9D6C04  |06046C;
                        RTS                                  ;0685AF|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0685B0:
                        LDY.B #$01                           ;0685B0|A001    |      ;
                        LDA.B #$04                           ;0685B2|A904    |      ;
-                       JMP.W FIXME_ed34                     ;0685B4|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0685B4|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0685B7:
-                       DEC.W RAM_5_entity_counter,X         ;0685B7|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0685B7|DE4C05  |06054C;
                        BEQ CODE_0685BD                      ;0685BA|F001    |0685BD;
                        RTS                                  ;0685BC|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0685BD:
-                       LDA.W RAM_5_entity_Attributes,X      ;0685BD|BD0003  |060300;
+                       LDA.W r6_entity_spAtr,X              ;0685BD|BD0003  |060300;
                        BNE CODE_0685C5                      ;0685C0|D003    |0685C5;
-                       JSR.W FIXME_ed5c                     ;0685C2|205CED  |06ED5C;
+                       JSR.W FIXME_ed5c_levelRelatedRoutines;0685C2|205CED  |06ED5C;
                                                             ;      |        |      ;
           CODE_0685C5:
                        LDA.B #$08                           ;0685C5|A908    |      ;
-                       STA.W RAM_5_entity_counter,X         ;0685C7|9D4C05  |06054C;
+                       STA.W r6_entity_counter,X            ;0685C7|9D4C05  |06054C;
                        LDA.B #$04                           ;0685CA|A904    |      ;
-                       STA.W RAM_5_entity_State,X           ;0685CC|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;0685CC|9D6C04  |06046C;
                        RTS                                  ;0685CF|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0685D0:
-                       DEC.W RAM_5_entity_counter,X         ;0685D0|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0685D0|DE4C05  |06054C;
                        BEQ CODE_0685D6                      ;0685D3|F001    |0685D6;
                        RTS                                  ;0685D5|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0685D6:
                        LDA.B #$00                           ;0685D6|A900    |      ;
-                       STA.W RAM_5_entity_State,X           ;0685D8|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;0685D8|9D6C04  |06046C;
                        RTS                                  ;0685DB|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0685DC:
-                       JSR.W FIXME_ee6f                     ;0685DC|206FEE  |06EE6F;
-                       JSR.W FIXME_ec50                     ;0685DF|2050EC  |06EC50;
-                       JSR.W FIXME_ef9c                     ;0685E2|209CEF  |06EF9C;
+                       JSR.W FIXME_ee6f_setEntityAtr01      ;0685DC|206FEE  |06EE6F;
+                       JSR.W FIXME_ec50_gravity_00          ;0685DF|2050EC  |06EC50;
+                       JSR.W FIXME_ef9c_findGround_10       ;0685E2|209CEF  |06EF9C;
                        LDA.B $14                            ;0685E5|A514    |000014;
                        BEQ CODE_0685F6                      ;0685E7|F00D    |0685F6;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0685E9|BD5403  |060354;
+                       LDA.W r6_entity_Y_Pos,X              ;0685E9|BD5403  |060354;
                        AND.B #$F0                           ;0685EC|29F0    |      ;
-                       STA.W RAM_5_entity_Y_Pos,X           ;0685EE|9D5403  |060354;
+                       STA.W r6_entity_Y_Pos,X              ;0685EE|9D5403  |060354;
                        LDA.B #$06                           ;0685F1|A906    |      ;
-                       STA.W RAM_5_entity_State,X           ;0685F3|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;0685F3|9D6C04  |06046C;
                                                             ;      |        |      ;
           CODE_0685F6:
                        RTS                                  ;0685F6|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0685F7:
-                       STX.B various_data02                 ;0685F7|864E    |00004E;
+                       STX.B r_temp_data02                  ;0685F7|864E    |00004E;
                        LDY.B #$0D                           ;0685F9|A00D    |      ;
                                                             ;      |        |      ;
           CODE_0685FB:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;0685FB|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;0685FB|B93404  |060434;
                        BEQ CODE_068606                      ;0685FE|F006    |068606;
                        DEY                                  ;068600|88      |      ;
                        CPY.B #$09                           ;068601|C009    |      ;
@@ -984,102 +984,102 @@ enemyAI_07_hangingBat:
                        LDA.B #$22                           ;068606|A922    |      ;
                        STA.B $16                            ;068608|8516    |000016;
                        LDA.B #$03                           ;06860A|A903    |      ;
-                       JSR.W FIXME_ed82                     ;06860C|2082ED  |06ED82;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;06860C|2082ED  |06ED82;
                        LDX.B #$08                           ;06860F|A208    |      ;
-                       LDA.B frame_Counter                  ;068611|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;068611|A51A    |00001A;
                        AND.B #$01                           ;068613|2901    |      ;
                        BEQ CODE_068619                      ;068615|F002    |068619;
                        LDX.B #$F8                           ;068617|A2F8    |      ;
                                                             ;      |        |      ;
           CODE_068619:
                        TXA                                  ;068619|8A      |      ;
-                       ADC.W RAM_5_entity_Y_Pos,Y           ;06861A|795403  |060354;
-                       STA.W RAM_5_entity_Y_Pos,Y           ;06861D|995403  |060354;
-                       STA.W RAM_5_verticalVectorAddressLo,Y;068620|99DC04  |0604DC;
+                       ADC.W r6_entity_Y_Pos,Y              ;06861A|795403  |060354;
+                       STA.W r6_entity_Y_Pos,Y              ;06861D|995403  |060354;
+                       STA.W r6_X_screen_AddressLo,Y        ;068620|99DC04  |0604DC;
                        LDA.B #$01                           ;068623|A901    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;068625|99FC03  |0603FC;
-                       STA.W RAM_5_entity_Vertical_Speed,Y  ;068628|99C403  |0603C4;
+                       STA.W r6_entity_X_Speed,Y            ;068625|99FC03  |0603FC;
+                       STA.W r6_entity_Y_speed,Y            ;068628|99C403  |0603C4;
                        LDA.B #$80                           ;06862B|A980    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;06862D|991804  |060418;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,Y;068630|99E003  |0603E0;
+                       STA.W r6_entity_X_SpeedSub,Y         ;06862D|991804  |060418;
+                       STA.W r6_entity_Y_speedSub,Y         ;068630|99E003  |0603E0;
                        LDA.B #$00                           ;068633|A900    |      ;
-                       STA.W RAM_5_verticalVectorAddressHiher,Y;068635|99F804  |0604F8;
-                       JSR.W FIXME_fd04                     ;068638|2004FD  |06FD04;
-                       LDX.B various_data02                 ;06863B|A64E    |00004E;
+                       STA.W r6_X_screen_AddressHiher,Y     ;068635|99F804  |0604F8;
+                       JSR.W FIXME_fd04_boDe_play_13_andBank5;068638|2004FD  |06FD04;
+                       LDX.B r_temp_data02                  ;06863B|A64E    |00004E;
                        RTS                                  ;06863D|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
   enemyAI_27_enemyAxe:
-                       JSR.W FIXME_ef13                     ;06863E|2013EF  |06EF13;
-                       JMP.W FIXME_ee48                     ;068641|4C48EE  |06EE48;
+                       JSR.W FIXME_ef13_aOtherScreenR01     ;06863E|2013EF  |06EF13;
+                       JMP.W FIXME_ee48_entityKeepWalking   ;068641|4C48EE  |06EE48;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-enemyAI_1a_bossMedusa:
-                       JSR.W FIXME_eea7                     ;068644|20A7EE  |06EEA7;
-                       LDA.W RAM_5_entity_State,X           ;068647|BD6C04  |06046C;
+     enemyAI_1b_mummy:
+                       JSR.W FIXME_eea7_endRoutineWhileTimer;068644|20A7EE  |06EEA7;
+                       LDA.W r6_entity_State,X              ;068647|BD6C04  |06046C;
                        AND.B #$7F                           ;06864A|297F    |      ;
                        JSR.W FIXME_ca6d_jump4stack          ;06864C|206DCA  |06CA6D;
-                       dw bossMedusa_state00                ;06864F|        |06868A;
-                       dw CODE_0686A8                       ;068651|        |0686A8;
-                       dw CODE_0686D2                       ;068653|        |0686D2;
-                       dw CODE_068701                       ;068655|        |068701;
-                       dw CODE_068723                       ;068657|        |068723;
-                       dw CODE_06867A                       ;068659|        |06867A;
+                       dw bossMummy_state00                 ;06864F|        |06868A;
+                       dw bossMummy_state01                 ;068651|        |0686A8;
+                       dw bossMummy_state02                 ;068653|        |0686D2;
+                       dw bossMummy_state03                 ;068655|        |068701;
+                       dw bossMummy_state04                 ;068657|        |068723;
+                       dw bossMummy_state05                 ;068659|        |06867A;
                                                             ;      |        |      ;
-          CODE_06865B:
-                       LDA.B frame_Counter                  ;06865B|A51A    |000027;
+     mummyTurnArounds:
+                       LDA.B r_frame_Counter                ;06865B|A51A    |000027;
                        AND.B #$1F                           ;06865D|291F    |      ;
                        BNE CODE_068679                      ;06865F|D018    |068679;
-                       JSR.W FIXME_ef7c                     ;068661|207CEF  |06EF7C;
+                       JSR.W FIXME_ef7c_facePlayer          ;068661|207CEF  |06EF7C;
                        LDY.B #$00                           ;068664|A000    |      ;
-                       LDA.W RAM_5_entity_SpriteMirrored,X  ;068666|BD5004  |060450;
-                       CMP.W RAM_5_entity_SpriteMirrored    ;068669|CD5004  |060450;
+                       LDA.W r6_entity_spriteMirror,X       ;068666|BD5004  |060450;
+                       CMP.W r6_entity_spriteMirror         ;068669|CD5004  |060450;
                        BEQ CODE_068679                      ;06866C|F00B    |068679;
-                       JSR.W FIXME_ef84                     ;06866E|2084EF  |06EF84;
+                       JSR.W FIXME_ef84_findPlayer          ;06866E|2084EF  |06EF84;
                        CMP.B #$38                           ;068671|C938    |      ;
                        BCS CODE_068679                      ;068673|B004    |068679;
                        INY                                  ;068675|C8      |      ;
-                       JSR.W FIXME_eaa9                     ;068676|20A9EA  |06EAA9;
+                       JSR.W FIXME_eaa9_switchSpritMirroring;068676|20A9EA  |06EAA9;
                                                             ;      |        |      ;
           CODE_068679:
                        RTS                                  ;068679|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_06867A:
-                       JSR.W CODE_06865B                    ;06867A|205B86  |06865B;
+    bossMummy_state05:
+                       JSR.W mummyTurnArounds               ;06867A|205B86  |06865B;
                        CPY.B #$00                           ;06867D|C000    |      ;
                        BNE CODE_068687                      ;06867F|D006    |068687;
                        LDA.B #$02                           ;068681|A902    |      ;
-                       STA.W RAM_5_entity_State,X           ;068683|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068683|9D6C04  |06046C;
                        RTS                                  ;068686|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068687:
-                       JMP.W FIXME_ef7c                     ;068687|4C7CEF  |06EF7C;
+                       JMP.W FIXME_ef7c_facePlayer          ;068687|4C7CEF  |06EF7C;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-   bossMedusa_state00:
-                       LDA.B bossScreen_Flag                ;06868A|A548    |000048;
+    bossMummy_state00:
+                       LDA.B r_bossScreen_Flag              ;06868A|A548    |000048;
                        BNE CODE_06868F                      ;06868C|D001    |06868F;
                        RTS                                  ;06868E|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06868F:
                        TXA                                  ;06868F|8A      |      ;
-                       ADC.B frame_Counter                  ;068690|651A    |00001A;
+                       ADC.B r_frame_Counter                ;068690|651A    |00001A;
                        AND.B #$03                           ;068692|2903    |      ;
-                       STA.W RAM_5_verticalVectorAddressLo,X;068694|9DDC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,X        ;068694|9DDC04  |0604DC;
                        LDA.B #$20                           ;068697|A920    |      ;
-                       STA.W RAM_5_joyPad_1_Input_HeldCopy,X;068699|9D8405  |060584;
+                       STA.W r6_input_HeldCopy,X            ;068699|9D8405  |060584;
                        LDA.B #$00                           ;06869C|A900    |      ;
-                       STA.W RAM_5_entity_StateBackup,X     ;06869E|9D3005  |060530;
+                       STA.W r6_entity_stateBackup,X        ;06869E|9D3005  |060530;
                        LDY.B #$81                           ;0686A1|A081    |      ;
                        LDA.B #$78                           ;0686A3|A978    |      ;
-                       JMP.W FIXME_ed34                     ;0686A5|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0686A5|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0686A8:
-                       DEC.W RAM_5_entity_counter,X         ;0686A8|DE4C05  |06054C;
+    bossMummy_state01:
+                       DEC.W r6_entity_counter,X            ;0686A8|DE4C05  |06054C;
                        BEQ CODE_0686AE                      ;0686AB|F001    |0686AE;
                        RTS                                  ;0686AD|60      |      ;
                                                             ;      |        |      ;
@@ -1087,31 +1087,31 @@ enemyAI_1a_bossMedusa:
           CODE_0686AE:
                        LDY.B #$C0                           ;0686AE|A0C0    |      ;
                        LDA.B #$00                           ;0686B0|A900    |      ;
-                       JSR.W FIXME_ec72                     ;0686B2|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;0686B2|2072EC  |06EC72;
                                                             ;      |        |      ;
           CODE_0686B5:
-                       JSR.W FIXME_ef7c                     ;0686B5|207CEF  |06EF7C;
+                       JSR.W FIXME_ef7c_facePlayer          ;0686B5|207CEF  |06EF7C;
                        LDA.B #$1B                           ;0686B8|A91B    |      ;
-                       JSR.W FIXME_ef04                     ;0686BA|2004EF  |06EF04;
-                       INC.W RAM_5_verticalVectorAddressLo,X;0686BD|FEDC04  |0604DC;
-                       LDA.W RAM_5_verticalVectorAddressLo,X;0686C0|BDDC04  |0604DC;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;0686BA|2004EF  |06EF04;
+                       INC.W r6_X_screen_AddressLo,X        ;0686BD|FEDC04  |0604DC;
+                       LDA.W r6_X_screen_AddressLo,X        ;0686C0|BDDC04  |0604DC;
                        AND.B #$03                           ;0686C3|2903    |      ;
                        TAY                                  ;0686C5|A8      |      ;
-                       LDA.W DATA8_0686CE,Y                 ;0686C6|B9CE86  |0686CE;
+                       LDA.W bossMummyTimer,Y               ;0686C6|B9CE86  |0686CE;
                        LDY.B #$02                           ;0686C9|A002    |      ;
-                       JMP.W FIXME_ed34                     ;0686CB|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0686CB|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-         DATA8_0686CE:
+       bossMummyTimer:
                        db $7B,$41,$B4,$20                   ;0686CE|        |      ;
                                                             ;      |        |      ;
-          CODE_0686D2:
-                       DEC.W RAM_5_entity_counter,X         ;0686D2|DE4C05  |06054C;
+    bossMummy_state02:
+                       DEC.W r6_entity_counter,X            ;0686D2|DE4C05  |06054C;
                        BEQ CODE_0686F7                      ;0686D5|F020    |0686F7;
-                       JSR.W CODE_06865B                    ;0686D7|205B86  |06865B;
-                       JSR.W FIXME_ee48                     ;0686DA|2048EE  |06EE48;
-                       LDA.W RAM_5_entity_X_Pos,X           ;0686DD|BD8C03  |06038C;
-                       LDY.W RAM_5_entity_SpriteMirrored,X  ;0686E0|BC5004  |060450;
+                       JSR.W mummyTurnArounds               ;0686D7|205B86  |06865B;
+                       JSR.W FIXME_ee48_entityKeepWalking   ;0686DA|2048EE  |06EE48;
+                       LDA.W r6_entity_X_Pos,X              ;0686DD|BD8C03  |06038C;
+                       LDY.W r6_entity_spriteMirror,X       ;0686E0|BC5004  |060450;
                        BEQ CODE_0686ED                      ;0686E3|F008    |0686ED;
                        CMP.B #$09                           ;0686E5|C909    |      ;
                        BCS CODE_0686F6                      ;0686E7|B00D    |0686F6;
@@ -1124,31 +1124,31 @@ enemyAI_1a_bossMedusa:
                        LDA.B #$F8                           ;0686F1|A9F8    |      ;
                                                             ;      |        |      ;
           CODE_0686F3:
-                       STA.W RAM_5_entity_X_Pos,X           ;0686F3|9D8C03  |06038C;
+                       STA.W r6_entity_X_Pos,X              ;0686F3|9D8C03  |06038C;
                                                             ;      |        |      ;
           CODE_0686F6:
                        RTS                                  ;0686F6|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0686F7:
-                       JSR.W FIXME_ef7c                     ;0686F7|207CEF  |06EF7C;
+                       JSR.W FIXME_ef7c_facePlayer          ;0686F7|207CEF  |06EF7C;
                        LDY.B #$03                           ;0686FA|A003    |      ;
                        LDA.B #$28                           ;0686FC|A928    |      ;
-                       JMP.W FIXME_ed34                     ;0686FE|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0686FE|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_068701:
+    bossMummy_state03:
                        LDY.B #$00                           ;068701|A000    |      ;
-                       DEC.W RAM_5_entity_counter,X         ;068703|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068703|DE4C05  |06054C;
                        BEQ CODE_068715                      ;068706|F00D    |068715;
-                       LDA.B frame_Counter                  ;068708|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;068708|A51A    |00001A;
                        AND.B #$02                           ;06870A|2902    |      ;
                        BEQ CODE_068710                      ;06870C|F002    |068710;
                        LDY.B #$43                           ;06870E|A043    |      ;
                                                             ;      |        |      ;
           CODE_068710:
                        TYA                                  ;068710|98      |      ;
-                       STA.W RAM_5_entity_PalletOffset,X    ;068711|9D3803  |060338;
+                       STA.W r6_entity_PalOff,X             ;068711|9D3803  |060338;
                        RTS                                  ;068714|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -1156,12 +1156,12 @@ enemyAI_1a_bossMedusa:
                        JSR.W CODE_0685F7                    ;068715|20F785  |0685F7;
                        LDA.B #$08                           ;068718|A908    |      ;
                        LDY.B #$04                           ;06871A|A004    |      ;
-                       JSR.W FIXME_ed34                     ;06871C|2034ED  |06ED34;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;06871C|2034ED  |06ED34;
                        LDY.B #$00                           ;06871F|A000    |      ;
                        BEQ CODE_068710                      ;068721|F0ED    |068710;
                                                             ;      |        |      ;
-          CODE_068723:
-                       DEC.W RAM_5_entity_counter,X         ;068723|DE4C05  |06054C;
+    bossMummy_state04:
+                       DEC.W r6_entity_counter,X            ;068723|DE4C05  |06054C;
                        BEQ CODE_068729                      ;068726|F001    |068729;
                        RTS                                  ;068728|60      |      ;
                                                             ;      |        |      ;
@@ -1169,11 +1169,11 @@ enemyAI_1a_bossMedusa:
           CODE_068729:
                        JMP.W CODE_0686B5                    ;068729|4CB586  |0686B5;
                                                             ;      |        |      ;
-                       STX.B various_data02                 ;06872C|864E    |00004E;
+                       STX.B r_temp_data02                  ;06872C|864E    |00004E;
                        LDY.B #$0D                           ;06872E|A00D    |      ;
                                                             ;      |        |      ;
           CODE_068730:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;068730|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;068730|B93404  |060434;
                        BEQ CODE_06873B                      ;068733|F006    |06873B;
                        DEY                                  ;068735|88      |      ;
                        CPY.B #$0B                           ;068736|C00B    |      ;
@@ -1185,20 +1185,20 @@ enemyAI_1a_bossMedusa:
                        LDA.B #$23                           ;06873B|A923    |      ;
                        STA.B $16                            ;06873D|8516    |000016;
                        LDA.B #$08                           ;06873F|A908    |      ;
-                       JSR.W FIXME_ed82                     ;068741|2082ED  |06ED82;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;068741|2082ED  |06ED82;
                        LDA.B #$02                           ;068744|A902    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;068746|99FC03  |0603FC;
+                       STA.W r6_entity_X_Speed,Y            ;068746|99FC03  |0603FC;
                        LDA.B #$00                           ;068749|A900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;06874B|991804  |060418;
+                       STA.W r6_entity_X_SpeedSub,Y         ;06874B|991804  |060418;
                        RTS                                  ;06874E|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06874F:
-                       STX.B various_data02                 ;06874F|864E    |00004E;
+                       STX.B r_temp_data02                  ;06874F|864E    |00004E;
                        LDY.B #$0D                           ;068751|A00D    |      ;
                                                             ;      |        |      ;
           CODE_068753:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;068753|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;068753|B93404  |060434;
                        BEQ CODE_06875E                      ;068756|F006    |06875E;
                        DEY                                  ;068758|88      |      ;
                        CPY.B #$04                           ;068759|C004    |      ;
@@ -1210,29 +1210,29 @@ enemyAI_1a_bossMedusa:
                        LDA.B #$24                           ;06875E|A924    |      ;
                        STA.B $16                            ;068760|8516    |000016;
                        LDA.B #$4F                           ;068762|A94F    |      ;
-                       JSR.W FIXME_ed82                     ;068764|2082ED  |06ED82;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;068764|2082ED  |06ED82;
                        LDA.B #$00                           ;068767|A900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;068769|99FC03  |0603FC;
+                       STA.W r6_entity_X_Speed,Y            ;068769|99FC03  |0603FC;
                        LDA.B #$C0                           ;06876C|A9C0    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;06876E|991804  |060418;
+                       STA.W r6_entity_X_SpeedSub,Y         ;06876E|991804  |060418;
                        LDX.B #$04                           ;068771|A204    |      ;
-                       LDA.B frame_Counter                  ;068773|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;068773|A51A    |00001A;
                        AND.B #$01                           ;068775|2901    |      ;
                        BEQ CODE_06877B                      ;068777|F002    |06877B;
                        LDX.B #$03                           ;068779|A203    |      ;
                                                             ;      |        |      ;
           CODE_06877B:
                        TXA                                  ;06877B|8A      |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,Y  ;06877C|99C403  |0603C4;
+                       STA.W r6_entity_Y_speed,Y            ;06877C|99C403  |0603C4;
                        LDA.B #$80                           ;06877F|A980    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,Y;068781|99E003  |0603E0;
-                       LDX.B various_data02                 ;068784|A64E    |00004E;
+                       STA.W r6_entity_Y_speedSub,Y         ;068781|99E003  |0603E0;
+                       LDX.B r_temp_data02                  ;068784|A64E    |00004E;
                        RTS                                  ;068786|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
      enemyAI_0f_Raven:
-                       JSR.W FIXME_ef7c                     ;068787|207CEF  |06EF7C;
-                       LDA.W RAM_5_entity_State,X           ;06878A|BD6C04  |06046C;
+                       JSR.W FIXME_ef7c_facePlayer          ;068787|207CEF  |06EF7C;
+                       LDA.W r6_entity_State,X              ;06878A|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;06878D|206DCA  |06CA6D;
                        dw raven_State00                     ;068790|        |0687AA;
                        dw raven_State01                     ;068792|        |0687F6;
@@ -1242,44 +1242,44 @@ enemyAI_1a_bossMedusa:
                                                             ;      |        |      ;
           CODE_06879A:
                        LDY.B #$00                           ;06879A|A000    |      ;
-                       LDA.W RAM_5_entity_Y_Pos             ;06879C|AD5403  |060354;
-                       CMP.W RAM_5_entity_Y_Pos,X           ;06879F|DD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;06879C|AD5403  |060354;
+                       CMP.W r6_entity_Y_Pos,X              ;06879F|DD5403  |060354;
                        BCS CODE_0687A5                      ;0687A2|B001    |0687A5;
                        INY                                  ;0687A4|C8      |      ;
                                                             ;      |        |      ;
           CODE_0687A5:
                        TYA                                  ;0687A5|98      |      ;
-                       STA.W RAM_5_verticalVectorAddressLo,X;0687A6|9DDC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,X        ;0687A6|9DDC04  |0604DC;
                        RTS                                  ;0687A9|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
         raven_State00:
-                       LDA.W RAM_5_entity_counter,X         ;0687AA|BD4C05  |06054C;
+                       LDA.W r6_entity_counter,X            ;0687AA|BD4C05  |06054C;
                        BEQ CODE_0687B5                      ;0687AD|F006    |0687B5;
-                       DEC.W RAM_5_entity_counter,X         ;0687AF|DE4C05  |06054C;
-                       JMP.W FIXME_ee94                     ;0687B2|4C94EE  |06EE94;
+                       DEC.W r6_entity_counter,X            ;0687AF|DE4C05  |06054C;
+                       JMP.W FIXME_ee94_entityLoadStuff     ;0687B2|4C94EE  |06EE94;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0687B5:
                        LDA.B #$13                           ;0687B5|A913    |      ;
-                       JSR.W FIXME_ef04                     ;0687B7|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;0687B7|2004EF  |06EF04;
                        JSR.W CODE_06879A                    ;0687BA|209A87  |06879A;
-                       LDA.B randomValue                    ;0687BD|A56F    |00006F;
+                       LDA.B r_randomValue                  ;0687BD|A56F    |00006F;
                        AND.B #$03                           ;0687BF|2903    |      ;
                        ASL A                                ;0687C1|0A      |      ;
                        TAY                                  ;0687C2|A8      |      ;
                        LDA.W DATA8_0687E3,Y                 ;0687C3|B9E387  |0687E3;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;0687C6|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;0687C6|9DC403  |0603C4;
                        LDA.W DATA8_0687E4,Y                 ;0687C9|B9E487  |0687E4;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;0687CC|9DE003  |0603E0;
-                       JSR.W FIXME_ef84                     ;0687CF|2084EF  |06EF84;
+                       STA.W r6_entity_Y_speedSub,X         ;0687CC|9DE003  |0603E0;
+                       JSR.W FIXME_ef84_findPlayer          ;0687CF|2084EF  |06EF84;
                        TYA                                  ;0687D2|98      |      ;
-                       STA.W RAM_5_verticalVectorAddressHiher,X;0687D3|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;0687D3|9DF804  |0604F8;
                        LDY.B #$C0                           ;0687D6|A0C0    |      ;
                        LDA.B #$00                           ;0687D8|A900    |      ;
-                       JSR.W FIXME_ec72                     ;0687DA|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;0687DA|2072EC  |06EC72;
                        LDA.B #$01                           ;0687DD|A901    |      ;
-                       STA.W RAM_5_entity_State,X           ;0687DF|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;0687DF|9D6C04  |06046C;
                        RTS                                  ;0687E2|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -1290,41 +1290,41 @@ enemyAI_1a_bossMedusa:
                        db $C0,$02,$80,$01,$40,$02,$00       ;0687E4|        |      ;
                                                             ;      |        |      ;
           CODE_0687EB:
-                       LDY.W RAM_5_verticalVectorAddressLo,X;0687EB|BCDC04  |0604DC;
+                       LDY.W r6_X_screen_AddressLo,X        ;0687EB|BCDC04  |0604DC;
                        BNE CODE_0687F3                      ;0687EE|D003    |0687F3;
-                       JMP.W FIXME_ef43                     ;0687F0|4C43EF  |06EF43;
+                       JMP.W FIXME_ef43_updateYposSpeed_plus;0687F0|4C43EF  |06EF43;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0687F3:
-                       JMP.W FIXME_ef56                     ;0687F3|4C56EF  |06EF56;
+                       JMP.W FIXME_ef56_updateYposSpeed_minus;0687F3|4C56EF  |06EF56;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
         raven_State01:
-                       LDA.W RAM_5_entity_Vertical_SpeedSub,X;0687F6|BDE003  |0603E0;
+                       LDA.W r6_entity_Y_speedSub,X         ;0687F6|BDE003  |0603E0;
                        SBC.B #$08                           ;0687F9|E908    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;0687FB|9DE003  |0603E0;
-                       LDA.W RAM_5_entity_Vertical_Speed,X  ;0687FE|BDC403  |0603C4;
+                       STA.W r6_entity_Y_speedSub,X         ;0687FB|9DE003  |0603E0;
+                       LDA.W r6_entity_Y_speed,X            ;0687FE|BDC403  |0603C4;
                        SBC.B #$00                           ;068801|E900    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;068803|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;068803|9DC403  |0603C4;
                        BMI CODE_06880E                      ;068806|3006    |06880E;
                        JSR.W CODE_0687EB                    ;068808|20EB87  |0687EB;
-                       JMP.W FIXME_ee1c                     ;06880B|4C1CEE  |06EE1C;
+                       JMP.W FIXME_ee1c_applyScreenScrollOffset;06880B|4C1CEE  |06EE1C;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06880E:
-                       LDA.B randomValue                    ;06880E|A56F    |00006F;
+                       LDA.B r_randomValue                  ;06880E|A56F    |00006F;
                        AND.B #$03                           ;068810|2903    |      ;
                        TAY                                  ;068812|A8      |      ;
                        LDA.W DATA8_06881B,Y                 ;068813|B91B88  |06881B;
                        LDY.B #$02                           ;068816|A002    |      ;
-                       JMP.W FIXME_ed34                     ;068818|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068818|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          DATA8_06881B:
                        db $18,$3F,$25,$79                   ;06881B|        |      ;
                                                             ;      |        |      ;
         raven_State02:
-                       DEC.W RAM_5_entity_counter,X         ;06881F|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;06881F|DE4C05  |06054C;
                        BEQ CODE_068825                      ;068822|F001    |068825;
                                                             ;      |        |      ;
           CODE_068824:
@@ -1332,8 +1332,8 @@ enemyAI_1a_bossMedusa:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068825:
-                       LDA.W RAM_5_entity_Y_Pos             ;068825|AD5403  |060354;
-                       SBC.W RAM_5_entity_Y_Pos,X           ;068828|FD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;068825|AD5403  |060354;
+                       SBC.W r6_entity_Y_Pos,X              ;068828|FD5403  |060354;
                        BCS CODE_06882F                      ;06882B|B002    |06882F;
                        EOR.B #$FF                           ;06882D|49FF    |      ;
                                                             ;      |        |      ;
@@ -1344,85 +1344,85 @@ enemyAI_1a_bossMedusa:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068836:
-                       JSR.W FIXME_ef84                     ;068836|2084EF  |06EF84;
+                       JSR.W FIXME_ef84_findPlayer          ;068836|2084EF  |06EF84;
                        TYA                                  ;068839|98      |      ;
-                       STA.W RAM_5_verticalVectorAddressHiher,X;06883A|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;06883A|9DF804  |0604F8;
                        LDA.B #$00                           ;06883D|A900    |      ;
                        LDY.B #$40                           ;06883F|A040    |      ;
-                       JSR.W FIXME_ec72                     ;068841|2072EC  |06EC72;
-                       LDA.B randomValue                    ;068844|A56F    |00006F;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068841|2072EC  |06EC72;
+                       LDA.B r_randomValue                  ;068844|A56F    |00006F;
                        AND.B #$01                           ;068846|2901    |      ;
                        TAY                                  ;068848|A8      |      ;
                        LDA.W birdValues00,Y                 ;068849|B95188  |068851;
                        LDY.B #$03                           ;06884C|A003    |      ;
-                       JMP.W FIXME_ed34                     ;06884E|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06884E|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          birdValues00:
                        db $3D,$3D                           ;068851|        |      ;
                                                             ;      |        |      ;
         raven_State03:
-                       DEC.W RAM_5_entity_counter,X         ;068853|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068853|DE4C05  |06054C;
                        BNE CODE_06885B                      ;068856|D003    |06885B;
                        JMP.W CODE_0687B5                    ;068858|4CB587  |0687B5;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06885B:
-                       LDA.W RAM_5_entity_HorizontalSpeedSub,X;06885B|BD1804  |060418;
+                       LDA.W r6_entity_X_SpeedSub,X         ;06885B|BD1804  |060418;
                        ADC.B #$08                           ;06885E|6908    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,X;068860|9D1804  |060418;
-                       LDA.W RAM_5_entity_HorizontalSpeed,X ;068863|BDFC03  |0603FC;
+                       STA.W r6_entity_X_SpeedSub,X         ;068860|9D1804  |060418;
+                       LDA.W r6_entity_X_Speed,X            ;068863|BDFC03  |0603FC;
                        ADC.B #$00                           ;068866|6900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,X ;068868|9DFC03  |0603FC;
-                       JSR.W FIXME_ee1c                     ;06886B|201CEE  |06EE1C;
+                       STA.W r6_entity_X_Speed,X            ;068868|9DFC03  |0603FC;
+                       JSR.W FIXME_ee1c_applyScreenScrollOffset;06886B|201CEE  |06EE1C;
                        LDA.B #$08                           ;06886E|A908    |      ;
-                       LDY.W RAM_5_verticalVectorAddressHiher,X;068870|BCF804  |0604F8;
+                       LDY.W r6_X_screen_AddressHiher,X     ;068870|BCF804  |0604F8;
                        BEQ CODE_068880                      ;068873|F00B    |068880;
                        EOR.B #$FF                           ;068875|49FF    |      ;
-                       ADC.W RAM_5_entity_X_Pos             ;068877|6D8C03  |06038C;
-                       CMP.W RAM_5_entity_X_Pos,X           ;06887A|DD8C03  |06038C;
+                       ADC.W r6_entity_X_Pos                ;068877|6D8C03  |06038C;
+                       CMP.W r6_entity_X_Pos,X              ;06887A|DD8C03  |06038C;
                        BCS CODE_068888                      ;06887D|B009    |068888;
                        RTS                                  ;06887F|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068880:
-                       ADC.W RAM_5_entity_X_Pos             ;068880|6D8C03  |06038C;
-                       CMP.W RAM_5_entity_X_Pos,X           ;068883|DD8C03  |06038C;
+                       ADC.W r6_entity_X_Pos                ;068880|6D8C03  |06038C;
+                       CMP.W r6_entity_X_Pos,X              ;068883|DD8C03  |06038C;
                        BCS CODE_068824                      ;068886|B09C    |068824;
                                                             ;      |        |      ;
           CODE_068888:
                        JSR.W CODE_06879A                    ;068888|209A87  |06879A;
                        LDA.B #$00                           ;06888B|A900    |      ;
                        LDY.B #$80                           ;06888D|A080    |      ;
-                       JSR.W FIXME_ec72                     ;06888F|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;06888F|2072EC  |06EC72;
                        LDA.B #$79                           ;068892|A979    |      ;
                        LDY.B #$04                           ;068894|A004    |      ;
-                       JMP.W FIXME_ed34                     ;068896|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068896|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
         raven_State04:
-                       DEC.W RAM_5_entity_counter,X         ;068899|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068899|DE4C05  |06054C;
                        BNE CODE_0688A1                      ;06889C|D003    |0688A1;
                        JMP.W CODE_0687B5                    ;06889E|4CB587  |0687B5;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0688A1:
                        JSR.W CODE_0687EB                    ;0688A1|20EB87  |0687EB;
-                       LDA.W RAM_5_entity_HorizontalSpeedSub,X;0688A4|BD1804  |060418;
+                       LDA.W r6_entity_X_SpeedSub,X         ;0688A4|BD1804  |060418;
                        SBC.B #$08                           ;0688A7|E908    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,X;0688A9|9D1804  |060418;
-                       LDA.W RAM_5_entity_HorizontalSpeed,X ;0688AC|BDFC03  |0603FC;
+                       STA.W r6_entity_X_SpeedSub,X         ;0688A9|9D1804  |060418;
+                       LDA.W r6_entity_X_Speed,X            ;0688AC|BDFC03  |0603FC;
                        SBC.B #$00                           ;0688AF|E900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,X ;0688B1|9DFC03  |0603FC;
-                       JMP.W FIXME_ee1c                     ;0688B4|4C1CEE  |06EE1C;
+                       STA.W r6_entity_X_Speed,X            ;0688B1|9DFC03  |0603FC;
+                       JMP.W FIXME_ee1c_applyScreenScrollOffset;0688B4|4C1CEE  |06EE1C;
                                                             ;      |        |      ;
-                       STX.B various_data02                 ;0688B7|864E    |00004E;
+                       STX.B r_temp_data02                  ;0688B7|864E    |00004E;
                        LDA.B #$03                           ;0688B9|A903    |      ;
                        STA.B $08                            ;0688BB|8508    |000008;
                        LDY.B #$04                           ;0688BD|A004    |      ;
                                                             ;      |        |      ;
           CODE_0688BF:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;0688BF|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;0688BF|B93404  |060434;
                        BEQ CODE_0688CA                      ;0688C2|F006    |0688CA;
                                                             ;      |        |      ;
           CODE_0688C4:
@@ -1436,25 +1436,25 @@ enemyAI_1a_bossMedusa:
                        LDA.B #$25                           ;0688CA|A925    |      ;
                        STA.B $16                            ;0688CC|8516    |000016;
                        LDA.B #$50                           ;0688CE|A950    |      ;
-                       JSR.W FIXME_ed82                     ;0688D0|2082ED  |06ED82;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;0688D0|2082ED  |06ED82;
                        LDA.B #$00                           ;0688D3|A900    |      ;
-                       STA.W RAM_5_entity_SpriteMirrored,Y  ;0688D5|995004  |060450;
+                       STA.W r6_entity_spriteMirror,Y       ;0688D5|995004  |060450;
                        LDA.B $08                            ;0688D8|A508    |000008;
                        ASL A                                ;0688DA|0A      |      ;
                        TAX                                  ;0688DB|AA      |      ;
                        LDA.W DATA8_068900,X                 ;0688DC|BD0089  |068900;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;0688DF|99FC03  |0603FC;
+                       STA.W r6_entity_X_Speed,Y            ;0688DF|99FC03  |0603FC;
                        LDA.W birdSpeed01,X                  ;0688E2|BD0189  |068901;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;0688E5|991804  |060418;
+                       STA.W r6_entity_X_SpeedSub,Y         ;0688E5|991804  |060418;
                        LDA.W DATA8_068908,X                 ;0688E8|BD0889  |068908;
-                       STA.W RAM_5_entity_Vertical_Speed,Y  ;0688EB|99C403  |0603C4;
+                       STA.W r6_entity_Y_speed,Y            ;0688EB|99C403  |0603C4;
                        LDA.W birdSpeed02,X                  ;0688EE|BD0989  |068909;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,Y;0688F1|99E003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,Y         ;0688F1|99E003  |0603E0;
                        LDA.B #$10                           ;0688F4|A910    |      ;
-                       STA.W RAM_5_entity_counter,X         ;0688F6|9D4C05  |06054C;
+                       STA.W r6_entity_counter,X            ;0688F6|9D4C05  |06054C;
                        DEC.B $08                            ;0688F9|C608    |000008;
                        BNE CODE_0688C4                      ;0688FB|D0C7    |0688C4;
-                       LDX.B various_data02                 ;0688FD|A64E    |00004E;
+                       LDX.B r_temp_data02                  ;0688FD|A64E    |00004E;
                        RTS                                  ;0688FF|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -1476,64 +1476,64 @@ enemyAI_1a_bossMedusa:
                        db $99,$54,$03,$A9,$C0,$99,$18,$04   ;068931|        |      ;
                        db $A9,$01,$99,$FC,$03,$60           ;068939|        |      ;
                                                             ;      |        |      ;
-enemyAI_20_trippleShot:
-                       LDA.W RAM_5_simon_whipTimer,X        ;06893F|BD6805  |060568;
+  enemyAI_20_bossIgor:
+                       LDA.W r6_whipTimer,X                 ;06893F|BD6805  |060568;
                        BEQ CODE_068956                      ;068942|F012    |068956;
                        LDY.B #$00                           ;068944|A000    |      ;
-                       LDA.B frame_Counter                  ;068946|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;068946|A51A    |00001A;
                        AND.B #$01                           ;068948|2901    |      ;
                        BEQ CODE_06894E                      ;06894A|F002    |06894E;
                        LDY.B #$82                           ;06894C|A082    |      ;
                                                             ;      |        |      ;
           CODE_06894E:
                        TYA                                  ;06894E|98      |      ;
-                       STA.W RAM_5_entity_SpriteFrame,X     ;06894F|9D1C03  |06031C;
-                       DEC.W RAM_5_simon_whipTimer,X        ;068952|DE6805  |060568;
+                       STA.W r6_entity_spriteID,X           ;06894F|9D1C03  |06031C;
+                       DEC.W r6_whipTimer,X                 ;068952|DE6805  |060568;
                        RTS                                  ;068955|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068956:
-                       LDA.W RAM_5_simon_jumpState,X        ;068956|BD8804  |060488;
+                       LDA.W r6_player_jumpState,X          ;068956|BD8804  |060488;
                        AND.B #$7F                           ;068959|297F    |      ;
-                       STA.W RAM_5_simon_jumpState,X        ;06895B|9D8804  |060488;
-                       LDA.W RAM_5_entity_State,X           ;06895E|BD6C04  |06046C;
+                       STA.W r6_player_jumpState,X          ;06895B|9D8804  |060488;
+                       LDA.W r6_entity_State,X              ;06895E|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;068961|206DCA  |06CA6D;
-                       dw CODE_06896C                       ;068964|        |06896C;
+                       dw bossIgor_state00                  ;068964|        |06896C;
                                                             ;      |        |      ;
-                       dw CODE_068979                       ;068966|        |068979;
-                       dw CODE_068992                       ;068968|        |068992;
-                       dw CODE_0689BF                       ;06896A|        |0689BF;
+                       dw bossIgor_state01                  ;068966|        |068979;
+                       dw bossIgor_state02                  ;068968|        |068992;
+                       dw bossIgor_state03                  ;06896A|        |0689BF;
                                                             ;      |        |      ;
-          CODE_06896C:
-                       JSR.W FIXME_ef7c                     ;06896C|207CEF  |06EF7C;
-                       JSR.W FIXME_F1d2                     ;06896F|20D2F1  |06F1D2;
+     bossIgor_state00:
+                       JSR.W FIXME_ef7c_facePlayer          ;06896C|207CEF  |06EF7C;
+                       JSR.W FIXME_F1d2_resetFallSpeed      ;06896F|20D2F1  |06F1D2;
                        LDY.B #$80                           ;068972|A080    |      ;
                        LDA.B #$01                           ;068974|A901    |      ;
-                       JMP.W FIXME_ec72                     ;068976|4C72EC  |06EC72;
+                       JMP.W FIXME_ec72_storeSpeed_AYsub_Xpos;068976|4C72EC  |06EC72;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_068979:
-                       JSR.W FIXME_f06d                     ;068979|206DF0  |06F06D;
+     bossIgor_state01:
+                       JSR.W FIXME_f06d_hunchBack_State03   ;068979|206DF0  |06F06D;
                        JSR.W CODE_068998                    ;06897C|209889  |068998;
-                       LDA.W RAM_5_entity_Vertical_Speed,X  ;06897F|BDC403  |0603C4;
+                       LDA.W r6_entity_Y_speed,X            ;06897F|BDC403  |0603C4;
                        BPL CODE_068991                      ;068982|100D    |068991;
                        LDA.B #$3E                           ;068984|A93E    |      ;
-                       JSR.W FIXME_ef04                     ;068986|2004EF  |06EF04;
-                       JSR.W FIXME_ec88                     ;068989|2088EC  |06EC88;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;068986|2004EF  |06EF04;
+                       JSR.W FIXME_ec88_findPlayerPos       ;068989|2088EC  |06EC88;
                        LDA.B #$02                           ;06898C|A902    |      ;
-                       STA.W RAM_5_entity_State,X           ;06898E|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;06898E|9D6C04  |06046C;
                                                             ;      |        |      ;
           CODE_068991:
                        RTS                                  ;068991|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_068992:
-                       JSR.W FIXME_f06d                     ;068992|206DF0  |06F06D;
+     bossIgor_state02:
+                       JSR.W FIXME_f06d_hunchBack_State03   ;068992|206DF0  |06F06D;
                        JMP.W CODE_068998                    ;068995|4C9889  |068998;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068998:
-                       LDA.W RAM_5_entity_X_Pos,X           ;068998|BD8C03  |06038C;
+                       LDA.W r6_entity_X_Pos,X              ;068998|BD8C03  |06038C;
                        CMP.B #$09                           ;06899B|C909    |      ;
                        BCS CODE_0689A3                      ;06899D|B004    |0689A3;
                        LDA.B #$09                           ;06899F|A909    |      ;
@@ -1545,53 +1545,53 @@ enemyAI_20_trippleShot:
                        LDA.B #$F7                           ;0689A7|A9F7    |      ;
                                                             ;      |        |      ;
           CODE_0689A9:
-                       STA.W RAM_5_entity_X_Pos,X           ;0689A9|9D8C03  |06038C;
-                       JSR.W FIXME_eaa9                     ;0689AC|20A9EA  |06EAA9;
+                       STA.W r6_entity_X_Pos,X              ;0689A9|9D8C03  |06038C;
+                       JSR.W FIXME_eaa9_switchSpritMirroring;0689AC|20A9EA  |06EAA9;
                                                             ;      |        |      ;
           CODE_0689AF:
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0689AF|BD5403  |060354;
+                       LDA.W r6_entity_Y_Pos,X              ;0689AF|BD5403  |060354;
                        CMP.B #$30                           ;0689B2|C930    |      ;
                        BCS CODE_0689BE                      ;0689B4|B008    |0689BE;
                        LDA.B #$30                           ;0689B6|A930    |      ;
-                       STA.W RAM_5_entity_Y_Pos,X           ;0689B8|9D5403  |060354;
-                       JSR.W FIXME_F1d2                     ;0689BB|20D2F1  |06F1D2;
+                       STA.W r6_entity_Y_Pos,X              ;0689B8|9D5403  |060354;
+                       JSR.W FIXME_F1d2_resetFallSpeed      ;0689BB|20D2F1  |06F1D2;
                                                             ;      |        |      ;
           CODE_0689BE:
                        RTS                                  ;0689BE|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0689BF:
-                       DEC.W RAM_5_entity_counter,X         ;0689BF|DE4C05  |06054C;
+     bossIgor_state03:
+                       DEC.W r6_entity_counter,X            ;0689BF|DE4C05  |06054C;
                        BNE CODE_0689AF                      ;0689C2|D0EB    |0689AF;
                        LDA.B #$01                           ;0689C4|A901    |      ;
-                       STA.W RAM_5_entity_State,X           ;0689C6|9D6C04  |06046C;
-                       LDA.B randomValue                    ;0689C9|A56F    |00006F;
+                       STA.W r6_entity_State,X              ;0689C6|9D6C04  |06046C;
+                       LDA.B r_randomValue                  ;0689C9|A56F    |00006F;
                        AND.B #$03                           ;0689CB|2903    |      ;
                        TAY                                  ;0689CD|A8      |      ;
                        LDA.W DATA8_0689DE,Y                 ;0689CE|B9DE89  |0689DE;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;0689D1|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;0689D1|9DC403  |0603C4;
                        LDA.B #$00                           ;0689D4|A900    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;0689D6|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;0689D6|9DE003  |0603E0;
                        LDA.B #$3D                           ;0689D9|A93D    |      ;
-                       JMP.W FIXME_ef04                     ;0689DB|4C04EF  |06EF04;
+                       JMP.W FIXME_ef04_loadNewAnimIndex    ;0689DB|4C04EF  |06EF04;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          DATA8_0689DE:
                        db $03,$05,$04,$06                   ;0689DE|        |      ;
                                                             ;      |        |      ;
-enemyAI_1d_bossDraculaBody:
-                       JSR.W FIXME_eea7                     ;0689E2|20A7EE  |06EEA7;
-                       JSR.W FIXME_ef7c                     ;0689E5|207CEF  |06EF7C;
-                       LDA.W RAM_5_entity_State,X           ;0689E8|BD6C04  |06046C;
+enemyAI_1d_bossFrankMonster:
+                       JSR.W FIXME_eea7_endRoutineWhileTimer;0689E2|20A7EE  |06EEA7;
+                       JSR.W FIXME_ef7c_facePlayer          ;0689E5|207CEF  |06EF7C;
+                       LDA.W r6_entity_State,X              ;0689E8|BD6C04  |06046C;
                        AND.B #$7F                           ;0689EB|297F    |      ;
                        JSR.W FIXME_ca6d_jump4stack          ;0689ED|206DCA  |06CA6D;
-                       dw bossDracula_State00               ;0689F0|        |0689F8;
-                       dw bossDracula_State01               ;0689F2|        |068A04;
-                       dw bossDracula_State02               ;0689F4|        |068A1E;
-                       dw CODE_068A56                       ;0689F6|        |068A56;
+                       dw bossFrank_State00                 ;0689F0|        |0689F8;
+                       dw bossFrank_State01                 ;0689F2|        |068A04;
+                       dw bossFrank_State02                 ;0689F4|        |068A1E;
+                       dw bossFrank_State03                 ;0689F6|        |068A56;
                                                             ;      |        |      ;
-  bossDracula_State00:
-                       LDA.B bossScreen_Flag                ;0689F8|A548    |000048;
+    bossFrank_State00:
+                       LDA.B r_bossScreen_Flag              ;0689F8|A548    |000048;
                        BNE CODE_0689FD                      ;0689FA|D001    |0689FD;
                        RTS                                  ;0689FC|60      |      ;
                                                             ;      |        |      ;
@@ -1599,11 +1599,11 @@ enemyAI_1d_bossDraculaBody:
           CODE_0689FD:
                        LDY.B #$81                           ;0689FD|A081    |      ;
                        LDA.B #$78                           ;0689FF|A978    |      ;
-                       JMP.W FIXME_ed34                     ;068A01|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068A01|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-  bossDracula_State01:
-                       DEC.W RAM_5_entity_counter,X         ;068A04|DE4C05  |06054C;
+    bossFrank_State01:
+                       DEC.W r6_entity_counter,X            ;068A04|DE4C05  |06054C;
                        BEQ CODE_068A0A                      ;068A07|F001    |068A0A;
                        RTS                                  ;068A09|60      |      ;
                                                             ;      |        |      ;
@@ -1611,21 +1611,21 @@ enemyAI_1d_bossDraculaBody:
           CODE_068A0A:
                        LDY.B #$C0                           ;068A0A|A0C0    |      ;
                        LDA.B #$00                           ;068A0C|A900    |      ;
-                       JSR.W FIXME_ec72                     ;068A0E|2072EC  |06EC72;
-                       LDA.B frame_Counter                  ;068A11|A51A    |00001A;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068A0E|2072EC  |06EC72;
+                       LDA.B r_frame_Counter                ;068A11|A51A    |00001A;
                        AND.B #$03                           ;068A13|2903    |      ;
                        STA.B $55                            ;068A15|8555    |000055;
                        LDY.B #$02                           ;068A17|A002    |      ;
                        LDA.B #$3C                           ;068A19|A93C    |      ;
-                       JMP.W FIXME_ed34                     ;068A1B|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068A1B|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-  bossDracula_State02:
-                       DEC.W RAM_5_entity_counter,X         ;068A1E|DE4C05  |06054C;
+    bossFrank_State02:
+                       DEC.W r6_entity_counter,X            ;068A1E|DE4C05  |06054C;
                        BEQ CODE_068A2C                      ;068A21|F009    |068A2C;
-                       LDA.W RAM_5_entity_X_Pos,X           ;068A23|BD8C03  |06038C;
+                       LDA.W r6_entity_X_Pos,X              ;068A23|BD8C03  |06038C;
                        STA.W $0394                          ;068A26|8D9403  |060394;
-                       JMP.W FIXME_ee48                     ;068A29|4C48EE  |06EE48;
+                       JMP.W FIXME_ee48_entityKeepWalking   ;068A29|4C48EE  |06EE48;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068A2C:
@@ -1633,8 +1633,8 @@ enemyAI_1d_bossDraculaBody:
                        STA.W $0474                          ;068A2E|8D7404  |060474;
                                                             ;      |        |      ;
           CODE_068A31:
-                       LDY.W RAM_5_entity_SpriteMirrored,X  ;068A31|BC5004  |060450;
-                       JSR.W FIXME_ef84                     ;068A34|2084EF  |06EF84;
+                       LDY.W r6_entity_spriteMirror,X       ;068A31|BC5004  |060450;
+                       JSR.W FIXME_ef84_findPlayer          ;068A34|2084EF  |06EF84;
                        CMP.B #$50                           ;068A37|C950    |      ;
                        BCS CODE_068A41                      ;068A39|B006    |068A41;
                        TYA                                  ;068A3B|98      |      ;
@@ -1646,44 +1646,44 @@ enemyAI_1d_bossDraculaBody:
                        TYA                                  ;068A41|98      |      ;
                                                             ;      |        |      ;
           CODE_068A42:
-                       STA.W RAM_5_verticalVectorAddressHiher,X;068A42|9DF804  |0604F8;
-                       LDA.B randomValue                    ;068A45|A56F    |00006F;
+                       STA.W r6_X_screen_AddressHiher,X     ;068A42|9DF804  |0604F8;
+                       LDA.B r_randomValue                  ;068A45|A56F    |00006F;
                        AND.B #$03                           ;068A47|2903    |      ;
                        TAY                                  ;068A49|A8      |      ;
-                       LDA.W DATA8_068A52,Y                 ;068A4A|B9528A  |068A52;
+                       LDA.W bossFrank_timer,Y              ;068A4A|B9528A  |068A52;
                        LDY.B #$03                           ;068A4D|A003    |      ;
-                       JMP.W FIXME_ed34                     ;068A4F|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068A4F|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-         DATA8_068A52:
+      bossFrank_timer:
                        db $3C,$24,$54,$18                   ;068A52|        |      ;
                                                             ;      |        |      ;
-          CODE_068A56:
-                       DEC.W RAM_5_entity_counter,X         ;068A56|DE4C05  |06054C;
+    bossFrank_State03:
+                       DEC.W r6_entity_counter,X            ;068A56|DE4C05  |06054C;
                        BEQ CODE_068A31                      ;068A59|F0D6    |068A31;
-                       JSR.W FIXME_ee1c                     ;068A5B|201CEE  |06EE1C;
-                       LDA.W RAM_5_entity_X_Pos,X           ;068A5E|BD8C03  |06038C;
+                       JSR.W FIXME_ee1c_applyScreenScrollOffset;068A5B|201CEE  |06EE1C;
+                       LDA.W r6_entity_X_Pos,X              ;068A5E|BD8C03  |06038C;
                        CMP.B #$10                           ;068A61|C910    |      ;
                        BCC CODE_068A69                      ;068A63|9004    |068A69;
                        CMP.B #$F0                           ;068A65|C9F0    |      ;
                        BCC CODE_068A71                      ;068A67|9008    |068A71;
                                                             ;      |        |      ;
           CODE_068A69:
-                       LDA.W RAM_5_verticalVectorAddressHiher,X;068A69|BDF804  |0604F8;
+                       LDA.W r6_X_screen_AddressHiher,X     ;068A69|BDF804  |0604F8;
                        EOR.B #$01                           ;068A6C|4901    |      ;
-                       STA.W RAM_5_verticalVectorAddressHiher,X;068A6E|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;068A6E|9DF804  |0604F8;
                                                             ;      |        |      ;
           CODE_068A71:
                        RTS                                  ;068A71|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068A72:
-                       LDA.W RAM_5_verticalDirection,X      ;068A72|BD1405  |060514;
+                       LDA.W r6_verticalDirection,X         ;068A72|BD1405  |060514;
                        SEC                                  ;068A75|38      |      ;
-                       SBC.W RAM_5_entity_Vertical_SpeedSub,X;068A76|FDE003  |0603E0;
-                       STA.W RAM_5_verticalDirection,X      ;068A79|9D1405  |060514;
-                       LDA.W RAM_5_verticalVectorAddressHiher,X;068A7C|BDF804  |0604F8;
-                       SBC.W RAM_5_entity_Vertical_Speed,X  ;068A7F|FDC403  |0603C4;
+                       SBC.W r6_entity_Y_speedSub,X         ;068A76|FDE003  |0603E0;
+                       STA.W r6_verticalDirection,X         ;068A79|9D1405  |060514;
+                       LDA.W r6_X_screen_AddressHiher,X     ;068A7C|BDF804  |0604F8;
+                       SBC.W r6_entity_Y_speed,X            ;068A7F|FDC403  |0603C4;
                        JMP.W CODE_068AA2                    ;068A82|4CA28A  |068AA2;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -1691,17 +1691,17 @@ enemyAI_1d_bossDraculaBody:
                        TXA                                  ;068A85|8A      |      ;
                        TAY                                  ;068A86|A8      |      ;
                        INY                                  ;068A87|C8      |      ;
-                       STY.B various_data03                 ;068A88|844F    |00004F;
-                       LDY.W RAM_5_verticalVectorAddressLo,X;068A8A|BCDC04  |0604DC;
+                       STY.B r_temp_data03                  ;068A88|844F    |00004F;
+                       LDY.W r6_X_screen_AddressLo,X        ;068A8A|BCDC04  |0604DC;
                        BEQ CODE_068ACD                      ;068A8D|F03E    |068ACD;
                        DEY                                  ;068A8F|88      |      ;
                        BEQ CODE_068A72                      ;068A90|F0E0    |068A72;
-                       LDA.W RAM_5_verticalDirection,X      ;068A92|BD1405  |060514;
+                       LDA.W r6_verticalDirection,X         ;068A92|BD1405  |060514;
                        CLC                                  ;068A95|18      |      ;
-                       ADC.W RAM_5_entity_Vertical_SpeedSub,X;068A96|7DE003  |0603E0;
-                       STA.W RAM_5_verticalDirection,X      ;068A99|9D1405  |060514;
-                       LDA.W RAM_5_verticalVectorAddressHiher,X;068A9C|BDF804  |0604F8;
-                       ADC.W RAM_5_entity_Vertical_Speed,X  ;068A9F|7DC403  |0603C4;
+                       ADC.W r6_entity_Y_speedSub,X         ;068A96|7DE003  |0603E0;
+                       STA.W r6_verticalDirection,X         ;068A99|9D1405  |060514;
+                       LDA.W r6_X_screen_AddressHiher,X     ;068A9C|BDF804  |0604F8;
+                       ADC.W r6_entity_Y_speed,X            ;068A9F|7DC403  |0603C4;
                                                             ;      |        |      ;
           CODE_068AA2:
                        BMI CODE_068AAC                      ;068AA2|3008    |068AAC;
@@ -1716,26 +1716,26 @@ enemyAI_1d_bossDraculaBody:
                        LDA.B #$F8                           ;068AB0|A9F8    |      ;
                                                             ;      |        |      ;
           CODE_068AB2:
-                       STA.W RAM_5_verticalVectorAddressHiher,X;068AB2|9DF804  |0604F8;
-                       LDA.W RAM_5_verticalVectorAddressLo,X;068AB5|BDDC04  |0604DC;
-                       LDY.B various_data03                 ;068AB8|A44F    |00004F;
-                       STA.W RAM_5_verticalVectorAddressLo,Y;068ABA|99DC04  |0604DC;
+                       STA.W r6_X_screen_AddressHiher,X     ;068AB2|9DF804  |0604F8;
+                       LDA.W r6_X_screen_AddressLo,X        ;068AB5|BDDC04  |0604DC;
+                       LDY.B r_temp_data03                  ;068AB8|A44F    |00004F;
+                       STA.W r6_X_screen_AddressLo,Y        ;068ABA|99DC04  |0604DC;
                        LDA.B #$01                           ;068ABD|A901    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,Y  ;068ABF|99C403  |0603C4;
+                       STA.W r6_entity_Y_speed,Y            ;068ABF|99C403  |0603C4;
                        LDA.B #$C0                           ;068AC2|A9C0    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,Y;068AC4|99E003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,Y         ;068AC4|99E003  |0603E0;
                        JMP.W CODE_068ACD                    ;068AC7|4CCD8A  |068ACD;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068ACA:
-                       STA.W RAM_5_verticalVectorAddressHiher,X;068ACA|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;068ACA|9DF804  |0604F8;
                                                             ;      |        |      ;
           CODE_068ACD:
-                       LDY.B various_data03                 ;068ACD|A44F    |00004F;
-                       LDA.W RAM_5_entity_Y_Pos,Y           ;068ACF|B95403  |060354;
+                       LDY.B r_temp_data03                  ;068ACD|A44F    |00004F;
+                       LDA.W r6_entity_Y_Pos,Y              ;068ACF|B95403  |060354;
                        CLC                                  ;068AD2|18      |      ;
-                       ADC.W RAM_5_verticalVectorAddressHiher,X;068AD3|7DF804  |0604F8;
-                       STA.W RAM_5_entity_Y_Pos,X           ;068AD6|9D5403  |060354;
+                       ADC.W r6_X_screen_AddressHiher,X     ;068AD3|7DF804  |0604F8;
+                       STA.W r6_entity_Y_Pos,X              ;068AD6|9D5403  |060354;
                        RTS                                  ;068AD9|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -1746,8 +1746,8 @@ enemyAI_14_boneDragonHead:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068AE2:
-                       JSR.W FIXME_eea7                     ;068AE2|20A7EE  |06EEA7;
-                       LDA.W RAM_5_entity_State,X           ;068AE5|BD6C04  |06046C;
+                       JSR.W FIXME_eea7_endRoutineWhileTimer;068AE2|20A7EE  |06EEA7;
+                       LDA.W r6_entity_State,X              ;068AE5|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;068AE8|206DCA  |06CA6D;
                        dw boneDragonHead_state00            ;068AEB|        |068B08;
                        dw CODE_068B22                       ;068AED|        |068B22;
@@ -1762,7 +1762,7 @@ enemyAI_14_boneDragonHead:
                        SBC.B #$04                           ;068AF9|E904    |      ;
                        TAY                                  ;068AFB|A8      |      ;
                        LDA.W DATA8_068B02,Y                 ;068AFC|B9028B  |068B02;
-                       STA.B various_Processing_ID          ;068AFF|854B    |00004B;
+                       STA.B r_temp_processing_ID           ;068AFF|854B    |00004B;
                        RTS                                  ;068B01|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -1772,58 +1772,58 @@ enemyAI_14_boneDragonHead:
 boneDragonHead_state00:
                        LDA.W $0396                          ;068B08|AD9603  |060396;
                        SEC                                  ;068B0B|38      |      ;
-                       SBC.W RAM_5_entity_StateBackup,X     ;068B0C|FD3005  |060530;
-                       STA.W RAM_5_entity_X_Pos,X           ;068B0F|9D8C03  |06038C;
+                       SBC.W r6_entity_stateBackup,X        ;068B0C|FD3005  |060530;
+                       STA.W r6_entity_X_Pos,X              ;068B0F|9D8C03  |06038C;
                        LDA.W $030A                          ;068B12|AD0A03  |06030A;
                        AND.B #$7F                           ;068B15|297F    |      ;
                        SBC.B #$00                           ;068B17|E900    |      ;
-                       STA.W RAM_5_entity_Attributes,X      ;068B19|9D0003  |060300;
-                       JSR.W FIXME_dd40                     ;068B1C|2040DD  |06DD40;
+                       STA.W r6_entity_spAtr,X              ;068B19|9D0003  |060300;
+                       JSR.W FIXME_dd40_put2screen          ;068B1C|2040DD  |06DD40;
                        JMP.W CODE_068C95                    ;068B1F|4C958C  |068C95;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068B22:
                        JSR.W CODE_068AF7                    ;068B22|20F78A  |068AF7;
-                       LDA.W RAM_5_entity_StateBackup,X     ;068B25|BD3005  |060530;
+                       LDA.W r6_entity_stateBackup,X        ;068B25|BD3005  |060530;
                        CLC                                  ;068B28|18      |      ;
                        ADC.B #$01                           ;068B29|6901    |      ;
-                       CMP.B various_Processing_ID          ;068B2B|C54B    |00004B;
+                       CMP.B r_temp_processing_ID           ;068B2B|C54B    |00004B;
                        BCS CODE_068B35                      ;068B2D|B006    |068B35;
                                                             ;      |        |      ;
           CODE_068B2F:
-                       STA.W RAM_5_entity_StateBackup,X     ;068B2F|9D3005  |060530;
+                       STA.W r6_entity_stateBackup,X        ;068B2F|9D3005  |060530;
                        JMP.W boneDragonHead_state00         ;068B32|4C088B  |068B08;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068B35:
                        LDA.B #$08                           ;068B35|A908    |      ;
                        LDY.B #$02                           ;068B37|A002    |      ;
-                       JSR.W FIXME_ed34                     ;068B39|2034ED  |06ED34;
-                       LDA.B various_Processing_ID          ;068B3C|A54B    |00004B;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;068B39|2034ED  |06ED34;
+                       LDA.B r_temp_processing_ID           ;068B3C|A54B    |00004B;
                        JMP.W CODE_068B2F                    ;068B3E|4C2F8B  |068B2F;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068B41:
-                       DEC.W RAM_5_entity_counter,X         ;068B41|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068B41|DE4C05  |06054C;
                        BNE boneDragonHead_state00           ;068B44|D0C2    |068B08;
                        LDA.B #$02                           ;068B46|A902    |      ;
-                       STA.W RAM_5_verticalVectorAddressLo,X;068B48|9DDC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,X        ;068B48|9DDC04  |0604DC;
                        LDA.B #$01                           ;068B4B|A901    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;068B4D|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;068B4D|9DC403  |0603C4;
                        LDA.B #$C0                           ;068B50|A9C0    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;068B52|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;068B52|9DE003  |0603E0;
                        LDA.B #$38                           ;068B55|A938    |      ;
                        LDY.B #$03                           ;068B57|A003    |      ;
-                       JSR.W FIXME_ed34                     ;068B59|2034ED  |06ED34;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;068B59|2034ED  |06ED34;
                        JMP.W boneDragonHead_state00         ;068B5C|4C088B  |068B08;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068B5F:
-                       DEC.W RAM_5_entity_counter,X         ;068B5F|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068B5F|DE4C05  |06054C;
                        BEQ CODE_068B70                      ;068B62|F00C    |068B70;
                                                             ;      |        |      ;
           CODE_068B64:
-                       LDA.B frame_Counter                  ;068B64|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;068B64|A51A    |00001A;
                        AND.B #$1F                           ;068B66|291F    |      ;
                        BEQ CODE_068B97                      ;068B68|F02D    |068B97;
                        CMP.B #$08                           ;068B6A|C908    |      ;
@@ -1831,19 +1831,19 @@ boneDragonHead_state00:
                        BNE CODE_068B91                      ;068B6E|D021    |068B91;
                                                             ;      |        |      ;
           CODE_068B70:
-                       LDA.B randomValue                    ;068B70|A56F    |00006F;
+                       LDA.B r_randomValue                  ;068B70|A56F    |00006F;
                        AND.B #$03                           ;068B72|2903    |      ;
                        TAY                                  ;068B74|A8      |      ;
                        LDA.W DATA8_068BB3,Y                 ;068B75|B9B38B  |068BB3;
-                       STA.W RAM_5_entity_counter,X         ;068B78|9D4C05  |06054C;
-                       LDA.W RAM_5_verticalVectorAddressLo,X;068B7B|BDDC04  |0604DC;
+                       STA.W r6_entity_counter,X            ;068B78|9D4C05  |06054C;
+                       LDA.W r6_X_screen_AddressLo,X        ;068B7B|BDDC04  |0604DC;
                        EOR.B #$03                           ;068B7E|4903    |      ;
                        BNE CODE_068B8E                      ;068B80|D00C    |068B8E;
                                                             ;      |        |      ;
           CODE_068B82:
                        LDY.B #$02                           ;068B82|A002    |      ;
-                       LDA.W RAM_5_entity_Y_Pos             ;068B84|AD5403  |060354;
-                       CMP.W RAM_5_entity_Y_Pos,X           ;068B87|DD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;068B84|AD5403  |060354;
+                       CMP.W r6_entity_Y_Pos,X              ;068B87|DD5403  |060354;
                        BCS CODE_068B8D                      ;068B8A|B001    |068B8D;
                        DEY                                  ;068B8C|88      |      ;
                                                             ;      |        |      ;
@@ -1851,7 +1851,7 @@ boneDragonHead_state00:
                        TYA                                  ;068B8D|98      |      ;
                                                             ;      |        |      ;
           CODE_068B8E:
-                       STA.W RAM_5_verticalVectorAddressLo,X;068B8E|9DDC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,X        ;068B8E|9DDC04  |0604DC;
                                                             ;      |        |      ;
           CODE_068B91:
                        JSR.W CODE_068A85                    ;068B91|20858A  |068A85;
@@ -1859,17 +1859,17 @@ boneDragonHead_state00:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068B97:
-                       LDA.W RAM_5_entity_State,X           ;068B97|BD6C04  |06046C;
+                       LDA.W r6_entity_State,X              ;068B97|BD6C04  |06046C;
                        CMP.B #$03                           ;068B9A|C903    |      ;
                        BNE CODE_068B91                      ;068B9C|D0F3    |068B91;
-                       LDA.B randomValue                    ;068B9E|A56F    |00006F;
+                       LDA.B r_randomValue                  ;068B9E|A56F    |00006F;
                        AND.B #$01                           ;068BA0|2901    |      ;
                        BNE CODE_068B91                      ;068BA2|D0ED    |068B91;
                        LDA.B #$2D                           ;068BA4|A92D    |      ;
-                       JSR.W FIXME_ef04                     ;068BA6|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;068BA6|2004EF  |06EF04;
                        LDA.B #$10                           ;068BA9|A910    |      ;
                        LDY.B #$04                           ;068BAB|A004    |      ;
-                       JSR.W FIXME_ed34                     ;068BAD|2034ED  |06ED34;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;068BAD|2034ED  |06ED34;
                        JMP.W CODE_068B91                    ;068BB0|4C918B  |068B91;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -1877,41 +1877,41 @@ boneDragonHead_state00:
                        db $34,$24,$3C,$1C                   ;068BB3|        |      ;
                                                             ;      |        |      ;
           CODE_068BB7:
-                       DEC.W RAM_5_entity_counter,X         ;068BB7|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068BB7|DE4C05  |06054C;
                        BNE CODE_068B64                      ;068BBA|D0A8    |068B64;
-                       LDA.W RAM_5_entity_Attributes,X      ;068BBC|BD0003  |060300;
+                       LDA.W r6_entity_spAtr,X              ;068BBC|BD0003  |060300;
                        BNE CODE_068BDA                      ;068BBF|D019    |068BDA;
-                       LDA.W RAM_5_entity_X_Pos             ;068BC1|AD8C03  |06038C;
-                       CMP.W RAM_5_entity_X_Pos,X           ;068BC4|DD8C03  |06038C;
+                       LDA.W r6_entity_X_Pos                ;068BC1|AD8C03  |06038C;
+                       CMP.W r6_entity_X_Pos,X              ;068BC4|DD8C03  |06038C;
                        BCS CODE_068BDA                      ;068BC7|B011    |068BDA;
-                       LDA.W RAM_5_entity_Y_Pos             ;068BC9|AD5403  |060354;
-                       SBC.W RAM_5_entity_Y_Pos,X           ;068BCC|FD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;068BC9|AD5403  |060354;
+                       SBC.W r6_entity_Y_Pos,X              ;068BCC|FD5403  |060354;
                        BCS CODE_068BD3                      ;068BCF|B002    |068BD3;
                        EOR.B #$FF                           ;068BD1|49FF    |      ;
                                                             ;      |        |      ;
           CODE_068BD3:
                        CMP.B #$28                           ;068BD3|C928    |      ;
                        BCS CODE_068BDA                      ;068BD5|B003    |068BDA;
-                       JSR.W FIXME_ec88                     ;068BD7|2088EC  |06EC88;
+                       JSR.W FIXME_ec88_findPlayerPos       ;068BD7|2088EC  |06EC88;
                                                             ;      |        |      ;
           CODE_068BDA:
                        LDY.B #$05                           ;068BDA|A005    |      ;
                        LDA.B #$10                           ;068BDC|A910    |      ;
-                       JSR.W FIXME_ed34                     ;068BDE|2034ED  |06ED34;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;068BDE|2034ED  |06ED34;
                        JMP.W CODE_068B64                    ;068BE1|4C648B  |068B64;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068BE4:
-                       DEC.W RAM_5_entity_counter,X         ;068BE4|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068BE4|DE4C05  |06054C;
                        BEQ CODE_068BEC                      ;068BE7|F003    |068BEC;
                        JMP.W CODE_068B64                    ;068BE9|4C648B  |068B64;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068BEC:
                        LDA.B #$5A                           ;068BEC|A95A    |      ;
-                       JSR.W FIXME_ef04                     ;068BEE|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;068BEE|2004EF  |06EF04;
                        LDA.B #$03                           ;068BF1|A903    |      ;
-                       STA.W RAM_5_entity_State,X           ;068BF3|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068BF3|9D6C04  |06046C;
                        JMP.W CODE_068B70                    ;068BF6|4C708B  |068B70;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -1926,7 +1926,7 @@ enemyAI_15_boneDragonNeck:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068C06:
-                       LDA.W RAM_5_entity_State,X           ;068C06|BD6C04  |06046C;
+                       LDA.W r6_entity_State,X              ;068C06|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;068C09|206DCA  |06CA6D;
                        dw boneDragonHead_state00            ;068C0C|        |068B08;
                        dw boneDragonNeck_state01            ;068C0E|        |068C12;
@@ -1934,21 +1934,21 @@ enemyAI_15_boneDragonNeck:
                                                             ;      |        |      ;
 boneDragonNeck_state01:
                        JSR.W CODE_068AF7                    ;068C12|20F78A  |068AF7;
-                       LDA.W RAM_5_entity_StateBackup,X     ;068C15|BD3005  |060530;
+                       LDA.W r6_entity_stateBackup,X        ;068C15|BD3005  |060530;
                        CLC                                  ;068C18|18      |      ;
                        ADC.B #$01                           ;068C19|6901    |      ;
-                       CMP.B various_Processing_ID          ;068C1B|C54B    |00004B;
+                       CMP.B r_temp_processing_ID           ;068C1B|C54B    |00004B;
                        BCS CODE_068C25                      ;068C1D|B006    |068C25;
                                                             ;      |        |      ;
           CODE_068C1F:
-                       STA.W RAM_5_entity_StateBackup,X     ;068C1F|9D3005  |060530;
+                       STA.W r6_entity_stateBackup,X        ;068C1F|9D3005  |060530;
                        JMP.W boneDragonHead_state00         ;068C22|4C088B  |068B08;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068C25:
                        LDA.B #$02                           ;068C25|A902    |      ;
-                       STA.W RAM_5_entity_State,X           ;068C27|9D6C04  |06046C;
-                       LDA.B various_Processing_ID          ;068C2A|A54B    |00004B;
+                       STA.W r6_entity_State,X              ;068C27|9D6C04  |06046C;
+                       LDA.B r_temp_processing_ID           ;068C2A|A54B    |00004B;
                        JMP.W CODE_068C1F                    ;068C2C|4C1F8C  |068C1F;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -1959,15 +1959,15 @@ boneDragonNeck_state02:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068C38:
-                       LDA.W RAM_5_entity_Vertical_SpeedSub,X;068C38|BDE003  |0603E0;
+                       LDA.W r6_entity_Y_speedSub,X         ;068C38|BDE003  |0603E0;
                        SBC.B #$20                           ;068C3B|E920    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;068C3D|9DE003  |0603E0;
-                       LDA.W RAM_5_entity_Vertical_Speed,X  ;068C40|BDC403  |0603C4;
+                       STA.W r6_entity_Y_speedSub,X         ;068C3D|9DE003  |0603E0;
+                       LDA.W r6_entity_Y_speed,X            ;068C40|BDC403  |0603C4;
                        SBC.B #$00                           ;068C43|E900    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;068C45|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;068C45|9DC403  |0603C4;
                        BPL CODE_068C50                      ;068C48|1006    |068C50;
-                       JSR.W FIXME_F1d2                     ;068C4A|20D2F1  |06F1D2;
-                       STA.W RAM_5_verticalVectorAddressLo,X;068C4D|9DDC04  |0604DC;
+                       JSR.W FIXME_F1d2_resetFallSpeed      ;068C4A|20D2F1  |06F1D2;
+                       STA.W r6_X_screen_AddressLo,X        ;068C4D|9DDC04  |0604DC;
                                                             ;      |        |      ;
           CODE_068C50:
                        RTS                                  ;068C50|60      |      ;
@@ -1980,27 +1980,27 @@ enemyAI_16_boneDragonNeck:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068C59:
-                       LDA.W RAM_5_entity_State,X           ;068C59|BD6C04  |06046C;
+                       LDA.W r6_entity_State,X              ;068C59|BD6C04  |06046C;
                        BNE CODE_068C74                      ;068C5C|D016    |068C74;
-                       DEC.W RAM_5_entity_counter,X         ;068C5E|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068C5E|DE4C05  |06054C;
                        BNE CODE_068C74                      ;068C61|D011    |068C74;
                        LDY.B #$04                           ;068C63|A004    |      ;
                        LDA.B #$01                           ;068C65|A901    |      ;
                                                             ;      |        |      ;
           CODE_068C67:
-                       STA.W RAM_5_entity_State,Y           ;068C67|996C04  |06046C;
+                       STA.W r6_entity_State,Y              ;068C67|996C04  |06046C;
                        INY                                  ;068C6A|C8      |      ;
                        CPY.B #$0A                           ;068C6B|C00A    |      ;
                        BCC CODE_068C67                      ;068C6D|90F8    |068C67;
                        LDA.B #$01                           ;068C6F|A901    |      ;
-                       STA.W RAM_5_entity_State,X           ;068C71|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068C71|9D6C04  |06046C;
                                                             ;      |        |      ;
           CODE_068C74:
                        JSR.W EMPTY_06DD3D                   ;068C74|203DDD  |06DD3D;
-                       LDA.W RAM_5_entity_Attributes,X      ;068C77|BD0003  |060300;
+                       LDA.W r6_entity_spAtr,X              ;068C77|BD0003  |060300;
                        CMP.B #$01                           ;068C7A|C901    |      ;
                        BNE CODE_068C95                      ;068C7C|D017    |068C95;
-                       LDA.W RAM_5_entity_X_Pos,X           ;068C7E|BD8C03  |06038C;
+                       LDA.W r6_entity_X_Pos,X              ;068C7E|BD8C03  |06038C;
                        CMP.B #$70                           ;068C81|C970    |      ;
                        BCC CODE_068C95                      ;068C83|9010    |068C95;
                        CMP.B #$90                           ;068C85|C990    |      ;
@@ -2009,7 +2009,7 @@ enemyAI_16_boneDragonNeck:
                                                             ;      |        |      ;
           CODE_068C8B:
                        LDA.B #$32                           ;068C8B|A932    |      ;
-                       STA.W RAM_5_entity_ObjectIndex,Y     ;068C8D|993404  |060434;
+                       STA.W r6_entity_ID,Y                 ;068C8D|993404  |060434;
                        INY                                  ;068C90|C8      |      ;
                        CPY.B #$0B                           ;068C91|C00B    |      ;
                        BCC CODE_068C8B                      ;068C93|90F6    |068C8B;
@@ -2019,8 +2019,8 @@ enemyAI_16_boneDragonNeck:
                        PLA                                  ;068C96|68      |      ;
                        JMP.W EMPTY_06EA77                   ;068C97|4C77EA  |06EA77;
                                                             ;      |        |      ;
-                       JSR.W FIXME_ef69                     ;068C9A|2069EF  |06EF69;
-                       LDA.W RAM_5_entity_State,X           ;068C9D|BD6C04  |06046C;
+                       JSR.W FIXME_ef69_aOtherScreenR02     ;068C9A|2069EF  |06EF69;
+                       LDA.W r6_entity_State,X              ;068C9D|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;068CA0|206DCA  |06CA6D;
                        dw CODE_068CD3                       ;068CA3|        |068CD3;
                        dw CODE_068CF0                       ;068CA5|        |068CF0;
@@ -2032,16 +2032,16 @@ enemyAI_16_boneDragonNeck:
                        dw CODE_068D65                       ;068CAF|        |068D65;
                                                             ;      |        |      ;
           CODE_068CB1:
-                       LDA.W RAM_5_entity_Attributes,X      ;068CB1|BD0003  |060300;
+                       LDA.W r6_entity_spAtr,X              ;068CB1|BD0003  |060300;
                        AND.B #$01                           ;068CB4|2901    |      ;
                        BEQ CODE_068CBE                      ;068CB6|F006    |068CBE;
-                       LDA.W RAM_5_entity_SpriteMirrored,X  ;068CB8|BD5004  |060450;
+                       LDA.W r6_entity_spriteMirror,X       ;068CB8|BD5004  |060450;
                        JMP.W CODE_068CCF                    ;068CBB|4CCF8C  |068CCF;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068CBE:
-                       JSR.W FIXME_ef84                     ;068CBE|2084EF  |06EF84;
-                       LDY.W RAM_5_entity_SpriteMirrored,X  ;068CC1|BC5004  |060450;
+                       JSR.W FIXME_ef84_findPlayer          ;068CBE|2084EF  |06EF84;
+                       LDY.W r6_entity_spriteMirror,X       ;068CC1|BC5004  |060450;
                        CMP.B #$48                           ;068CC4|C948    |      ;
                        BCC CODE_068CCC                      ;068CC6|9004    |068CCC;
                        TYA                                  ;068CC8|98      |      ;
@@ -2053,57 +2053,57 @@ enemyAI_16_boneDragonNeck:
                        EOR.B #$01                           ;068CCD|4901    |      ;
                                                             ;      |        |      ;
           CODE_068CCF:
-                       STA.W RAM_5_verticalVectorAddressHiher,X;068CCF|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;068CCF|9DF804  |0604F8;
                        RTS                                  ;068CD2|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068CD3:
-                       LDA.B randomValue                    ;068CD3|A56F    |00006F;
+                       LDA.B r_randomValue                  ;068CD3|A56F    |00006F;
                        AND.B #$03                           ;068CD5|2903    |      ;
                        TAY                                  ;068CD7|A8      |      ;
                        LDA.W DATA8_068CEC,Y                 ;068CD8|B9EC8C  |068CEC;
-                       STA.W RAM_5_verticalVectorAddressLo,X;068CDB|9DDC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,X        ;068CDB|9DDC04  |0604DC;
                        LDY.B #$80                           ;068CDE|A080    |      ;
                        LDA.B #$01                           ;068CE0|A901    |      ;
-                       JSR.W FIXME_ec72                     ;068CE2|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068CE2|2072EC  |06EC72;
                        LDY.B #$01                           ;068CE5|A001    |      ;
                        LDA.B #$04                           ;068CE7|A904    |      ;
-                       JMP.W FIXME_ed34                     ;068CE9|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068CE9|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          DATA8_068CEC:
                        db $04,$02,$03,$01                   ;068CEC|        |      ;
                                                             ;      |        |      ;
           CODE_068CF0:
-                       DEC.W RAM_5_entity_counter,X         ;068CF0|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068CF0|DE4C05  |06054C;
                        BEQ CODE_068CF6                      ;068CF3|F001    |068CF6;
                        RTS                                  ;068CF5|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068CF6:
-                       DEC.W RAM_5_verticalVectorAddressLo,X;068CF6|DEDC04  |0604DC;
+                       DEC.W r6_X_screen_AddressLo,X        ;068CF6|DEDC04  |0604DC;
                        BEQ CODE_068D05                      ;068CF9|F00A    |068D05;
                        JSR.W CODE_068CB1                    ;068CFB|20B18C  |068CB1;
                        LDY.B #$02                           ;068CFE|A002    |      ;
                        LDA.B #$10                           ;068D00|A910    |      ;
-                       JMP.W FIXME_ed34                     ;068D02|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068D02|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068D05:
                        LDY.B #$03                           ;068D05|A003    |      ;
                        LDA.B #$04                           ;068D07|A904    |      ;
-                       JMP.W FIXME_ed34                     ;068D09|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068D09|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068D0C:
-                       DEC.W RAM_5_entity_counter,X         ;068D0C|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068D0C|DE4C05  |06054C;
                        BEQ CODE_068D43                      ;068D0F|F032    |068D43;
-                       JSR.W FIXME_ee6f                     ;068D11|206FEE  |06EE6F;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;068D14|BD5403  |060354;
-                       STA.B various_data01                 ;068D17|854D    |00004D;
+                       JSR.W FIXME_ee6f_setEntityAtr01      ;068D11|206FEE  |06EE6F;
+                       LDA.W r6_entity_Y_Pos,X              ;068D14|BD5403  |060354;
+                       STA.B r_temp_data01                  ;068D17|854D    |00004D;
                        LDA.B #$0C                           ;068D19|A90C    |      ;
-                       STA.B various_data00                 ;068D1B|854C    |00004C;
-                       JSR.W FIXME_ec1a                     ;068D1D|201AEC  |06EC1A;
+                       STA.B r_temp_data00                  ;068D1B|854C    |00004C;
+                       JSR.W FIXME_ec1a_findScreenAndGround ;068D1D|201AEC  |06EC1A;
                        LDA.B $14                            ;068D20|A514    |000014;
                        BEQ CODE_068D28                      ;068D22|F004    |068D28;
                        JSR.W CODE_0690EF                    ;068D24|20EF90  |0690EF;
@@ -2113,77 +2113,77 @@ enemyAI_16_boneDragonNeck:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068D28:
-                       JSR.W FIXME_ef9c                     ;068D28|209CEF  |06EF9C;
+                       JSR.W FIXME_ef9c_findGround_10       ;068D28|209CEF  |06EF9C;
                        LDA.B $14                            ;068D2B|A514    |000014;
                        BNE CODE_068D27                      ;068D2D|D0F8    |068D27;
                        LDY.B #$40                           ;068D2F|A040    |      ;
                        LDA.B #$01                           ;068D31|A901    |      ;
-                       JSR.W FIXME_ec72                     ;068D33|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068D33|2072EC  |06EC72;
                        LDA.B #$02                           ;068D36|A902    |      ;
                        LDY.B #$80                           ;068D38|A080    |      ;
-                       JSR.W FIXME_ecea                     ;068D3A|20EAEC  |06ECEA;
+                       JSR.W FIXME_ecea_storeSpeed_AYSub_Ypos;068D3A|20EAEC  |06ECEA;
                        LDA.B #$05                           ;068D3D|A905    |      ;
-                       STA.W RAM_5_entity_State,X           ;068D3F|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068D3F|9D6C04  |06046C;
                        RTS                                  ;068D42|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068D43:
                        LDY.B #$01                           ;068D43|A001    |      ;
                        LDA.B #$04                           ;068D45|A904    |      ;
-                       JMP.W FIXME_ed34                     ;068D47|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068D47|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068D4A:
-                       DEC.W RAM_5_entity_counter,X         ;068D4A|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068D4A|DE4C05  |06054C;
                        BEQ CODE_068D50                      ;068D4D|F001    |068D50;
                        RTS                                  ;068D4F|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068D50:
-                       LDA.W RAM_5_entity_Attributes,X      ;068D50|BD0003  |060300;
+                       LDA.W r6_entity_spAtr,X              ;068D50|BD0003  |060300;
                        BNE CODE_068D58                      ;068D53|D003    |068D58;
-                       JSR.W FIXME_ed5c                     ;068D55|205CED  |06ED5C;
+                       JSR.W FIXME_ed5c_levelRelatedRoutines;068D55|205CED  |06ED5C;
                                                             ;      |        |      ;
           CODE_068D58:
                        LDA.B #$08                           ;068D58|A908    |      ;
                        LDY.B #$04                           ;068D5A|A004    |      ;
-                       JMP.W FIXME_ed34                     ;068D5C|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068D5C|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068D5F:
-                       DEC.W RAM_5_entity_counter,X         ;068D5F|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068D5F|DE4C05  |06054C;
                        BEQ CODE_068D65                      ;068D62|F001    |068D65;
                        RTS                                  ;068D64|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068D65:
                        LDA.B #$00                           ;068D65|A900    |      ;
-                       STA.W RAM_5_entity_State,X           ;068D67|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068D67|9D6C04  |06046C;
                        RTS                                  ;068D6A|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068D6B:
-                       JSR.W FIXME_ee6f                     ;068D6B|206FEE  |06EE6F;
-                       JSR.W FIXME_ec50                     ;068D6E|2050EC  |06EC50;
-                       JSR.W FIXME_ef9c                     ;068D71|209CEF  |06EF9C;
+                       JSR.W FIXME_ee6f_setEntityAtr01      ;068D6B|206FEE  |06EE6F;
+                       JSR.W FIXME_ec50_gravity_00          ;068D6E|2050EC  |06EC50;
+                       JSR.W FIXME_ef9c_findGround_10       ;068D71|209CEF  |06EF9C;
                        LDA.B $14                            ;068D74|A514    |000014;
                        BEQ CODE_068D85                      ;068D76|F00D    |068D85;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;068D78|BD5403  |060354;
+                       LDA.W r6_entity_Y_Pos,X              ;068D78|BD5403  |060354;
                        AND.B #$F0                           ;068D7B|29F0    |      ;
-                       STA.W RAM_5_entity_Y_Pos,X           ;068D7D|9D5403  |060354;
+                       STA.W r6_entity_Y_Pos,X              ;068D7D|9D5403  |060354;
                        LDA.B #$06                           ;068D80|A906    |      ;
-                       STA.W RAM_5_entity_State,X           ;068D82|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068D82|9D6C04  |06046C;
                                                             ;      |        |      ;
           CODE_068D85:
                        RTS                                  ;068D85|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068D86:
-                       STX.B various_data02                 ;068D86|864E    |00004E;
+                       STX.B r_temp_data02                  ;068D86|864E    |00004E;
                        LDY.B #$0D                           ;068D88|A00D    |      ;
                                                             ;      |        |      ;
           CODE_068D8A:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;068D8A|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;068D8A|B93404  |060434;
                        BEQ CODE_068D95                      ;068D8D|F006    |068D95;
                        DEY                                  ;068D8F|88      |      ;
                        CPY.B #$07                           ;068D90|C007    |      ;
@@ -2195,30 +2195,30 @@ enemyAI_16_boneDragonNeck:
                        LDA.B #$27                           ;068D95|A927    |      ;
                        STA.B $16                            ;068D97|8516    |000016;
                        LDA.B #$16                           ;068D99|A916    |      ;
-                       JSR.W FIXME_ed82                     ;068D9B|2082ED  |06ED82;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;068D9B|2082ED  |06ED82;
                        LDX.B #$F4                           ;068D9E|A2F4    |      ;
-                       LDA.B randomValue                    ;068DA0|A56F    |00006F;
+                       LDA.B r_randomValue                  ;068DA0|A56F    |00006F;
                        AND.B #$01                           ;068DA2|2901    |      ;
                        BEQ CODE_068DA8                      ;068DA4|F002    |068DA8;
                        LDX.B #$08                           ;068DA6|A208    |      ;
                                                             ;      |        |      ;
           CODE_068DA8:
                        TXA                                  ;068DA8|8A      |      ;
-                       LDX.B various_data02                 ;068DA9|A64E    |00004E;
+                       LDX.B r_temp_data02                  ;068DA9|A64E    |00004E;
                        CLC                                  ;068DAB|18      |      ;
-                       ADC.W RAM_5_entity_Y_Pos,X           ;068DAC|7D5403  |060354;
-                       STA.W RAM_5_entity_Y_Pos,Y           ;068DAF|995403  |060354;
+                       ADC.W r6_entity_Y_Pos,X              ;068DAC|7D5403  |060354;
+                       STA.W r6_entity_Y_Pos,Y              ;068DAF|995403  |060354;
                        TXA                                  ;068DB2|8A      |      ;
-                       STA.W RAM_5_verticalVectorAddressLo,Y;068DB3|99DC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,Y        ;068DB3|99DC04  |0604DC;
                        LDA.B #$58                           ;068DB6|A958    |      ;
-                       STA.W RAM_5_entity_counter,Y         ;068DB8|994C05  |06054C;
+                       STA.W r6_entity_counter,Y            ;068DB8|994C05  |06054C;
                        LDA.B #$01                           ;068DBB|A901    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;068DBD|99FC03  |0603FC;
+                       STA.W r6_entity_X_Speed,Y            ;068DBD|99FC03  |0603FC;
                        LDA.B #$40                           ;068DC0|A940    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;068DC2|991804  |060418;
+                       STA.W r6_entity_X_SpeedSub,Y         ;068DC2|991804  |060418;
                        RTS                                  ;068DC5|60      |      ;
                                                             ;      |        |      ;
-                       LDY.W RAM_5_entity_State,X           ;068DC6|BC6C04  |06046C;
+                       LDY.W r6_entity_State,X              ;068DC6|BC6C04  |06046C;
                        BEQ CODE_068DD4                      ;068DC9|F009    |068DD4;
                        DEY                                  ;068DCB|88      |      ;
                        BEQ CODE_068DE2                      ;068DCC|F014    |068DE2;
@@ -2228,72 +2228,72 @@ enemyAI_16_boneDragonNeck:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068DD4:
-                       DEC.W RAM_5_entity_counter,X         ;068DD4|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068DD4|DE4C05  |06054C;
                        BEQ CODE_068DDC                      ;068DD7|F003    |068DDC;
-                       JMP.W FIXME_ee48                     ;068DD9|4C48EE  |06EE48;
+                       JMP.W FIXME_ee48_entityKeepWalking   ;068DD9|4C48EE  |06EE48;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068DDC:
                        LDA.B #$01                           ;068DDC|A901    |      ;
-                       STA.W RAM_5_entity_State,X           ;068DDE|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068DDE|9D6C04  |06046C;
                        RTS                                  ;068DE1|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068DE2:
-                       LDA.W RAM_5_entity_HorizontalSpeedSub,X;068DE2|BD1804  |060418;
+                       LDA.W r6_entity_X_SpeedSub,X         ;068DE2|BD1804  |060418;
                        SBC.B #$20                           ;068DE5|E920    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,X;068DE7|9D1804  |060418;
-                       LDA.W RAM_5_entity_HorizontalSpeed,X ;068DEA|BDFC03  |0603FC;
+                       STA.W r6_entity_X_SpeedSub,X         ;068DE7|9D1804  |060418;
+                       LDA.W r6_entity_X_Speed,X            ;068DEA|BDFC03  |0603FC;
                        SBC.B #$00                           ;068DED|E900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,X ;068DEF|9DFC03  |0603FC;
+                       STA.W r6_entity_X_Speed,X            ;068DEF|9DFC03  |0603FC;
                        BMI CODE_068DF7                      ;068DF2|3003    |068DF7;
-                       JMP.W FIXME_ee48                     ;068DF4|4C48EE  |06EE48;
+                       JMP.W FIXME_ee48_entityKeepWalking   ;068DF4|4C48EE  |06EE48;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068DF7:
-                       JSR.W FIXME_eaa9                     ;068DF7|20A9EA  |06EAA9;
+                       JSR.W FIXME_eaa9_switchSpritMirroring;068DF7|20A9EA  |06EAA9;
                        LDA.B #$00                           ;068DFA|A900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,X;068DFC|9D1804  |060418;
-                       STA.W RAM_5_entity_HorizontalSpeed,X ;068DFF|9DFC03  |0603FC;
+                       STA.W r6_entity_X_SpeedSub,X         ;068DFC|9D1804  |060418;
+                       STA.W r6_entity_X_Speed,X            ;068DFF|9DFC03  |0603FC;
                        LDA.B #$02                           ;068E02|A902    |      ;
-                       STA.W RAM_5_entity_State,X           ;068E04|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068E04|9D6C04  |06046C;
                        RTS                                  ;068E07|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068E08:
-                       LDA.W RAM_5_entity_HorizontalSpeedSub,X;068E08|BD1804  |060418;
+                       LDA.W r6_entity_X_SpeedSub,X         ;068E08|BD1804  |060418;
                        ADC.B #$20                           ;068E0B|6920    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,X;068E0D|9D1804  |060418;
-                       LDA.W RAM_5_entity_HorizontalSpeed,X ;068E10|BDFC03  |0603FC;
+                       STA.W r6_entity_X_SpeedSub,X         ;068E0D|9D1804  |060418;
+                       LDA.W r6_entity_X_Speed,X            ;068E10|BDFC03  |0603FC;
                        ADC.B #$00                           ;068E13|6900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,X ;068E15|9DFC03  |0603FC;
-                       JSR.W FIXME_ee48                     ;068E18|2048EE  |06EE48;
-                       LDA.W RAM_5_entity_HorizontalSpeed,X ;068E1B|BDFC03  |0603FC;
+                       STA.W r6_entity_X_Speed,X            ;068E15|9DFC03  |0603FC;
+                       JSR.W FIXME_ee48_entityKeepWalking   ;068E18|2048EE  |06EE48;
+                       LDA.W r6_entity_X_Speed,X            ;068E1B|BDFC03  |0603FC;
                        CMP.B #$01                           ;068E1E|C901    |      ;
                        BNE CODE_068E5C                      ;068E20|D03A    |068E5C;
-                       LDA.W RAM_5_entity_HorizontalSpeedSub,X;068E22|BD1804  |060418;
+                       LDA.W r6_entity_X_SpeedSub,X         ;068E22|BD1804  |060418;
                        CMP.B #$40                           ;068E25|C940    |      ;
                        BCC CODE_068E5C                      ;068E27|9033    |068E5C;
                        LDA.B #$03                           ;068E29|A903    |      ;
-                       STA.W RAM_5_entity_State,X           ;068E2B|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068E2B|9D6C04  |06046C;
                        LDA.B #$01                           ;068E2E|A901    |      ;
                        LDY.B #$40                           ;068E30|A040    |      ;
-                       JMP.W FIXME_ec72                     ;068E32|4C72EC  |06EC72;
+                       JMP.W FIXME_ec72_storeSpeed_AYsub_Xpos;068E32|4C72EC  |06EC72;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068E35:
-                       JSR.W FIXME_ee48                     ;068E35|2048EE  |06EE48;
-                       LDY.W RAM_5_verticalVectorAddressLo,X;068E38|BCDC04  |0604DC;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;068E3B|BD5403  |060354;
-                       SBC.W RAM_5_entity_Y_Pos,Y           ;068E3E|F95403  |060354;
+                       JSR.W FIXME_ee48_entityKeepWalking   ;068E35|2048EE  |06EE48;
+                       LDY.W r6_X_screen_AddressLo,X        ;068E38|BCDC04  |0604DC;
+                       LDA.W r6_entity_Y_Pos,X              ;068E3B|BD5403  |060354;
+                       SBC.W r6_entity_Y_Pos,Y              ;068E3E|F95403  |060354;
                        BCS CODE_068E45                      ;068E41|B002    |068E45;
                        EOR.B #$FF                           ;068E43|49FF    |      ;
                                                             ;      |        |      ;
           CODE_068E45:
                        CMP.B #$10                           ;068E45|C910    |      ;
                        BCS CODE_068E5C                      ;068E47|B013    |068E5C;
-                       LDA.W RAM_5_entity_X_Pos,X           ;068E49|BD8C03  |06038C;
-                       SBC.W RAM_5_entity_X_Pos,Y           ;068E4C|F98C03  |06038C;
+                       LDA.W r6_entity_X_Pos,X              ;068E49|BD8C03  |06038C;
+                       SBC.W r6_entity_X_Pos,Y              ;068E4C|F98C03  |06038C;
                        BCS CODE_068E53                      ;068E4F|B002    |068E53;
                        EOR.B #$FF                           ;068E51|49FF    |      ;
                                                             ;      |        |      ;
@@ -2301,16 +2301,16 @@ enemyAI_16_boneDragonNeck:
                        CMP.B #$10                           ;068E53|C910    |      ;
                        BCS CODE_068E5C                      ;068E55|B005    |068E5C;
                        LDA.B #$32                           ;068E57|A932    |      ;
-                       STA.W RAM_5_entity_ObjectIndex,X     ;068E59|9D3404  |060434;
+                       STA.W r6_entity_ID,X                 ;068E59|9D3404  |060434;
                                                             ;      |        |      ;
           CODE_068E5C:
                        RTS                                  ;068E5C|60      |      ;
                                                             ;      |        |      ;
-                       STX.B various_data02                 ;068E5D|864E    |00004E;
+                       STX.B r_temp_data02                  ;068E5D|864E    |00004E;
                        LDY.B #$0D                           ;068E5F|A00D    |      ;
                                                             ;      |        |      ;
           CODE_068E61:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;068E61|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;068E61|B93404  |060434;
                        BEQ CODE_068E6C                      ;068E64|F006    |068E6C;
                        DEY                                  ;068E66|88      |      ;
                        CPY.B #$0B                           ;068E67|C00B    |      ;
@@ -2322,20 +2322,20 @@ enemyAI_16_boneDragonNeck:
                        LDA.B #$23                           ;068E6C|A923    |      ;
                        STA.B $16                            ;068E6E|8516    |000016;
                        LDA.B #$08                           ;068E70|A908    |      ;
-                       JSR.W FIXME_ed82                     ;068E72|2082ED  |06ED82;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;068E72|2082ED  |06ED82;
                        LDA.B #$02                           ;068E75|A902    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;068E77|99FC03  |0603FC;
+                       STA.W r6_entity_X_Speed,Y            ;068E77|99FC03  |0603FC;
                        LDA.B #$00                           ;068E7A|A900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;068E7C|991804  |060418;
+                       STA.W r6_entity_X_SpeedSub,Y         ;068E7C|991804  |060418;
                        RTS                                  ;068E7F|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068E80:
-                       STX.B various_data02                 ;068E80|864E    |00004E;
+                       STX.B r_temp_data02                  ;068E80|864E    |00004E;
                        LDY.B #$0D                           ;068E82|A00D    |      ;
                                                             ;      |        |      ;
           CODE_068E84:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;068E84|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;068E84|B93404  |060434;
                        BEQ CODE_068E8F                      ;068E87|F006    |068E8F;
                        DEY                                  ;068E89|88      |      ;
                        CPY.B #$04                           ;068E8A|C004    |      ;
@@ -2347,30 +2347,30 @@ enemyAI_16_boneDragonNeck:
                        LDA.B #$24                           ;068E8F|A924    |      ;
                        STA.B $16                            ;068E91|8516    |000016;
                        LDA.B #$4F                           ;068E93|A94F    |      ;
-                       JSR.W FIXME_ed82                     ;068E95|2082ED  |06ED82;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;068E95|2082ED  |06ED82;
                        LDA.B #$00                           ;068E98|A900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;068E9A|99FC03  |0603FC;
+                       STA.W r6_entity_X_Speed,Y            ;068E9A|99FC03  |0603FC;
                        LDA.B #$C0                           ;068E9D|A9C0    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;068E9F|991804  |060418;
+                       STA.W r6_entity_X_SpeedSub,Y         ;068E9F|991804  |060418;
                        LDX.B #$04                           ;068EA2|A204    |      ;
-                       LDA.B frame_Counter                  ;068EA4|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;068EA4|A51A    |00001A;
                        AND.B #$01                           ;068EA6|2901    |      ;
                        BEQ CODE_068EAC                      ;068EA8|F002    |068EAC;
                        LDX.B #$03                           ;068EAA|A203    |      ;
                                                             ;      |        |      ;
           CODE_068EAC:
                        TXA                                  ;068EAC|8A      |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,Y  ;068EAD|99C403  |0603C4;
+                       STA.W r6_entity_Y_speed,Y            ;068EAD|99C403  |0603C4;
                        LDA.B #$80                           ;068EB0|A980    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,Y;068EB2|99E003  |0603E0;
-                       LDX.B various_data02                 ;068EB5|A64E    |00004E;
+                       STA.W r6_entity_Y_speedSub,Y         ;068EB2|99E003  |0603E0;
+                       LDX.B r_temp_data02                  ;068EB5|A64E    |00004E;
                        RTS                                  ;068EB7|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
  enemyAI_19_bossDeath:
-                       JSR.W FIXME_eea7                     ;068EB8|20A7EE  |06EEA7;
-                       JSR.W FIXME_ef7c                     ;068EBB|207CEF  |06EF7C;
-                       LDA.W RAM_5_entity_State,X           ;068EBE|BD6C04  |06046C;
+                       JSR.W FIXME_eea7_endRoutineWhileTimer;068EB8|20A7EE  |06EEA7;
+                       JSR.W FIXME_ef7c_facePlayer          ;068EBB|207CEF  |06EF7C;
+                       LDA.W r6_entity_State,X              ;068EBE|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;068EC1|206DCA  |06CA6D;
                        dw bossDeath_state00                 ;068EC4|        |068ECE;
                        dw bossDeath_state01                 ;068EC6|        |068EDA;
@@ -2380,7 +2380,7 @@ enemyAI_16_boneDragonNeck:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
     bossDeath_state00:
-                       LDA.B bossScreen_Flag                ;068ECE|A548    |000048;
+                       LDA.B r_bossScreen_Flag              ;068ECE|A548    |000048;
                        BNE CODE_068ED3                      ;068ED0|D001    |068ED3;
                        RTS                                  ;068ED2|60      |      ;
                                                             ;      |        |      ;
@@ -2388,61 +2388,61 @@ enemyAI_16_boneDragonNeck:
           CODE_068ED3:
                        LDY.B #$81                           ;068ED3|A081    |      ;
                        LDA.B #$78                           ;068ED5|A978    |      ;
-                       JMP.W FIXME_ed34                     ;068ED7|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068ED7|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
     bossDeath_state01:
-                       DEC.W RAM_5_entity_counter,X         ;068EDA|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068EDA|DE4C05  |06054C;
                        BNE CODE_068EF0                      ;068EDD|D011    |068EF0;
-                       LDA.B #$58                           ;068EDF|A958    |      ;
-                       JSR.W FIXME_ef04                     ;068EE1|2004EF  |06EF04;
+                       LDA.B #$58                           ;068EDF|A958    |      ; deathAnimID
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;068EE1|2004EF  |06EF04;
                        LDA.B #$02                           ;068EE4|A902    |      ;
                        LDY.B #$80                           ;068EE6|A080    |      ;
-                       JSR.W FIXME_ecea                     ;068EE8|20EAEC  |06ECEA;
+                       JSR.W FIXME_ecea_storeSpeed_AYSub_Ypos;068EE8|20EAEC  |06ECEA;
                        LDA.B #$02                           ;068EEB|A902    |      ;
-                       STA.W RAM_5_entity_State,X           ;068EED|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068EED|9D6C04  |06046C;
                                                             ;      |        |      ;
           CODE_068EF0:
                        RTS                                  ;068EF0|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
     bossDeath_state02:
-                       LDA.W RAM_5_entity_Vertical_SpeedSub,X;068EF1|BDE003  |0603E0;
+                       LDA.W r6_entity_Y_speedSub,X         ;068EF1|BDE003  |0603E0;
                        SEC                                  ;068EF4|38      |      ;
                        SBC.B #$05                           ;068EF5|E905    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;068EF7|9DE003  |0603E0;
-                       LDA.W RAM_5_entity_Vertical_Speed,X  ;068EFA|BDC403  |0603C4;
+                       STA.W r6_entity_Y_speedSub,X         ;068EF7|9DE003  |0603E0;
+                       LDA.W r6_entity_Y_speed,X            ;068EFA|BDC403  |0603C4;
                        SBC.B #$00                           ;068EFD|E900    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;068EFF|9DC403  |0603C4;
-                       JSR.W FIXME_ef43                     ;068F02|2043EF  |06EF43;
-                       JSR.W CODE_068F72                    ;068F05|20728F  |068F72;
+                       STA.W r6_entity_Y_speed,X            ;068EFF|9DC403  |0603C4;
+                       JSR.W FIXME_ef43_updateYposSpeed_plus;068F02|2043EF  |06EF43;
+                       JSR.W findGroundMin18_to14           ;068F05|20728F  |068F72;
                        LDA.B $14                            ;068F08|A514    |000014;
                        BEQ CODE_068EF0                      ;068F0A|F0E4    |068EF0;
-                       JSR.W FIXME_efaf                     ;068F0C|20AFEF  |06EFAF;
+                       JSR.W FIXME_efaf_YposMask            ;068F0C|20AFEF  |06EFAF;
                                                             ;      |        |      ;
           CODE_068F0F:
                        JSR.W CODE_06905B                    ;068F0F|205B90  |06905B;
-                       LDA.B randomValue                    ;068F12|A56F    |00006F;
+                       LDA.B r_randomValue                  ;068F12|A56F    |00006F;
                        AND.B #$03                           ;068F14|2903    |      ;
                        TAY                                  ;068F16|A8      |      ;
-                       LDA.W DATA8_068F1F,Y                 ;068F17|B91F8F  |068F1F;
+                       LDA.W bossDeath_Timer,Y              ;068F17|B91F8F  |068F1F;
                        LDY.B #$03                           ;068F1A|A003    |      ;
-                       JMP.W FIXME_ed34                     ;068F1C|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;068F1C|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-         DATA8_068F1F:
+      bossDeath_Timer:
                        db $90,$5F,$B9,$54                   ;068F1F|        |      ;
                                                             ;      |        |      ;
     bossDeath_state03:
-                       LDA.B frame_Counter                  ;068F23|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;068F23|A51A    |00001A;
                        AND.B #$1F                           ;068F25|291F    |      ;
                        BEQ CODE_068F52                      ;068F27|F029    |068F52;
                                                             ;      |        |      ;
           CODE_068F29:
-                       DEC.W RAM_5_entity_counter,X         ;068F29|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068F29|DE4C05  |06054C;
                        BNE CODE_068F51                      ;068F2C|D023    |068F51;
                        LDY.B #$01                           ;068F2E|A001    |      ;
-                       LDA.B randomValue                    ;068F30|A56F    |00006F;
+                       LDA.B r_randomValue                  ;068F30|A56F    |00006F;
                        AND.B #$01                           ;068F32|2901    |      ;
                        BEQ CODE_068F38                      ;068F34|F002    |068F38;
                        LDY.B #$02                           ;068F36|A002    |      ;
@@ -2450,48 +2450,48 @@ enemyAI_16_boneDragonNeck:
           CODE_068F38:
                        TYA                                  ;068F38|98      |      ;
                        LDY.B #$00                           ;068F39|A000    |      ;
-                       JSR.W FIXME_ecea                     ;068F3B|20EAEC  |06ECEA;
-                       LDA.B frame_Counter                  ;068F3E|A51A    |00001A;
+                       JSR.W FIXME_ecea_storeSpeed_AYSub_Ypos;068F3B|20EAEC  |06ECEA;
+                       LDA.B r_frame_Counter                ;068F3E|A51A    |00001A;
                        AND.B #$01                           ;068F40|2901    |      ;
-                       STA.W RAM_5_verticalVectorAddressHiher,X;068F42|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;068F42|9DF804  |0604F8;
                        LDA.B #$00                           ;068F45|A900    |      ;
                        LDY.B #$C0                           ;068F47|A0C0    |      ;
-                       JSR.W FIXME_ec72                     ;068F49|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068F49|2072EC  |06EC72;
                        LDA.B #$04                           ;068F4C|A904    |      ;
-                       STA.W RAM_5_entity_State,X           ;068F4E|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068F4E|9D6C04  |06046C;
                                                             ;      |        |      ;
           CODE_068F51:
                        RTS                                  ;068F51|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068F52:
-                       JSR.W FIXME_ef84                     ;068F52|2084EF  |06EF84;
+                       JSR.W FIXME_ef84_findPlayer          ;068F52|2084EF  |06EF84;
                        CMP.B #$48                           ;068F55|C948    |      ;
                        BCS CODE_068F29                      ;068F57|B0D0    |068F29;
-                       LDA.W RAM_5_entity_SpriteMirrored,X  ;068F59|BD5004  |060450;
-                       STA.W RAM_5_verticalVectorAddressHiher,X;068F5C|9DF804  |0604F8;
+                       LDA.W r6_entity_spriteMirror,X       ;068F59|BD5004  |060450;
+                       STA.W r6_X_screen_AddressHiher,X     ;068F5C|9DF804  |0604F8;
                        LDA.B #$01                           ;068F5F|A901    |      ;
                        LDY.B #$40                           ;068F61|A040    |      ;
-                       JSR.W FIXME_ec72                     ;068F63|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;068F63|2072EC  |06EC72;
                        LDA.B #$04                           ;068F66|A904    |      ;
-                       STA.W RAM_5_entity_State,X           ;068F68|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068F68|9D6C04  |06046C;
                        LDA.B #$02                           ;068F6B|A902    |      ;
                        LDY.B #$00                           ;068F6D|A000    |      ;
-                       JMP.W FIXME_ecea                     ;068F6F|4CEAEC  |06ECEA;
+                       JMP.W FIXME_ecea_storeSpeed_AYSub_Ypos;068F6F|4CEAEC  |06ECEA;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_068F72:
-                       LDA.W RAM_5_entity_Y_Pos,X           ;068F72|BD5403  |060354;
+ findGroundMin18_to14:
+                       LDA.W r6_entity_Y_Pos,X              ;068F72|BD5403  |060354;
                        ADC.B #$18                           ;068F75|6918    |      ;
-                       STA.B various_data01                 ;068F77|854D    |00004D;
+                       STA.B r_temp_data01                  ;068F77|854D    |00004D;
                        LDA.B #$00                           ;068F79|A900    |      ;
-                       STA.B various_data00                 ;068F7B|854C    |00004C;
-                       JMP.W FIXME_EC21                     ;068F7D|4C21EC  |06EC21;
+                       STA.B r_temp_data00                  ;068F7B|854C    |00004C;
+                       JMP.W FIXME_EC21_findGround_to14     ;068F7D|4C21EC  |06EC21;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
     bossDeath_state04:
-                       JSR.W FIXME_ee1c                     ;068F80|201CEE  |06EE1C;
-                       LDA.W RAM_5_entity_X_Pos,X           ;068F83|BD8C03  |06038C;
+                       JSR.W FIXME_ee1c_applyScreenScrollOffset;068F80|201CEE  |06EE1C;
+                       LDA.W r6_entity_X_Pos,X              ;068F83|BD8C03  |06038C;
                        CMP.B #$F0                           ;068F86|C9F0    |      ;
                        BCS CODE_068F92                      ;068F88|B008    |068F92;
                        CMP.B #$10                           ;068F8A|C910    |      ;
@@ -2503,25 +2503,25 @@ enemyAI_16_boneDragonNeck:
                        LDA.B #$F0                           ;068F92|A9F0    |      ;
                                                             ;      |        |      ;
           CODE_068F94:
-                       STA.W RAM_5_entity_X_Pos,X           ;068F94|9D8C03  |06038C;
+                       STA.W r6_entity_X_Pos,X              ;068F94|9D8C03  |06038C;
                        JSR.W CODE_0690EF                    ;068F97|20EF90  |0690EF;
                                                             ;      |        |      ;
           CODE_068F9A:
                        JSR.W CODE_068FBD                    ;068F9A|20BD8F  |068FBD;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;068F9D|BD5403  |060354;
+                       LDA.W r6_entity_Y_Pos,X              ;068F9D|BD5403  |060354;
                        CMP.B #$20                           ;068FA0|C920    |      ;
                        BCS CODE_068FAF                      ;068FA2|B00B    |068FAF;
                        LDA.B #$21                           ;068FA4|A921    |      ;
-                       STA.W RAM_5_entity_Y_Pos,X           ;068FA6|9D5403  |060354;
-                       JSR.W FIXME_F1d2                     ;068FA9|20D2F1  |06F1D2;
+                       STA.W r6_entity_Y_Pos,X              ;068FA6|9D5403  |060354;
+                       JSR.W FIXME_F1d2_resetFallSpeed      ;068FA9|20D2F1  |06F1D2;
                        JMP.W CODE_068FBC                    ;068FAC|4CBC8F  |068FBC;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068FAF:
-                       JSR.W CODE_068F72                    ;068FAF|20728F  |068F72;
+                       JSR.W findGroundMin18_to14           ;068FAF|20728F  |068F72;
                        LDA.B $14                            ;068FB2|A514    |000014;
                        BEQ CODE_068FBC                      ;068FB4|F006    |068FBC;
-                       JSR.W FIXME_efaf                     ;068FB6|20AFEF  |06EFAF;
+                       JSR.W FIXME_efaf_YposMask            ;068FB6|20AFEF  |06EFAF;
                        JMP.W CODE_068F0F                    ;068FB9|4C0F8F  |068F0F;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -2530,121 +2530,121 @@ enemyAI_16_boneDragonNeck:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068FBD:
-                       LDA.W RAM_5_entity_Vertical_SpeedSub,X;068FBD|BDE003  |0603E0;
+                       LDA.W r6_entity_Y_speedSub,X         ;068FBD|BDE003  |0603E0;
                        SBC.B #$06                           ;068FC0|E906    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;068FC2|9DE003  |0603E0;
-                       LDA.W RAM_5_entity_Vertical_Speed,X  ;068FC5|BDC403  |0603C4;
+                       STA.W r6_entity_Y_speedSub,X         ;068FC2|9DE003  |0603E0;
+                       LDA.W r6_entity_Y_speed,X            ;068FC5|BDC403  |0603C4;
                        SBC.B #$00                           ;068FC8|E900    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;068FCA|9DC403  |0603C4;
-                       JMP.W FIXME_ef56                     ;068FCD|4C56EF  |06EF56;
+                       STA.W r6_entity_Y_speed,X            ;068FCA|9DC403  |0603C4;
+                       JMP.W FIXME_ef56_updateYposSpeed_minus;068FCD|4C56EF  |06EF56;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
 enemyAI_0b_hatchedDeath:
-                       LDA.W RAM_5_entity_State,X           ;068FD0|BD6C04  |06046C;
+                       LDA.W r6_entity_State,X              ;068FD0|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;068FD3|206DCA  |06CA6D;
                        dw hatchedDeath_state00              ;068FD6|        |068FDE;
                        dw hatchedDeath_state01              ;068FD8|        |068FFD;
                        dw hatchedDeath_state03              ;068FDA|        |069036;
-                       dw CODE_069053                       ;068FDC|        |069053;
+                       dw hatchedDeath_state04              ;068FDC|        |069053;
                                                             ;      |        |      ;
  hatchedDeath_state00:
-                       DEC.W RAM_5_entity_counter,X         ;068FDE|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;068FDE|DE4C05  |06054C;
                        BNE CODE_068FEE                      ;068FE1|D00B    |068FEE;
                        LDA.B #$00                           ;068FE3|A900    |      ;
-                       STA.W RAM_5_entity_Attributes,X      ;068FE5|9D0003  |060300;
+                       STA.W r6_entity_spAtr,X              ;068FE5|9D0003  |060300;
                        LDA.B #$01                           ;068FE8|A901    |      ;
-                       STA.W RAM_5_entity_State,X           ;068FEA|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;068FEA|9D6C04  |06046C;
                        RTS                                  ;068FED|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068FEE:
                        LDY.B #$00                           ;068FEE|A000    |      ;
-                       LDA.B frame_Counter                  ;068FF0|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;068FF0|A51A    |00001A;
                        AND.B #$01                           ;068FF2|2901    |      ;
                        BEQ CODE_068FF8                      ;068FF4|F002    |068FF8;
                        LDY.B #$80                           ;068FF6|A080    |      ;
                                                             ;      |        |      ;
           CODE_068FF8:
                        TYA                                  ;068FF8|98      |      ;
-                       STA.W RAM_5_entity_Attributes,X      ;068FF9|9D0003  |060300;
+                       STA.W r6_entity_spAtr,X              ;068FF9|9D0003  |060300;
                                                             ;      |        |      ;
           CODE_068FFC:
                        RTS                                  ;068FFC|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
  hatchedDeath_state01:
-                       LDA.W RAM_5_entity_X_Pos             ;068FFD|AD8C03  |06038C;
+                       LDA.W r6_entity_X_Pos                ;068FFD|AD8C03  |06038C;
                        STA.B $01                            ;069000|8501    |000001;
-                       LDA.W RAM_5_entity_Y_Pos             ;069002|AD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;069002|AD5403  |060354;
                        STA.B $00                            ;069005|8500    |000000;
-                       JSR.W FIXME_eebb                     ;069007|20BBEE  |06EEBB;
-                       LDX.B various_data02                 ;06900A|A64E    |00004E;
+                       JSR.W FIXME_eebb_aOtherScreenR00     ;069007|20BBEE  |06EEBB;
+                       LDX.B r_temp_data02                  ;06900A|A64E    |00004E;
                        LDA.B $09                            ;06900C|A509    |000009;
                        BNE CODE_069021                      ;06900E|D011    |069021;
                        LDA.B #$00                           ;069010|A900    |      ;
                        LDY.B #$E0                           ;069012|A0E0    |      ;
-                       JSR.W FIXME_ec72                     ;069014|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;069014|2072EC  |06EC72;
                        LDY.B $02                            ;069017|A402    |000002;
                        LDA.B $01                            ;069019|A501    |000001;
-                       JSR.W FIXME_ecea                     ;06901B|20EAEC  |06ECEA;
+                       JSR.W FIXME_ecea_storeSpeed_AYSub_Ypos;06901B|20EAEC  |06ECEA;
                        JMP.W CODE_06902F                    ;06901E|4C2F90  |06902F;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069021:
                        LDA.B #$00                           ;069021|A900    |      ;
                        LDY.B #$E0                           ;069023|A0E0    |      ;
-                       JSR.W FIXME_ecea                     ;069025|20EAEC  |06ECEA;
+                       JSR.W FIXME_ecea_storeSpeed_AYSub_Ypos;069025|20EAEC  |06ECEA;
                        LDY.B $02                            ;069028|A402    |000002;
                        LDA.B $01                            ;06902A|A501    |000001;
-                       JSR.W FIXME_ec72                     ;06902C|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;06902C|2072EC  |06EC72;
                                                             ;      |        |      ;
           CODE_06902F:
                        LDA.B #$78                           ;06902F|A978    |      ;
                        LDY.B #$02                           ;069031|A002    |      ;
-                       JMP.W FIXME_ed34                     ;069033|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;069033|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
  hatchedDeath_state03:
-                       DEC.W RAM_5_entity_counter,X         ;069036|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;069036|DE4C05  |06054C;
                        BEQ CODE_06904C                      ;069039|F011    |06904C;
-                       LDA.W RAM_5_verticalVectorAddressLo,X;06903B|BDDC04  |0604DC;
+                       LDA.W r6_X_screen_AddressLo,X        ;06903B|BDDC04  |0604DC;
                        BNE CODE_069046                      ;06903E|D006    |069046;
-                       JSR.W FIXME_ef43                     ;069040|2043EF  |06EF43;
+                       JSR.W FIXME_ef43_updateYposSpeed_plus;069040|2043EF  |06EF43;
                        JMP.W CODE_069049                    ;069043|4C4990  |069049;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069046:
-                       JSR.W FIXME_ef56                     ;069046|2056EF  |06EF56;
+                       JSR.W FIXME_ef56_updateYposSpeed_minus;069046|2056EF  |06EF56;
                                                             ;      |        |      ;
           CODE_069049:
-                       JMP.W FIXME_ee48                     ;069049|4C48EE  |06EE48;
+                       JMP.W FIXME_ee48_entityKeepWalking   ;069049|4C48EE  |06EE48;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06904C:
                        LDA.B #$20                           ;06904C|A920    |      ;
                        LDY.B #$03                           ;06904E|A003    |      ;
-                       JMP.W FIXME_ed34                     ;069050|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;069050|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_069053:
-                       DEC.W RAM_5_entity_counter,X         ;069053|DE4C05  |06054C;
+ hatchedDeath_state04:
+                       DEC.W r6_entity_counter,X            ;069053|DE4C05  |06054C;
                        BNE CODE_068FFC                      ;069056|D0A4    |068FFC;
                        JMP.W hatchedDeath_state01           ;069058|4CFD8F  |068FFD;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06905B:
-                       STX.B various_data02                 ;06905B|864E    |00004E;
+                       STX.B r_temp_data02                  ;06905B|864E    |00004E;
                        LDA.B #$03                           ;06905D|A903    |      ;
-                       LDY.B secondQuestFlag                ;06905F|A42B    |00002B;
+                       LDY.B r_secondQuestFlag              ;06905F|A42B    |00002B;
                        BEQ CODE_069065                      ;069061|F002    |069065;
                        LDA.B #$04                           ;069063|A904    |      ;
                                                             ;      |        |      ;
           CODE_069065:
-                       STA.B various_Processing_ID          ;069065|854B    |00004B;
+                       STA.B r_temp_processing_ID           ;069065|854B    |00004B;
                        LDY.B #$0D                           ;069067|A00D    |      ;
                                                             ;      |        |      ;
           CODE_069069:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;069069|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;069069|B93404  |060434;
                        BEQ CODE_069074                      ;06906C|F006    |069074;
                                                             ;      |        |      ;
           CODE_06906E:
@@ -2656,23 +2656,23 @@ enemyAI_0b_hatchedDeath:
                                                             ;      |        |      ;
           CODE_069074:
                        LDA.B #$28                           ;069074|A928    |      ;
-                       STA.W RAM_5_entity_counter,X         ;069076|9D4C05  |06054C;
-                       LDX.B various_Processing_ID          ;069079|A64B    |00004B;
-                       LDA.W RAM_5_entity_X_Pos             ;06907B|AD8C03  |06038C;
+                       STA.W r6_entity_counter,X            ;069076|9D4C05  |06054C;
+                       LDX.B r_temp_processing_ID           ;069079|A64B    |00004B;
+                       LDA.W r6_entity_X_Pos                ;06907B|AD8C03  |06038C;
                        ADC.W DATA8_0690A0,X                 ;06907E|7DA090  |0690A0;
-                       STA.W RAM_5_entity_X_Pos,Y           ;069081|998C03  |06038C;
-                       LDA.W RAM_5_entity_Y_Pos             ;069084|AD5403  |060354;
+                       STA.W r6_entity_X_Pos,Y              ;069081|998C03  |06038C;
+                       LDA.W r6_entity_Y_Pos                ;069084|AD5403  |060354;
                        ADC.W DATA8_0690A5,X                 ;069087|7DA590  |0690A5;
-                       STA.W RAM_5_entity_Y_Pos,Y           ;06908A|995403  |060354;
+                       STA.W r6_entity_Y_Pos,Y              ;06908A|995403  |060354;
                        TYA                                  ;06908D|98      |      ;
                        TAX                                  ;06908E|AA      |      ;
                        LDA.B #$0B                           ;06908F|A90B    |      ;
-                       JSR.W FIXME_f42c                     ;069091|202CF4  |06F42C;
+                       JSR.W FIXME_f42c_storeID_resetStats  ;069091|202CF4  |06F42C;
                        LDA.B #$59                           ;069094|A959    |      ;
-                       JSR.W FIXME_ef04                     ;069096|2004EF  |06EF04;
-                       DEC.B various_Processing_ID          ;069099|C64B    |00004B;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;069096|2004EF  |06EF04;
+                       DEC.B r_temp_processing_ID           ;069099|C64B    |00004B;
                        BNE CODE_06906E                      ;06909B|D0D1    |06906E;
-                       LDX.B various_data02                 ;06909D|A64E    |00004E;
+                       LDX.B r_temp_data02                  ;06909D|A64E    |00004E;
                        RTS                                  ;06909F|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -2683,9 +2683,9 @@ enemyAI_0b_hatchedDeath:
                        db $20,$D0,$18,$B0,$E0               ;0690A5|        |      ;
                                                             ;      |        |      ;
   enemyAI_0a_axeArmor:
-                       JSR.W FIXME_eea7                     ;0690AA|20A7EE  |06EEA7;
-                       JSR.W FIXME_ef69                     ;0690AD|2069EF  |06EF69;
-                       LDA.W RAM_5_entity_State,X           ;0690B0|BD6C04  |06046C;
+                       JSR.W FIXME_eea7_endRoutineWhileTimer;0690AA|20A7EE  |06EEA7;
+                       JSR.W FIXME_ef69_aOtherScreenR02     ;0690AD|2069EF  |06EF69;
+                       LDA.W r6_entity_State,X              ;0690B0|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;0690B3|206DCA  |06CA6D;
                        dw CODE_0690BE                       ;0690B6|        |0690BE;
                        dw CODE_0690F8                       ;0690B8|        |0690F8;
@@ -2693,15 +2693,15 @@ enemyAI_0b_hatchedDeath:
                        dw CODE_06914A                       ;0690BC|        |06914A;
                                                             ;      |        |      ;
           CODE_0690BE:
-                       LDA.B randomValue                    ;0690BE|A56F    |00006F;
+                       LDA.B r_randomValue                  ;0690BE|A56F    |00006F;
                        AND.B #$03                           ;0690C0|2903    |      ;
                        TAY                                  ;0690C2|A8      |      ;
                        LDA.W DATA8_0690EB,Y                 ;0690C3|B9EB90  |0690EB;
-                       STA.W RAM_5_verticalVectorAddressLo,X;0690C6|9DDC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,X        ;0690C6|9DDC04  |0604DC;
                                                             ;      |        |      ;
           CODE_0690C9:
-                       LDY.W RAM_5_entity_SpriteMirrored,X  ;0690C9|BC5004  |060450;
-                       JSR.W FIXME_ef84                     ;0690CC|2084EF  |06EF84;
+                       LDY.W r6_entity_spriteMirror,X       ;0690C9|BC5004  |060450;
+                       JSR.W FIXME_ef84_findPlayer          ;0690CC|2084EF  |06EF84;
                        CMP.B #$50                           ;0690CF|C950    |      ;
                        BCS CODE_0690D9                      ;0690D1|B006    |0690D9;
                        TYA                                  ;0690D3|98      |      ;
@@ -2713,48 +2713,48 @@ enemyAI_0b_hatchedDeath:
                        TYA                                  ;0690D9|98      |      ;
                                                             ;      |        |      ;
           CODE_0690DA:
-                       STA.W RAM_5_verticalVectorAddressHiher,X;0690DA|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;0690DA|9DF804  |0604F8;
                        LDA.B #$00                           ;0690DD|A900    |      ;
                        LDY.B #$A0                           ;0690DF|A0A0    |      ;
-                       JSR.W FIXME_ec72                     ;0690E1|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;0690E1|2072EC  |06EC72;
                        LDA.B #$10                           ;0690E4|A910    |      ;
                        LDY.B #$01                           ;0690E6|A001    |      ;
-                       JMP.W FIXME_ed34                     ;0690E8|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0690E8|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          DATA8_0690EB:
                        db $09,$0B,$0A,$0C                   ;0690EB|        |      ;
                                                             ;      |        |      ;
           CODE_0690EF:
-                       LDA.W RAM_5_verticalVectorAddressHiher,X;0690EF|BDF804  |0604F8;
+                       LDA.W r6_X_screen_AddressHiher,X     ;0690EF|BDF804  |0604F8;
                        EOR.B #$01                           ;0690F2|4901    |      ;
-                       STA.W RAM_5_verticalVectorAddressHiher,X;0690F4|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;0690F4|9DF804  |0604F8;
                        RTS                                  ;0690F7|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0690F8:
-                       LDA.W RAM_5_entity_Attributes,X      ;0690F8|BD0003  |060300;
+                       LDA.W r6_entity_spAtr,X              ;0690F8|BD0003  |060300;
                        AND.B #$01                           ;0690FB|2901    |      ;
                        BNE CODE_069134                      ;0690FD|D035    |069134;
-                       DEC.W RAM_5_entity_counter,X         ;0690FF|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0690FF|DE4C05  |06054C;
                        BEQ CODE_06912F                      ;069102|F02B    |06912F;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;069104|BD5403  |060354;
-                       STA.B various_data01                 ;069107|854D    |00004D;
+                       LDA.W r6_entity_Y_Pos,X              ;069104|BD5403  |060354;
+                       STA.B r_temp_data01                  ;069107|854D    |00004D;
                        LDA.B #$0C                           ;069109|A90C    |      ;
-                       STA.B various_data00                 ;06910B|854C    |00004C;
-                       JSR.W FIXME_ec1a                     ;06910D|201AEC  |06EC1A;
+                       STA.B r_temp_data00                  ;06910B|854C    |00004C;
+                       JSR.W FIXME_ec1a_findScreenAndGround ;06910D|201AEC  |06EC1A;
                        LDA.B $14                            ;069110|A514    |000014;
                        BEQ CODE_069116                      ;069112|F002    |069116;
                        BNE CODE_069129                      ;069114|D013    |069129;
                                                             ;      |        |      ;
           CODE_069116:
-                       LDA.W RAM_5_entity_Y_Pos,X           ;069116|BD5403  |060354;
+                       LDA.W r6_entity_Y_Pos,X              ;069116|BD5403  |060354;
                        CLC                                  ;069119|18      |      ;
                        ADC.B #$10                           ;06911A|6910    |      ;
-                       STA.B various_data01                 ;06911C|854D    |00004D;
+                       STA.B r_temp_data01                  ;06911C|854D    |00004D;
                        LDA.B #$04                           ;06911E|A904    |      ;
-                       STA.B various_data00                 ;069120|854C    |00004C;
-                       JSR.W FIXME_ec1a                     ;069122|201AEC  |06EC1A;
+                       STA.B r_temp_data00                  ;069120|854C    |00004C;
+                       JSR.W FIXME_ec1a_findScreenAndGround ;069122|201AEC  |06EC1A;
                        LDA.B $14                            ;069125|A514    |000014;
                        BNE CODE_06912C                      ;069127|D003    |06912C;
                                                             ;      |        |      ;
@@ -2762,77 +2762,77 @@ enemyAI_0b_hatchedDeath:
                        JSR.W CODE_0690EF                    ;069129|20EF90  |0690EF;
                                                             ;      |        |      ;
           CODE_06912C:
-                       JMP.W FIXME_ee6f                     ;06912C|4C6FEE  |06EE6F;
+                       JMP.W FIXME_ee6f_setEntityAtr01      ;06912C|4C6FEE  |06EE6F;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06912F:
-                       DEC.W RAM_5_verticalVectorAddressLo,X;06912F|DEDC04  |0604DC;
+                       DEC.W r6_X_screen_AddressLo,X        ;06912F|DEDC04  |0604DC;
                        BEQ CODE_06913B                      ;069132|F007    |06913B;
                                                             ;      |        |      ;
           CODE_069134:
                        LDA.B #$04                           ;069134|A904    |      ;
                        LDY.B #$02                           ;069136|A002    |      ;
-                       JMP.W FIXME_ed34                     ;069138|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;069138|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06913B:
                        LDA.B #$10                           ;06913B|A910    |      ;
                        LDY.B #$03                           ;06913D|A003    |      ;
-                       JMP.W FIXME_ed34                     ;06913F|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06913F|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069142:
-                       DEC.W RAM_5_entity_counter,X         ;069142|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;069142|DE4C05  |06054C;
                        BNE CODE_069157                      ;069145|D010    |069157;
                        JMP.W CODE_0690C9                    ;069147|4CC990  |0690C9;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06914A:
-                       DEC.W RAM_5_entity_counter,X         ;06914A|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;06914A|DE4C05  |06054C;
                        BNE CODE_069157                      ;06914D|D008    |069157;
                        JSR.W CODE_068D86                    ;06914F|20868D  |068D86;
                        LDA.B #$00                           ;069152|A900    |      ;
-                       STA.W RAM_5_entity_State,X           ;069154|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;069154|9D6C04  |06046C;
                                                             ;      |        |      ;
           CODE_069157:
                        RTS                                  ;069157|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069158:
-                       DEC.W RAM_5_simon_whipTimer,X        ;069158|DE6805  |060568;
+                       DEC.W r6_whipTimer,X                 ;069158|DE6805  |060568;
                        BEQ CODE_06915E                      ;06915B|F001    |06915E;
                        RTS                                  ;06915D|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06915E:
                        LDA.B #$57                           ;06915E|A957    |      ;
-                       JSR.W FIXME_ef04                     ;069160|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;069160|2004EF  |06EF04;
                        LDA.B #$54                           ;069163|A954    |      ;
                        LDY.B #$80                           ;069165|A080    |      ;
-                       JMP.W FIXME_ed34                     ;069167|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;069167|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06916A:
-                       JSR.W FIXME_ec50                     ;06916A|2050EC  |06EC50;
-                       JSR.W FIXME_ef9c                     ;06916D|209CEF  |06EF9C;
+                       JSR.W FIXME_ec50_gravity_00          ;06916A|2050EC  |06EC50;
+                       JSR.W FIXME_ef9c_findGround_10       ;06916D|209CEF  |06EF9C;
                        LDA.B $14                            ;069170|A514    |000014;
                        BEQ CODE_0691A2                      ;069172|F02E    |0691A2;
                        LDA.B #$02                           ;069174|A902    |      ;
-                       STA.W RAM_5_entity_State,X           ;069176|9D6C04  |06046C;
-                       JMP.W FIXME_efaf                     ;069179|4CAFEF  |06EFAF;
+                       STA.W r6_entity_State,X              ;069176|9D6C04  |06046C;
+                       JMP.W FIXME_efaf_YposMask            ;069179|4CAFEF  |06EFAF;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
  enemyAI_13_redSkelly:
                        LDA.W $0560                          ;06917C|AD6005  |060560;
                        BEQ CODE_069189                      ;06917F|F008    |069189;
-                       LDA.W RAM_5_entity_State,X           ;069181|BD6C04  |06046C;
+                       LDA.W r6_entity_State,X              ;069181|BD6C04  |06046C;
                        CMP.B #$84                           ;069184|C984    |      ;
                        BEQ CODE_069158                      ;069186|F0D0    |069158;
                        RTS                                  ;069188|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069189:
-                       LDA.W RAM_5_entity_State,X           ;069189|BD6C04  |06046C;
+                       LDA.W r6_entity_State,X              ;069189|BD6C04  |06046C;
                        AND.B #$7F                           ;06918C|297F    |      ;
                        JSR.W FIXME_ca6d_jump4stack          ;06918E|206DCA  |06CA6D;
                        dw redSkelly_State00                 ;069191|        |06919D;
@@ -2843,7 +2843,7 @@ enemyAI_0b_hatchedDeath:
                        dw CODE_06916A                       ;06919B|        |06916A;
                                                             ;      |        |      ;
     redSkelly_State00:
-                       DEC.W RAM_5_entity_counter,X         ;06919D|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;06919D|DE4C05  |06054C;
                        BEQ CODE_0691A3                      ;0691A0|F001    |0691A3;
                                                             ;      |        |      ;
           CODE_0691A2:
@@ -2852,18 +2852,18 @@ enemyAI_0b_hatchedDeath:
                                                             ;      |        |      ;
           CODE_0691A3:
                        LDA.B #$01                           ;0691A3|A901    |      ;
-                       STA.W RAM_5_verticalVectorAddressLo,X;0691A5|9DDC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,X        ;0691A5|9DDC04  |0604DC;
                        LDA.B #$81                           ;0691A8|A981    |      ;
-                       STA.W RAM_5_entity_State,X           ;0691AA|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;0691AA|9D6C04  |06046C;
                        LDA.B #$54                           ;0691AD|A954    |      ;
-                       JMP.W FIXME_ef04                     ;0691AF|4C04EF  |06EF04;
+                       JMP.W FIXME_ef04_loadNewAnimIndex    ;0691AF|4C04EF  |06EF04;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
     redSkelly_State01:
-                       LDA.W RAM_5_simon_StepCount,X        ;0691B2|BDA404  |0604A4;
+                       LDA.W r6_player_stepCount,X          ;0691B2|BDA404  |0604A4;
                        CMP.B #$02                           ;0691B5|C902    |      ;
                        BNE CODE_0691BE                      ;0691B7|D005    |0691BE;
-                       LDA.W RAM_5_simon_jumpState,X        ;0691B9|BD8804  |060488;
+                       LDA.W r6_player_jumpState,X          ;0691B9|BD8804  |060488;
                        BEQ CODE_0691BF                      ;0691BC|F001    |0691BF;
                                                             ;      |        |      ;
           CODE_0691BE:
@@ -2871,67 +2871,67 @@ enemyAI_0b_hatchedDeath:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0691BF:
-                       DEC.W RAM_5_verticalVectorAddressLo,X;0691BF|DEDC04  |0604DC;
+                       DEC.W r6_X_screen_AddressLo,X        ;0691BF|DEDC04  |0604DC;
                        BNE CODE_0691D2                      ;0691C2|D00E    |0691D2;
-                       JSR.W FIXME_ef69                     ;0691C4|2069EF  |06EF69;
-                       LDA.B randomValue                    ;0691C7|A56F    |00006F;
+                       JSR.W FIXME_ef69_aOtherScreenR02     ;0691C4|2069EF  |06EF69;
+                       LDA.B r_randomValue                  ;0691C7|A56F    |00006F;
                        AND.B #$03                           ;0691C9|2903    |      ;
                        TAY                                  ;0691CB|A8      |      ;
                        LDA.W DATA8_0691E5,Y                 ;0691CC|B9E591  |0691E5;
-                       STA.W RAM_5_verticalVectorAddressLo,X;0691CF|9DDC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,X        ;0691CF|9DDC04  |0604DC;
                                                             ;      |        |      ;
           CODE_0691D2:
                        LDA.B #$02                           ;0691D2|A902    |      ;
-                       JSR.W FIXME_ef04                     ;0691D4|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;0691D4|2004EF  |06EF04;
                        LDA.B #$00                           ;0691D7|A900    |      ;
                        LDY.B #$A0                           ;0691D9|A0A0    |      ;
-                       JSR.W FIXME_ec72                     ;0691DB|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;0691DB|2072EC  |06EC72;
                        LDA.B #$30                           ;0691DE|A930    |      ;
                        LDY.B #$02                           ;0691E0|A002    |      ;
-                       JMP.W FIXME_ed34                     ;0691E2|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0691E2|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          DATA8_0691E5:
                        db $04,$03,$05,$04                   ;0691E5|        |      ;
                                                             ;      |        |      ;
           CODE_0691E9:
-                       DEC.W RAM_5_entity_counter,X         ;0691E9|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0691E9|DE4C05  |06054C;
                        BEQ CODE_069218                      ;0691EC|F02A    |069218;
-                       JSR.W FIXME_ee75                     ;0691EE|2075EE  |06EE75;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0691F1|BD5403  |060354;
-                       STA.B various_data01                 ;0691F4|854D    |00004D;
+                       JSR.W FIXME_ee75_setEntityAtr00      ;0691EE|2075EE  |06EE75;
+                       LDA.W r6_entity_Y_Pos,X              ;0691F1|BD5403  |060354;
+                       STA.B r_temp_data01                  ;0691F4|854D    |00004D;
                        LDA.B #$0C                           ;0691F6|A90C    |      ;
-                       STA.B various_data00                 ;0691F8|854C    |00004C;
-                       JSR.W FIXME_EC21                     ;0691FA|2021EC  |06EC21;
+                       STA.B r_temp_data00                  ;0691F8|854C    |00004C;
+                       JSR.W FIXME_EC21_findGround_to14     ;0691FA|2021EC  |06EC21;
                        LDA.B $14                            ;0691FD|A514    |000014;
                        BEQ CODE_069204                      ;0691FF|F003    |069204;
-                       JMP.W FIXME_eaa9                     ;069201|4CA9EA  |06EAA9;
+                       JMP.W FIXME_eaa9_switchSpritMirroring;069201|4CA9EA  |06EAA9;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069204:
-                       LDA.W RAM_5_entity_Attributes,X      ;069204|BD0003  |060300;
+                       LDA.W r6_entity_spAtr,X              ;069204|BD0003  |060300;
                        BNE CODE_069224                      ;069207|D01B    |069224;
-                       JSR.W FIXME_ef9c                     ;069209|209CEF  |06EF9C;
+                       JSR.W FIXME_ef9c_findGround_10       ;069209|209CEF  |06EF9C;
                        LDA.B $14                            ;06920C|A514    |000014;
                        BNE CODE_069224                      ;06920E|D014    |069224;
                        LDA.B #$05                           ;069210|A905    |      ;
-                       STA.W RAM_5_entity_State,X           ;069212|9D6C04  |06046C;
-                       JMP.W FIXME_F1d2                     ;069215|4CD2F1  |06F1D2;
+                       STA.W r6_entity_State,X              ;069212|9D6C04  |06046C;
+                       JMP.W FIXME_F1d2_resetFallSpeed      ;069215|4CD2F1  |06F1D2;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069218:
                        LDA.B #$80                           ;069218|A980    |      ;
-                       STA.W RAM_5_simon_jumpState,X        ;06921A|9D8804  |060488;
+                       STA.W r6_player_jumpState,X          ;06921A|9D8804  |060488;
                        LDA.B #$10                           ;06921D|A910    |      ;
                        LDY.B #$03                           ;06921F|A003    |      ;
-                       JSR.W FIXME_ed34                     ;069221|2034ED  |06ED34;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;069221|2034ED  |06ED34;
                                                             ;      |        |      ;
           CODE_069224:
                        RTS                                  ;069224|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069225:
-                       DEC.W RAM_5_entity_counter,X         ;069225|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;069225|DE4C05  |06054C;
                        BEQ CODE_06922B                      ;069228|F001    |06922B;
                        RTS                                  ;06922A|60      |      ;
                                                             ;      |        |      ;
@@ -2941,8 +2941,8 @@ enemyAI_0b_hatchedDeath:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
    blueSkellyStateS11:
-                       JSR.W FIXME_ef69                     ;06922E|2069EF  |06EF69;
-                       LDA.W RAM_5_entity_State,X           ;069231|BD6C04  |06046C;
+                       JSR.W FIXME_ef69_aOtherScreenR02     ;06922E|2069EF  |06EF69;
+                       LDA.W r6_entity_State,X              ;069231|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;069234|206DCA  |06CA6D;
                        dw CODE_069267                       ;069237|        |069267;
                        dw CODE_069284                       ;069239|        |069284;
@@ -2953,16 +2953,16 @@ enemyAI_0b_hatchedDeath:
                        dw CODE_069305                       ;069243|        |069305;
                                                             ;      |        |      ;
           CODE_069245:
-                       LDA.W RAM_5_entity_Attributes,X      ;069245|BD0003  |060300;
+                       LDA.W r6_entity_spAtr,X              ;069245|BD0003  |060300;
                        AND.B #$01                           ;069248|2901    |      ;
                        BEQ CODE_069252                      ;06924A|F006    |069252;
-                       LDA.W RAM_5_entity_SpriteMirrored,X  ;06924C|BD5004  |060450;
+                       LDA.W r6_entity_spriteMirror,X       ;06924C|BD5004  |060450;
                        JMP.W CODE_069263                    ;06924F|4C6392  |069263;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069252:
-                       JSR.W FIXME_ef84                     ;069252|2084EF  |06EF84;
-                       LDY.W RAM_5_entity_SpriteMirrored,X  ;069255|BC5004  |060450;
+                       JSR.W FIXME_ef84_findPlayer          ;069252|2084EF  |06EF84;
+                       LDY.W r6_entity_spriteMirror,X       ;069255|BC5004  |060450;
                        CMP.B #$48                           ;069258|C948    |      ;
                        BCC CODE_069260                      ;06925A|9004    |069260;
                        TYA                                  ;06925C|98      |      ;
@@ -2974,142 +2974,142 @@ enemyAI_0b_hatchedDeath:
                        EOR.B #$01                           ;069261|4901    |      ;
                                                             ;      |        |      ;
           CODE_069263:
-                       STA.W RAM_5_verticalVectorAddressHiher,X;069263|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;069263|9DF804  |0604F8;
                        RTS                                  ;069266|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069267:
-                       LDA.B randomValue                    ;069267|A56F    |00006F;
+                       LDA.B r_randomValue                  ;069267|A56F    |00006F;
                        AND.B #$03                           ;069269|2903    |      ;
                        TAY                                  ;06926B|A8      |      ;
                        LDA.W DATA8_069280,Y                 ;06926C|B98092  |069280;
-                       STA.W RAM_5_verticalVectorAddressLo,X;06926F|9DDC04  |0604DC;
+                       STA.W r6_X_screen_AddressLo,X        ;06926F|9DDC04  |0604DC;
                        LDY.B #$80                           ;069272|A080    |      ;
                        LDA.B #$01                           ;069274|A901    |      ;
-                       JSR.W FIXME_ec72                     ;069276|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;069276|2072EC  |06EC72;
                        LDY.B #$01                           ;069279|A001    |      ;
                        LDA.B #$04                           ;06927B|A904    |      ;
-                       JMP.W FIXME_ed34                     ;06927D|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06927D|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          DATA8_069280:
                        db $04,$02,$03,$01                   ;069280|        |      ;
                                                             ;      |        |      ;
           CODE_069284:
-                       DEC.W RAM_5_entity_counter,X         ;069284|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;069284|DE4C05  |06054C;
                        BEQ CODE_06928A                      ;069287|F001    |06928A;
                        RTS                                  ;069289|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06928A:
-                       DEC.W RAM_5_verticalVectorAddressLo,X;06928A|DEDC04  |0604DC;
+                       DEC.W r6_X_screen_AddressLo,X        ;06928A|DEDC04  |0604DC;
                        BEQ CODE_069299                      ;06928D|F00A    |069299;
                        JSR.W CODE_069245                    ;06928F|204592  |069245;
                        LDY.B #$02                           ;069292|A002    |      ;
                        LDA.B #$10                           ;069294|A910    |      ;
-                       JMP.W FIXME_ed34                     ;069296|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;069296|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069299:
                        LDY.B #$03                           ;069299|A003    |      ;
                        LDA.B #$04                           ;06929B|A904    |      ;
-                       JMP.W FIXME_ed34                     ;06929D|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06929D|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0692A0:
-                       DEC.W RAM_5_entity_counter,X         ;0692A0|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0692A0|DE4C05  |06054C;
                        BEQ CODE_0692DF                      ;0692A3|F03A    |0692DF;
-                       JSR.W FIXME_ee6f                     ;0692A5|206FEE  |06EE6F;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0692A8|BD5403  |060354;
-                       STA.B various_data01                 ;0692AB|854D    |00004D;
+                       JSR.W FIXME_ee6f_setEntityAtr01      ;0692A5|206FEE  |06EE6F;
+                       LDA.W r6_entity_Y_Pos,X              ;0692A8|BD5403  |060354;
+                       STA.B r_temp_data01                  ;0692AB|854D    |00004D;
                        LDA.B #$0C                           ;0692AD|A90C    |      ;
-                       STA.B various_data00                 ;0692AF|854C    |00004C;
-                       JSR.W FIXME_ec1a                     ;0692B1|201AEC  |06EC1A;
+                       STA.B r_temp_data00                  ;0692AF|854C    |00004C;
+                       JSR.W FIXME_ec1a_findScreenAndGround ;0692B1|201AEC  |06EC1A;
                        LDA.B $14                            ;0692B4|A514    |000014;
                        BEQ CODE_0692C1                      ;0692B6|F009    |0692C1;
-                       LDA.W RAM_5_verticalVectorAddressHiher,X;0692B8|BDF804  |0604F8;
+                       LDA.W r6_X_screen_AddressHiher,X     ;0692B8|BDF804  |0604F8;
                        EOR.B #$01                           ;0692BB|4901    |      ;
-                       STA.W RAM_5_verticalVectorAddressHiher,X;0692BD|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;0692BD|9DF804  |0604F8;
                                                             ;      |        |      ;
           CODE_0692C0:
                        RTS                                  ;0692C0|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0692C1:
-                       JSR.W FIXME_ef9c                     ;0692C1|209CEF  |06EF9C;
+                       JSR.W FIXME_ef9c_findGround_10       ;0692C1|209CEF  |06EF9C;
                        LDA.B $14                            ;0692C4|A514    |000014;
                        BNE CODE_0692C0                      ;0692C6|D0F8    |0692C0;
                        LDY.B #$40                           ;0692C8|A040    |      ;
                        LDA.B #$01                           ;0692CA|A901    |      ;
-                       JSR.W FIXME_ec72                     ;0692CC|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;0692CC|2072EC  |06EC72;
                        LDA.B #$02                           ;0692CF|A902    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;0692D1|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;0692D1|9DC403  |0603C4;
                        LDA.B #$80                           ;0692D4|A980    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;0692D6|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;0692D6|9DE003  |0603E0;
                        LDA.B #$05                           ;0692D9|A905    |      ;
-                       STA.W RAM_5_entity_State,X           ;0692DB|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;0692DB|9D6C04  |06046C;
                        RTS                                  ;0692DE|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0692DF:
                        LDY.B #$01                           ;0692DF|A001    |      ;
                        LDA.B #$04                           ;0692E1|A904    |      ;
-                       JMP.W FIXME_ed34                     ;0692E3|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0692E3|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0692E6:
-                       DEC.W RAM_5_entity_counter,X         ;0692E6|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0692E6|DE4C05  |06054C;
                        BEQ CODE_0692EC                      ;0692E9|F001    |0692EC;
                        RTS                                  ;0692EB|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0692EC:
-                       LDA.W RAM_5_entity_Attributes,X      ;0692EC|BD0003  |060300;
+                       LDA.W r6_entity_spAtr,X              ;0692EC|BD0003  |060300;
                        BNE CODE_0692F4                      ;0692EF|D003    |0692F4;
-                       JSR.W FIXME_ed5c                     ;0692F1|205CED  |06ED5C;
+                       JSR.W FIXME_ed5c_levelRelatedRoutines;0692F1|205CED  |06ED5C;
                                                             ;      |        |      ;
           CODE_0692F4:
                        LDA.B #$08                           ;0692F4|A908    |      ;
-                       STA.W RAM_5_entity_counter,X         ;0692F6|9D4C05  |06054C;
+                       STA.W r6_entity_counter,X            ;0692F6|9D4C05  |06054C;
                        LDA.B #$04                           ;0692F9|A904    |      ;
-                       STA.W RAM_5_entity_State,X           ;0692FB|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;0692FB|9D6C04  |06046C;
                        RTS                                  ;0692FE|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0692FF:
-                       DEC.W RAM_5_entity_counter,X         ;0692FF|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0692FF|DE4C05  |06054C;
                        BEQ CODE_069305                      ;069302|F001    |069305;
                        RTS                                  ;069304|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069305:
                        LDA.B #$00                           ;069305|A900    |      ;
-                       STA.W RAM_5_entity_State,X           ;069307|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;069307|9D6C04  |06046C;
                        RTS                                  ;06930A|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06930B:
-                       JSR.W FIXME_ee6f                     ;06930B|206FEE  |06EE6F;
-                       JSR.W FIXME_ec50                     ;06930E|2050EC  |06EC50;
-                       JSR.W FIXME_ef9c                     ;069311|209CEF  |06EF9C;
+                       JSR.W FIXME_ee6f_setEntityAtr01      ;06930B|206FEE  |06EE6F;
+                       JSR.W FIXME_ec50_gravity_00          ;06930E|2050EC  |06EC50;
+                       JSR.W FIXME_ef9c_findGround_10       ;069311|209CEF  |06EF9C;
                        LDA.B $14                            ;069314|A514    |000014;
                        BEQ CODE_069325                      ;069316|F00D    |069325;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;069318|BD5403  |060354;
+                       LDA.W r6_entity_Y_Pos,X              ;069318|BD5403  |060354;
                        AND.B #$F0                           ;06931B|29F0    |      ;
-                       STA.W RAM_5_entity_Y_Pos,X           ;06931D|9D5403  |060354;
+                       STA.W r6_entity_Y_Pos,X              ;06931D|9D5403  |060354;
                        LDA.B #$06                           ;069320|A906    |      ;
-                       STA.W RAM_5_entity_State,X           ;069322|9D6C04  |06046C;
+                       STA.W r6_entity_State,X              ;069322|9D6C04  |06046C;
                                                             ;      |        |      ;
           CODE_069325:
                        RTS                                  ;069325|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069326:
-                       STX.B various_data02                 ;069326|864E    |00004E;
+                       STX.B r_temp_data02                  ;069326|864E    |00004E;
                        LDY.B #$0D                           ;069328|A00D    |      ;
                                                             ;      |        |      ;
           CODE_06932A:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;06932A|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;06932A|B93404  |060434;
                        BEQ CODE_069335                      ;06932D|F006    |069335;
                        DEY                                  ;06932F|88      |      ;
                        CPY.B #$04                           ;069330|C004    |      ;
@@ -3121,50 +3121,50 @@ enemyAI_0b_hatchedDeath:
                        LDA.B #$24                           ;069335|A924    |      ;
                        STA.B $16                            ;069337|8516    |000016;
                        LDA.B #$4F                           ;069339|A94F    |      ;
-                       JSR.W FIXME_ed82                     ;06933B|2082ED  |06ED82;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;06933B|2082ED  |06ED82;
                        LDA.B #$00                           ;06933E|A900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;069340|99FC03  |0603FC;
+                       STA.W r6_entity_X_Speed,Y            ;069340|99FC03  |0603FC;
                        LDA.B #$C0                           ;069343|A9C0    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;069345|991804  |060418;
+                       STA.W r6_entity_X_SpeedSub,Y         ;069345|991804  |060418;
                        LDX.B #$04                           ;069348|A204    |      ;
-                       LDA.B frame_Counter                  ;06934A|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;06934A|A51A    |00001A;
                        AND.B #$01                           ;06934C|2901    |      ;
                        BEQ CODE_069352                      ;06934E|F002    |069352;
                        LDX.B #$03                           ;069350|A203    |      ;
                                                             ;      |        |      ;
           CODE_069352:
                        TXA                                  ;069352|8A      |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,Y  ;069353|99C403  |0603C4;
+                       STA.W r6_entity_Y_speed,Y            ;069353|99C403  |0603C4;
                        LDA.B #$80                           ;069356|A980    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,Y;069358|99E003  |0603E0;
-                       LDX.B various_data02                 ;06935B|A64E    |00004E;
+                       STA.W r6_entity_Y_speedSub,Y         ;069358|99E003  |0603E0;
+                       LDX.B r_temp_data02                  ;06935B|A64E    |00004E;
                        RTS                                  ;06935D|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-  enemyAI_1f_bossIgor:
-                       JSR.W FIXME_eea7                     ;06935E|20A7EE  |06EEA7;
-                       LDA.W RAM_5_entity_State,X           ;069361|BD6C04  |06046C;
+    enemyAI_1f_boss_X:
+                       JSR.W FIXME_eea7_endRoutineWhileTimer;06935E|20A7EE  |06EEA7;
+                       LDA.W r6_entity_State,X              ;069361|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;069364|206DCA  |06CA6D;
-                       dw bossIgorl_state00                 ;069367|        |069371;
+                       dw bossX_state00                     ;069367|        |069371;
                        dw bossIgorl_state01                 ;069369|        |0693D6;
                        dw CODE_069473                       ;06936B|        |069473;
                        dw CODE_0694B2                       ;06936D|        |0694B2;
                        dw CODE_0694BD                       ;06936F|        |0694BD;
                                                             ;      |        |      ;
-    bossIgorl_state00:
-                       DEC.W RAM_5_entity_counter,X         ;069371|DE4C05  |06054C;
+        bossX_state00:
+                       DEC.W r6_entity_counter,X            ;069371|DE4C05  |06054C;
                        BEQ CODE_069377                      ;069374|F001    |069377;
                        RTS                                  ;069376|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069377:
-                       LDA.W RAM_5_entity_X_Pos             ;069377|AD8C03  |06038C;
+                       LDA.W r6_entity_X_Pos                ;069377|AD8C03  |06038C;
                        ADC.B #$30                           ;06937A|6930    |      ;
                        STA.B $01                            ;06937C|8501    |000001;
-                       LDA.W RAM_5_entity_Y_Pos             ;06937E|AD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;06937E|AD5403  |060354;
                        SBC.B #$10                           ;069381|E910    |      ;
                        STA.B $00                            ;069383|8500    |000000;
-                       JSR.W FIXME_eebb                     ;069385|20BBEE  |06EEBB;
+                       JSR.W FIXME_eebb_aOtherScreenR00     ;069385|20BBEE  |06EEBB;
                        LDY.B $01                            ;069388|A401    |000001;
                        LDA.B $02                            ;06938A|A502    |000002;
                        LSR.B $01                            ;06938C|4601    |000001;
@@ -3175,259 +3175,259 @@ enemyAI_0b_hatchedDeath:
                        ADC.B $01                            ;069395|6501    |000001;
                        LDX.B $09                            ;069397|A609    |000009;
                        BNE CODE_0693AF                      ;069399|D014    |0693AF;
-                       LDX.B various_data02                 ;06939B|A64E    |00004E;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;06939D|9DC403  |0603C4;
+                       LDX.B r_temp_data02                  ;06939B|A64E    |00004E;
+                       STA.W r6_entity_Y_speed,X            ;06939D|9DC403  |0603C4;
                        ADC.B $02                            ;0693A0|6502    |000002;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;0693A2|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;0693A2|9DE003  |0603E0;
                                                             ;      |        |      ;
           CODE_0693A5:
                        LDA.B #$00                           ;0693A5|A900    |      ;
                        LDY.B #$C0                           ;0693A7|A0C0    |      ;
-                       JSR.W FIXME_ec72                     ;0693A9|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;0693A9|2072EC  |06EC72;
                        JMP.W CODE_0693C0                    ;0693AC|4CC093  |0693C0;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0693AF:
-                       LDX.B various_data02                 ;0693AF|A64E    |00004E;
+                       LDX.B r_temp_data02                  ;0693AF|A64E    |00004E;
                        LDY.B $01                            ;0693B1|A401    |000001;
-                       JSR.W FIXME_ec72                     ;0693B3|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;0693B3|2072EC  |06EC72;
                        LDA.B #$00                           ;0693B6|A900    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;0693B8|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;0693B8|9DC403  |0603C4;
                        LDA.B #$C0                           ;0693BB|A9C0    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;0693BD|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;0693BD|9DE003  |0603E0;
                                                             ;      |        |      ;
           CODE_0693C0:
                        LDA.B #$4A                           ;0693C0|A94A    |      ;
-                       JSR.W FIXME_ef04                     ;0693C2|2004EF  |06EF04;
-                       LDA.B randomValue                    ;0693C5|A56F    |00006F;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;0693C2|2004EF  |06EF04;
+                       LDA.B r_randomValue                  ;0693C5|A56F    |00006F;
                        AND.B #$03                           ;0693C7|2903    |      ;
                        TAY                                  ;0693C9|A8      |      ;
                        LDA.W DATA8_0693D2,Y                 ;0693CA|B9D293  |0693D2;
                        LDY.B #$01                           ;0693CD|A001    |      ;
-                       JMP.W FIXME_ed34                     ;0693CF|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0693CF|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          DATA8_0693D2:
                        db $3D,$25,$20,$45                   ;0693D2|        |      ;
                                                             ;      |        |      ;
     bossIgorl_state01:
-                       DEC.W RAM_5_entity_counter,X         ;0693D6|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0693D6|DE4C05  |06054C;
                        BEQ CODE_0693E1                      ;0693D9|F006    |0693E1;
-                       JSR.W FIXME_ee75                     ;0693DB|2075EE  |06EE75;
+                       JSR.W FIXME_ee75_setEntityAtr00      ;0693DB|2075EE  |06EE75;
                        JMP.W CODE_0694DB                    ;0693DE|4CDB94  |0694DB;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0693E1:
-                       LDA.B randomValue                    ;0693E1|A56F    |00006F;
+                       LDA.B r_randomValue                  ;0693E1|A56F    |00006F;
                        AND.B #$03                           ;0693E3|2903    |      ;
                        TAY                                  ;0693E5|A8      |      ;
                        LDA.W DATA8_0693EE,Y                 ;0693E6|B9EE93  |0693EE;
                        LDY.B #$02                           ;0693E9|A002    |      ;
-                       JMP.W FIXME_ed34                     ;0693EB|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0693EB|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          DATA8_0693EE:
                        db $7B,$20,$3D,$C7                   ;0693EE|        |      ;
                                                             ;      |        |      ;
           CODE_0693F2:
-                       LDA.W RAM_5_entity_Attributes,X      ;0693F2|BD0003  |060300;
+                       LDA.W r6_entity_spAtr,X              ;0693F2|BD0003  |060300;
                        BEQ CODE_0693FD                      ;0693F5|F006    |0693FD;
-                       JSR.W FIXME_F1d2                     ;0693F7|20D2F1  |06F1D2;
+                       JSR.W FIXME_F1d2_resetFallSpeed      ;0693F7|20D2F1  |06F1D2;
                        JMP.W CODE_0693A5                    ;0693FA|4CA593  |0693A5;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0693FD:
-                       LDA.W RAM_5_entity_Y_Pos             ;0693FD|AD5403  |060354;
-                       SBC.W RAM_5_entity_Y_Pos,X           ;069400|FD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;0693FD|AD5403  |060354;
+                       SBC.W r6_entity_Y_Pos,X              ;069400|FD5403  |060354;
                        BCS CODE_06940F                      ;069403|B00A    |06940F;
                                                             ;      |        |      ;
           CODE_069405:
-                       JSR.W FIXME_ec88                     ;069405|2088EC  |06EC88;
+                       JSR.W FIXME_ec88_findPlayerPos       ;069405|2088EC  |06EC88;
                        LDA.B #$10                           ;069408|A910    |      ;
                        LDY.B #$00                           ;06940A|A000    |      ;
-                       JMP.W FIXME_ed34                     ;06940C|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06940C|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06940F:
                        CMP.B #$38                           ;06940F|C938    |      ;
                        BCS CODE_069405                      ;069411|B0F2    |069405;
-                       JSR.W FIXME_ef84                     ;069413|2084EF  |06EF84;
+                       JSR.W FIXME_ef84_findPlayer          ;069413|2084EF  |06EF84;
                        CMP.B #$48                           ;069416|C948    |      ;
                        BCS CODE_069405                      ;069418|B0EB    |069405;
-                       LDA.W RAM_5_entity_Y_Pos             ;06941A|AD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;06941A|AD5403  |060354;
                        ADC.B #$18                           ;06941D|6918    |      ;
                        STA.B $00                            ;06941F|8500    |000000;
-                       LDA.W RAM_5_entity_X_Pos             ;069421|AD8C03  |06038C;
+                       LDA.W r6_entity_X_Pos                ;069421|AD8C03  |06038C;
                        STA.B $01                            ;069424|8501    |000001;
-                       JSR.W FIXME_eebb                     ;069426|20BBEE  |06EEBB;
-                       LDX.B various_data02                 ;069429|A64E    |00004E;
+                       JSR.W FIXME_eebb_aOtherScreenR00     ;069426|20BBEE  |06EEBB;
+                       LDX.B r_temp_data02                  ;069429|A64E    |00004E;
                        LDA.B $09                            ;06942B|A509    |000009;
                        BNE CODE_069447                      ;06942D|D018    |069447;
                        LDA.B #$01                           ;06942F|A901    |      ;
                        LDY.B #$C0                           ;069431|A0C0    |      ;
-                       JSR.W FIXME_ec72                     ;069433|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;069433|2072EC  |06EC72;
                        LDA.B $02                            ;069436|A502    |000002;
                        ADC.B $02                            ;069438|6502    |000002;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;06943A|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;06943A|9DE003  |0603E0;
                        LDA.B $01                            ;06943D|A501    |000001;
                        ADC.B $01                            ;06943F|6501    |000001;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;069441|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;069441|9DC403  |0603C4;
                        JMP.W CODE_069462                    ;069444|4C6294  |069462;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069447:
                        LDA.B #$02                           ;069447|A902    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;069449|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;069449|9DC403  |0603C4;
                        LDA.B #$00                           ;06944C|A900    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;06944E|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;06944E|9DE003  |0603E0;
                        LDA.B $02                            ;069451|A502    |000002;
                        ASL A                                ;069453|0A      |      ;
                        ROL.B $01                            ;069454|2601    |000001;
                        ADC.B $02                            ;069456|6502    |000002;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,X;069458|9D1804  |060418;
+                       STA.W r6_entity_X_SpeedSub,X         ;069458|9D1804  |060418;
                        LDA.B $01                            ;06945B|A501    |000001;
                        ADC.B #$00                           ;06945D|6900    |      ;
-                       STA.W RAM_5_entity_HorizontalSpeed,X ;06945F|9DFC03  |0603FC;
+                       STA.W r6_entity_X_Speed,X            ;06945F|9DFC03  |0603FC;
                                                             ;      |        |      ;
           CODE_069462:
-                       LDA.B randomValue                    ;069462|A56F    |00006F;
+                       LDA.B r_randomValue                  ;069462|A56F    |00006F;
                        AND.B #$03                           ;069464|2903    |      ;
                        TAY                                  ;069466|A8      |      ;
                        LDA.W DATA8_06946F,Y                 ;069467|B96F94  |06946F;
                        LDY.B #$04                           ;06946A|A004    |      ;
-                       JMP.W FIXME_ed34                     ;06946C|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06946C|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
          DATA8_06946F:
                        db $4D,$20,$28,$3F                   ;06946F|        |      ;
                                                             ;      |        |      ;
           CODE_069473:
-                       DEC.W RAM_5_entity_counter,X         ;069473|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;069473|DE4C05  |06054C;
                        BNE CODE_06947B                      ;069476|D003    |06947B;
                        JMP.W CODE_0693F2                    ;069478|4CF293  |0693F2;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06947B:
-                       LDA.B frame_Counter                  ;06947B|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;06947B|A51A    |00001A;
                        AND.B #$07                           ;06947D|2907    |      ;
                        BNE CODE_069482                      ;06947F|D001    |069482;
                        RTS                                  ;069481|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069482:
-                       LDA.B joypad_1_InputHeld             ;069482|A5F7    |0000F7;
+                       LDA.B r_inputHeld_1                  ;069482|A5F7    |0000F7;
                        AND.B #$40                           ;069484|2940    |      ;
                        BEQ CODE_0694B1                      ;069486|F029    |0694B1;
-                       LDA.W RAM_5_entity_Y_Pos             ;069488|AD5403  |060354;
-                       SBC.W RAM_5_entity_Y_Pos,X           ;06948B|FD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;069488|AD5403  |060354;
+                       SBC.W r6_entity_Y_Pos,X              ;06948B|FD5403  |060354;
                        BCS CODE_069492                      ;06948E|B002    |069492;
                        EOR.B #$FF                           ;069490|49FF    |      ;
                                                             ;      |        |      ;
           CODE_069492:
                        CMP.B #$14                           ;069492|C914    |      ;
                        BCS CODE_0694B1                      ;069494|B01B    |0694B1;
-                       JSR.W FIXME_ef84                     ;069496|2084EF  |06EF84;
+                       JSR.W FIXME_ef84_findPlayer          ;069496|2084EF  |06EF84;
                        CMP.B #$58                           ;069499|C958    |      ;
                        BCS CODE_0694B1                      ;06949B|B014    |0694B1;
                        LDA.B #$02                           ;06949D|A902    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;06949F|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;06949F|9DC403  |0603C4;
                        LDA.B #$80                           ;0694A2|A980    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;0694A4|9DE003  |0603E0;
-                       JSR.W FIXME_ec72                     ;0694A7|2072EC  |06EC72;
+                       STA.W r6_entity_Y_speedSub,X         ;0694A4|9DE003  |0603E0;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;0694A7|2072EC  |06EC72;
                        LDA.B #$08                           ;0694AA|A908    |      ;
                        LDY.B #$03                           ;0694AC|A003    |      ;
-                       JSR.W FIXME_ed34                     ;0694AE|2034ED  |06ED34;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;0694AE|2034ED  |06ED34;
                                                             ;      |        |      ;
           CODE_0694B1:
                        RTS                                  ;0694B1|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0694B2:
-                       DEC.W RAM_5_entity_counter,X         ;0694B2|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0694B2|DE4C05  |06054C;
                        BNE CODE_0694BA                      ;0694B5|D003    |0694BA;
                        JMP.W CODE_0693F2                    ;0694B7|4CF293  |0693F2;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0694BA:
-                       JMP.W FIXME_ef56                     ;0694BA|4C56EF  |06EF56;
+                       JMP.W FIXME_ef56_updateYposSpeed_minus;0694BA|4C56EF  |06EF56;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0694BD:
-                       DEC.W RAM_5_entity_counter,X         ;0694BD|DE4C05  |06054C;
+                       DEC.W r6_entity_counter,X            ;0694BD|DE4C05  |06054C;
                        BNE CODE_0694C5                      ;0694C0|D003    |0694C5;
                        JMP.W CODE_069377                    ;0694C2|4C7793  |069377;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0694C5:
-                       LDA.W RAM_5_entity_Vertical_SpeedSub,X;0694C5|BDE003  |0603E0;
+                       LDA.W r6_entity_Y_speedSub,X         ;0694C5|BDE003  |0603E0;
                        SBC.B #$06                           ;0694C8|E906    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;0694CA|9DE003  |0603E0;
-                       LDA.W RAM_5_entity_Vertical_Speed,X  ;0694CD|BDC403  |0603C4;
+                       STA.W r6_entity_Y_speedSub,X         ;0694CA|9DE003  |0603E0;
+                       LDA.W r6_entity_Y_speed,X            ;0694CD|BDC403  |0603C4;
                        SBC.B #$00                           ;0694D0|E900    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;0694D2|9DC403  |0603C4;
-                       JSR.W FIXME_ef43                     ;0694D5|2043EF  |06EF43;
-                       JMP.W FIXME_ee75                     ;0694D8|4C75EE  |06EE75;
+                       STA.W r6_entity_Y_speed,X            ;0694D2|9DC403  |0603C4;
+                       JSR.W FIXME_ef43_updateYposSpeed_plus;0694D5|2043EF  |06EF43;
+                       JMP.W FIXME_ee75_setEntityAtr00      ;0694D8|4C75EE  |06EE75;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0694DB:
-                       LDY.W RAM_5_verticalVectorAddressLo,X;0694DB|BCDC04  |0604DC;
+                       LDY.W r6_X_screen_AddressLo,X        ;0694DB|BCDC04  |0604DC;
                        BNE CODE_0694E3                      ;0694DE|D003    |0694E3;
-                       JMP.W FIXME_ef43                     ;0694E0|4C43EF  |06EF43;
+                       JMP.W FIXME_ef43_updateYposSpeed_plus;0694E0|4C43EF  |06EF43;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0694E3:
-                       JMP.W FIXME_ef56                     ;0694E3|4C56EF  |06EF56;
+                       JMP.W FIXME_ef56_updateYposSpeed_minus;0694E3|4C56EF  |06EF56;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
 enemyAI_1e_bossDracula:
                        LDA.B $7A                            ;0694E6|A57A    |00007A;
                        BNE bossCookyMonster                 ;0694E8|D033    |06951D;
-                       LDA.W RAM_5_entity_State,X           ;0694EA|BD6C04  |06046C;
+                       LDA.W r6_entity_State,X              ;0694EA|BD6C04  |06046C;
                        CMP.B #$0E                           ;0694ED|C90E    |      ;
                        BEQ CODE_0694F4                      ;0694EF|F003    |0694F4;
-                       JSR.W FIXME_ef7c                     ;0694F1|207CEF  |06EF7C;
+                       JSR.W FIXME_ef7c_facePlayer          ;0694F1|207CEF  |06EF7C;
                                                             ;      |        |      ;
           CODE_0694F4:
-                       JSR.W FIXME_eea7                     ;0694F4|20A7EE  |06EEA7;
-                       LDA.W RAM_5_entity_State,X           ;0694F7|BD6C04  |06046C;
+                       JSR.W FIXME_eea7_endRoutineWhileTimer;0694F4|20A7EE  |06EEA7;
+                       LDA.W r6_entity_State,X              ;0694F7|BD6C04  |06046C;
                        AND.B #$7F                           ;0694FA|297F    |      ;
                        JSR.W FIXME_ca6d_jump4stack          ;0694FC|206DCA  |06CA6D;
                        dw draculaState00                    ;0694FF|        |069541;
-                       dw CODE_06954D                       ;069501|        |06954D;
-                       dw CODE_06957B                       ;069503|        |06957B;
-                       dw CODE_0695C9                       ;069505|        |0695C9;
-                       dw CODE_0695E2                       ;069507|        |0695E2;
-                       dw CODE_0695F9                       ;069509|        |0695F9;
-                       dw CODE_069628                       ;06950B|        |069628;
-                       dw CODE_06963F                       ;06950D|        |06963F;
-                       dw CODE_069656                       ;06950F|        |069656;
-                       dw CODE_06966D                       ;069511|        |06966D;
-                       dw CODE_06969D                       ;069513|        |06969D;
-                       dw CODE_0696D1                       ;069515|        |0696D1;
-                       dw CODE_0696EA                       ;069517|        |0696EA;
-                       dw CODE_0696EA                       ;069519|        |0696EA;
-                       dw CODE_069723                       ;06951B|        |069723;
+                       dw draculaState01                    ;069501|        |06954D;
+                       dw draculaState02                    ;069503|        |06957B;
+                       dw draculaState03                    ;069505|        |0695C9;
+                       dw draculaState04                    ;069507|        |0695E2;
+                       dw draculaState05_clothFlicker       ;069509|        |0695F9;
+                       dw draculaState06_appear             ;06950B|        |069628;
+                       dw draculaState07_open               ;06950D|        |06963F;
+                       dw draculaState08_shoot              ;06950F|        |069656;
+                       dw draculaState09_headFlicker        ;069511|        |06966D;
+                       dw draculaState0a_disappear          ;069513|        |06969D;
+                       dw draculaState0b_flickerAppear      ;069515|        |0696D1;
+                       dw draculaState0c_headFly            ;069517|        |0696EA;
+                       dw draculaState0c_headFly            ;069519|        |0696EA;
+                       dw draculaState0d_initCookie         ;06951B|        |069723;
                                                             ;      |        |      ;
      bossCookyMonster:
-                       JSR.W FIXME_ef7c                     ;06951D|207CEF  |06EF7C;
-                       JSR.W FIXME_eea7                     ;069520|20A7EE  |06EEA7;
-                       LDA.W RAM_5_entity_State,X           ;069523|BD6C04  |06046C;
+                       JSR.W FIXME_ef7c_facePlayer          ;06951D|207CEF  |06EF7C;
+                       JSR.W FIXME_eea7_endRoutineWhileTimer;069520|20A7EE  |06EEA7;
+                       LDA.W r6_entity_State,X              ;069523|BD6C04  |06046C;
                        AND.B #$7F                           ;069526|297F    |      ;
                        JSR.W FIXME_ca6d_jump4stack          ;069528|206DCA  |06CA6D;
-                       dw CODE_06973F                       ;06952B|        |06973F;
-                       dw CODE_06976D                       ;06952D|        |06976D;
-                       dw CODE_0697BF                       ;06952F|        |0697BF;
-                       dw CODE_0697DB                       ;069531|        |0697DB;
-                       dw CODE_069806                       ;069533|        |069806;
-                       dw CODE_069845                       ;069535|        |069845;
-                       dw CODE_069893                       ;069537|        |069893;
-                       dw CODE_0698B3                       ;069539|        |0698B3;
-                       dw CODE_0698DC                       ;06953B|        |0698DC;
-                       dw CODE_0698F3                       ;06953D|        |0698F3;
-                       dw CODE_069911                       ;06953F|        |069911;
+                       dw cookieMonsterState00              ;06952B|        |06973F;
+                       dw cookieMonsterState01              ;06952D|        |06976D;
+                       dw cookieMonsterState02_standing     ;06952F|        |0697BF;
+                       dw cookieMonsterState03_faceSimon    ;069531|        |0697DB;
+                       dw cookieMonsterState04_jumpInit     ;069533|        |069806;
+                       dw cookieMonsterState05_jump         ;069535|        |069845;
+                       dw cookieMonsterState06_land         ;069537|        |069893;
+                       dw cookieMonsterState07_stand        ;069539|        |0698B3;
+                       dw cookieMonsterState08_makeFace     ;06953B|        |0698DC;
+                       dw cookieMonsterState09_handsUp      ;06953D|        |0698F3;
+                       dw cookieMonsterState0a_shoot        ;06953F|        |069911;
                                                             ;      |        |      ;
        draculaState00:
-                       LDA.B bossScreen_Flag                ;069541|A548    |000048;
+                       LDA.B r_bossScreen_Flag              ;069541|A548    |000048;
                        BNE CODE_069546                      ;069543|D001    |069546;
                        RTS                                  ;069545|60      |      ;
                                                             ;      |        |      ;
@@ -3435,61 +3435,61 @@ enemyAI_1e_bossDracula:
           CODE_069546:
                        LDA.B #$78                           ;069546|A978    |      ;
                        LDY.B #$81                           ;069548|A081    |      ;
-                       JMP.W FIXME_ed34                     ;06954A|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06954A|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_06954D:
-                       DEC.W RAM_5_entity_counter,X         ;06954D|DE4C05  |06054C;
+       draculaState01:
+                       DEC.W r6_entity_counter,X            ;06954D|DE4C05  |06054C;
                        BEQ CODE_069553                      ;069550|F001    |069553;
                        RTS                                  ;069552|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069553:
-                       LDA.B #$FC                           ;069553|A9FC    |      ;
+                       LDA.B #$FC                           ;069553|A9FC    |      ; head Sprite ID
                        STA.W $020D                          ;069555|8D0D02  |06020D;
                        LDA.B #$01                           ;069558|A901    |      ;
                        STA.W $020E                          ;06955A|8D0E02  |06020E;
                        LDX.B #$08                           ;06955D|A208    |      ;
                        LDA.B #$04                           ;06955F|A904    |      ;
-                       JSR.W FIXME_f42c                     ;069561|202CF4  |06F42C;
+                       JSR.W FIXME_f42c_storeID_resetStats  ;069561|202CF4  |06F42C;
                        LDA.B #$80                           ;069564|A980    |      ;
-                       STA.W RAM_5_entity_Attributes,X      ;069566|9D0003  |060300;
-                       STA.W RAM_5_entity_X_Pos,X           ;069569|9D8C03  |06038C;
-                       STA.W RAM_5_entity_Y_Pos,X           ;06956C|9D5403  |060354;
-                       STA.W RAM_5_entity_State,X           ;06956F|9D6C04  |06046C;
+                       STA.W r6_entity_spAtr,X              ;069566|9D0003  |060300;
+                       STA.W r6_entity_X_Pos,X              ;069569|9D8C03  |06038C;
+                       STA.W r6_entity_Y_Pos,X              ;06956C|9D5403  |060354;
+                       STA.W r6_entity_State,X              ;06956F|9D6C04  |06046C;
                        LDX.B #$07                           ;069572|A207    |      ;
                        LDA.B #$3C                           ;069574|A93C    |      ;
                        LDY.B #$82                           ;069576|A082    |      ;
-                       JMP.W FIXME_ed34                     ;069578|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;069578|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_06957B:
-                       DEC.W RAM_5_entity_counter,X         ;06957B|DE4C05  |06054C;
+       draculaState02:
+                       DEC.W r6_entity_counter,X            ;06957B|DE4C05  |06054C;
                        BEQ CODE_0695B7                      ;06957E|F037    |0695B7;
                                                             ;      |        |      ;
-          CODE_069580:
-                       LDA.W RAM_5_entity_Y_Pos,X           ;069580|BD5403  |060354;
+      dracsHeadUpdate:
+                       LDA.W r6_entity_Y_Pos,X              ;069580|BD5403  |060354;
                        CLC                                  ;069583|18      |      ;
                        ADC.B #$DD                           ;069584|69DD    |      ;
                        STA.W $020C                          ;069586|8D0C02  |06020C;
                        ADC.B #$08                           ;069589|6908    |      ;
                        STA.W $035C                          ;06958B|8D5C03  |06035C;
-                       LDA.W RAM_5_entity_State,X           ;06958E|BD6C04  |06046C;
+                       LDA.W r6_entity_State,X              ;06958E|BD6C04  |06046C;
                        STA.W $0474                          ;069591|8D7404  |060474;
                        LDA.B #$F6                           ;069594|A9F6    |      ;
-                       STA.B various_Processing_ID          ;069596|854B    |00004B;
+                       STA.B r_temp_processing_ID           ;069596|854B    |00004B;
                        LDA.B #$01                           ;069598|A901    |      ;
-                       LDY.W RAM_5_entity_SpriteMirrored,X  ;06959A|BC5004  |060450;
+                       LDY.W r6_entity_spriteMirror,X       ;06959A|BC5004  |060450;
                        BNE CODE_0695A5                      ;06959D|D006    |0695A5;
                        LDA.B #$02                           ;06959F|A902    |      ;
-                       STA.B various_Processing_ID          ;0695A1|854B    |00004B;
+                       STA.B r_temp_processing_ID           ;0695A1|854B    |00004B;
                        LDA.B #$41                           ;0695A3|A941    |      ;
                                                             ;      |        |      ;
           CODE_0695A5:
                        STA.W $020E                          ;0695A5|8D0E02  |06020E;
-                       LDA.W RAM_5_entity_X_Pos,X           ;0695A8|BD8C03  |06038C;
+                       LDA.W r6_entity_X_Pos,X              ;0695A8|BD8C03  |06038C;
                        CLC                                  ;0695AB|18      |      ;
-                       ADC.B various_Processing_ID          ;0695AC|654B    |00004B;
+                       ADC.B r_temp_processing_ID           ;0695AC|654B    |00004B;
                        STA.W $020F                          ;0695AE|8D0F02  |06020F;
                        ADC.B #$04                           ;0695B1|6904    |      ;
                        STA.W $0394                          ;0695B3|8D9403  |060394;
@@ -3498,95 +3498,94 @@ enemyAI_1e_bossDracula:
                                                             ;      |        |      ;
           CODE_0695B7:
                        LDA.B #$00                           ;0695B7|A900    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;0695B9|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;0695B9|9DC403  |0603C4;
                        LDA.B #$80                           ;0695BC|A980    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;0695BE|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;0695BE|9DE003  |0603E0;
                        LDA.B #$83                           ;0695C1|A983    |      ;
-                       STA.W RAM_5_entity_State,X           ;0695C3|9D6C04  |06046C;
-                       JMP.W CODE_069580                    ;0695C6|4C8095  |069580;
+                       STA.W r6_entity_State,X              ;0695C3|9D6C04  |06046C;
+                       JMP.W dracsHeadUpdate                ;0695C6|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0695C9:
-                       JSR.W FIXME_ef56                     ;0695C9|2056EF  |06EF56;
+       draculaState03:
+                       JSR.W FIXME_ef56_updateYposSpeed_minus;0695C9|2056EF  |06EF56;
                        CMP.B #$A8                           ;0695CC|C9A8    |      ;
                        BCC CODE_0695D3                      ;0695CE|9003    |0695D3;
-                       JMP.W CODE_069580                    ;0695D0|4C8095  |069580;
+                       JMP.W dracsHeadUpdate                ;0695D0|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0695D3:
                        LDA.B #$A8                           ;0695D3|A9A8    |      ;
-                       STA.W RAM_5_entity_Y_Pos,X           ;0695D5|9D5403  |060354;
+                       STA.W r6_entity_Y_Pos,X              ;0695D5|9D5403  |060354;
                        LDA.B #$3C                           ;0695D8|A93C    |      ;
                        LDY.B #$84                           ;0695DA|A084    |      ;
-                       JSR.W FIXME_ed34                     ;0695DC|2034ED  |06ED34;
-                       JMP.W CODE_069580                    ;0695DF|4C8095  |069580;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;0695DC|2034ED  |06ED34;
+                       JMP.W dracsHeadUpdate                ;0695DF|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0695E2:
-                       DEC.W RAM_5_entity_counter,X         ;0695E2|DE4C05  |06054C;
+       draculaState04:
+                       DEC.W r6_entity_counter,X            ;0695E2|DE4C05  |06054C;
                        BEQ CODE_0695EA                      ;0695E5|F003    |0695EA;
-                       JMP.W CODE_069580                    ;0695E7|4C8095  |069580;
+                       JMP.W dracsHeadUpdate                ;0695E7|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0695EA:
                        LDA.B #$80                           ;0695EA|A980    |      ;
-                       STA.W RAM_5_simon_jumpState,X        ;0695EC|9D8804  |060488;
+                       STA.W r6_player_jumpState,X          ;0695EC|9D8804  |060488;
                        LDA.B #$45                           ;0695EF|A945    |      ;
                        LDY.B #$85                           ;0695F1|A085    |      ;
-                       JSR.W FIXME_ed34                     ;0695F3|2034ED  |06ED34;
-                       JMP.W CODE_069580                    ;0695F6|4C8095  |069580;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;0695F3|2034ED  |06ED34;
+                       JMP.W dracsHeadUpdate                ;0695F6|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0695F9:
-                       DEC.W RAM_5_entity_counter,X         ;0695F9|DE4C05  |06054C;
-                       BEQ CODE_06960F                      ;0695FC|F011    |06960F;
+draculaState05_clothFlicker:
+                       DEC.W r6_entity_counter,X            ;0695F9|DE4C05  |06054C;
+                       BEQ dracLoopAppear                   ;0695FC|F011    |06960F;
                        LDY.B #$00                           ;0695FE|A000    |      ;
-                       LDA.B frame_Counter                  ;069600|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;069600|A51A    |00001A;
                        AND.B #$01                           ;069602|2901    |      ;
                        BEQ CODE_069608                      ;069604|F002    |069608;
                        LDY.B #$D0                           ;069606|A0D0    |      ;
                                                             ;      |        |      ;
           CODE_069608:
                        TYA                                  ;069608|98      |      ;
-                       STA.W RAM_5_entity_SpriteFrame,X     ;069609|9D1C03  |06031C;
-                       JMP.W CODE_069580                    ;06960C|4C8095  |069580;
+                       STA.W r6_entity_spriteID,X           ;069609|9D1C03  |06031C;
+                       JMP.W dracsHeadUpdate                ;06960C|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_06960F:
-                       LDA.B #$29                           ;06960F|A929    |      ;
-                       JSR.W FIXME_ef04                     ;069611|2004EF  |06EF04;
-                       LDA.B randomValue                    ;069614|A56F    |00006F;
+       dracLoopAppear:
+                       LDA.B #$29                           ;06960F|A929    |      ; animation ID
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;069611|2004EF  |06EF04;
+                       LDA.B r_randomValue                  ;069614|A56F    |00006F;
                        AND.B #$03                           ;069616|2903    |      ;
                        TAY                                  ;069618|A8      |      ;
-                       LDA.W CODE_069624,Y                  ;069619|B92496  |069624;
-                       LDY.B #$06                           ;06961C|A006    |      ;
-                       JSR.W FIXME_ed34                     ;06961E|2034ED  |06ED34;
-                       JMP.W CODE_069580                    ;069621|4C8095  |069580;
+                       LDA.W drac_disappearTimer,Y          ;069619|B92496  |069624;
+                       LDY.B #$06                           ;06961C|A006    |      ; state 6
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;06961E|2034ED  |06ED34;
+                       JMP.W dracsHeadUpdate                ;069621|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_069624:
-                       BIT.B $10                            ;069624|2410    |000010;
-                       AND.B (game_state)                   ;069626|3218    |000018;
+  drac_disappearTimer:
+                       db $24,$10,$32,$18                   ;069624|        |      ;
                                                             ;      |        |      ;
-          CODE_069628:
-                       DEC.W RAM_5_entity_counter,X         ;069628|DE4C05  |06054C;
+draculaState06_appear:
+                       DEC.W r6_entity_counter,X            ;069628|DE4C05  |06054C;
                        BEQ CODE_069630                      ;06962B|F003    |069630;
-                       JMP.W CODE_069580                    ;06962D|4C8095  |069580;
+                       JMP.W dracsHeadUpdate                ;06962D|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069630:
                        LDA.B #$2A                           ;069630|A92A    |      ;
-                       JSR.W FIXME_ef04                     ;069632|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;069632|2004EF  |06EF04;
                        LDA.B #$10                           ;069635|A910    |      ;
                        LDY.B #$07                           ;069637|A007    |      ;
-                       JSR.W FIXME_ed34                     ;069639|2034ED  |06ED34;
-                       JMP.W CODE_069580                    ;06963C|4C8095  |069580;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;069639|2034ED  |06ED34;
+                       JMP.W dracsHeadUpdate                ;06963C|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_06963F:
-                       DEC.W RAM_5_entity_counter,X         ;06963F|DE4C05  |06054C;
+  draculaState07_open:
+                       DEC.W r6_entity_counter,X            ;06963F|DE4C05  |06054C;
                        BEQ CODE_069647                      ;069642|F003    |069647;
-                       JMP.W CODE_069580                    ;069644|4C8095  |069580;
+                       JMP.W dracsHeadUpdate                ;069644|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069647:
@@ -3594,35 +3593,35 @@ enemyAI_1e_bossDracula:
                        LDX.B #$07                           ;06964A|A207    |      ;
                        LDA.B #$20                           ;06964C|A920    |      ;
                        LDY.B #$08                           ;06964E|A008    |      ;
-                       JSR.W FIXME_ed34                     ;069650|2034ED  |06ED34;
-                       JMP.W CODE_069580                    ;069653|4C8095  |069580;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;069650|2034ED  |06ED34;
+                       JMP.W dracsHeadUpdate                ;069653|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_069656:
-                       DEC.W RAM_5_entity_counter,X         ;069656|DE4C05  |06054C;
+ draculaState08_shoot:
+                       DEC.W r6_entity_counter,X            ;069656|DE4C05  |06054C;
                        BEQ CODE_06965E                      ;069659|F003    |06965E;
-                       JMP.W CODE_069580                    ;06965B|4C8095  |069580;
+                       JMP.W dracsHeadUpdate                ;06965B|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06965E:
                        LDA.B #$80                           ;06965E|A980    |      ;
-                       STA.W RAM_5_simon_jumpState,X        ;069660|9D8804  |060488;
+                       STA.W r6_player_jumpState,X          ;069660|9D8804  |060488;
                        LDA.B #$20                           ;069663|A920    |      ;
                        LDY.B #$89                           ;069665|A089    |      ;
-                       JSR.W FIXME_ed34                     ;069667|2034ED  |06ED34;
-                       JMP.W CODE_069580                    ;06966A|4C8095  |069580;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;069667|2034ED  |06ED34;
+                       JMP.W dracsHeadUpdate                ;06966A|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_06966D:
-                       DEC.W RAM_5_entity_counter,X         ;06966D|DE4C05  |06054C;
+draculaState09_headFlicker:
+                       DEC.W r6_entity_counter,X            ;06966D|DE4C05  |06054C;
                        BEQ CODE_06968E                      ;069670|F01C    |06968E;
-                       LDA.B frame_Counter                  ;069672|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;069672|A51A    |00001A;
                        AND.B #$01                           ;069674|2901    |      ;
                        BEQ CODE_069686                      ;069676|F00E    |069686;
                                                             ;      |        |      ;
           CODE_069678:
                        LDA.B #$00                           ;069678|A900    |      ;
-                       STA.W RAM_5_entity_SpriteFrame,X     ;06967A|9D1C03  |06031C;
+                       STA.W r6_entity_spriteID,X           ;06967A|9D1C03  |06031C;
                        LDA.B #$F4                           ;06967D|A9F4    |      ;
                        STA.W $020C                          ;06967F|8D0C02  |06020C;
                        STA.W $0210                          ;069682|8D1002  |060210;
@@ -3631,59 +3630,59 @@ enemyAI_1e_bossDracula:
                                                             ;      |        |      ;
           CODE_069686:
                        LDA.B #$D1                           ;069686|A9D1    |      ;
-                       STA.W RAM_5_entity_SpriteFrame,X     ;069688|9D1C03  |06031C;
-                       JMP.W CODE_069580                    ;06968B|4C8095  |069580;
+                       STA.W r6_entity_spriteID,X           ;069688|9D1C03  |06031C;
+                       JMP.W dracsHeadUpdate                ;06968B|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06968E:
                        LDA.B #$23                           ;06968E|A923    |      ;
-                       JSR.W FIXME_ef04                     ;069690|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;069690|2004EF  |06EF04;
                        LDA.B #$4F                           ;069693|A94F    |      ;
                        LDY.B #$8A                           ;069695|A08A    |      ;
-                       JSR.W FIXME_ed34                     ;069697|2034ED  |06ED34;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;069697|2034ED  |06ED34;
                        JMP.W CODE_069678                    ;06969A|4C7896  |069678;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_06969D:
-                       DEC.W RAM_5_entity_counter,X         ;06969D|DE4C05  |06054C;
+draculaState0a_disappear:
+                       DEC.W r6_entity_counter,X            ;06969D|DE4C05  |06054C;
                        BEQ CODE_0696A3                      ;0696A0|F001    |0696A3;
                        RTS                                  ;0696A2|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0696A3:
-                       LDA.B frame_Counter                  ;0696A3|A51A    |00001A;
-                       STA.B various_Processing_ID          ;0696A5|854B    |00004B;
+                       LDA.B r_frame_Counter                ;0696A3|A51A    |00001A;
+                       STA.B r_temp_processing_ID           ;0696A5|854B    |00004B;
                                                             ;      |        |      ;
           CODE_0696A7:
-                       LDA.B various_Processing_ID          ;0696A7|A54B    |00004B;
+                       LDA.B r_temp_processing_ID           ;0696A7|A54B    |00004B;
                        AND.B #$07                           ;0696A9|2907    |      ;
                        TAY                                  ;0696AB|A8      |      ;
-                       LDA.W RAM_5_entity_X_Pos             ;0696AC|AD8C03  |06038C;
-                       ADC.W DATA8_0696C9,Y                 ;0696AF|79C996  |0696C9;
+                       LDA.W r6_entity_X_Pos                ;0696AC|AD8C03  |06038C;
+                       ADC.W drac_Xpos_appear,Y             ;0696AF|79C996  |0696C9;
                        CMP.B #$14                           ;0696B2|C914    |      ;
                        BCC CODE_0696BA                      ;0696B4|9004    |0696BA;
                        CMP.B #$EC                           ;0696B6|C9EC    |      ;
                        BCC CODE_0696BF                      ;0696B8|9005    |0696BF;
                                                             ;      |        |      ;
           CODE_0696BA:
-                       INC.B various_Processing_ID          ;0696BA|E64B    |00004B;
+                       INC.B r_temp_processing_ID           ;0696BA|E64B    |00004B;
                        JMP.W CODE_0696A7                    ;0696BC|4CA796  |0696A7;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0696BF:
-                       STA.W RAM_5_entity_X_Pos,X           ;0696BF|9D8C03  |06038C;
+                       STA.W r6_entity_X_Pos,X              ;0696BF|9D8C03  |06038C;
                        LDA.B #$20                           ;0696C2|A920    |      ;
                        LDY.B #$8B                           ;0696C4|A08B    |      ;
-                       JMP.W FIXME_ed34                     ;0696C6|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;0696C6|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-         DATA8_0696C9:
+     drac_Xpos_appear:
                        db $10,$F8,$80,$60,$30,$D8,$60,$A8   ;0696C9|        |      ;
                                                             ;      |        |      ;
-          CODE_0696D1:
-                       DEC.W RAM_5_entity_counter,X         ;0696D1|DE4C05  |06054C;
+draculaState0b_flickerAppear:
+                       DEC.W r6_entity_counter,X            ;0696D1|DE4C05  |06054C;
                        BEQ CODE_0696E7                      ;0696D4|F011    |0696E7;
-                       LDA.B frame_Counter                  ;0696D6|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;0696D6|A51A    |00001A;
                        AND.B #$01                           ;0696D8|2901    |      ;
                        BEQ CODE_0696DF                      ;0696DA|F003    |0696DF;
                        JMP.W CODE_069678                    ;0696DC|4C7896  |069678;
@@ -3691,25 +3690,25 @@ enemyAI_1e_bossDracula:
                                                             ;      |        |      ;
           CODE_0696DF:
                        LDA.B #$D0                           ;0696DF|A9D0    |      ;
-                       STA.W RAM_5_entity_SpriteFrame,X     ;0696E1|9D1C03  |06031C;
-                       JMP.W CODE_069580                    ;0696E4|4C8095  |069580;
+                       STA.W r6_entity_spriteID,X           ;0696E1|9D1C03  |06031C;
+                       JMP.W dracsHeadUpdate                ;0696E4|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0696E7:
-                       JMP.W CODE_06960F                    ;0696E7|4C0F96  |06960F;
+                       JMP.W dracLoopAppear                 ;0696E7|4C0F96  |06960F;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0696EA:
+draculaState0c_headFly:
                        LDA.B #$F4                           ;0696EA|A9F4    |      ;
                        STA.W $020C                          ;0696EC|8D0C02  |06020C;
                        STA.W $0210                          ;0696EF|8D1002  |060210;
                        LDX.B #$08                           ;0696F2|A208    |      ;
                        LDA.B #$35                           ;0696F4|A935    |      ;
-                       JSR.W FIXME_f42c                     ;0696F6|202CF4  |06F42C;
+                       JSR.W FIXME_f42c_storeID_resetStats  ;0696F6|202CF4  |06F42C;
                        LDA.B #$2B                           ;0696F9|A92B    |      ;
-                       JSR.W FIXME_ef04                     ;0696FB|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;0696FB|2004EF  |06EF04;
                        LDX.B #$07                           ;0696FE|A207    |      ;
-                       LDA.W RAM_5_entity_SpriteMirrored,X  ;069700|BD5004  |060450;
+                       LDA.W r6_entity_spriteMirror,X       ;069700|BD5004  |060450;
                        EOR.B #$01                           ;069703|4901    |      ;
                        STA.W $0458                          ;069705|8D5804  |060458;
                        LDA.B #$02                           ;069708|A902    |      ;
@@ -3722,11 +3721,11 @@ enemyAI_1e_bossDracula:
                        STA.W $03E8                          ;069719|8DE803  |0603E8;
                        LDA.B #$78                           ;06971C|A978    |      ;
                        LDY.B #$8E                           ;06971E|A08E    |      ;
-                       JMP.W FIXME_ed34                     ;069720|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;069720|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_069723:
-                       DEC.W RAM_5_entity_counter,X         ;069723|DE4C05  |06054C;
+draculaState0d_initCookie:
+                       DEC.W r6_entity_counter,X            ;069723|DE4C05  |06054C;
                        BEQ CODE_069729                      ;069726|F001    |069729;
                        RTS                                  ;069728|60      |      ;
                                                             ;      |        |      ;
@@ -3734,256 +3733,255 @@ enemyAI_1e_bossDracula:
           CODE_069729:
                        LDA.B #$01                           ;069729|A901    |      ;
                        STA.B $7A                            ;06972B|857A    |00007A;
-                       LDA.W RAM_5_entity_SpriteFrame,X     ;06972D|BD1C03  |06031C;
-                       STA.W RAM_5_verticalVectorAddressLo,X;069730|9DDC04  |0604DC;
+                       LDA.W r6_entity_spriteID,X           ;06972D|BD1C03  |06031C;
+                       STA.W r6_X_screen_AddressLo,X        ;069730|9DDC04  |0604DC;
                        LDA.B #$80                           ;069733|A980    |      ;
-                       STA.W RAM_5_simon_jumpState,X        ;069735|9D8804  |060488;
+                       STA.W r6_player_jumpState,X          ;069735|9D8804  |060488;
                        LDY.B #$80                           ;069738|A080    |      ;
                        LDA.B #$20                           ;06973A|A920    |      ;
-                       JMP.W FIXME_ed34                     ;06973C|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06973C|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_06973F:
-                       DEC.W RAM_5_entity_counter,X         ;06973F|DE4C05  |06054C;
+ cookieMonsterState00:
+                       DEC.W r6_entity_counter,X            ;06973F|DE4C05  |06054C;
                        BEQ CODE_069757                      ;069742|F013    |069757;
-                       LDA.B frame_Counter                  ;069744|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;069744|A51A    |00001A;
                        AND.B #$01                           ;069746|2901    |      ;
                        BEQ CODE_069750                      ;069748|F006    |069750;
                        LDA.B #$00                           ;06974A|A900    |      ;
-                       STA.W RAM_5_entity_SpriteFrame,X     ;06974C|9D1C03  |06031C;
+                       STA.W r6_entity_spriteID,X           ;06974C|9D1C03  |06031C;
                        RTS                                  ;06974F|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069750:
-                       LDA.W RAM_5_verticalVectorAddressLo,X;069750|BDDC04  |0604DC;
-                       STA.W RAM_5_entity_SpriteFrame,X     ;069753|9D1C03  |06031C;
+                       LDA.W r6_X_screen_AddressLo,X        ;069750|BDDC04  |0604DC;
+                       STA.W r6_entity_spriteID,X           ;069753|9D1C03  |06031C;
                        RTS                                  ;069756|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069757:
-                       STX.B various_data02                 ;069757|864E    |00004E;
-                       JSR.W FIXME_fcf0                     ;069759|20F0FC  |06FCF0;
-                       LDX.B various_data02                 ;06975C|A64E    |00004E;
+                       STX.B r_temp_data02                  ;069757|864E    |00004E;
+                       JSR.W FIXME_fcf0_bossDefeateDracSound;069759|20F0FC  |06FCF0;
+                       LDX.B r_temp_data02                  ;06975C|A64E    |00004E;
                        JSR.W CODE_069945                    ;06975E|204599  |069945;
                        LDA.B #$80                           ;069761|A980    |      ;
-                       STA.W RAM_5_entity_Attributes,X      ;069763|9D0003  |060300;
+                       STA.W r6_entity_spAtr,X              ;069763|9D0003  |060300;
                        LDA.B #$10                           ;069766|A910    |      ;
                        LDY.B #$81                           ;069768|A081    |      ;
-                       JMP.W FIXME_ed34                     ;06976A|4C34ED  |06ED34;
+                       JMP.W FIXME_ed34_storeTimeA_stateY   ;06976A|4C34ED  |06ED34;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_06976D:
-                       DEC.W RAM_5_entity_counter,X         ;06976D|DE4C05  |06054C;
+ cookieMonsterState01:
+                       DEC.W r6_entity_counter,X            ;06976D|DE4C05  |06054C;
                        BEQ CODE_069773                      ;069770|F001    |069773;
                        RTS                                  ;069772|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069773:
                        LDA.B #$40                           ;069773|A940    |      ;
-                       STA.W RAM_5_boss_Health              ;069775|8DA901  |0601A9;
+                       STA.W r6_boss_Health                 ;069775|8DA901  |0601A9;
                        LDA.B #$00                           ;069778|A900    |      ;
                        STA.W $01A8                          ;06977A|8DA801  |0601A8;
                                                             ;      |        |      ;
           CODE_06977D:
                        LDA.B #$00                           ;06977D|A900    |      ;
-                       STA.W RAM_5_entity_Attributes,X      ;06977F|9D0003  |060300;
+                       STA.W r6_entity_spAtr,X              ;06977F|9D0003  |060300;
                        LDA.B #$36                           ;069782|A936    |      ;
-                       JSR.W FIXME_ef04                     ;069784|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;069784|2004EF  |06EF04;
                        LDX.B #$08                           ;069787|A208    |      ;
                        LDA.B #$04                           ;069789|A904    |      ;
-                       JSR.W FIXME_f42c                     ;06978B|202CF4  |06F42C;
+                       JSR.W FIXME_f42c_storeID_resetStats  ;06978B|202CF4  |06F42C;
                        LDA.B #$80                           ;06978E|A980    |      ;
-                       STA.W RAM_5_entity_Attributes,X      ;069790|9D0003  |060300;
+                       STA.W r6_entity_spAtr,X              ;069790|9D0003  |060300;
                        LDX.B #$07                           ;069793|A207    |      ;
                        LDA.B #$A8                           ;069795|A9A8    |      ;
-                       STA.W RAM_5_entity_Y_Pos,X           ;069797|9D5403  |060354;
+                       STA.W r6_entity_Y_Pos,X              ;069797|9D5403  |060354;
                        LDA.B #$21                           ;06979A|A921    |      ;
                        LDY.B #$82                           ;06979C|A082    |      ;
-                       JSR.W FIXME_ed34                     ;06979E|2034ED  |06ED34;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;06979E|2034ED  |06ED34;
                                                             ;      |        |      ;
-          CODE_0697A1:
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0697A1|BD5403  |060354;
+  canCookieSmellSimon:
+                       LDA.W r6_entity_Y_Pos,X              ;0697A1|BD5403  |060354;
                        SEC                                  ;0697A4|38      |      ;
                        SBC.B #$20                           ;0697A5|E920    |      ;
                        STA.W $035C                          ;0697A7|8D5C03  |06035C;
                        LDA.B #$08                           ;0697AA|A908    |      ;
-                       LDY.W RAM_5_entity_SpriteMirrored,X  ;0697AC|BC5004  |060450;
+                       LDY.W r6_entity_spriteMirror,X       ;0697AC|BC5004  |060450;
                        BEQ CODE_0697B3                      ;0697AF|F002    |0697B3;
                        LDA.B #$F8                           ;0697B1|A9F8    |      ;
                                                             ;      |        |      ;
           CODE_0697B3:
-                       STA.B various_Processing_ID          ;0697B3|854B    |00004B;
-                       LDA.W RAM_5_entity_X_Pos,X           ;0697B5|BD8C03  |06038C;
+                       STA.B r_temp_processing_ID           ;0697B3|854B    |00004B;
+                       LDA.W r6_entity_X_Pos,X              ;0697B5|BD8C03  |06038C;
                        CLC                                  ;0697B8|18      |      ;
-                       ADC.B various_Processing_ID          ;0697B9|654B    |00004B;
+                       ADC.B r_temp_processing_ID           ;0697B9|654B    |00004B;
                        STA.W $0394                          ;0697BB|8D9403  |060394;
                        RTS                                  ;0697BE|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0697BF:
-                       DEC.W RAM_5_entity_counter,X         ;0697BF|DE4C05  |06054C;
-                       BEQ CODE_0697C7                      ;0697C2|F003    |0697C7;
-                       JMP.W CODE_0697A1                    ;0697C4|4CA197  |0697A1;
+cookieMonsterState02_standing:
+                       DEC.W r6_entity_counter,X            ;0697BF|DE4C05  |06054C;
+                       BEQ cookieJumpAgain                  ;0697C2|F003    |0697C7;
+                       JMP.W canCookieSmellSimon            ;0697C4|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0697C7:
-                       LDA.B frame_Counter                  ;0697C7|A51A    |00001A;
+      cookieJumpAgain:
+                       LDA.B r_frame_Counter                ;0697C7|A51A    |00001A;
                        AND.B #$01                           ;0697C9|2901    |      ;
                        TAY                                  ;0697CB|A8      |      ;
-                       LDA.W CODE_0697D7,Y                  ;0697CC|B9D797  |0697D7;
+                       LDA.W cookieTimer,Y                  ;0697CC|B9D797  |0697D7;
                        LDY.B #$03                           ;0697CF|A003    |      ;
-                       JSR.W FIXME_ed34                     ;0697D1|2034ED  |06ED34;
-                       JMP.W CODE_0697A1                    ;0697D4|4CA197  |0697A1;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;0697D1|2034ED  |06ED34;
+                       JMP.W canCookieSmellSimon            ;0697D4|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0697D7:
-                       EOR.B simon_SpecialDropID,X          ;0697D7|557B    |00007B;
-                       AND.B simon_setStairState,S          ;0697D9|233E    |00003E;
+          cookieTimer:
+                       db $55,$7B,$23,$3E                   ;0697D7|        |      ;
                                                             ;      |        |      ;
-          CODE_0697DB:
-                       DEC.W RAM_5_entity_counter,X         ;0697DB|DE4C05  |06054C;
+cookieMonsterState03_faceSimon:
+                       DEC.W r6_entity_counter,X            ;0697DB|DE4C05  |06054C;
                        BEQ CODE_0697F7                      ;0697DE|F017    |0697F7;
-                       LDA.B frame_Counter                  ;0697E0|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;0697E0|A51A    |00001A;
                        AND.B #$0F                           ;0697E2|290F    |      ;
                        BNE CODE_0697F4                      ;0697E4|D00E    |0697F4;
-                       LDA.W RAM_5_entity_SpriteMirrored    ;0697E6|AD5004  |060450;
-                       CMP.W RAM_5_entity_SpriteMirrored,X  ;0697E9|DD5004  |060450;
+                       LDA.W r6_entity_spriteMirror         ;0697E6|AD5004  |060450;
+                       CMP.W r6_entity_spriteMirror,X       ;0697E9|DD5004  |060450;
                        BEQ CODE_0697F4                      ;0697EC|F006    |0697F4;
-                       LDA.B joypad_1_InputHeld             ;0697EE|A5F7    |0000F7;
+                       LDA.B r_inputHeld_1                  ;0697EE|A5F7    |0000F7;
                        AND.B #$40                           ;0697F0|2940    |      ;
                        BNE CODE_0697F7                      ;0697F2|D003    |0697F7;
                                                             ;      |        |      ;
           CODE_0697F4:
-                       JMP.W CODE_0697A1                    ;0697F4|4CA197  |0697A1;
+                       JMP.W canCookieSmellSimon            ;0697F4|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0697F7:
                        LDA.B #$31                           ;0697F7|A931    |      ;
-                       JSR.W FIXME_ef04                     ;0697F9|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;0697F9|2004EF  |06EF04;
                        LDA.B #$10                           ;0697FC|A910    |      ;
                        LDY.B #$04                           ;0697FE|A004    |      ;
-                       JSR.W FIXME_ed34                     ;069800|2034ED  |06ED34;
-                       JMP.W CODE_0697A1                    ;069803|4CA197  |0697A1;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;069800|2034ED  |06ED34;
+                       JMP.W canCookieSmellSimon            ;069803|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_069806:
-                       DEC.W RAM_5_entity_counter,X         ;069806|DE4C05  |06054C;
+cookieMonsterState04_jumpInit:
+                       DEC.W r6_entity_counter,X            ;069806|DE4C05  |06054C;
                        BEQ CODE_06980E                      ;069809|F003    |06980E;
-                       JMP.W CODE_0697A1                    ;06980B|4CA197  |0697A1;
+                       JMP.W canCookieSmellSimon            ;06980B|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06980E:
                        LDA.B #$32                           ;06980E|A932    |      ;
-                       JSR.W FIXME_ef04                     ;069810|2004EF  |06EF04;
-                       LDA.W RAM_5_entity_SpriteMirrored,X  ;069813|BD5004  |060450;
-                       STA.W RAM_5_verticalVectorAddressHiher,X;069816|9DF804  |0604F8;
-                       LDA.B frame_Counter                  ;069819|A51A    |00001A;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;069810|2004EF  |06EF04;
+                       LDA.W r6_entity_spriteMirror,X       ;069813|BD5004  |060450;
+                       STA.W r6_X_screen_AddressHiher,X     ;069816|9DF804  |0604F8;
+                       LDA.B r_frame_Counter                ;069819|A51A    |00001A;
                        AND.B #$01                           ;06981B|2901    |      ;
                        BEQ CODE_069838                      ;06981D|F019    |069838;
                        LDA.B #$06                           ;06981F|A906    |      ; cookyMonster jump speed Y
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;069821|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;069821|9DC403  |0603C4;
                        LDA.B #$00                           ;069824|A900    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;069826|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;069826|9DE003  |0603E0;
                                                             ;      |        |      ;
           CODE_069829:
                        LDA.B #$00                           ;069829|A900    |      ; cookyMonster jump speed X
                        LDY.B #$C0                           ;06982B|A0C0    |      ;
-                       JSR.W FIXME_ec72                     ;06982D|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;06982D|2072EC  |06EC72;
                        LDA.B #$05                           ;069830|A905    |      ;
-                       STA.W RAM_5_entity_State,X           ;069832|9D6C04  |06046C;
-                       JMP.W CODE_0697A1                    ;069835|4CA197  |0697A1;
+                       STA.W r6_entity_State,X              ;069832|9D6C04  |06046C;
+                       JMP.W canCookieSmellSimon            ;069835|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069838:
                        LDA.B #$04                           ;069838|A904    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;06983A|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;06983A|9DC403  |0603C4;
                        LDA.B #$80                           ;06983D|A980    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;06983F|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;06983F|9DE003  |0603E0;
                        JMP.W CODE_069829                    ;069842|4C2998  |069829;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_069845:
-                       JSR.W CODE_06991C                    ;069845|201C99  |06991C;
-                       JSR.W FIXME_ee1c                     ;069848|201CEE  |06EE1C;
-                       LDA.W RAM_5_verticalVectorAddressHiher,X;06984B|BDF804  |0604F8;
+cookieMonsterState05_jump:
+                       JSR.W spriteSpeedLoadCookieBoss      ;069845|201C99  |06991C;
+                       JSR.W FIXME_ee1c_applyScreenScrollOffset;069848|201CEE  |06EE1C;
+                       LDA.W r6_X_screen_AddressHiher,X     ;06984B|BDF804  |0604F8;
                        BEQ CODE_069859                      ;06984E|F009    |069859;
-                       LDA.W RAM_5_entity_X_Pos,X           ;069850|BD8C03  |06038C;
+                       LDA.W r6_entity_X_Pos,X              ;069850|BD8C03  |06038C;
                        CMP.B #$18                           ;069853|C918    |      ;
                        BCC CODE_069860                      ;069855|9009    |069860;
                        BCS CODE_069868                      ;069857|B00F    |069868;
                                                             ;      |        |      ;
           CODE_069859:
-                       LDA.W RAM_5_entity_X_Pos,X           ;069859|BD8C03  |06038C;
+                       LDA.W r6_entity_X_Pos,X              ;069859|BD8C03  |06038C;
                        CMP.B #$E8                           ;06985C|C9E8    |      ;
                        BCC CODE_069868                      ;06985E|9008    |069868;
                                                             ;      |        |      ;
           CODE_069860:
-                       LDA.W RAM_5_verticalVectorAddressHiher,X;069860|BDF804  |0604F8;
+                       LDA.W r6_X_screen_AddressHiher,X     ;069860|BDF804  |0604F8;
                        EOR.B #$01                           ;069863|4901    |      ;
-                       STA.W RAM_5_verticalVectorAddressHiher,X;069865|9DF804  |0604F8;
+                       STA.W r6_X_screen_AddressHiher,X     ;069865|9DF804  |0604F8;
                                                             ;      |        |      ;
           CODE_069868:
-                       LDA.W RAM_5_entity_Y_Pos,X           ;069868|BD5403  |060354;
+                       LDA.W r6_entity_Y_Pos,X              ;069868|BD5403  |060354;
                        ADC.B #$08                           ;06986B|6908    |      ;
-                       STA.B various_data01                 ;06986D|854D    |00004D;
+                       STA.B r_temp_data01                  ;06986D|854D    |00004D;
                        LDA.B #$00                           ;06986F|A900    |      ;
-                       STA.B various_data00                 ;069871|854C    |00004C;
-                       JSR.W FIXME_EC21                     ;069873|2021EC  |06EC21;
+                       STA.B r_temp_data00                  ;069871|854C    |00004C;
+                       JSR.W FIXME_EC21_findGround_to14     ;069873|2021EC  |06EC21;
                        LDA.B $14                            ;069876|A514    |000014;
                        BEQ CODE_069890                      ;069878|F016    |069890;
-                       JSR.W FIXME_efaf                     ;06987A|20AFEF  |06EFAF;
+                       JSR.W FIXME_efaf_YposMask            ;06987A|20AFEF  |06EFAF;
                        LDA.B #$18                           ;06987D|A918    |      ;
                        LDY.B #$06                           ;06987F|A006    |      ;
-                       JSR.W FIXME_ed34                     ;069881|2034ED  |06ED34;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;069881|2034ED  |06ED34;
                        LDA.B #$34                           ;069884|A934    |      ;
-                       JSR.W FIXME_ef04                     ;069886|2004EF  |06EF04;
-                       STX.B various_data02                 ;069889|864E    |00004E;
-                       JSR.W FIXME_fd0e                     ;06988B|200EFD  |06FD0E;
-                       LDX.B various_data02                 ;06988E|A64E    |00004E;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;069886|2004EF  |06EF04;
+                       STX.B r_temp_data02                  ;069889|864E    |00004E;
+                       JSR.W FIXME_fd0e_boDe_play_1d_andBank5;06988B|200EFD  |06FD0E;
+                       LDX.B r_temp_data02                  ;06988E|A64E    |00004E;
                                                             ;      |        |      ;
           CODE_069890:
-                       JMP.W CODE_0697A1                    ;069890|4CA197  |0697A1;
+                       JMP.W canCookieSmellSimon            ;069890|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_069893:
-                       DEC.W RAM_5_entity_counter,X         ;069893|DE4C05  |06054C;
+cookieMonsterState06_land:
+                       DEC.W r6_entity_counter,X            ;069893|DE4C05  |06054C;
                        BEQ CODE_06989B                      ;069896|F003    |06989B;
-                       JMP.W CODE_0697A1                    ;069898|4CA197  |0697A1;
+                       JMP.W canCookieSmellSimon            ;069898|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06989B:
                        LDA.B #$36                           ;06989B|A936    |      ;
-                       JSR.W FIXME_ef04                     ;06989D|2004EF  |06EF04;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;0698A0|BD5403  |060354;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;06989D|2004EF  |06EF04;
+                       LDA.W r6_entity_Y_Pos,X              ;0698A0|BD5403  |060354;
                        SEC                                  ;0698A3|38      |      ;
                        SBC.B #$10                           ;0698A4|E910    |      ;
-                       STA.W RAM_5_entity_Y_Pos,X           ;0698A6|9D5403  |060354;
+                       STA.W r6_entity_Y_Pos,X              ;0698A6|9D5403  |060354;
                        LDA.B #$10                           ;0698A9|A910    |      ;
                        LDY.B #$07                           ;0698AB|A007    |      ;
-                       JSR.W FIXME_ed34                     ;0698AD|2034ED  |06ED34;
-                       JMP.W CODE_0697A1                    ;0698B0|4CA197  |0697A1;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;0698AD|2034ED  |06ED34;
+                       JMP.W canCookieSmellSimon            ;0698B0|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0698B3:
-                       DEC.W RAM_5_entity_counter,X         ;0698B3|DE4C05  |06054C;
+cookieMonsterState07_stand:
+                       DEC.W r6_entity_counter,X            ;0698B3|DE4C05  |06054C;
                        BEQ CODE_0698BB                      ;0698B6|F003    |0698BB;
-                       JMP.W CODE_0697A1                    ;0698B8|4CA197  |0697A1;
+                       JMP.W canCookieSmellSimon            ;0698B8|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0698BB:
-                       JSR.W FIXME_ef84                     ;0698BB|2084EF  |06EF84;
+                       JSR.W FIXME_ef84_findPlayer          ;0698BB|2084EF  |06EF84;
                        CMP.B #$30                           ;0698BE|C930    |      ;
                        BCS CODE_0698C5                      ;0698C0|B003    |0698C5;
                                                             ;      |        |      ;
           CODE_0698C2:
-                       JMP.W CODE_0697C7                    ;0698C2|4CC797  |0697C7;
+                       JMP.W cookieJumpAgain                ;0698C2|4CC797  |0697C7;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0698C5:
                        AND.B #$03                           ;0698C5|2903    |      ;
                        BEQ CODE_0698C2                      ;0698C7|F0F9    |0698C2;
                        LDY.B #$10                           ;0698C9|A010    |      ;
-                       LDA.B frame_Counter                  ;0698CB|A51A    |00001A;
+                       LDA.B r_frame_Counter                ;0698CB|A51A    |00001A;
                        AND.B #$01                           ;0698CD|2901    |      ;
                        BEQ CODE_0698D3                      ;0698CF|F002    |0698D3;
                        LDY.B #$28                           ;0698D1|A028    |      ;
@@ -3991,65 +3989,65 @@ enemyAI_1e_bossDracula:
           CODE_0698D3:
                        TYA                                  ;0698D3|98      |      ;
                        LDY.B #$08                           ;0698D4|A008    |      ;
-                       JSR.W FIXME_ed34                     ;0698D6|2034ED  |06ED34;
-                       JMP.W CODE_0697A1                    ;0698D9|4CA197  |0697A1;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;0698D6|2034ED  |06ED34;
+                       JMP.W canCookieSmellSimon            ;0698D9|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0698DC:
-                       DEC.W RAM_5_entity_counter,X         ;0698DC|DE4C05  |06054C;
+cookieMonsterState08_makeFace:
+                       DEC.W r6_entity_counter,X            ;0698DC|DE4C05  |06054C;
                        BEQ CODE_0698E4                      ;0698DF|F003    |0698E4;
-                       JMP.W CODE_0697A1                    ;0698E1|4CA197  |0697A1;
+                       JMP.W canCookieSmellSimon            ;0698E1|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0698E4:
                        LDA.B #$35                           ;0698E4|A935    |      ;
-                       JSR.W FIXME_ef04                     ;0698E6|2004EF  |06EF04;
+                       JSR.W FIXME_ef04_loadNewAnimIndex    ;0698E6|2004EF  |06EF04;
                        LDY.B #$09                           ;0698E9|A009    |      ;
                        LDA.B #$10                           ;0698EB|A910    |      ;
-                       JSR.W FIXME_ed34                     ;0698ED|2034ED  |06ED34;
-                       JMP.W CODE_0697A1                    ;0698F0|4CA197  |0697A1;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;0698ED|2034ED  |06ED34;
+                       JMP.W canCookieSmellSimon            ;0698F0|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0698F3:
-                       DEC.W RAM_5_entity_counter,X         ;0698F3|DE4C05  |06054C;
+cookieMonsterState09_handsUp:
+                       DEC.W r6_entity_counter,X            ;0698F3|DE4C05  |06054C;
                        BEQ CODE_0698FB                      ;0698F6|F003    |0698FB;
-                       JMP.W CODE_0697A1                    ;0698F8|4CA197  |0697A1;
+                       JMP.W canCookieSmellSimon            ;0698F8|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0698FB:
-                       STX.B various_data02                 ;0698FB|864E    |00004E;
-                       JSR.W FIXME_fcfa                     ;0698FD|20FAFC  |06FCFA;
-                       LDX.B various_data02                 ;069900|A64E    |00004E;
+                       STX.B r_temp_data02                  ;0698FB|864E    |00004E;
+                       JSR.W FIXME_fcfa_boDe_play_12_andBank5;0698FD|20FAFC  |06FCFA;
+                       LDX.B r_temp_data02                  ;069900|A64E    |00004E;
                        JSR.W CODE_0699BE                    ;069902|20BE99  |0699BE;
                        LDX.B #$07                           ;069905|A207    |      ;
                        LDA.B #$10                           ;069907|A910    |      ;
                        LDY.B #$0A                           ;069909|A00A    |      ;
-                       JSR.W FIXME_ed34                     ;06990B|2034ED  |06ED34;
-                       JMP.W CODE_0697A1                    ;06990E|4CA197  |0697A1;
+                       JSR.W FIXME_ed34_storeTimeA_stateY   ;06990B|2034ED  |06ED34;
+                       JMP.W canCookieSmellSimon            ;06990E|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_069911:
-                       DEC.W RAM_5_entity_counter,X         ;069911|DE4C05  |06054C;
+cookieMonsterState0a_shoot:
+                       DEC.W r6_entity_counter,X            ;069911|DE4C05  |06054C;
                        BEQ CODE_069919                      ;069914|F003    |069919;
-                       JMP.W CODE_0697A1                    ;069916|4CA197  |0697A1;
+                       JMP.W canCookieSmellSimon            ;069916|4CA197  |0697A1;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069919:
                        JMP.W CODE_06977D                    ;069919|4C7D97  |06977D;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_06991C:
-                       LDA.W RAM_5_entity_Vertical_SpeedSub,X;06991C|BDE003  |0603E0;
+spriteSpeedLoadCookieBoss:
+                       LDA.W r6_entity_Y_speedSub,X         ;06991C|BDE003  |0603E0;
                        SBC.B #$30                           ;06991F|E930    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;069921|9DE003  |0603E0;
-                       LDA.W RAM_5_entity_Vertical_Speed,X  ;069924|BDC403  |0603C4;
+                       STA.W r6_entity_Y_speedSub,X         ;069921|9DE003  |0603E0;
+                       LDA.W r6_entity_Y_speed,X            ;069924|BDC403  |0603C4;
                        SBC.B #$00                           ;069927|E900    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;069929|9DC403  |0603C4;
-                       JSR.W FIXME_ef56                     ;06992C|2056EF  |06EF56;
+                       STA.W r6_entity_Y_speed,X            ;069929|9DC403  |0603C4;
+                       JSR.W FIXME_ef56_updateYposSpeed_minus;06992C|2056EF  |06EF56;
                        CMP.B #$20                           ;06992F|C920    |      ;
                        BCS CODE_069939                      ;069931|B006    |069939;
-                       JSR.W FIXME_F1d2                     ;069933|20D2F1  |06F1D2;
-                       LDA.W RAM_5_entity_Y_Pos,X           ;069936|BD5403  |060354;
+                       JSR.W FIXME_F1d2_resetFallSpeed      ;069933|20D2F1  |06F1D2;
+                       LDA.W r6_entity_Y_Pos,X              ;069936|BD5403  |060354;
                                                             ;      |        |      ;
           CODE_069939:
                        LDY.B #$32                           ;069939|A032    |      ;
@@ -4059,17 +4057,17 @@ enemyAI_1e_bossDracula:
                                                             ;      |        |      ;
           CODE_069941:
                        TYA                                  ;069941|98      |      ;
-                       JMP.W FIXME_ef04                     ;069942|4C04EF  |06EF04;
+                       JMP.W FIXME_ef04_loadNewAnimIndex    ;069942|4C04EF  |06EF04;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069945:
-                       STX.B various_data02                 ;069945|864E    |00004E;
+                       STX.B r_temp_data02                  ;069945|864E    |00004E;
                        LDA.B #$00                           ;069947|A900    |      ;
                        STA.B $12                            ;069949|8512    |000012;
                        LDY.B #$04                           ;06994B|A004    |      ;
                                                             ;      |        |      ;
           CODE_06994D:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;06994D|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;06994D|B93404  |060434;
                        BEQ CODE_069958                      ;069950|F006    |069958;
                                                             ;      |        |      ;
           CODE_069952:
@@ -4083,27 +4081,27 @@ enemyAI_1e_bossDracula:
                        LDA.B #$21                           ;069958|A921    |      ;
                        STA.B $16                            ;06995A|8516    |000016;
                        LDA.B #$37                           ;06995C|A937    |      ;
-                       JSR.W FIXME_ed82                     ;06995E|2082ED  |06ED82;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;06995E|2082ED  |06ED82;
                        LDA.B $12                            ;069961|A512    |000012;
                        ASL A                                ;069963|0A      |      ;
-                       STA.B various_Processing_ID          ;069964|854B    |00004B;
+                       STA.B r_temp_processing_ID           ;069964|854B    |00004B;
                        ASL A                                ;069966|0A      |      ;
                        CLC                                  ;069967|18      |      ;
-                       ADC.B various_Processing_ID          ;069968|654B    |00004B;
+                       ADC.B r_temp_processing_ID           ;069968|654B    |00004B;
                        TAX                                  ;06996A|AA      |      ;
-                       LDA.W DATA8_06999A,X                 ;06996B|BD9A99  |06999A;
-                       STA.W RAM_5_entity_SpriteMirrored,Y  ;06996E|995004  |060450;
-                       LDA.W DATA8_06999B,X                 ;069971|BD9B99  |06999B;
-                       STA.W RAM_5_verticalVectorAddressLo,Y;069974|99DC04  |0604DC;
-                       LDA.W DATA8_06999C,X                 ;069977|BD9C99  |06999C;
-                       STA.W RAM_5_entity_HorizontalSpeed,Y ;06997A|99FC03  |0603FC;
-                       LDA.W DATA8_06999D,X                 ;06997D|BD9D99  |06999D;
-                       STA.W RAM_5_entity_HorizontalSpeedSub,Y;069980|991804  |060418;
-                       LDA.W DATA8_06999E,X                 ;069983|BD9E99  |06999E;
-                       STA.W RAM_5_entity_Vertical_Speed,Y  ;069986|99C403  |0603C4;
-                       LDA.W DATA8_06999F,X                 ;069989|BD9F99  |06999F;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,Y;06998C|99E003  |0603E0;
-                       LDX.B various_data02                 ;06998F|A64E    |00004E;
+                       LDA.W spriteDataMirr_00,X            ;06996B|BD9A99  |06999A;
+                       STA.W r6_entity_spriteMirror,Y       ;06996E|995004  |060450;
+                       LDA.W vectorData_00,X                ;069971|BD9B99  |06999B;
+                       STA.W r6_X_screen_AddressLo,Y        ;069974|99DC04  |0604DC;
+                       LDA.W speedDataY_00,X                ;069977|BD9C99  |06999C;
+                       STA.W r6_entity_X_Speed,Y            ;06997A|99FC03  |0603FC;
+                       LDA.W speedSubDataY_00,X             ;06997D|BD9D99  |06999D;
+                       STA.W r6_entity_X_SpeedSub,Y         ;069980|991804  |060418;
+                       LDA.W speedDataX_00,X                ;069983|BD9E99  |06999E;
+                       STA.W r6_entity_Y_speed,Y            ;069986|99C403  |0603C4;
+                       LDA.W speedSubDataX_00,X             ;069989|BD9F99  |06999F;
+                       STA.W r6_entity_Y_speedSub,Y         ;06998C|99E003  |0603E0;
+                       LDX.B r_temp_data02                  ;06998F|A64E    |00004E;
                        INC.B $12                            ;069991|E612    |000012;
                        LDA.B $12                            ;069993|A512    |000012;
                        CMP.B #$06                           ;069995|C906    |      ;
@@ -4111,22 +4109,22 @@ enemyAI_1e_bossDracula:
                        RTS                                  ;069999|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-         DATA8_06999A:
+    spriteDataMirr_00:
                        db $00                               ;06999A|        |      ;
                                                             ;      |        |      ;
-         DATA8_06999B:
+        vectorData_00:
                        db $00                               ;06999B|        |      ;
                                                             ;      |        |      ;
-         DATA8_06999C:
+        speedDataY_00:
                        db $02                               ;06999C|        |      ;
                                                             ;      |        |      ;
-         DATA8_06999D:
+     speedSubDataY_00:
                        db $D0                               ;06999D|        |      ;
                                                             ;      |        |      ;
-         DATA8_06999E:
+        speedDataX_00:
                        db $02                               ;06999E|        |      ;
                                                             ;      |        |      ;
-         DATA8_06999F:
+     speedSubDataX_00:
                        db $D0,$00,$00,$04,$00,$00,$00,$00   ;06999F|        |      ;
                        db $01,$02,$D0,$02,$D0,$01,$00,$02   ;0699A7|        |      ;
                        db $D0,$02,$D0,$01,$00,$04,$00,$00   ;0699AF|        |      ;
@@ -4147,7 +4145,7 @@ enemyAI_1e_bossDracula:
                        LDY.B #$0D                           ;0699CB|A00D    |      ;
                                                             ;      |        |      ;
           CODE_0699CD:
-                       LDA.W RAM_5_entity_ObjectIndex,Y     ;0699CD|B93404  |060434;
+                       LDA.W r6_entity_ID,Y                 ;0699CD|B93404  |060434;
                        BEQ CODE_0699DA                      ;0699D0|F008    |0699DA;
                                                             ;      |        |      ;
           CODE_0699D2:
@@ -4159,42 +4157,42 @@ enemyAI_1e_bossDracula:
                                                             ;      |        |      ;
           CODE_0699DA:
                        STY.B $11                            ;0699DA|8411    |000011;
-                       STX.B various_data02                 ;0699DC|864E    |00004E;
+                       STX.B r_temp_data02                  ;0699DC|864E    |00004E;
                        LDA.B #$20                           ;0699DE|A920    |      ;
                        STA.B $16                            ;0699E0|8516    |000016;
                        LDA.B #$08                           ;0699E2|A908    |      ;
-                       JSR.W FIXME_ed82                     ;0699E4|2082ED  |06ED82;
-                       LDA.W RAM_5_entity_X_Pos             ;0699E7|AD8C03  |06038C;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;0699E4|2082ED  |06ED82;
+                       LDA.W r6_entity_X_Pos                ;0699E7|AD8C03  |06038C;
                        STA.B $01                            ;0699EA|8501    |000001;
-                       LDA.W RAM_5_entity_Y_Pos             ;0699EC|AD5403  |060354;
+                       LDA.W r6_entity_Y_Pos                ;0699EC|AD5403  |060354;
                        LDY.B $10                            ;0699EF|A410    |000010;
                        CLC                                  ;0699F1|18      |      ;
                        ADC.W DATA8_069A35,Y                 ;0699F2|79359A  |069A35;
                        STA.B $00                            ;0699F5|8500    |000000;
                        LDX.B $11                            ;0699F7|A611    |000011;
-                       JSR.W FIXME_eebb                     ;0699F9|20BBEE  |06EEBB;
+                       JSR.W FIXME_eebb_aOtherScreenR00     ;0699F9|20BBEE  |06EEBB;
                        ASL.B $02                            ;0699FC|0602    |000002;
                        ROL.B $01                            ;0699FE|2601    |000001;
                        LDA.B $09                            ;069A00|A509    |000009;
                        BNE CODE_069A18                      ;069A02|D014    |069A18;
                        LDA.B $02                            ;069A04|A502    |000002;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;069A06|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;069A06|9DE003  |0603E0;
                        LDA.B $01                            ;069A09|A501    |000001;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;069A0B|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;069A0B|9DC403  |0603C4;
                        LDA.B #$02                           ;069A0E|A902    |      ;
                        LDY.B #$00                           ;069A10|A000    |      ;
-                       JSR.W FIXME_ec72                     ;069A12|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;069A12|2072EC  |06EC72;
                        JMP.W CODE_069A29                    ;069A15|4C299A  |069A29;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069A18:
                        LDY.B $02                            ;069A18|A402    |000002;
                        LDA.B $01                            ;069A1A|A501    |000001;
-                       JSR.W FIXME_ec72                     ;069A1C|2072EC  |06EC72;
+                       JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;069A1C|2072EC  |06EC72;
                        LDA.B #$02                           ;069A1F|A902    |      ;
-                       STA.W RAM_5_entity_Vertical_Speed,X  ;069A21|9DC403  |0603C4;
+                       STA.W r6_entity_Y_speed,X            ;069A21|9DC403  |0603C4;
                        LDA.B #$00                           ;069A24|A900    |      ;
-                       STA.W RAM_5_entity_Vertical_SpeedSub,X;069A26|9DE003  |0603E0;
+                       STA.W r6_entity_Y_speedSub,X         ;069A26|9DE003  |0603E0;
                                                             ;      |        |      ;
           CODE_069A29:
                        DEC.B $10                            ;069A29|C610    |000010;
@@ -6365,7 +6363,7 @@ FIXME_ca6d_jump4stack:
          EMPTY_06DD3D:
                        db $00,$00,$00                       ;06DD3D|        |      ;
                                                             ;      |        |      ;
-           FIXME_dd40:
+FIXME_dd40_put2screen:
                        BRK #$00                             ;06DD40|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06DD42|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06DD4A|        |      ;
@@ -6800,7 +6798,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EA9F|        |      ;
                        db $00,$00                           ;06EAA7|        |      ;
                                                             ;      |        |      ;
-           FIXME_eaa9:
+FIXME_eaa9_switchSpritMirroring:
                        BRK #$00                             ;06EAA9|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EAAB|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EAB3|        |      ;
@@ -6849,11 +6847,11 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC0B|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00       ;06EC13|        |      ;
                                                             ;      |        |      ;
-           FIXME_ec1a:
+FIXME_ec1a_findScreenAndGround:
                        BRK #$00                             ;06EC1A|0000    |      ;
                        db $00,$00,$00,$00,$00               ;06EC1C|        |      ;
                                                             ;      |        |      ;
-           FIXME_EC21:
+FIXME_EC21_findGround_to14:
                        BRK #$00                             ;06EC21|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC23|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC2B|        |      ;
@@ -6862,24 +6860,24 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC43|        |      ;
                        db $00,$00,$00,$00,$00               ;06EC4B|        |      ;
                                                             ;      |        |      ;
-           FIXME_ec50:
+FIXME_ec50_gravity_00:
                        BRK #$00                             ;06EC50|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC52|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC5A|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC62|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC6A|        |      ;
                                                             ;      |        |      ;
-           FIXME_ec72:
+FIXME_ec72_storeSpeed_AYsub_Xpos:
                        BRK #$00                             ;06EC72|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC74|        |      ;
                        db $00                               ;06EC7C|        |      ;
                                                             ;      |        |      ;
-           FIXME_ec7d:
+FIXME_ec7d_updateSpriteSpeedLeftOrRight:
                        BRK #$00                             ;06EC7D|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC7F|        |      ;
                        db $00                               ;06EC87|        |      ;
                                                             ;      |        |      ;
-           FIXME_ec88:
+FIXME_ec88_findPlayerPos:
                        BRK #$00                             ;06EC88|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC8A|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EC92|        |      ;
@@ -6894,7 +6892,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ECDA|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ECE2|        |      ;
                                                             ;      |        |      ;
-           FIXME_ecea:
+FIXME_ecea_storeSpeed_AYSub_Ypos:
                        BRK #$00                             ;06ECEA|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ECEC|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ECF4|        |      ;
@@ -6906,7 +6904,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED24|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED2C|        |      ;
                                                             ;      |        |      ;
-           FIXME_ed34:
+FIXME_ed34_storeTimeA_stateY:
                        BRK #$00                             ;06ED34|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED36|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED3E|        |      ;
@@ -6914,7 +6912,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED4E|        |      ;
                        db $00,$00,$00,$00,$00,$00           ;06ED56|        |      ;
                                                             ;      |        |      ;
-           FIXME_ed5c:
+FIXME_ed5c_levelRelatedRoutines:
                        BRK #$00                             ;06ED5C|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED5E|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED66|        |      ;
@@ -6922,7 +6920,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED76|        |      ;
                        db $00,$00,$00,$00                   ;06ED7E|        |      ;
                                                             ;      |        |      ;
-           FIXME_ed82:
+FIXME_ed82_spawnEntetyAtCurPos:
                        BRK #$00                             ;06ED82|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED84|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED8C|        |      ;
@@ -6930,7 +6928,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED9C|        |      ;
                        db $00                               ;06EDA4|        |      ;
                                                             ;      |        |      ;
-           FIXME_eda5:
+FIXME_eda5_bitTrick2InitBoss:
                        BRK #$00                             ;06EDA5|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EDA7|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EDAF|        |      ;
@@ -6948,7 +6946,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE0F|        |      ;
                        db $00,$00,$00,$00,$00               ;06EE17|        |      ;
                                                             ;      |        |      ;
-           FIXME_ee1c:
+FIXME_ee1c_applyScreenScrollOffset:
                        BRK #$00                             ;06EE1C|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE1E|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE26|        |      ;
@@ -6957,7 +6955,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE3E|        |      ;
                        db $00,$00                           ;06EE46|        |      ;
                                                             ;      |        |      ;
-           FIXME_ee48:
+FIXME_ee48_entityKeepWalking:
                        BRK #$00                             ;06EE48|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE4A|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE52|        |      ;
@@ -6965,30 +6963,30 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE62|        |      ;
                        db $00,$00,$00,$00,$00               ;06EE6A|        |      ;
                                                             ;      |        |      ;
-           FIXME_ee6f:
+FIXME_ee6f_setEntityAtr01:
                        BRK #$00                             ;06EE6F|0000    |      ;
                        db $00,$00,$00,$00                   ;06EE71|        |      ;
                                                             ;      |        |      ;
-           FIXME_ee75:
+FIXME_ee75_setEntityAtr00:
                        BRK #$00                             ;06EE75|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE77|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE7F|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE87|        |      ;
                        db $00,$00,$00,$00,$00               ;06EE8F|        |      ;
                                                             ;      |        |      ;
-           FIXME_ee94:
+FIXME_ee94_entityLoadStuff:
                        BRK #$00                             ;06EE94|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE96|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EE9E|        |      ;
                        db $00                               ;06EEA6|        |      ;
                                                             ;      |        |      ;
-           FIXME_eea7:
+FIXME_eea7_endRoutineWhileTimer:
                        BRK #$00                             ;06EEA7|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EEA9|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EEB1|        |      ;
                        db $00,$00                           ;06EEB9|        |      ;
                                                             ;      |        |      ;
-           FIXME_eebb:
+FIXME_eebb_aOtherScreenR00:
                        BRK #$00                             ;06EEBB|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EEBD|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EEC5|        |      ;
@@ -7000,12 +6998,12 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EEF5|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00       ;06EEFD|        |      ;
                                                             ;      |        |      ;
-           FIXME_ef04:
+FIXME_ef04_loadNewAnimIndex:
                        BRK #$00                             ;06EF04|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF06|        |      ;
                        db $00,$00,$00,$00,$00               ;06EF0E|        |      ;
                                                             ;      |        |      ;
-           FIXME_ef13:
+FIXME_ef13_aOtherScreenR01:
                        BRK #$00                             ;06EF13|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF15|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF1D|        |      ;
@@ -7014,45 +7012,45 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF35|        |      ;
                        db $00,$00,$00,$00,$00,$00           ;06EF3D|        |      ;
                                                             ;      |        |      ;
-           FIXME_ef43:
+FIXME_ef43_updateYposSpeed_plus:
                        BRK #$00                             ;06EF43|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF45|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF4D|        |      ;
                        db $00                               ;06EF55|        |      ;
                                                             ;      |        |      ;
-           FIXME_ef56:
+FIXME_ef56_updateYposSpeed_minus:
                        BRK #$00                             ;06EF56|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF58|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF60|        |      ;
                        db $00                               ;06EF68|        |      ;
                                                             ;      |        |      ;
-           FIXME_ef69:
+FIXME_ef69_aOtherScreenR02:
                        BRK #$00                             ;06EF69|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF6B|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF73|        |      ;
                        db $00                               ;06EF7B|        |      ;
                                                             ;      |        |      ;
-           FIXME_ef7c:
+FIXME_ef7c_facePlayer:
                        BRK #$00                             ;06EF7C|0000    |      ;
                        db $00,$00,$00,$00,$00,$00           ;06EF7E|        |      ;
                                                             ;      |        |      ;
-           FIXME_ef84:
+FIXME_ef84_findPlayer:
                        BRK #$00                             ;06EF84|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF86|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF8E|        |      ;
                        db $00,$00                           ;06EF96|        |      ;
                                                             ;      |        |      ;
-           FIXME_ef98:
+FIXME_ef98_findGround_08:
                        BRK #$00                             ;06EF98|0000    |      ;
                        db $00,$00                           ;06EF9A|        |      ;
                                                             ;      |        |      ;
-           FIXME_ef9c:
+FIXME_ef9c_findGround_10:
                        BRK #$00                             ;06EF9C|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF9E|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EFA6|        |      ;
                        db $00                               ;06EFAE|        |      ;
                                                             ;      |        |      ;
-           FIXME_efaf:
+  FIXME_efaf_YposMask:
                        BRK #$00                             ;06EFAF|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EFB1|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EFB9|        |      ;
@@ -7079,7 +7077,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F061|        |      ;
                        db $00,$00,$00,$00                   ;06F069|        |      ;
                                                             ;      |        |      ;
-           FIXME_f06d:
+FIXME_f06d_hunchBack_State03:
                        BRK #$00                             ;06F06D|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F06F|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F077|        |      ;
@@ -7107,7 +7105,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F127|        |      ;
                        db $00,$00                           ;06F12F|        |      ;
                                                             ;      |        |      ;
-           FIXME_f131:
+FIXME_f131_storeEntityState:
                        BRK #$00                             ;06F131|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F133|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F13B|        |      ;
@@ -7130,7 +7128,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F1C3|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00       ;06F1CB|        |      ;
                                                             ;      |        |      ;
-           FIXME_F1d2:
+FIXME_F1d2_resetFallSpeed:
                        BRK #$00                             ;06F1D2|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F1D4|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F1DC|        |      ;
@@ -7208,7 +7206,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F41C|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F424|        |      ;
                                                             ;      |        |      ;
-           FIXME_f42c:
+FIXME_f42c_storeID_resetStats:
                        BRK #$00                             ;06F42C|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F42E|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06F436|        |      ;
@@ -7420,7 +7418,7 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06FAA6|        |      ;
                        db $00,$00,$00,$00,$00,$00           ;06FAAE|        |      ;
                                                             ;      |        |      ;
-           FIXME_fab4:
+FIXME_fab4_PPU_updateEmpty:
                        BRK #$00                             ;06FAB4|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06FAB6|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06FABE|        |      ;
@@ -7495,19 +7493,19 @@ FIXME_ca6d_jump4stack:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06FCE6|        |      ;
                        db $00,$00                           ;06FCEE|        |      ;
                                                             ;      |        |      ;
-           FIXME_fcf0:
+FIXME_fcf0_bossDefeateDracSound:
                        BRK #$00                             ;06FCF0|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06FCF2|        |      ;
                                                             ;      |        |      ;
-           FIXME_fcfa:
+FIXME_fcfa_boDe_play_12_andBank5:
                        BRK #$00                             ;06FCFA|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06FCFC|        |      ;
                                                             ;      |        |      ;
-           FIXME_fd04:
+FIXME_fd04_boDe_play_13_andBank5:
                        BRK #$00                             ;06FD04|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06FD06|        |      ;
                                                             ;      |        |      ;
-           FIXME_fd0e:
+FIXME_fd0e_boDe_play_1d_andBank5:
                        BRK #$00                             ;06FD0E|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06FD10|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06FD18|        |      ;

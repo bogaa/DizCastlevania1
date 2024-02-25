@@ -12,27 +12,27 @@ updateTablePPUsetDest:
                        LDY.B #$00                           ;01800A|A000    |      ;
                                                             ;      |        |      ;
           CODE_01800C:
-                       LDX.W RAM_0_PPU_UPDATE_TABLE,Y       ;01800C|BE0007  |010700;
+                       LDX.W r1_PPU_UPDATE_TABLE,Y          ;01800C|BE0007  |010700;
                        BEQ CODE_01802F                      ;01800F|F01E    |01802F;
-                       LDA.B PPUControl                     ;018011|A5FF    |0000FF;
+                       LDA.B r_PPUControl                   ;018011|A5FF    |0000FF;
                        AND.B #$18                           ;018013|2918    |      ;
                        ORA.W DATA8_018007,X                 ;018015|1D0780  |018007;
                        STA.W $2000                          ;018018|8D0020  |012000;
                        INY                                  ;01801B|C8      |      ;
                        LDA.W $2002                          ;01801C|AD0220  |012002;
-                       LDA.W RAM_0_PPU_UPDATE_TABLE,Y       ;01801F|B90007  |010700;
+                       LDA.W r1_PPU_UPDATE_TABLE,Y          ;01801F|B90007  |010700;
                        STA.W $2006                          ;018022|8D0620  |012006;
                        INY                                  ;018025|C8      |      ;
-                       LDA.W RAM_0_PPU_UPDATE_TABLE,Y       ;018026|B90007  |010700;
+                       LDA.W r1_PPU_UPDATE_TABLE,Y          ;018026|B90007  |010700;
                        STA.W $2006                          ;018029|8D0620  |012006;
                        INY                                  ;01802C|C8      |      ;
                        BNE CODE_018041                      ;01802D|D012    |018041;
                                                             ;      |        |      ;
           CODE_01802F:
                        LDA.B #$00                           ;01802F|A900    |      ;
-                       STA.W RAM_0_PPU_UPDATE_TABLE         ;018031|8D0007  |010700;
-                       STA.B PPU_Update_CurrentOffset       ;018034|8520    |000020;
-                       LDA.B PPUControl                     ;018036|A5FF    |0000FF;
+                       STA.W r1_PPU_UPDATE_TABLE            ;018031|8D0007  |010700;
+                       STA.B r_PPU_Update_CurrentOffset     ;018034|8520    |000020;
+                       LDA.B r_PPUControl                   ;018036|A5FF    |0000FF;
                        STA.W $2000                          ;018038|8D0020  |012000;
                        RTS                                  ;01803B|60      |      ;
                                                             ;      |        |      ;
@@ -44,11 +44,11 @@ updateTablePPUsetDest:
                        STA.W $2007                          ;01803E|8D0720  |012007;
                                                             ;      |        |      ;
           CODE_018041:
-                       LDA.W RAM_0_PPU_UPDATE_TABLE,Y       ;018041|B90007  |010700;
+                       LDA.W r1_PPU_UPDATE_TABLE,Y          ;018041|B90007  |010700;
                        INY                                  ;018044|C8      |      ;
                        CMP.B #$FF                           ;018045|C9FF    |      ;
                        BNE CODE_01803E                      ;018047|D0F5    |01803E;
-                       LDA.W RAM_0_PPU_UPDATE_TABLE,Y       ;018049|B90007  |010700;
+                       LDA.W r1_PPU_UPDATE_TABLE,Y          ;018049|B90007  |010700;
                        CMP.B #$03                           ;01804C|C903    |      ;
                        BCS CODE_01803C                      ;01804E|B0EC    |01803C;
                        BCC CODE_01800C                      ;018050|90BA    |01800C;
@@ -72,17 +72,17 @@ updateTablePPUsetDest:
                        LDX.B $05                            ;018067|A605    |000005;
                        CPX.B #$1C                           ;018069|E01C    |      ;
                        BCS CODE_0180AC                      ;01806B|B03F    |0180AC;
-                       LDA.W RAM_0_entity_Attributes,X      ;01806D|BD0003  |010300;
+                       LDA.W r1_entity_spAtr,X              ;01806D|BD0003  |010300;
                        BNE CODE_0180A8                      ;018070|D036    |0180A8;
-                       LDA.W RAM_0_entity_PalletOffset,X    ;018072|BD3803  |010338;
+                       LDA.W r1_entity_PalOff,X             ;018072|BD3803  |010338;
                        STA.B $00                            ;018075|8500    |000000;
-                       LDA.W RAM_0_entity_Y_Pos,X           ;018077|BD5403  |010354;
+                       LDA.W r1_entity_Y_Pos,X              ;018077|BD5403  |010354;
                        STA.B $01                            ;01807A|8501    |000001;
-                       LDA.W RAM_0_entity_X_Pos,X           ;01807C|BD8C03  |01038C;
+                       LDA.W r1_entity_X_Pos,X              ;01807C|BD8C03  |01038C;
                        STA.B $02                            ;01807F|8502    |000002;
-                       LDA.W RAM_0_entity_SpriteMirrored,X  ;018081|BD5004  |010450;
-                       STA.B various_Processing_ID          ;018084|854B    |00004B;
-                       LDA.W RAM_0_entity_SpriteFrame,X     ;018086|BD1C03  |01031C;
+                       LDA.W r1_entity_spriteMirror,X       ;018081|BD5004  |010450;
+                       STA.B r_temp_processing_ID           ;018084|854B    |00004B;
+                       LDA.W r1_entity_spriteID,X           ;018086|BD1C03  |01031C;
                        ASL A                                ;018089|0A      |      ;
                        BCS CODE_01809A                      ;01808A|B00E    |01809A;
                        TAY                                  ;01808C|A8      |      ;
@@ -113,7 +113,7 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
           CODE_0180B0:
                        LDA.B #$F4                           ;0180B0|A9F4    |      ;
-                       STA.W RAM_0_OAM_Slot,X               ;0180B2|9D0002  |010200;
+                       STA.W r1_OAM_Slot,X                  ;0180B2|9D0002  |010200;
                        TXA                                  ;0180B5|8A      |      ;
                                                             ;      |        |      ;
           CODE_0180B6:
@@ -130,10 +130,10 @@ updateTablePPUsetDest:
           CODE_0180C2:
                        CLC                                  ;0180C2|18      |      ;
                        ADC.B $01                            ;0180C3|6501    |000001;
-                       STA.W RAM_0_OAM_Slot,X               ;0180C5|9D0002  |010200;
+                       STA.W r1_OAM_Slot,X                  ;0180C5|9D0002  |010200;
                        LDA.B ($08),Y                        ;0180C8|B108    |000008;
                        STA.W $0201,X                        ;0180CA|9D0102  |010201;
-                       LDA.B various_data02                 ;0180CD|A54E    |00004E;
+                       LDA.B r_temp_data02                  ;0180CD|A54E    |00004E;
                        JMP.W CODE_018112                    ;0180CF|4C1281  |018112;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -164,11 +164,11 @@ updateTablePPUsetDest:
                        ROR A                                ;0180EF|6A      |      ;
                        BCS CODE_0180C2                      ;0180F0|B0D0    |0180C2;
                        ADC.B $01                            ;0180F2|6501    |000001;
-                       STA.W RAM_0_OAM_Slot,X               ;0180F4|9D0002  |010200;
+                       STA.W r1_OAM_Slot,X                  ;0180F4|9D0002  |010200;
                        LDA.B ($08),Y                        ;0180F7|B108    |000008;
                        STA.W $0201,X                        ;0180F9|9D0102  |010201;
                        INY                                  ;0180FC|C8      |      ;
-                       LDA.B various_Processing_ID          ;0180FD|A54B    |00004B;
+                       LDA.B r_temp_processing_ID           ;0180FD|A54B    |00004B;
                        BNE CODE_01815A                      ;0180FF|D059    |01815A;
                        LDA.B $00                            ;018101|A500    |000000;
                        BNE CODE_01810A                      ;018103|D005    |01810A;
@@ -182,12 +182,12 @@ updateTablePPUsetDest:
                        ORA.B $00                            ;01810E|0500    |000000;
                                                             ;      |        |      ;
           CODE_018110:
-                       STA.B various_data02                 ;018110|854E    |00004E;
+                       STA.B r_temp_data02                  ;018110|854E    |00004E;
                                                             ;      |        |      ;
           CODE_018112:
                        STA.W $0202,X                        ;018112|9D0202  |010202;
                        INY                                  ;018115|C8      |      ;
-                       LDA.B various_Processing_ID          ;018116|A54B    |00004B;
+                       LDA.B r_temp_processing_ID           ;018116|A54B    |00004B;
                        BNE CODE_01816E                      ;018118|D054    |01816E;
                        LDA.B ($08),Y                        ;01811A|B108    |000008;
                                                             ;      |        |      ;
@@ -281,10 +281,10 @@ updateTablePPUsetDest:
                        dw soundEffectTablePo                ;018185|        |01879F;
                                                             ;      |        |      ;
           CODE_018187:
-                       STA.B audio_Track                    ;018187|85E5    |0000E5;
+                       STA.B r_snd_audio_Track              ;018187|85E5    |0000E5;
                        BNE CODE_018190                      ;018189|D005    |018190;
-                       STA.B square_Wave1_SFX_Track         ;01818B|85C2    |0000C2;
-                       STA.B square_Wave2_SFX_Track         ;01818D|85D2    |0000D2;
+                       STA.B r_snd_square_Wave1_SFX_Track   ;01818B|85C2    |0000C2;
+                       STA.B r_snd_square_Wave2_SFX_Track   ;01818D|85D2    |0000D2;
                        RTS                                  ;01818F|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -292,7 +292,7 @@ updateTablePPUsetDest:
                        CMP.B #$1A                           ;018190|C91A    |      ;
                        BNE CODE_018198                      ;018192|D004    |018198;
                        LDA.B #$01                           ;018194|A901    |      ;
-                       STA.B stopwatchMute                  ;018196|85EE    |0000EE;
+                       STA.B r_stopwatchMute                ;018196|85EE    |0000EE;
                                                             ;      |        |      ;
           CODE_018198:
                        TXA                                  ;018198|8A      |      ;
@@ -301,42 +301,42 @@ updateTablePPUsetDest:
                        PHA                                  ;01819B|48      |      ;
                        LDX.B #$03                           ;01819C|A203    |      ;
                        LDA.W PTR16_018185                   ;01819E|AD8581  |018185;
-                       STA.B audio_Track_AddressLo          ;0181A1|85E0    |0000E0;
+                       STA.B r_snd_audio_Track_AddressLo    ;0181A1|85E0    |0000E0;
                        LDA.W PTR16_018186                   ;0181A3|AD8681  |018186;
-                       STA.B audio_Track_AddressHi          ;0181A6|85E1    |0000E1;
+                       STA.B r_snd_audio_Track_AddressHi    ;0181A6|85E1    |0000E1;
                                                             ;      |        |      ;
           CODE_0181A8:
-                       LDA.B audio_Track                    ;0181A8|A5E5    |0000E5;
+                       LDA.B r_snd_audio_Track              ;0181A8|A5E5    |0000E5;
                        CLC                                  ;0181AA|18      |      ;
-                       ADC.B audio_Track_AddressLo          ;0181AB|65E0    |0000E0;
-                       STA.B audio_Track_AddressLo          ;0181AD|85E0    |0000E0;
+                       ADC.B r_snd_audio_Track_AddressLo    ;0181AB|65E0    |0000E0;
+                       STA.B r_snd_audio_Track_AddressLo    ;0181AD|85E0    |0000E0;
                        LDA.B #$00                           ;0181AF|A900    |      ;
-                       ADC.B audio_Track_AddressHi          ;0181B1|65E1    |0000E1;
-                       STA.B audio_Track_AddressHi          ;0181B3|85E1    |0000E1;
+                       ADC.B r_snd_audio_Track_AddressHi    ;0181B1|65E1    |0000E1;
+                       STA.B r_snd_audio_Track_AddressHi    ;0181B3|85E1    |0000E1;
                        DEX                                  ;0181B5|CA      |      ;
                        BNE CODE_0181A8                      ;0181B6|D0F0    |0181A8;
                        LDY.B #$00                           ;0181B8|A000    |      ;
-                       STY.B audio_Track_Offset             ;0181BA|84E4    |0000E4;
-                       LDA.B (audio_Track_AddressLo),Y      ;0181BC|B1E0    |0000E0;
+                       STY.B r_snd_audio_Track_Offset       ;0181BA|84E4    |0000E4;
+                       LDA.B (r_snd_audio_Track_AddressLo),Y;0181BC|B1E0    |0000E0;
                        ROL A                                ;0181BE|2A      |      ;
                        ROL A                                ;0181BF|2A      |      ;
                        ROL A                                ;0181C0|2A      |      ;
                        AND.B #$03                           ;0181C1|2903    |      ;
-                       STA.B channelPointerAlternate        ;0181C3|85E6    |0000E6;
-                       LDA.B audio_Track                    ;0181C5|A5E5    |0000E5;
+                       STA.B r_snd_channelPointerAlternate  ;0181C3|85E6    |0000E6;
+                       LDA.B r_snd_audio_Track              ;0181C5|A5E5    |0000E5;
                        CMP.B #$04                           ;0181C7|C904    |      ;
                        BEQ CODE_0181D3                      ;0181C9|F008    |0181D3;
-                       CMP.B square_Wave1_SFX_Track         ;0181CB|C5C2    |0000C2;
+                       CMP.B r_snd_square_Wave1_SFX_Track   ;0181CB|C5C2    |0000C2;
                        BEQ CODE_01820D                      ;0181CD|F03E    |01820D;
-                       CMP.B square_Wave2_SFX_Track         ;0181CF|C5D2    |0000D2;
+                       CMP.B r_snd_square_Wave2_SFX_Track   ;0181CF|C5D2    |0000D2;
                        BEQ CODE_0181F4                      ;0181D1|F021    |0181F4;
                                                             ;      |        |      ;
           CODE_0181D3:
-                       LDY.B audio_Track_Offset             ;0181D3|A4E4    |0000E4;
-                       LDA.B (audio_Track_AddressLo),Y      ;0181D5|B1E0    |0000E0;
+                       LDY.B r_snd_audio_Track_Offset       ;0181D3|A4E4    |0000E4;
+                       LDA.B (r_snd_audio_Track_AddressLo),Y;0181D5|B1E0    |0000E0;
                        AND.B #$3F                           ;0181D7|293F    |      ;
                        STA.B $E8                            ;0181D9|85E8    |0000E8;
-                       LDA.B audio_Track                    ;0181DB|A5E5    |0000E5;
+                       LDA.B r_snd_audio_Track              ;0181DB|A5E5    |0000E5;
                        CMP.B #$04                           ;0181DD|C904    |      ;
                        BNE CODE_0181E6                      ;0181DF|D005    |0181E6;
                        LDA.B $E8                            ;0181E1|A5E8    |0000E8;
@@ -347,9 +347,9 @@ updateTablePPUsetDest:
                        LDA.B $E8                            ;0181E6|A5E8    |0000E8;
                        CMP.B #$10                           ;0181E8|C910    |      ;
                        BNE CODE_01820F                      ;0181EA|D023    |01820F;
-                       LDA.B square_Wave1_SFX_Track         ;0181EC|A5C2    |0000C2;
+                       LDA.B r_snd_square_Wave1_SFX_Track   ;0181EC|A5C2    |0000C2;
                        BEQ CODE_01820D                      ;0181EE|F01D    |01820D;
-                       LDA.B square_Wave2_SFX_Track         ;0181F0|A5D2    |0000D2;
+                       LDA.B r_snd_square_Wave2_SFX_Track   ;0181F0|A5D2    |0000D2;
                        BNE CODE_0181FC                      ;0181F2|D008    |0181FC;
                                                             ;      |        |      ;
           CODE_0181F4:
@@ -362,28 +362,28 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0181FC:
-                       CMP.B square_Wave1_SFX_Track         ;0181FC|C5C2    |0000C2;
+                       CMP.B r_snd_square_Wave1_SFX_Track   ;0181FC|C5C2    |0000C2;
                        BCS CODE_018207                      ;0181FE|B007    |018207;
-                       CMP.B audio_Track                    ;018200|C5E5    |0000E5;
+                       CMP.B r_snd_audio_Track              ;018200|C5E5    |0000E5;
                        BCS CODE_0181F9                      ;018202|B0F5    |0181F9;
                        JMP.W CODE_0181F4                    ;018204|4CF481  |0181F4;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_018207:
-                       LDA.B square_Wave1_SFX_Track         ;018207|A5C2    |0000C2;
-                       CMP.B audio_Track                    ;018209|C5E5    |0000E5;
+                       LDA.B r_snd_square_Wave1_SFX_Track   ;018207|A5C2    |0000C2;
+                       CMP.B r_snd_audio_Track              ;018209|C5E5    |0000E5;
                        BCS CODE_0181F9                      ;01820B|B0EC    |0181F9;
                                                             ;      |        |      ;
           CODE_01820D:
                        LDA.B #$10                           ;01820D|A910    |      ;
                                                             ;      |        |      ;
           CODE_01820F:
-                       STA.B channelPointer                 ;01820F|85E7    |0000E7;
+                       STA.B r_snd_channelPointer           ;01820F|85E7    |0000E7;
                        LSR A                                ;018211|4A      |      ;
                        LSR A                                ;018212|4A      |      ;
                        TAY                                  ;018213|A8      |      ;
                        LDX.W DATA8_0182AF,Y                 ;018214|BEAF82  |0182AF;
-                       LDA.B audio_Track                    ;018217|A5E5    |0000E5;
+                       LDA.B r_snd_audio_Track              ;018217|A5E5    |0000E5;
                        BEQ CODE_01821F                      ;018219|F004    |01821F;
                        CMP.B $02,X                          ;01821B|D502    |000002;
                        BCC CODE_018298                      ;01821D|9079    |018298;
@@ -391,29 +391,29 @@ updateTablePPUsetDest:
           CODE_01821F:
                        LDA.B #$00                           ;01821F|A900    |      ;
                        STA.B $02,X                          ;018221|9502    |000002;
-                       LDY.B audio_Track_Offset             ;018223|A4E4    |0000E4;
+                       LDY.B r_snd_audio_Track_Offset       ;018223|A4E4    |0000E4;
                        INY                                  ;018225|C8      |      ;
-                       LDA.B (audio_Track_AddressLo),Y      ;018226|B1E0    |0000E0;
+                       LDA.B (r_snd_audio_Track_AddressLo),Y;018226|B1E0    |0000E0;
                        STA.B $03,X                          ;018228|9503    |000003;
-                       STA.B UpdatedNoteBackupAddressLo     ;01822A|85BE    |0000BE;
+                       STA.B r_snd_UpdatedNoteBackupAddressLo;01822A|85BE    |0000BE;
                        INY                                  ;01822C|C8      |      ;
-                       LDA.B (audio_Track_AddressLo),Y      ;01822D|B1E0    |0000E0;
+                       LDA.B (r_snd_audio_Track_AddressLo),Y;01822D|B1E0    |0000E0;
                        STA.B $04,X                          ;01822F|9504    |000004;
-                       STA.B UpdatedNoteBackupAddressHi     ;018231|85BF    |0000BF;
+                       STA.B r_snd_UpdatedNoteBackupAddressHi;018231|85BF    |0000BF;
                        LDY.B #$01                           ;018233|A001    |      ;
                        STY.B $00,X                          ;018235|9400    |000000;
                        DEY                                  ;018237|88      |      ;
                        STY.B $06,X                          ;018238|9406    |000006;
                        CPX.B #$80                           ;01823A|E080    |      ;
                        BNE CODE_018242                      ;01823C|D004    |018242;
-                       STY.B triangle_Wave_Octave           ;01823E|84A1    |0000A1;
-                       STY.B audio_Timer_Low_copy1          ;018240|84A7    |0000A7;
+                       STY.B r_snd_triangle_Wave_Octave     ;01823E|84A1    |0000A1;
+                       STY.B r_snd_audio_Timer_Low_copy1    ;018240|84A7    |0000A7;
                                                             ;      |        |      ;
           CODE_018242:
                        CPX.B #$90                           ;018242|E090    |      ;
                        BNE CODE_01824A                      ;018244|D004    |01824A;
                        STY.B $B5                            ;018246|84B5    |0000B5;
-                       STY.B audioTimerLowCopy2             ;018248|84B8    |0000B8;
+                       STY.B r_snd_audioTimerLowCopy2       ;018248|84B8    |0000B8;
                                                             ;      |        |      ;
           CODE_01824A:
                        CPX.B #$A0                           ;01824A|E0A0    |      ;
@@ -423,9 +423,9 @@ updateTablePPUsetDest:
                        BEQ CODE_018267                      ;018252|F013    |018267;
                                                             ;      |        |      ;
           CODE_018254:
-                       LDA.B (UpdatedNoteBackupAddressLo),Y ;018254|B1BE    |0000BE;
+                       LDA.B (r_snd_UpdatedNoteBackupAddressLo),Y;018254|B1BE    |0000BE;
                        BNE CODE_01825E                      ;018256|D006    |01825E;
-                       STA.B audio_Track                    ;018258|85E5    |0000E5;
+                       STA.B r_snd_audio_Track              ;018258|85E5    |0000E5;
                        CPX.B #$B0                           ;01825A|E0B0    |      ;
                        BEQ CODE_018267                      ;01825C|F009    |018267;
                                                             ;      |        |      ;
@@ -439,10 +439,10 @@ updateTablePPUsetDest:
                        STY.B $08,X                          ;018265|9408    |000008;
                                                             ;      |        |      ;
           CODE_018267:
-                       LDY.B channelPointer                 ;018267|A4E7    |0000E7;
+                       LDY.B r_snd_channelPointer           ;018267|A4E7    |0000E7;
                        CPY.B #$00                           ;018269|C000    |      ;
                        BNE CODE_018274                      ;01826B|D007    |018274;
-                       LDA.B square_Wave1_SFX_Track         ;01826D|A5C2    |0000C2;
+                       LDA.B r_snd_square_Wave1_SFX_Track   ;01826D|A5C2    |0000C2;
                        BNE CODE_018294                      ;01826F|D023    |018294;
                        JMP.W CODE_01827C                    ;018271|4C7C82  |01827C;
                                                             ;      |        |      ;
@@ -450,7 +450,7 @@ updateTablePPUsetDest:
           CODE_018274:
                        CPY.B #$04                           ;018274|C004    |      ;
                        BNE CODE_01827C                      ;018276|D004    |01827C;
-                       LDA.B square_Wave2_SFX_Track         ;018278|A5D2    |0000D2;
+                       LDA.B r_snd_square_Wave2_SFX_Track   ;018278|A5D2    |0000D2;
                        BNE CODE_018294                      ;01827A|D018    |018294;
                                                             ;      |        |      ;
           CODE_01827C:
@@ -469,23 +469,23 @@ updateTablePPUsetDest:
                        JSR.W CODE_01817B                    ;018291|207B81  |01817B;
                                                             ;      |        |      ;
           CODE_018294:
-                       LDA.B audio_Track                    ;018294|A5E5    |0000E5;
+                       LDA.B r_snd_audio_Track              ;018294|A5E5    |0000E5;
                        STA.B $02,X                          ;018296|9502    |000002;
                                                             ;      |        |      ;
           CODE_018298:
-                       DEC.B channelPointerAlternate        ;018298|C6E6    |0000E6;
+                       DEC.B r_snd_channelPointerAlternate  ;018298|C6E6    |0000E6;
                        BMI CODE_0182A6                      ;01829A|300A    |0182A6;
-                       LDY.B audio_Track_Offset             ;01829C|A4E4    |0000E4;
+                       LDY.B r_snd_audio_Track_Offset       ;01829C|A4E4    |0000E4;
                        INY                                  ;01829E|C8      |      ;
                        INY                                  ;01829F|C8      |      ;
                        INY                                  ;0182A0|C8      |      ;
-                       STY.B audio_Track_Offset             ;0182A1|84E4    |0000E4;
+                       STY.B r_snd_audio_Track_Offset       ;0182A1|84E4    |0000E4;
                        JMP.W CODE_0181D3                    ;0182A3|4CD381  |0181D3;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0182A6:
                        LDA.B #$00                           ;0182A6|A900    |      ;
-                       STA.B audio_Track_AddressHi          ;0182A8|85E1    |0000E1;
+                       STA.B r_snd_audio_Track_AddressHi    ;0182A8|85E1    |0000E1;
                        PLA                                  ;0182AA|68      |      ;
                        TAY                                  ;0182AB|A8      |      ;
                        PLA                                  ;0182AC|68      |      ;
@@ -517,13 +517,13 @@ updateTablePPUsetDest:
                        STY.B $02,X                          ;0182C5|9402    |000002;
                        CPX.B #$C0                           ;0182C7|E0C0    |      ;
                        BNE CODE_0182FA                      ;0182C9|D02F    |0182FA;
-                       LDA.B square_Wave_1_Track            ;0182CB|A582    |000082;
+                       LDA.B r_snd_square_Wave_1_Track      ;0182CB|A582    |000082;
                        BEQ CODE_01832B                      ;0182CD|F05C    |01832B;
                        LDX.B #$80                           ;0182CF|A280    |      ;
                        LDA.B #$00                           ;0182D1|A900    |      ;
                        STA.W $4001                          ;0182D3|8D0140  |014001;
                        JSR.W CODE_0182B5                    ;0182D6|20B582  |0182B5;
-                       LDA.B audio_Timer_Low_copy1          ;0182D9|A5A7    |0000A7;
+                       LDA.B r_snd_audio_Timer_Low_copy1    ;0182D9|A5A7    |0000A7;
                        STA.W $4002                          ;0182DB|8D0240  |014002;
                        JSR.W CODE_0182B5                    ;0182DE|20B582  |0182B5;
                        LDA.B $01,X                          ;0182E1|B501    |000001;
@@ -541,12 +541,12 @@ updateTablePPUsetDest:
           CODE_0182FA:
                        CPX.B #$D0                           ;0182FA|E0D0    |      ;
                        BNE CODE_01832B                      ;0182FC|D02D    |01832B;
-                       LDA.B square_Wave_2_Track            ;0182FE|A592    |000092;
+                       LDA.B r_snd_square_Wave_2_Track      ;0182FE|A592    |000092;
                        BEQ CODE_01832B                      ;018300|F029    |01832B;
                        LDX.B #$90                           ;018302|A290    |      ;
                        STY.W $4005                          ;018304|8C0540  |014005;
                        JSR.W CODE_0182B5                    ;018307|20B582  |0182B5;
-                       LDA.B audioTimerLowCopy2             ;01830A|A5B8    |0000B8;
+                       LDA.B r_snd_audioTimerLowCopy2       ;01830A|A5B8    |0000B8;
                        STA.W $4006                          ;01830C|8D0640  |014006;
                        JSR.W CODE_0182B5                    ;01830F|20B582  |0182B5;
                        LDA.B $01,X                          ;018312|B501    |000001;
@@ -582,7 +582,7 @@ updateTablePPUsetDest:
           CODE_01833C:
                        JSR.W CODE_01876B                    ;01833C|206B87  |01876B;
                        BCS CODE_018346                      ;01833F|B005    |018346;
-                       LDX.B audioChannel_Offset            ;018341|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;018341|A6AC    |0000AC;
                        STA.W $4000,X                        ;018343|9D0040  |014000;
                                                             ;      |        |      ;
           CODE_018346:
@@ -591,10 +591,10 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
           CODE_018347:
                        INY                                  ;018347|C8      |      ;
-                       LDA.B (workingNoteAddressAllLo),Y    ;018348|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;018348|B1BA    |0000BA;
                        STA.B $03,X                          ;01834A|9503    |000003;
                        INY                                  ;01834C|C8      |      ;
-                       LDA.B (workingNoteAddressAllLo),Y    ;01834D|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;01834D|B1BA    |0000BA;
                        STA.B $04,X                          ;01834F|9504    |000004;
                        RTS                                  ;018351|60      |      ;
                                                             ;      |        |      ;
@@ -604,7 +604,7 @@ updateTablePPUsetDest:
                        CLC                                  ;018354|18      |      ;
                        ADC.B #$01                           ;018355|6901    |      ;
                        INY                                  ;018357|C8      |      ;
-                       CMP.B (workingNoteAddressAllLo),Y    ;018358|D1BA    |0000BA;
+                       CMP.B (r_snd_workingNoteAddressAllLo),Y;018358|D1BA    |0000BA;
                        BEQ CODE_018370                      ;01835A|F014    |018370;
                        BMI CODE_018361                      ;01835C|3003    |018361;
                        SEC                                  ;01835E|38      |      ;
@@ -613,10 +613,10 @@ updateTablePPUsetDest:
           CODE_018361:
                        STA.B $06,X                          ;018361|9506    |000006;
                        INY                                  ;018363|C8      |      ;
-                       LDA.B (workingNoteAddressAllLo),Y    ;018364|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;018364|B1BA    |0000BA;
                        STA.B $03,X                          ;018366|9503    |000003;
                        INY                                  ;018368|C8      |      ;
-                       LDA.B (workingNoteAddressAllLo),Y    ;018369|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;018369|B1BA    |0000BA;
                        STA.B $04,X                          ;01836B|9504    |000004;
                        JMP.W CODE_018383                    ;01836D|4C8383  |018383;
                                                             ;      |        |      ;
@@ -629,10 +629,10 @@ updateTablePPUsetDest:
                        INY                                  ;018376|C8      |      ;
                        TYA                                  ;018377|98      |      ;
                        CLC                                  ;018378|18      |      ;
-                       ADC.B workingNoteAddressAllLo        ;018379|65BA    |0000BA;
+                       ADC.B r_snd_workingNoteAddressAllLo  ;018379|65BA    |0000BA;
                        STA.B $03,X                          ;01837B|9503    |000003;
                        LDA.B #$00                           ;01837D|A900    |      ;
-                       ADC.B workingNoteAddressAllHi        ;01837F|65BB    |0000BB;
+                       ADC.B r_snd_workingNoteAddressAllHi  ;01837F|65BB    |0000BB;
                        STA.B $04,X                          ;018381|9504    |000004;
                                                             ;      |        |      ;
           CODE_018383:
@@ -642,24 +642,24 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           musicStuffs:
-                       LDA.B audio_FadeOut                  ;01838A|A5E2    |0000E2;
+                       LDA.B r_snd_audio_FadeOut            ;01838A|A5E2    |0000E2;
                        BEQ CODE_0183AF                      ;01838C|F021    |0183AF;
-                       DEC.B audio_FadeOut_Timer            ;01838E|C6E3    |0000E3;
+                       DEC.B r_snd_audio_FadeOut_Timer      ;01838E|C6E3    |0000E3;
                        BNE CODE_0183AF                      ;018390|D01D    |0183AF;
                        LDA.B #$28                           ;018392|A928    |      ;
-                       STA.B audio_FadeOut_Timer            ;018394|85E3    |0000E3;
-                       DEC.B square_Wave_1_Volume_Envelope  ;018396|C685    |000085;
-                       LDA.B square_Wave_1_Volume_Envelope  ;018398|A585    |000085;
+                       STA.B r_snd_audio_FadeOut_Timer      ;018394|85E3    |0000E3;
+                       DEC.B r_snd_square_Wave_1_Volume_Envelope;018396|C685    |000085;
+                       LDA.B r_snd_square_Wave_1_Volume_Envelope;018398|A585    |000085;
                        AND.B #$0F                           ;01839A|290F    |      ;
                        BEQ CODE_0183A6                      ;01839C|F008    |0183A6;
-                       DEC.B square_Wave_2_Volume_Envelope  ;01839E|C695    |000095;
-                       LDA.B square_Wave_2_Volume_Envelope  ;0183A0|A595    |000095;
+                       DEC.B r_snd_square_Wave_2_Volume_Envelope;01839E|C695    |000095;
+                       LDA.B r_snd_square_Wave_2_Volume_Envelope;0183A0|A595    |000095;
                        AND.B #$0F                           ;0183A2|290F    |      ;
                        BNE CODE_0183AF                      ;0183A4|D009    |0183AF;
                                                             ;      |        |      ;
           CODE_0183A6:
                        LDA.B #$00                           ;0183A6|A900    |      ;
-                       STA.B audio_FadeOut                  ;0183A8|85E2    |0000E2;
+                       STA.B r_snd_audio_FadeOut            ;0183A8|85E2    |0000E2;
                        LDA.B $60                            ;0183AA|A560    |000060;
                        JSR.W CODE_018187                    ;0183AC|208781  |018187;
                                                             ;      |        |      ;
@@ -668,14 +668,14 @@ updateTablePPUsetDest:
                        LDY.B #$00                           ;0183B1|A000    |      ;
                                                             ;      |        |      ;
           CODE_0183B3:
-                       STX.B audioChannel_Index             ;0183B3|86AB    |0000AB;
-                       STY.B audioChannel_Offset            ;0183B5|84AC    |0000AC;
+                       STX.B r_snd_audioChannel_Index       ;0183B3|86AB    |0000AB;
+                       STY.B r_snd_audioChannel_Offset      ;0183B5|84AC    |0000AC;
                        LDA.B $02,X                          ;0183B7|B502    |000002;
                        BEQ CODE_0183BE                      ;0183B9|F003    |0183BE;
                        JSR.W CODE_0183D3                    ;0183BB|20D383  |0183D3;
                                                             ;      |        |      ;
           CODE_0183BE:
-                       LDA.B audioChannel_Index             ;0183BE|A5AB    |0000AB;
+                       LDA.B r_snd_audioChannel_Index       ;0183BE|A5AB    |0000AB;
                        CLC                                  ;0183C0|18      |      ;
                        ADC.B #$10                           ;0183C1|6910    |      ;
                        CMP.B #$E0                           ;0183C3|C9E0    |      ;
@@ -685,7 +685,7 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
           CODE_0183C8:
                        TAX                                  ;0183C8|AA      |      ;
-                       LDA.B audioChannel_Offset            ;0183C9|A5AC    |0000AC;
+                       LDA.B r_snd_audioChannel_Offset      ;0183C9|A5AC    |0000AC;
                        CLC                                  ;0183CB|18      |      ;
                        ADC.B #$04                           ;0183CC|6904    |      ;
                        AND.B #$0F                           ;0183CE|290F    |      ;
@@ -695,18 +695,18 @@ updateTablePPUsetDest:
           CODE_0183D3:
                        LDY.B #$00                           ;0183D3|A000    |      ;
                        LDA.B $03,X                          ;0183D5|B503    |000003;
-                       STA.B workingNoteAddressAllLo        ;0183D7|85BA    |0000BA;
+                       STA.B r_snd_workingNoteAddressAllLo  ;0183D7|85BA    |0000BA;
                        LDA.B $04,X                          ;0183D9|B504    |000004;
-                       STA.B workingNoteAddressAllHi        ;0183DB|85BB    |0000BB;
+                       STA.B r_snd_workingNoteAddressAllHi  ;0183DB|85BB    |0000BB;
                        DEC.B $00,X                          ;0183DD|D600    |000000;
                        BNE CODE_0183E4                      ;0183DF|D003    |0183E4;
                        JMP.W CODE_01847D                    ;0183E1|4C7D84  |01847D;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0183E4:
-                       LDA.B pause_Flag                     ;0183E4|A522    |000022;
+                       LDA.B r_pause_Flag                   ;0183E4|A522    |000022;
                        BEQ CODE_0183F3                      ;0183E6|F00B    |0183F3;
-                       STA.B pauseMusic                     ;0183E8|85EF    |0000EF;
+                       STA.B r_pauseMusic                   ;0183E8|85EF    |0000EF;
                        LDA.B #$54                           ;0183EA|A954    |      ;
                        CMP.B $02,X                          ;0183EC|D502    |000002;
                        BNE CODE_018415                      ;0183EE|D025    |018415;
@@ -715,15 +715,15 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
           CODE_0183F3:
                        LDA.B #$1A                           ;0183F3|A91A    |      ;
-                       CMP.B square_Wave1_SFX_Track         ;0183F5|C5C2    |0000C2;
+                       CMP.B r_snd_square_Wave1_SFX_Track   ;0183F5|C5C2    |0000C2;
                        BEQ CODE_018400                      ;0183F7|F007    |018400;
-                       CMP.B square_Wave2_SFX_Track         ;0183F9|C5D2    |0000D2;
+                       CMP.B r_snd_square_Wave2_SFX_Track   ;0183F9|C5D2    |0000D2;
                        BEQ CODE_018400                      ;0183FB|F003    |018400;
                        JMP.W CODE_01846A                    ;0183FD|4C6A84  |01846A;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_018400:
-                       LDA.B stopwatchMute                  ;018400|A5EE    |0000EE;
+                       LDA.B r_stopwatchMute                ;018400|A5EE    |0000EE;
                        BNE CODE_018415                      ;018402|D011    |018415;
                        CPX.B #$B0                           ;018404|E0B0    |      ;
                        BEQ CODE_018412                      ;018406|F00A    |018412;
@@ -742,13 +742,13 @@ updateTablePPUsetDest:
                        TYA                                  ;018417|98      |      ;
                        STA.B $01,X                          ;018418|9501    |000001;
                        LDA.B #$54                           ;01841A|A954    |      ;
-                       CMP.B square_Wave2_SFX_Track         ;01841C|C5D2    |0000D2;
+                       CMP.B r_snd_square_Wave2_SFX_Track   ;01841C|C5D2    |0000D2;
                        BEQ CODE_01843C                      ;01841E|F01C    |01843C;
                        LDA.B $01,X                          ;018420|B501    |000001;
                        JSR.W CODE_01876B                    ;018422|206B87  |01876B;
                        BCS CODE_018431                      ;018425|B00A    |018431;
                        LDA.B #$30                           ;018427|A930    |      ;
-                       LDX.B audioChannel_Offset            ;018429|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;018429|A6AC    |0000AC;
                        STA.W $4000,X                        ;01842B|9D0040  |014000;
                        JSR.W CODE_0182B5                    ;01842E|20B582  |0182B5;
                                                             ;      |        |      ;
@@ -767,7 +767,7 @@ updateTablePPUsetDest:
                        JSR.W CODE_01876B                    ;018446|206B87  |01876B;
                        BCS CODE_018455                      ;018449|B00A    |018455;
                        LDA.B #$30                           ;01844B|A930    |      ;
-                       LDX.B audioChannel_Offset            ;01844D|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;01844D|A6AC    |0000AC;
                        STA.W $4000,X                        ;01844F|9D0040  |014000;
                        JSR.W CODE_0182B5                    ;018452|20B582  |0182B5;
                                                             ;      |        |      ;
@@ -779,33 +779,33 @@ updateTablePPUsetDest:
                        STA.W $400C                          ;01845F|8D0C40  |01400C;
                        JSR.W CODE_0182B5                    ;018462|20B582  |0182B5;
                        LDA.B #$00                           ;018465|A900    |      ;
-                       STA.B stopwatchMute                  ;018467|85EE    |0000EE;
+                       STA.B r_stopwatchMute                ;018467|85EE    |0000EE;
                        RTS                                  ;018469|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_01846A:
-                       LDA.B pauseMusic                     ;01846A|A5EF    |0000EF;
+                       LDA.B r_pauseMusic                   ;01846A|A5EF    |0000EF;
                        BEQ CODE_018471                      ;01846C|F003    |018471;
                        JSR.W CODE_018478                    ;01846E|207884  |018478;
                                                             ;      |        |      ;
           CODE_018471:
                        LDA.B #$00                           ;018471|A900    |      ;
-                       STA.B pauseMusic                     ;018473|85EF    |0000EF;
+                       STA.B r_pauseMusic                   ;018473|85EF    |0000EF;
                        JMP.W CODE_018562                    ;018475|4C6285  |018562;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_018478:
                        LDA.B #$00                           ;018478|A900    |      ;
-                       STA.B square_Wave_1_Octave           ;01847A|8581    |000081;
+                       STA.B r_snd_square_Wave_1_Octave     ;01847A|8581    |000081;
                        RTS                                  ;01847C|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_01847D:
-                       LDA.B (workingNoteAddressAllLo),Y    ;01847D|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;01847D|B1BA    |0000BA;
                        CMP.B #$FD                           ;01847F|C9FD    |      ;
                        BCC CODE_0184C5                      ;018481|9042    |0184C5;
                        BNE CODE_0184A0                      ;018483|D01B    |0184A0;
-                       LDX.B audioChannel_Index             ;018485|A6AB    |0000AB;
+                       LDX.B r_snd_audioChannel_Index       ;018485|A6AB    |0000AB;
                        LDA.B $08,X                          ;018487|B508    |000008;
                        ORA.B #$08                           ;018489|0908    |      ;
                        STA.B $08,X                          ;01848B|9508    |000008;
@@ -813,10 +813,10 @@ updateTablePPUsetDest:
                        INY                                  ;018490|C8      |      ;
                        TYA                                  ;018491|98      |      ;
                        CLC                                  ;018492|18      |      ;
-                       ADC.B workingNoteAddressAllLo        ;018493|65BA    |0000BA;
+                       ADC.B r_snd_workingNoteAddressAllLo  ;018493|65BA    |0000BA;
                        STA.B $0E,X                          ;018495|950E    |00000E;
                        LDA.B #$00                           ;018497|A900    |      ;
-                       ADC.B workingNoteAddressAllHi        ;018499|65BB    |0000BB;
+                       ADC.B r_snd_workingNoteAddressAllHi  ;018499|65BB    |0000BB;
                        STA.B $0F,X                          ;01849B|950F    |00000F;
                        JMP.W CODE_018383                    ;01849D|4C8383  |018383;
                                                             ;      |        |      ;
@@ -859,22 +859,22 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0184D2:
-                       LDA.B (workingNoteAddressAllLo),Y    ;0184D2|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;0184D2|B1BA    |0000BA;
                        AND.B #$F0                           ;0184D4|29F0    |      ;
                        CMP.B #$20                           ;0184D6|C920    |      ;
                        BNE CODE_0184F6                      ;0184D8|D01C    |0184F6;
-                       LDA.B (workingNoteAddressAllLo),Y    ;0184DA|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;0184DA|B1BA    |0000BA;
                        AND.B #$0F                           ;0184DC|290F    |      ;
                        STA.B $09,X                          ;0184DE|9509    |000009;
                        INY                                  ;0184E0|C8      |      ;
-                       LDA.B (workingNoteAddressAllLo),Y    ;0184E1|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;0184E1|B1BA    |0000BA;
                        JSR.W CODE_01876B                    ;0184E3|206B87  |01876B;
                        BCS CODE_0184ED                      ;0184E6|B005    |0184ED;
-                       LDX.B audioChannel_Offset            ;0184E8|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;0184E8|A6AC    |0000AC;
                        STA.W $4000,X                        ;0184EA|9D0040  |014000;
                                                             ;      |        |      ;
           CODE_0184ED:
-                       LDX.B audioChannel_Index             ;0184ED|A6AB    |0000AB;
+                       LDX.B r_snd_audioChannel_Index       ;0184ED|A6AB    |0000AB;
                        CPX.B #$A0                           ;0184EF|E0A0    |      ;
                        BEQ CODE_0184F5                      ;0184F1|F002    |0184F5;
                        STA.B $07,X                          ;0184F3|9507    |000007;
@@ -887,7 +887,7 @@ updateTablePPUsetDest:
                        STA.B $00,X                          ;0184F8|9500    |000000;
                        CPX.B #$A0                           ;0184FA|E0A0    |      ;
                        BEQ CODE_01854F                      ;0184FC|F051    |01854F;
-                       LDA.B (workingNoteAddressAllLo),Y    ;0184FE|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;0184FE|B1BA    |0000BA;
                        CMP.B #$11                           ;018500|C911    |      ;
                        BNE CODE_01850E                      ;018502|D00A    |01850E;
                        LDA.B $08,X                          ;018504|B508    |000008;
@@ -904,11 +904,11 @@ updateTablePPUsetDest:
                        INY                                  ;018515|C8      |      ;
                        JSR.W CODE_01876B                    ;018516|206B87  |01876B;
                        BCS CODE_018520                      ;018519|B005    |018520;
-                       LDX.B audioChannel_Offset            ;01851B|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;01851B|A6AC    |0000AC;
                        STA.W $4001,X                        ;01851D|9D0140  |014001;
                                                             ;      |        |      ;
           CODE_018520:
-                       LDX.B audioChannel_Index             ;018520|A6AB    |0000AB;
+                       LDX.B r_snd_audioChannel_Index       ;018520|A6AB    |0000AB;
                        LDA.B $08,X                          ;018522|B508    |000008;
                        ORA.B #$80                           ;018524|0980    |      ;
                        STA.B $08,X                          ;018526|9508    |000008;
@@ -920,11 +920,11 @@ updateTablePPUsetDest:
                        LDA.B $07,X                          ;01852E|B507    |000007;
                        AND.B #$F0                           ;018530|29F0    |      ;
                        STA.B $07,X                          ;018532|9507    |000007;
-                       LDA.B (workingNoteAddressAllLo),Y    ;018534|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;018534|B1BA    |0000BA;
                        CMP.B #$F8                           ;018536|C9F8    |      ;
                        BNE CODE_01853D                      ;018538|D003    |01853D;
                        INY                                  ;01853A|C8      |      ;
-                       LDA.B (workingNoteAddressAllLo),Y    ;01853B|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;01853B|B1BA    |0000BA;
                                                             ;      |        |      ;
           CODE_01853D:
                        LSR A                                ;01853D|4A      |      ;
@@ -935,17 +935,17 @@ updateTablePPUsetDest:
                        STA.B $07,X                          ;018543|9507    |000007;
                        JSR.W CODE_01876B                    ;018545|206B87  |01876B;
                        BCS CODE_01854F                      ;018548|B005    |01854F;
-                       LDX.B audioChannel_Offset            ;01854A|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;01854A|A6AC    |0000AC;
                        STA.W $4000,X                        ;01854C|9D0040  |014000;
                                                             ;      |        |      ;
           CODE_01854F:
-                       LDA.B (workingNoteAddressAllLo),Y    ;01854F|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;01854F|B1BA    |0000BA;
                        AND.B #$07                           ;018551|2907    |      ;
-                       STA.B audio_TimerHi                  ;018553|85BC    |0000BC;
+                       STA.B r_snd_audio_TimerHi            ;018553|85BC    |0000BC;
                        INY                                  ;018555|C8      |      ;
-                       LDA.B (workingNoteAddressAllLo),Y    ;018556|B1BA    |0000BA;
-                       STA.B audio_TimerLow                 ;018558|85BD    |0000BD;
-                       LDX.B audioChannel_Index             ;01855A|A6AB    |0000AB;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;018556|B1BA    |0000BA;
+                       STA.B r_snd_audio_TimerLow           ;018558|85BD    |0000BD;
+                       LDX.B r_snd_audioChannel_Index       ;01855A|A6AB    |0000AB;
                        JSR.W CODE_0186E4                    ;01855C|20E486  |0186E4;
                        JMP.W CODE_018743                    ;01855F|4C4387  |018743;
                                                             ;      |        |      ;
@@ -968,14 +968,14 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_018572:
-                       LDA.B workingNoteAddressAllLo        ;018572|A5BA    |0000BA;
+                       LDA.B r_snd_workingNoteAddressAllLo  ;018572|A5BA    |0000BA;
                        BNE CODE_018578                      ;018574|D002    |018578;
-                       DEC.B workingNoteAddressAllHi        ;018576|C6BB    |0000BB;
+                       DEC.B r_snd_workingNoteAddressAllHi  ;018576|C6BB    |0000BB;
                                                             ;      |        |      ;
           CODE_018578:
-                       DEC.B workingNoteAddressAllLo        ;018578|C6BA    |0000BA;
+                       DEC.B r_snd_workingNoteAddressAllLo  ;018578|C6BA    |0000BA;
                        LDY.B #$00                           ;01857A|A000    |      ;
-                       LDA.B (workingNoteAddressAllLo),Y    ;01857C|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;01857C|B1BA    |0000BA;
                        AND.B #$F0                           ;01857E|29F0    |      ;
                        CMP.B #$C0                           ;018580|C9C0    |      ;
                        BNE CODE_018585                      ;018582|D001    |018585;
@@ -1023,7 +1023,7 @@ updateTablePPUsetDest:
                        STA.B $07,X                          ;0185B2|9507    |000007;
                        JSR.W CODE_01876B                    ;0185B4|206B87  |01876B;
                        BCS CODE_0185BE                      ;0185B7|B005    |0185BE;
-                       LDX.B audioChannel_Offset            ;0185B9|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;0185B9|A6AC    |0000AC;
                        STA.W $4000,X                        ;0185BB|9D0040  |014000;
                                                             ;      |        |      ;
           CODE_0185BE:
@@ -1033,12 +1033,12 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0185C2:
-                       LDA.B pause_Flag                     ;0185C2|A522    |000022;
+                       LDA.B r_pause_Flag                   ;0185C2|A522    |000022;
                        BNE CODE_0185D0                      ;0185C4|D00A    |0185D0;
                        LDA.B #$1A                           ;0185C6|A91A    |      ;
-                       CMP.B square_Wave1_SFX_Track         ;0185C8|C5C2    |0000C2;
+                       CMP.B r_snd_square_Wave1_SFX_Track   ;0185C8|C5C2    |0000C2;
                        BEQ CODE_0185D0                      ;0185CA|F004    |0185D0;
-                       CMP.B square_Wave2_SFX_Track         ;0185CC|C5D2    |0000D2;
+                       CMP.B r_snd_square_Wave2_SFX_Track   ;0185CC|C5D2    |0000D2;
                        BNE CODE_0185D3                      ;0185CE|D003    |0185D3;
                                                             ;      |        |      ;
           CODE_0185D0:
@@ -1046,20 +1046,20 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0185D3:
-                       LDA.B (workingNoteAddressAllLo),Y    ;0185D3|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;0185D3|B1BA    |0000BA;
                        AND.B #$F0                           ;0185D5|29F0    |      ;
                        CMP.B #$D0                           ;0185D7|C9D0    |      ;
                        BNE CODE_01860E                      ;0185D9|D033    |01860E;
-                       LDA.B (workingNoteAddressAllLo),Y    ;0185DB|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;0185DB|B1BA    |0000BA;
                        AND.B #$0F                           ;0185DD|290F    |      ;
                        STA.B $09,X                          ;0185DF|9509    |000009;
                        INY                                  ;0185E1|C8      |      ;
-                       LDA.B audio_FadeOut                  ;0185E2|A5E2    |0000E2;
+                       LDA.B r_snd_audio_FadeOut            ;0185E2|A5E2    |0000E2;
                        BEQ CODE_0185F6                      ;0185E4|F010    |0185F6;
                        LDA.B $05,X                          ;0185E6|B505    |000005;
                        AND.B #$0F                           ;0185E8|290F    |      ;
                        STA.B $E8                            ;0185EA|85E8    |0000E8;
-                       LDA.B (workingNoteAddressAllLo),Y    ;0185EC|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;0185EC|B1BA    |0000BA;
                        AND.B #$F0                           ;0185EE|29F0    |      ;
                        CLC                                  ;0185F0|18      |      ;
                        ADC.B $E8                            ;0185F1|65E8    |0000E8;
@@ -1067,20 +1067,20 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0185F6:
-                       LDA.B (workingNoteAddressAllLo),Y    ;0185F6|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;0185F6|B1BA    |0000BA;
                                                             ;      |        |      ;
           CODE_0185F8:
                        STA.B $05,X                          ;0185F8|9505    |000005;
                        INY                                  ;0185FA|C8      |      ;
                        CPX.B #$A0                           ;0185FB|E0A0    |      ;
                        BEQ CODE_01862E                      ;0185FD|F02F    |01862E;
-                       LDA.B (workingNoteAddressAllLo),Y    ;0185FF|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;0185FF|B1BA    |0000BA;
                        LSR A                                ;018601|4A      |      ;
                        LSR A                                ;018602|4A      |      ;
                        LSR A                                ;018603|4A      |      ;
                        LSR A                                ;018604|4A      |      ;
                        STA.B $0C,X                          ;018605|950C    |00000C;
-                       LDA.B (workingNoteAddressAllLo),Y    ;018607|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;018607|B1BA    |0000BA;
                        AND.B #$0F                           ;018609|290F    |      ;
                        STA.B $0D,X                          ;01860B|950D    |00000D;
                        INY                                  ;01860D|C8      |      ;
@@ -1088,24 +1088,24 @@ updateTablePPUsetDest:
           CODE_01860E:
                        CPX.B #$A0                           ;01860E|E0A0    |      ;
                        BEQ CODE_01862E                      ;018610|F01C    |01862E;
-                       LDA.B (workingNoteAddressAllLo),Y    ;018612|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;018612|B1BA    |0000BA;
                        CMP.B #$F0                           ;018614|C9F0    |      ;
                        BNE CODE_01862E                      ;018616|D016    |01862E;
                        JSR.W CODE_018755                    ;018618|205587  |018755;
                        JSR.W CODE_01876B                    ;01861B|206B87  |01876B;
                        BCS CODE_018625                      ;01861E|B005    |018625;
-                       LDX.B audioChannel_Offset            ;018620|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;018620|A6AC    |0000AC;
                        STA.W $4001,X                        ;018622|9D0140  |014001;
                                                             ;      |        |      ;
           CODE_018625:
-                       LDX.B audioChannel_Index             ;018625|A6AB    |0000AB;
+                       LDX.B r_snd_audioChannel_Index       ;018625|A6AB    |0000AB;
                        LDA.B $08,X                          ;018627|B508    |000008;
                        ORA.B #$80                           ;018629|0980    |      ;
                        STA.B $08,X                          ;01862B|9508    |000008;
                        INY                                  ;01862D|C8      |      ;
                                                             ;      |        |      ;
           CODE_01862E:
-                       LDA.B (workingNoteAddressAllLo),Y    ;01862E|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;01862E|B1BA    |0000BA;
                        CMP.B #$E8                           ;018630|C9E8    |      ;
                        BEQ CODE_01865D                      ;018632|F029    |01865D;
                        CMP.B #$E9                           ;018634|C9E9    |      ;
@@ -1115,7 +1115,7 @@ updateTablePPUsetDest:
                        AND.B #$F0                           ;01863C|29F0    |      ;
                        CMP.B #$E0                           ;01863E|C9E0    |      ;
                        BNE CODE_018667                      ;018640|D025    |018667;
-                       LDA.B (workingNoteAddressAllLo),Y    ;018642|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;018642|B1BA    |0000BA;
                        AND.B #$0F                           ;018644|290F    |      ;
                        STA.B $0A,X                          ;018646|950A    |00000A;
                        INY                                  ;018648|C8      |      ;
@@ -1149,16 +1149,16 @@ updateTablePPUsetDest:
           CODE_018667:
                        JSR.W CODE_018743                    ;018667|204387  |018743;
                        DEY                                  ;01866A|88      |      ;
-                       LDA.B (workingNoteAddressAllLo),Y    ;01866B|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;01866B|B1BA    |0000BA;
                        AND.B #$0F                           ;01866D|290F    |      ;
-                       STA.B audio_TimerHi                  ;01866F|85BC    |0000BC;
+                       STA.B r_snd_audio_TimerHi            ;01866F|85BC    |0000BC;
                        BEQ CODE_01867E                      ;018671|F00B    |01867E;
                        LDA.B $09,X                          ;018673|B509    |000009;
                        CLC                                  ;018675|18      |      ;
                                                             ;      |        |      ;
           CODE_018676:
                        ADC.B $09,X                          ;018676|7509    |000009;
-                       DEC.B audio_TimerHi                  ;018678|C6BC    |0000BC;
+                       DEC.B r_snd_audio_TimerHi            ;018678|C6BC    |0000BC;
                        BNE CODE_018676                      ;01867A|D0FA    |018676;
                        BEQ CODE_018680                      ;01867C|F002    |018680;
                                                             ;      |        |      ;
@@ -1167,7 +1167,7 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
           CODE_018680:
                        STA.B $00,X                          ;018680|9500    |000000;
-                       LDA.B (workingNoteAddressAllLo),Y    ;018682|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;018682|B1BA    |0000BA;
                        AND.B #$F0                           ;018684|29F0    |      ;
                        CMP.B #$C0                           ;018686|C9C0    |      ;
                        BEQ CODE_0186B3                      ;018688|F029    |0186B3;
@@ -1187,12 +1187,12 @@ updateTablePPUsetDest:
           CODE_01869D:
                        JSR.W CODE_01876B                    ;01869D|206B87  |01876B;
                        BCS CODE_0186A7                      ;0186A0|B005    |0186A7;
-                       LDX.B audioChannel_Offset            ;0186A2|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;0186A2|A6AC    |0000AC;
                        STA.W $4000,X                        ;0186A4|9D0040  |014000;
                                                             ;      |        |      ;
           CODE_0186A7:
-                       LDX.B audioChannel_Offset            ;0186A7|A6AC    |0000AC;
-                       LDA.B (workingNoteAddressAllLo),Y    ;0186A9|B1BA    |0000BA;
+                       LDX.B r_snd_audioChannel_Offset      ;0186A7|A6AC    |0000AC;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;0186A9|B1BA    |0000BA;
                        LSR A                                ;0186AB|4A      |      ;
                        LSR A                                ;0186AC|4A      |      ;
                        LSR A                                ;0186AD|4A      |      ;
@@ -1209,7 +1209,7 @@ updateTablePPUsetDest:
           CODE_0186BB:
                        JSR.W CODE_01876B                    ;0186BB|206B87  |01876B;
                        BCS CODE_0186C5                      ;0186BE|B005    |0186C5;
-                       LDX.B audioChannel_Offset            ;0186C0|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;0186C0|A6AC    |0000AC;
                        STA.W $4000,X                        ;0186C2|9D0040  |014000;
                                                             ;      |        |      ;
           CODE_0186C5:
@@ -1217,22 +1217,22 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0186C6:
-                       LDX.B audioChannel_Index             ;0186C6|A6AB    |0000AB;
+                       LDX.B r_snd_audioChannel_Index       ;0186C6|A6AB    |0000AB;
                        ASL A                                ;0186C8|0A      |      ;
                        TAY                                  ;0186C9|A8      |      ;
                        LDA.W soundEffectIndex,Y             ;0186CA|B98A87  |01878A;
-                       STA.B audio_TimerHi                  ;0186CD|85BC    |0000BC;
+                       STA.B r_snd_audio_TimerHi            ;0186CD|85BC    |0000BC;
                        INY                                  ;0186CF|C8      |      ;
                        LDA.W soundEffectIndex,Y             ;0186D0|B98A87  |01878A;
-                       STA.B audio_TimerLow                 ;0186D3|85BD    |0000BD;
+                       STA.B r_snd_audio_TimerLow           ;0186D3|85BD    |0000BD;
                        LDY.B $0A,X                          ;0186D5|B40A    |00000A;
                                                             ;      |        |      ;
           CODE_0186D7:
                        TYA                                  ;0186D7|98      |      ;
                        CMP.B #$04                           ;0186D8|C904    |      ;
                        BEQ CODE_0186E4                      ;0186DA|F008    |0186E4;
-                       LSR.B audio_TimerHi                  ;0186DC|46BC    |0000BC;
-                       ROR.B audio_TimerLow                 ;0186DE|66BD    |0000BD;
+                       LSR.B r_snd_audio_TimerHi            ;0186DC|46BC    |0000BC;
+                       ROR.B r_snd_audio_TimerLow           ;0186DE|66BD    |0000BD;
                        INY                                  ;0186E0|C8      |      ;
                        JMP.W CODE_0186D7                    ;0186E1|4CD786  |0186D7;
                                                             ;      |        |      ;
@@ -1243,14 +1243,14 @@ updateTablePPUsetDest:
                        LDA.B $08,X                          ;0186E8|B508    |000008;
                        AND.B #$10                           ;0186EA|2910    |      ;
                        BEQ CODE_0186F4                      ;0186EC|F006    |0186F4;
-                       INC.B audio_TimerLow                 ;0186EE|E6BD    |0000BD;
+                       INC.B r_snd_audio_TimerLow           ;0186EE|E6BD    |0000BD;
                        BNE CODE_0186F4                      ;0186F0|D002    |0186F4;
-                       INC.B audio_TimerHi                  ;0186F2|E6BC    |0000BC;
+                       INC.B r_snd_audio_TimerHi            ;0186F2|E6BC    |0000BC;
                                                             ;      |        |      ;
           CODE_0186F4:
-                       LDA.B audio_TimerHi                  ;0186F4|A5BC    |0000BC;
+                       LDA.B r_snd_audio_TimerHi            ;0186F4|A5BC    |0000BC;
                        ORA.B #$08                           ;0186F6|0908    |      ;
-                       STA.B audio_TimerHi                  ;0186F8|85BC    |0000BC;
+                       STA.B r_snd_audio_TimerHi            ;0186F8|85BC    |0000BC;
                        CPX.B #$A0                           ;0186FA|E0A0    |      ;
                        BEQ CODE_018716                      ;0186FC|F018    |018716;
                        CMP.B $01,X                          ;0186FE|D501    |000001;
@@ -1269,15 +1269,15 @@ updateTablePPUsetDest:
                        STA.B $01,X                          ;018714|9501    |000001;
                                                             ;      |        |      ;
           CODE_018716:
-                       LDA.B audio_TimerHi                  ;018716|A5BC    |0000BC;
+                       LDA.B r_snd_audio_TimerHi            ;018716|A5BC    |0000BC;
                        JSR.W CODE_01876B                    ;018718|206B87  |01876B;
                        BCS CODE_018724                      ;01871B|B007    |018724;
-                       LDX.B audioChannel_Offset            ;01871D|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;01871D|A6AC    |0000AC;
                        STA.W $4003,X                        ;01871F|9D0340  |014003;
-                       LDX.B audioChannel_Index             ;018722|A6AB    |0000AB;
+                       LDX.B r_snd_audioChannel_Index       ;018722|A6AB    |0000AB;
                                                             ;      |        |      ;
           CODE_018724:
-                       LDA.B audio_TimerLow                 ;018724|A5BD    |0000BD;
+                       LDA.B r_snd_audio_TimerLow           ;018724|A5BD    |0000BD;
                        CPX.B #$80                           ;018726|E080    |      ;
                        BEQ CODE_018731                      ;018728|F007    |018731;
                        CPX.B #$90                           ;01872A|E090    |      ;
@@ -1286,17 +1286,17 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_018731:
-                       STA.B audio_Timer_Low_copy1          ;018731|85A7    |0000A7;
+                       STA.B r_snd_audio_Timer_Low_copy1    ;018731|85A7    |0000A7;
                        JMP.W CODE_018738                    ;018733|4C3887  |018738;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_018736:
-                       STA.B audioTimerLowCopy2             ;018736|85B8    |0000B8;
+                       STA.B r_snd_audioTimerLowCopy2       ;018736|85B8    |0000B8;
                                                             ;      |        |      ;
           CODE_018738:
                        JSR.W CODE_01876B                    ;018738|206B87  |01876B;
                        BCS CODE_018742                      ;01873B|B005    |018742;
-                       LDX.B audioChannel_Offset            ;01873D|A6AC    |0000AC;
+                       LDX.B r_snd_audioChannel_Offset      ;01873D|A6AC    |0000AC;
                        STA.W $4002,X                        ;01873F|9D0240  |014002;
                                                             ;      |        |      ;
           CODE_018742:
@@ -1307,11 +1307,11 @@ updateTablePPUsetDest:
                        INY                                  ;018743|C8      |      ;
                        TYA                                  ;018744|98      |      ;
                        CLC                                  ;018745|18      |      ;
-                       ADC.B workingNoteAddressAllLo        ;018746|65BA    |0000BA;
-                       LDX.B audioChannel_Index             ;018748|A6AB    |0000AB;
+                       ADC.B r_snd_workingNoteAddressAllLo  ;018746|65BA    |0000BA;
+                       LDX.B r_snd_audioChannel_Index       ;018748|A6AB    |0000AB;
                        STA.B $03,X                          ;01874A|9503    |000003;
                        BCC CODE_018754                      ;01874C|9006    |018754;
-                       LDA.B workingNoteAddressAllHi        ;01874E|A5BB    |0000BB;
+                       LDA.B r_snd_workingNoteAddressAllHi  ;01874E|A5BB    |0000BB;
                        ADC.B #$00                           ;018750|6900    |      ;
                        STA.B $04,X                          ;018752|9504    |000004;
                                                             ;      |        |      ;
@@ -1321,7 +1321,7 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
           CODE_018755:
                        INY                                  ;018755|C8      |      ;
-                       LDA.B (workingNoteAddressAllLo),Y    ;018756|B1BA    |0000BA;
+                       LDA.B (r_snd_workingNoteAddressAllLo),Y;018756|B1BA    |0000BA;
                        CPX.B #$80                           ;018758|E080    |      ;
                        BEQ CODE_018763                      ;01875A|F007    |018763;
                        CPX.B #$90                           ;01875C|E090    |      ;
@@ -1330,7 +1330,7 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_018763:
-                       STA.B triangle_Wave_Octave           ;018763|85A1    |0000A1;
+                       STA.B r_snd_triangle_Wave_Octave     ;018763|85A1    |0000A1;
                        JMP.W CODE_01876A                    ;018765|4C6A87  |01876A;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -1342,29 +1342,29 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_01876B:
-                       LDX.B audioChannel_Index             ;01876B|A6AB    |0000AB;
+                       LDX.B r_snd_audioChannel_Index       ;01876B|A6AB    |0000AB;
                        CPX.B #$80                           ;01876D|E080    |      ;
                        BNE CODE_018778                      ;01876F|D007    |018778;
-                       LDX.B square_Wave1_SFX_Track         ;018771|A6C2    |0000C2;
+                       LDX.B r_snd_square_Wave1_SFX_Track   ;018771|A6C2    |0000C2;
                        BEQ CODE_018786                      ;018773|F011    |018786;
                        JMP.W CODE_018782                    ;018775|4C8287  |018782;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_018778:
-                       LDX.B audioChannel_Index             ;018778|A6AB    |0000AB;
+                       LDX.B r_snd_audioChannel_Index       ;018778|A6AB    |0000AB;
                        CPX.B #$90                           ;01877A|E090    |      ;
                        BNE CODE_018786                      ;01877C|D008    |018786;
-                       LDX.B square_Wave2_SFX_Track         ;01877E|A6D2    |0000D2;
+                       LDX.B r_snd_square_Wave2_SFX_Track   ;01877E|A6D2    |0000D2;
                        BEQ CODE_018786                      ;018780|F004    |018786;
                                                             ;      |        |      ;
           CODE_018782:
-                       LDX.B audioChannel_Index             ;018782|A6AB    |0000AB;
+                       LDX.B r_snd_audioChannel_Index       ;018782|A6AB    |0000AB;
                        SEC                                  ;018784|38      |      ;
                        RTS                                  ;018785|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_018786:
-                       LDX.B audioChannel_Index             ;018786|A6AB    |0000AB;
+                       LDX.B r_snd_audioChannel_Index       ;018786|A6AB    |0000AB;
                        CLC                                  ;018788|18      |      ;
                        RTS                                  ;018789|60      |      ;
                                                             ;      |        |      ;
@@ -2162,13 +2162,13 @@ spriteAssemblyPointers01Hi:
                        dw sprAss_ba_                        ;01913C|        |019828;
                        dw sprAss_ba_                        ;01913E|        |019828;
                        dw sprAss_ba_                        ;019140|        |019828;
-                       dw sprAss_c2_hatchet                 ;019142|        |019885;
-                       dw sprAss_c2_hatchet                 ;019144|        |019885;
-                       dw sprAss_c4_                        ;019146|        |0198A8;
-                       dw sprAss_c4_                        ;019148|        |0198A8;
-                       dw sprAss_c6_grimReaper              ;01914A|        |0198B0;
-                       dw sprAss_c7_                        ;01914C|        |0198B8;
-                       dw sprAss_c8_                        ;01914E|        |0198C0;
+                       dw sprAss_c2_BossDeath               ;019142|        |019885;
+                       dw sprAss_c2_BossDeath               ;019144|        |019885;
+                       dw sprAss_c4_hatchet                 ;019146|        |0198A8;
+                       dw sprAss_c4_hatchet                 ;019148|        |0198A8;
+                       dw sprAss_c6_hatchet                 ;01914A|        |0198B0;
+                       dw sprAss_c7_hatchet                 ;01914C|        |0198B8;
+                       dw sprAss_c8_hatchet                 ;01914E|        |0198C0;
                        dw sprAss_c9_                        ;019150|        |0195A7;
                        dw sprAss_ca_                        ;019152|        |0195B5;
                        dw sprAss_cb_                        ;019154|        |0195C0;
@@ -2795,23 +2795,23 @@ sprAss_8f_frankenstein:
                        db $04,$E0,$8A,$43,$F8,$E1,$88,$00   ;019877|        |      ;
                        db $01,$8E,$F8,$01,$8C,$00           ;01987F|        |      ;
                                                             ;      |        |      ;
-    sprAss_c2_hatchet:
+  sprAss_c2_BossDeath:
                        db $0B,$D0,$D6,$41,$EC,$D1,$D4,$F4   ;019885|        |      ;
                        db $D1,$D2,$FC,$D1,$D0,$04,$F1,$DC   ;01988D|        |      ;
                        db $F4,$F1,$DA,$FC,$F1,$D8,$04,$11   ;019895|        |      ;
                        db $F4,$F4,$11,$F2,$FC,$11,$F0,$04   ;01989D|        |      ;
                        db $11,$DE,$0C                       ;0198A5|        |      ;
                                                             ;      |        |      ;
-           sprAss_c4_:
+    sprAss_c4_hatchet:
                        db $02,$F0,$F6,$03,$F8,$F1,$F8,$00   ;0198A8|        |      ;
                                                             ;      |        |      ;
- sprAss_c6_grimReaper:
+    sprAss_c6_hatchet:
                        db $02,$F0,$FA,$03,$F8,$F1,$FC,$00   ;0198B0|        |      ;
                                                             ;      |        |      ;
-           sprAss_c7_:
+    sprAss_c7_hatchet:
                        db $02,$F0,$F8,$C3,$F8,$F1,$F6,$00   ;0198B8|        |      ;
                                                             ;      |        |      ;
-           sprAss_c8_:
+    sprAss_c8_hatchet:
                        db $02,$F0,$FC,$C3,$F8,$F1,$FA,$00   ;0198C0|        |      ;
                                                             ;      |        |      ;
 sprAss_7f_sleepingBat:

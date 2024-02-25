@@ -20,7 +20,7 @@ findstr /V "ORG " ..\export\bank_04.asm > bank_04.asm
 findstr /V "ORG " ..\export\bank_05.asm > bank_05.asm
 findstr /V "ORG " ..\export\bank_06.asm > bank_06.asm
 findstr /V "ORG " ..\export\bank_07.asm > bank_07.asm
-copy ..\expor\labels.asm labels.asm
+copy ..\export\labels.asm labels.asm
 
 ::assembleGame
 ..\export\asar\asar.exe --fix-checksum=off mainNES.asm
