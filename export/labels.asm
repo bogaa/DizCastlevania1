@@ -59,7 +59,7 @@
                        r_player_SpecialDropCounter = $000072;      |        |      ;
                        r_player_WhipLength = $000073        ;      |        |      ;
                        r_player_WhipHeight = $000074        ;      |        |      ;
-                       r_spawnZoneLeft = $000075            ;      |        |      ;
+                       r_spawnZoneLeft = $000075; !^   ^!   ;      |        |      ;
                        r_spawnZoneRight = $000076           ;      |        |      ;
                        r_player_SubweaponDropCounter = $000079;      |        |      ;
                        r_player_SpecialDropID = $00007B     ;      |        |      ;
@@ -212,7 +212,7 @@
                        r_entity_Y_PosSub = $000370          ;      |        |      ;
                        r_entity_X_Pos = $00038C             ;      |        |      ;
                        r_entity_X_PosSub = $0003A8          ;      |        |      ;
-                       r_entity_Y_speed = $0003C4           ;      |        |      ;
+                       r_entity_Y_speed = $0003C4; !^   ^!  ;      |        |      ;
                        r_entity_Y_speedSub = $0003E0        ;      |        |      ;
                        r_entity_X_Speed = $0003FC           ;      |        |      ;
                        r_entity_X_SpeedSub = $000418        ;      |        |      ;
@@ -220,7 +220,7 @@
                        r_entity_spriteMirror = $000450      ;      |        |      ;
                        r_entity_State = $00046C             ;      |        |      ;
                        r_player_jumpState = $000488         ;      |        |      ;
-                       r_entity_animationTime = $000489     ;      |        |      ;
+                       r_entity_animationTime = $000489; !^   ^!;      |        |      ;
                        r_moving_PlatformSpeed = $00049F     ;      |        |      ;
                        r_player_stepCount = $0004A4         ;      |        |      ;
                        r_entity_spriteFrame = $0004A5       ;      |        |      ;
@@ -325,7 +325,7 @@
                        r1_player_SpecialDropCounter = $010072;      |        |      ;
                        r1_player_WhipLength = $010073       ;      |        |      ;
                        r1_player_WhipHeight = $010074       ;      |        |      ;
-                       r1_spawnZoneLeft = $010075           ;      |        |      ;
+                       r1_spawnZoneLeft = $010075; !^   ^!  ;      |        |      ;
                        r1_spawnZoneRight = $010076          ;      |        |      ;
                        r1_player_SubweaponDropCounter = $010079;      |        |      ;
                        r1_player_SpecialDropID = $01007B    ;      |        |      ;
@@ -478,7 +478,7 @@
                        r1_entity_Y_PosSub = $010370         ;      |        |      ;
                        r1_entity_X_Pos = $01038C            ;      |        |      ;
                        r1_entity_X_PosSub = $0103A8         ;      |        |      ;
-                       r1_entity_Y_speed = $0103C4          ;      |        |      ;
+                       r1_entity_Y_speed = $0103C4; !^   ^! ;      |        |      ;
                        r1_entity_Y_speedSub = $0103E0       ;      |        |      ;
                        r1_entity_X_Speed = $0103FC          ;      |        |      ;
                        r1_entity_X_SpeedSub = $010418       ;      |        |      ;
@@ -486,7 +486,7 @@
                        r1_entity_spriteMirror = $010450     ;      |        |      ;
                        r1_entity_State = $01046C            ;      |        |      ;
                        r1_player_jumpState = $010488        ;      |        |      ;
-                       r1_entity_animationTime = $010489    ;      |        |      ;
+                       r1_entity_animationTime = $010489; !^   ^!;      |        |      ;
                        r1_moving_PlatformSpeed = $01049F    ;      |        |      ;
                        r1_player_stepCount = $0104A4        ;      |        |      ;
                        r1_entity_spriteFrame = $0104A5      ;      |        |      ;
@@ -593,7 +593,7 @@
                        r2_player_SpecialDropCounter = $020072;      |        |      ;
                        r2_player_WhipLength = $020073       ;      |        |      ;
                        r2_player_WhipHeight = $020074       ;      |        |      ;
-                       r2_spawnZoneLeft = $020075           ;      |        |      ;
+                       r2_spawnZoneLeft = $020075; !^   ^!  ;      |        |      ;
                        r2_spawnZoneRight = $020076          ;      |        |      ;
                        r2_player_SubweaponDropCounter = $020079;      |        |      ;
                        r2_player_SpecialDropID = $02007B    ;      |        |      ;
@@ -746,7 +746,7 @@
                        r2_entity_Y_PosSub = $020370         ;      |        |      ;
                        r2_entity_X_Pos = $02038C            ;      |        |      ;
                        r2_entity_X_PosSub = $0203A8         ;      |        |      ;
-                       r2_entity_Y_speed = $0203C4          ;      |        |      ;
+                       r2_entity_Y_speed = $0203C4; !^   ^! ;      |        |      ;
                        r2_entity_Y_speedSub = $0203E0       ;      |        |      ;
                        r2_entity_X_Speed = $0203FC          ;      |        |      ;
                        r2_entity_X_SpeedSub = $020418       ;      |        |      ;
@@ -754,7 +754,7 @@
                        r2_entity_spriteMirror = $020450     ;      |        |      ;
                        r2_entity_State = $02046C            ;      |        |      ;
                        r2_player_jumpState = $020488        ;      |        |      ;
-                       r2_entity_animationTime = $020489    ;      |        |      ;
+                       r2_entity_animationTime = $020489; !^   ^!;      |        |      ;
                        r2_moving_PlatformSpeed = $02049F    ;      |        |      ;
                        r2_player_stepCount = $0204A4        ;      |        |      ;
                        r2_entity_spriteFrame = $0204A5      ;      |        |      ;
@@ -859,7 +859,7 @@
                        r3_player_SpecialDropCounter = $030072;      |        |      ;
                        r3_player_WhipLength = $030073       ;      |        |      ;
                        r3_player_WhipHeight = $030074       ;      |        |      ;
-                       r3_spawnZoneLeft = $030075           ;      |        |      ;
+                       r3_spawnZoneLeft = $030075; !^   ^!  ;      |        |      ;
                        r3_spawnZoneRight = $030076          ;      |        |      ;
                        r3_player_SubweaponDropCounter = $030079;      |        |      ;
                        r3_player_SpecialDropID = $03007B    ;      |        |      ;
@@ -1012,7 +1012,7 @@
                        r3_entity_Y_PosSub = $030370         ;      |        |      ;
                        r3_entity_X_Pos = $03038C            ;      |        |      ;
                        r3_entity_X_PosSub = $0303A8         ;      |        |      ;
-                       r3_entity_Y_speed = $0303C4          ;      |        |      ;
+                       r3_entity_Y_speed = $0303C4; !^   ^! ;      |        |      ;
                        r3_entity_Y_speedSub = $0303E0       ;      |        |      ;
                        r3_entity_X_Speed = $0303FC          ;      |        |      ;
                        r3_entity_X_SpeedSub = $030418       ;      |        |      ;
@@ -1020,7 +1020,7 @@
                        r3_entity_spriteMirror = $030450     ;      |        |      ;
                        r3_entity_State = $03046C            ;      |        |      ;
                        r3_player_jumpState = $030488        ;      |        |      ;
-                       r3_entity_animationTime = $030489    ;      |        |      ;
+                       r3_entity_animationTime = $030489; !^   ^!;      |        |      ;
                        r3_moving_PlatformSpeed = $03049F    ;      |        |      ;
                        r3_player_stepCount = $0304A4        ;      |        |      ;
                        r3_entity_spriteFrame = $0304A5      ;      |        |      ;
@@ -1125,7 +1125,7 @@
                        r4_player_SpecialDropCounter = $040072;      |        |      ;
                        r4_player_WhipLength = $040073       ;      |        |      ;
                        r4_player_WhipHeight = $040074       ;      |        |      ;
-                       r4_spawnZoneLeft = $040075           ;      |        |      ;
+                       r4_spawnZoneLeft = $040075; !^   ^!  ;      |        |      ;
                        r4_spawnZoneRight = $040076          ;      |        |      ;
                        r4_player_SubweaponDropCounter = $040079;      |        |      ;
                        r4_player_SpecialDropID = $04007B    ;      |        |      ;
@@ -1278,7 +1278,7 @@
                        r4_entity_Y_PosSub = $040370         ;      |        |      ;
                        r4_entity_X_Pos = $04038C            ;      |        |      ;
                        r4_entity_X_PosSub = $0403A8         ;      |        |      ;
-                       r4_entity_Y_speed = $0403C4          ;      |        |      ;
+                       r4_entity_Y_speed = $0403C4; !^   ^! ;      |        |      ;
                        r4_entity_Y_speedSub = $0403E0       ;      |        |      ;
                        r4_entity_X_Speed = $0403FC          ;      |        |      ;
                        r4_entity_X_SpeedSub = $040418       ;      |        |      ;
@@ -1286,7 +1286,7 @@
                        r4_entity_spriteMirror = $040450     ;      |        |      ;
                        r4_entity_State = $04046C            ;      |        |      ;
                        r4_player_jumpState = $040488        ;      |        |      ;
-                       r4_entity_animationTime = $040489    ;      |        |      ;
+                       r4_entity_animationTime = $040489; !^   ^!;      |        |      ;
                        r4_moving_PlatformSpeed = $04049F    ;      |        |      ;
                        r4_player_stepCount = $0404A4        ;      |        |      ;
                        r4_entity_spriteFrame = $0404A5      ;      |        |      ;
@@ -1391,7 +1391,7 @@
                        r5_player_SpecialDropCounter = $050072;      |        |      ;
                        r5_player_WhipLength = $050073       ;      |        |      ;
                        r5_player_WhipHeight = $050074       ;      |        |      ;
-                       r5_spawnZoneLeft = $050075           ;      |        |      ;
+                       r5_spawnZoneLeft = $050075; !^   ^!  ;      |        |      ;
                        r5_spawnZoneRight = $050076          ;      |        |      ;
                        r5_player_SubweaponDropCounter = $050079;      |        |      ;
                        r5_player_SpecialDropID = $05007B    ;      |        |      ;
@@ -1544,7 +1544,7 @@
                        r5_entity_Y_PosSub = $050370         ;      |        |      ;
                        r5_entity_X_Pos = $05038C            ;      |        |      ;
                        r5_entity_X_PosSub = $0503A8         ;      |        |      ;
-                       r5_entity_Y_speed = $0503C4          ;      |        |      ;
+                       r5_entity_Y_speed = $0503C4; !^   ^! ;      |        |      ;
                        r5_entity_Y_speedSub = $0503E0       ;      |        |      ;
                        r5_entity_X_Speed = $0503FC          ;      |        |      ;
                        r5_entity_X_SpeedSub = $050418       ;      |        |      ;
@@ -1552,7 +1552,7 @@
                        r5_entity_spriteMirror = $050450     ;      |        |      ;
                        r5_entity_State = $05046C            ;      |        |      ;
                        r5_player_jumpState = $050488        ;      |        |      ;
-                       r5_entity_animationTime = $050489    ;      |        |      ;
+                       r5_entity_animationTime = $050489; !^   ^!;      |        |      ;
                        r5_moving_PlatformSpeed = $05049F    ;      |        |      ;
                        r5_player_stepCount = $0504A4        ;      |        |      ;
                        r5_entity_spriteFrame = $0504A5      ;      |        |      ;
@@ -1657,7 +1657,7 @@
                        r6_player_SpecialDropCounter = $060072;      |        |      ;
                        r6_player_WhipLength = $060073       ;      |        |      ;
                        r6_player_WhipHeight = $060074       ;      |        |      ;
-                       r6_spawnZoneLeft = $060075           ;      |        |      ;
+                       r6_spawnZoneLeft = $060075; !^   ^!  ;      |        |      ;
                        r6_spawnZoneRight = $060076          ;      |        |      ;
                        r6_player_SubweaponDropCounter = $060079;      |        |      ;
                        r6_player_SpecialDropID = $06007B    ;      |        |      ;
@@ -1810,7 +1810,7 @@
                        r6_entity_Y_PosSub = $060370         ;      |        |      ;
                        r6_entity_X_Pos = $06038C            ;      |        |      ;
                        r6_entity_X_PosSub = $0603A8         ;      |        |      ;
-                       r6_entity_Y_speed = $0603C4          ;      |        |      ;
+                       r6_entity_Y_speed = $0603C4; !^   ^! ;      |        |      ;
                        r6_entity_Y_speedSub = $0603E0       ;      |        |      ;
                        r6_entity_X_Speed = $0603FC          ;      |        |      ;
                        r6_entity_X_SpeedSub = $060418       ;      |        |      ;
@@ -1818,7 +1818,7 @@
                        r6_entity_spriteMirror = $060450     ;      |        |      ;
                        r6_entity_State = $06046C            ;      |        |      ;
                        r6_player_jumpState = $060488        ;      |        |      ;
-                       r6_entity_animationTime = $060489    ;      |        |      ;
+                       r6_entity_animationTime = $060489; !^   ^!;      |        |      ;
                        r6_moving_PlatformSpeed = $06049F    ;      |        |      ;
                        r6_player_stepCount = $0604A4        ;      |        |      ;
                        r6_entity_spriteFrame = $0604A5      ;      |        |      ;
@@ -1923,7 +1923,7 @@
                        r7_player_SpecialDropCounter = $070072;      |        |      ;
                        r7_player_WhipLength = $070073       ;      |        |      ;
                        r7_player_WhipHeight = $070074       ;      |        |      ;
-                       r7_spawnZoneLeft = $070075           ;      |        |      ;
+                       r7_spawnZoneLeft = $070075; !^   ^!  ;      |        |      ;
                        r7_spawnZoneRight = $070076          ;      |        |      ;
                        r7_player_SubweaponDropCounter = $070079;      |        |      ;
                        r7_player_SpecialDropID = $07007B    ;      |        |      ;
@@ -2076,7 +2076,7 @@
                        r7_entity_Y_PosSub = $070370         ;      |        |      ;
                        r7_entity_X_Pos = $07038C            ;      |        |      ;
                        r7_entity_X_PosSub = $0703A8         ;      |        |      ;
-                       r7_entity_Y_speed = $0703C4          ;      |        |      ;
+                       r7_entity_Y_speed = $0703C4; !^   ^! ;      |        |      ;
                        r7_entity_Y_speedSub = $0703E0       ;      |        |      ;
                        r7_entity_X_Speed = $0703FC          ;      |        |      ;
                        r7_entity_X_SpeedSub = $070418       ;      |        |      ;
@@ -2084,7 +2084,7 @@
                        r7_entity_spriteMirror = $070450     ;      |        |      ;
                        r7_entity_State = $07046C            ;      |        |      ;
                        r7_player_jumpState = $070488        ;      |        |      ;
-                       r7_entity_animationTime = $070489    ;      |        |      ;
+                       r7_entity_animationTime = $070489; !^   ^!;      |        |      ;
                        r7_moving_PlatformSpeed = $07049F    ;      |        |      ;
                        r7_player_stepCount = $0704A4        ;      |        |      ;
                        r7_entity_spriteFrame = $0704A5      ;      |        |      ;
@@ -2137,7 +2137,6 @@
                        pointerTableGFXLo = $07FDBC          ;      |        |      ;
                        PTR16_00FFFF = $00FFFF               ;      |        |      ;
                        PTR16_018186 = $018186               ;      |        |      ;
-                       LOOSE_OP_07872C = $07872C            ;      |        |      ;
                        LOOSE_OP_078910 = $078910            ;      |        |      ;
                        PTR16_07A46F = $07A46F               ;      |        |      ;
                        PTR16_07CCFA = $07CCFA               ;      |        |      ;

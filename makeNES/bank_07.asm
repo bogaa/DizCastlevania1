@@ -12433,19 +12433,151 @@ DraculasHurt_01_AndSecondForm:
                        db $00                               ;07E46A|        |      ;
                                                             ;      |        |      ;
       enemyYposHitBox:
-                       db $00,$06,$0E,$06,$06,$06,$0E,$08   ;07E46B|        |      ;
-                       db $08,$06,$06,$06,$06,$06,$06,$06   ;07E473|        |      ;
-                       db $0E,$06,$03,$06,$0E,$06,$06,$06   ;07E47B|        |      ;
-                       db $06,$06,$06,$06,$0E,$06,$06,$06   ;07E483|        |      ;
-                       db $0E,$0A,$06,$0E,$0E,$06,$0E,$06   ;07E48B|        |      ;
-                       db $06,$01,$02,$01,$02,$06,$06,$0C   ;07E493|        |      ;
-                       db $16,$14,$0A,$08,$16,$0E,$0E,$08   ;07E49B|        |      ;
-                       db $16,$10,$18,$14,$0A,$06,$06,$02   ;07E4A3|        |      ;
-                       db $02,$02,$02,$02,$04,$02,$02,$04   ;07E4AB|        |      ;
-                       db $04,$00,$00,$02,$02,$04,$04,$06   ;07E4B3|        |      ;
-                       db $06,$06,$06,$06,$06,$06,$06,$06   ;07E4BB|        |      ;
-                       db $06,$06,$06,$06,$06,$06,$06,$18   ;07E4C3|        |      ;
-                       db $18                               ;07E4CB|        |      ;
+                       db $00                               ;07E46B|        |      ;
+                                                            ;      |        |      ;
+        hitBox_zombie:
+                       db $06,$0E                           ;07E46C|        |      ;
+                                                            ;      |        |      ;
+           hitBox_bat:
+                       db $06,$06                           ;07E46E|        |      ;
+                                                            ;      |        |      ;
+        hitBox_merman:
+                       db $06,$0E                           ;07E470|        |      ;
+                                                            ;      |        |      ;
+     hitBox_Nothing00:
+                       db $08,$08                           ;07E472|        |      ;
+                                                            ;      |        |      ;
+     hitBox_Nothing01:
+                       db $06,$06                           ;07E474|        |      ;
+                                                            ;      |        |      ;
+        hitBox_medusa:
+                       db $06,$06                           ;07E476|        |      ;
+                                                            ;      |        |      ;
+        hitBox_bigBat:
+                       db $06,$06                           ;07E478|        |      ;
+                                                            ;      |        |      ;
+        hitBox_knight:
+                       db $06,$0E                           ;07E47A|        |      ;
+                                                            ;      |        |      ;
+   hitBox_medusaSnake:
+                       db $06,$03                           ;07E47C|        |      ;
+                                                            ;      |        |      ;
+      hitBox_axeArmor:
+                       db $06,$0E                           ;07E47E|        |      ;
+                                                            ;      |        |      ;
+    hitBox_deathSycth:
+                       db $06,$06                           ;07E480|        |      ;
+                                                            ;      |        |      ;
+     hitBox_hunchBack:
+                       db $06,$06                           ;07E482|        |      ;
+                                                            ;      |        |      ;
+         hitBox_ghost:
+                       db $06,$06                           ;07E484|        |      ;
+                                                            ;      |        |      ;
+    hitBox_bonePillar:
+                       db $06,$0E                           ;07E486|        |      ;
+                                                            ;      |        |      ;
+        hitBox__raven:
+                       db $06,$06                           ;07E488|        |      ;
+                                                            ;      |        |      ;
+        hitBox_skelly:
+                       db $06,$0E                           ;07E48A|        |      ;
+                                                            ;      |        |      ;
+           hitBox_dog:
+                       db $0A,$06                           ;07E48C|        |      ;
+                                                            ;      |        |      ;
+         hitBox_eagle:
+                       db $0E,$0E                           ;07E48E|        |      ;
+                                                            ;      |        |      ;
+     hitBox_redSkelly:
+                       db $06,$0E                           ;07E490|        |      ;
+                                                            ;      |        |      ;
+      hitBox_boneDrag:
+                       db $06,$06                           ;07E492|        |      ;
+                                                            ;      |        |      ;
+    hitBox_boneNeck00:
+                       db $01,$02                           ;07E494|        |      ;
+                                                            ;      |        |      ;
+    hitBox_boneNeck01:
+                       db $01,$02                           ;07E496|        |      ;
+                                                            ;      |        |      ;
+       hitBox_subWeap:
+                       db $06,$06                           ;07E498|        |      ;
+                                                            ;      |        |      ;
+     hitBox_bossDeath:
+                       db $0C,$16                           ;07E49A|        |      ;
+                                                            ;      |        |      ;
+       hitBox_bossBat:
+                       db $14,$0A                           ;07E49C|        |      ;
+                                                            ;      |        |      ;
+     hitBox_bossMummy:
+                       db $08,$16                           ;07E49E|        |      ;
+                                                            ;      |        |      ;
+    hitBox_bossMedusa:
+                       db $0E,$0E                           ;07E4A0|        |      ;
+                                                            ;      |        |      ;
+     hitBox_bossFrank:
+                       db $08,$16                           ;07E4A2|        |      ;
+                                                            ;      |        |      ;
+  hitBox_bossDracBody:
+                       db $10,$18                           ;07E4A4|        |      ;
+                                                            ;      |        |      ;
+         hitBox_bossX:
+                       db $14,$0A                           ;07E4A6|        |      ;
+                                                            ;      |        |      ;
+      hitBox_bossIgor:
+                       db $06,$06                           ;07E4A8|        |      ;
+                                                            ;      |        |      ;
+      hitBox_seekFire:
+                       db $02,$02                           ;07E4AA|        |      ;
+                                                            ;      |        |      ;
+     hitBox_clothDrac:
+                       db $02,$02                           ;07E4AC|        |      ;
+                                                            ;      |        |      ;
+      hitBox_enemyAxe:
+                       db $02,$04                           ;07E4AE|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_00:
+                       db $02,$02                           ;07E4B0|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_01:
+                       db $04,$04                           ;07E4B2|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_02:
+                       db $00,$00                           ;07E4B4|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_03:
+                       db $02,$02                           ;07E4B6|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_04:
+                       db $04,$04                           ;07E4B8|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_05:
+                       db $06,$06                           ;07E4BA|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_06:
+                       db $06,$06                           ;07E4BC|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_07:
+                       db $06,$06                           ;07E4BE|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_08:
+                       db $06,$06                           ;07E4C0|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_09:
+                       db $06,$06                           ;07E4C2|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_0a:
+                       db $06,$06                           ;07E4C4|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_0b:
+                       db $06,$06                           ;07E4C6|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_0c:
+                       db $06,$06                           ;07E4C8|        |      ;
+                                                            ;      |        |      ;
+     hitBox_candle_0d:
+                       db $18,$18                           ;07E4CA|        |      ;
                                                             ;      |        |      ;
           CODE_07E4CC:
                        LDA.B #$14                           ;07E4CC|A914    |      ;
@@ -13844,7 +13976,7 @@ storeSpeed_AYSub_Ypos:
          DATA8_07ED59:
                        db $4C                               ;07ED59|        |      ; FIXME
                                                             ;      |        |      ;
-                       dw LOOSE_OP_07872C                   ;07ED5A|        |07872C;
+                       dw CODE_06872C                       ;07ED5A|        |06872C;
                                                             ;      |        |      ;
  levelRelatedRoutines:
                        LDA.B r_stage                        ;07ED5C|A528    |000028;

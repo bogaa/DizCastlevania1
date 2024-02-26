@@ -1169,6 +1169,8 @@ enemyAI_07_hangingBat:
           CODE_068729:
                        JMP.W CODE_0686B5                    ;068729|4CB586  |0686B5;
                                                             ;      |        |      ;
+                                                            ;      |        |      ;
+          CODE_06872C:
                        STX.B r_temp_data02                  ;06872C|864E    |00004E;
                        LDY.B #$0D                           ;06872E|A00D    |      ;
                                                             ;      |        |      ;

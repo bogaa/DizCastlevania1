@@ -9104,6 +9104,150 @@
         <sys:Item Key="517227">
           <Value exs:type="ns1:Label" Name="enemyYposHitBox" Comment="" />
         </sys:Item>
+        <sys:Item Key="517228">
+          <Value exs:type="ns1:Label" Name="hitBox_zombie" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517230">
+          <Value exs:type="ns1:Label" Name="hitBox_bat" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517232">
+          <Value exs:type="ns1:Label" Name="hitBox_merman" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517234">
+          <Value exs:type="ns1:Label" Name="hitBox_Nothing00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517236">
+          <Value exs:type="ns1:Label" Name="hitBox_Nothing01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517238">
+          <Value exs:type="ns1:Label" Name="hitBox_medusa" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517240">
+          <Value exs:type="ns1:Label" Name="hitBox_bigBat" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517242">
+          <Value exs:type="ns1:Label" Name="hitBox_knight" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517244">
+          <Value exs:type="ns1:Label" Name="hitBox_medusaSnake" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517246">
+          <Value exs:type="ns1:Label" Name="hitBox_axeArmor" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517248">
+          <Value exs:type="ns1:Label" Name="hitBox_deathSycth" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517250">
+          <Value exs:type="ns1:Label" Name="hitBox_hunchBack" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517252">
+          <Value exs:type="ns1:Label" Name="hitBox_ghost" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517254">
+          <Value exs:type="ns1:Label" Name="hitBox_bonePillar" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517256">
+          <Value exs:type="ns1:Label" Name="hitBox__raven" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517258">
+          <Value exs:type="ns1:Label" Name="hitBox_skelly" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517260">
+          <Value exs:type="ns1:Label" Name="hitBox_dog" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517262">
+          <Value exs:type="ns1:Label" Name="hitBox_eagle" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517264">
+          <Value exs:type="ns1:Label" Name="hitBox_redSkelly" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517266">
+          <Value exs:type="ns1:Label" Name="hitBox_boneDrag" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517268">
+          <Value exs:type="ns1:Label" Name="hitBox_boneNeck00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517270">
+          <Value exs:type="ns1:Label" Name="hitBox_boneNeck01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517272">
+          <Value exs:type="ns1:Label" Name="hitBox_subWeap" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517274">
+          <Value exs:type="ns1:Label" Name="hitBox_bossDeath" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517276">
+          <Value exs:type="ns1:Label" Name="hitBox_bossBat" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517278">
+          <Value exs:type="ns1:Label" Name="hitBox_bossMummy" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517280">
+          <Value exs:type="ns1:Label" Name="hitBox_bossMedusa" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517282">
+          <Value exs:type="ns1:Label" Name="hitBox_bossFrank" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517284">
+          <Value exs:type="ns1:Label" Name="hitBox_bossDracBody" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517286">
+          <Value exs:type="ns1:Label" Name="hitBox_bossX" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517288">
+          <Value exs:type="ns1:Label" Name="hitBox_bossIgor" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517290">
+          <Value exs:type="ns1:Label" Name="hitBox_seekFire" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517292">
+          <Value exs:type="ns1:Label" Name="hitBox_clothDrac" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517294">
+          <Value exs:type="ns1:Label" Name="hitBox_enemyAxe" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517296">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_00" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517298">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_01" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517300">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_02" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517302">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_03" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517304">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517306">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_05" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517308">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_06" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517310">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_07" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517312">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_08" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517314">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_09" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517316">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_0a" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517318">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_0b" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517320">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_0c" Comment="" />
+        </sys:Item>
+        <sys:Item Key="517322">
+          <Value exs:type="ns1:Label" Name="hitBox_candle_0d" Comment="" />
+        </sys:Item>
         <sys:Item Key="517497">
           <Value exs:type="ns1:Label" Name="enemyHurtRoutines" Comment="" />
         </sys:Item>
