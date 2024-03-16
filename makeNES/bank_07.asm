@@ -229,7 +229,7 @@ breakableBlockData_empty:
                                                             ;      |        |      ;
           CODE_078174:
                        STX.B $0D                            ;078174|860D    |00000D;
-                       JSR.W markSpawnerSlot                ;078176|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;078176|2063F4  |07F463;
                        LDA.B #$51                           ;078179|A951    |      ;
                        STA.B $0E                            ;07817B|850E    |00000E;
                        LDA.B #$11                           ;07817D|A911    |      ;
@@ -720,7 +720,7 @@ breakableBlockData_06:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0784AD:
-                       JSR.W markSpawnerSlot                ;0784AD|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;0784AD|2063F4  |07F463;
                        LDA.B #$3A                           ;0784B0|A93A    |      ;
                        STA.B $0E                            ;0784B2|850E    |00000E;
                        LDA.B #$07                           ;0784B4|A907    |      ;
@@ -744,7 +744,7 @@ breakableBlockData_06:
           CODE_0784CC:
                        STX.B $0D                            ;0784CC|860D    |00000D;
                        JSR.W CODE_07F4A9                    ;0784CE|20A9F4  |07F4A9;
-                       JSR.W markSpawnerSlot                ;0784D1|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;0784D1|2063F4  |07F463;
                        LDA.B #$00                           ;0784D4|A900    |      ;
                        STA.W r7_entity_X_Speed,X            ;0784D6|9DFC03  |0703FC;
                        LDA.B #$80                           ;0784D9|A980    |      ;
@@ -795,7 +795,7 @@ breakableBlockData_06:
                        CMP.B #$30                           ;07851C|C930    |      ;
                        BCS CODE_0784F9                      ;07851E|B0D9    |0784F9;
                        LDX.B $0D                            ;078520|A60D    |00000D;
-                       JSR.W markSpawnerSlot                ;078522|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;078522|2063F4  |07F463;
                        LDA.B #$19                           ;078525|A919    |      ;
                        STA.B $0E                            ;078527|850E    |00000E;
                        LDA.B #$0D                           ;078529|A90D    |      ;
@@ -849,7 +849,7 @@ breakableBlockData_08:
                                                             ;      |        |      ;
           CODE_07857A:
                        STX.B $0D                            ;07857A|860D    |00000D;
-                       JSR.W markSpawnerSlot                ;07857C|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;07857C|2063F4  |07F463;
                        LDA.B #$4E                           ;07857F|A94E    |      ;
                        STA.B $0E                            ;078581|850E    |00000E;
                        LDA.B #$10                           ;078583|A910    |      ;
@@ -896,7 +896,7 @@ breakableBlockData_08:
                        CMP.B #$30                           ;0785BD|C930    |      ;
                        BCS CODE_07859A                      ;0785BF|B0D9    |07859A;
                        LDX.B $0D                            ;0785C1|A60D    |00000D;
-                       JSR.W markSpawnerSlot                ;0785C3|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;0785C3|2063F4  |07F463;
                        LDA.B #$19                           ;0785C6|A919    |      ;
                        STA.B $0E                            ;0785C8|850E    |00000E;
                        LDA.B #$0D                           ;0785CA|A90D    |      ;
@@ -921,7 +921,7 @@ breakableBlockData_08:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_0785EA:
-                       JSR.W markSpawnerSlot                ;0785EA|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;0785EA|2063F4  |07F463;
                        LDA.B #$3C                           ;0785ED|A93C    |      ;
                        STA.W r7_entity_counter,X            ;0785EF|9D4C05  |07054C;
                        LDA.B #$14                           ;0785F2|A914    |      ;
@@ -996,7 +996,7 @@ breakableBlockData_08:
           CODE_07866A:
                        ORA.B #$80                           ;07866A|0980    |      ;
                        STA.W r7_spawner_Slot_State,Y        ;07866C|996C01  |07016C;
-                       JSR.W CODE_07F470                    ;07866F|2070F4  |07F470;
+                       JSR.W beforeBossClear                ;07866F|2070F4  |07F470;
                        JSR.W CODE_07F4A9                    ;078672|20A9F4  |07F4A9;
                        LDX.B #$07                           ;078675|A207    |      ;
                                                             ;      |        |      ;
@@ -1043,7 +1043,7 @@ mainGameState0b_transition:
                        LDA.B #$80                           ;0786B8|A980    |      ;
                        STA.B r_scroll_Speed_Subpixel        ;0786BA|853D    |00003D;
                        LDA.B #$00                           ;0786BC|A900    |      ;
-                       STA.B r_player_setStairState         ;0786BE|853E    |00003E;
+                       STA.B r_scroll_Speed                 ;0786BE|853E    |00003E;
                        LDA.B #$01                           ;0786C0|A901    |      ;
                        STA.W r7_input_HeldCopy              ;0786C2|8D8405  |070584;
                        JSR.W CODE_079C6F                    ;0786C5|206F9C  |079C6F;
@@ -1515,7 +1515,7 @@ breakableBlockData_0f:
                                                             ;      |        |      ;
           CODE_0789E7:
                        STX.B $0D                            ;0789E7|860D    |00000D;
-                       JSR.W markSpawnerSlot                ;0789E9|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;0789E9|2063F4  |07F463;
                        LDA.B #$4E                           ;0789EC|A94E    |      ;
                        STA.B $0E                            ;0789EE|850E    |00000E;
                        LDA.B #$10                           ;0789F0|A910    |      ;
@@ -1538,7 +1538,7 @@ breakableBlockData_0f:
                                                             ;      |        |      ;
           CODE_078A08:
                        STX.B $0D                            ;078A08|860D    |00000D;
-                       JSR.W markSpawnerSlot                ;078A0A|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;078A0A|2063F4  |07F463;
                        LDA.B #$15                           ;078A0D|A915    |      ;
                        STA.B $0E                            ;078A0F|850E    |00000E;
                        LDA.B #$0A                           ;078A11|A90A    |      ;
@@ -1560,7 +1560,7 @@ breakableBlockData_0f:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_078A29:
-                       JSR.W markSpawnerSlot                ;078A29|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;078A29|2063F4  |07F463;
                        LDA.B #$3C                           ;078A2C|A93C    |      ;
                        STA.W r7_entity_counter,X            ;078A2E|9D4C05  |07054C;
                        LDA.B #$2C                           ;078A31|A92C    |      ;
@@ -1675,7 +1675,7 @@ breakableBlockData_10:
                                                             ;      |        |      ;
           CODE_078B00:
                        STX.B $0D                            ;078B00|860D    |00000D;
-                       JSR.W markSpawnerSlot                ;078B02|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;078B02|2063F4  |07F463;
                        LDA.B #$3C                           ;078B05|A93C    |      ;
                        STA.W r7_entity_counter,X            ;078B07|9D4C05  |07054C;
                        LDA.B #$4A                           ;078B0A|A94A    |      ;
@@ -1700,7 +1700,7 @@ breakableBlockData_10:
                                                             ;      |        |      ;
           CODE_078B26:
                        STX.B $0D                            ;078B26|860D    |00000D;
-                       JSR.W markSpawnerSlot                ;078B28|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;078B28|2063F4  |07F463;
                        LDA.B #$4E                           ;078B2B|A94E    |      ;
                        STA.B $0E                            ;078B2D|850E    |00000E;
                        LDA.B #$10                           ;078B2F|A910    |      ;
@@ -2119,8 +2119,6 @@ mainGameState0f_endingScene:
           CODE_078DC2:
                        LDA.B #$0A                           ;078DC2|A90A    |      ;
                        STA.B r_game_sub_state               ;078DC4|8519    |000019;
-                                                            ;      |        |      ;
-          CODE_078DC6:
                        LDA.B #$90                           ;078DC6|A990    |      ;
                        STA.B r_general_timer                ;078DC8|851D    |00001D;
                                                             ;      |        |      ;
@@ -2328,28 +2326,28 @@ mainGameState0f_endingScene:
                                                             ;      |        |      ;
           CODE_079359:
                        LDX.W $0159                          ;079359|AE5901  |070159;
-                       LDA.W DATA8_079BF1,X                 ;07935C|BDF19B  |079BF1;
+                       LDA.W simonsAnimFrameIndex,X         ;07935C|BDF19B  |079BF1;
                        TAX                                  ;07935F|AA      |      ;
-                       JMP.W CODE_079BE3                    ;079360|4CE39B  |079BE3;
+                       JMP.W storeSimonAnimIndex            ;079360|4CE39B  |079BE3;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_079363:
                        JSR.W CODE_0799F0                    ;079363|20F099  |0799F0;
                        LDA.W r7_entity_State                ;079366|AD6C04  |07046C;
                        JSR.W gJumpTableFromStack            ;079369|206DCA  |07CA6D;
-                       dw CODE_079380                       ;07936C|        |079380;
+                       dw simonState_00                     ;07936C|        |079380;
                                                             ;      |        |      ;
-                       dw CODE_079482                       ;07936E|        |079482;
-                       dw CODE_079511                       ;079370|        |079511;
-                       dw CODE_079539                       ;079372|        |079539;
-                       dw CODE_079586                       ;079374|        |079586;
-                       dw CODE_07965B                       ;079376|        |07965B;
-                       dw CODE_079720                       ;079378|        |079720;
-                       dw CODE_079757                       ;07937A|        |079757;
-                       dw CODE_0797AA                       ;07937C|        |0797AA;
-                       dw CODE_0797F2                       ;07937E|        |0797F2;
+                       dw simonState_01_initJump            ;07936E|        |079482;
+                       dw simonState_02_whip                ;079370|        |079511;
+                       dw simonState_03_duck                ;079372|        |079539;
+                       dw simonState_04_stair               ;079374|        |079586;
+                       dw simonState_05_hurt                ;079376|        |07965B;
+                       dw simonState_06                     ;079378|        |079720;
+                       dw simonState_07_fall                ;07937A|        |079757;
+                       dw simonState_08_dead                ;07937C|        |0797AA;
+                       dw simonState_09_fall                ;07937E|        |0797F2;
                                                             ;      |        |      ;
-          CODE_079380:
+        simonState_00:
                        LDA.B r_player_HP_HUD_TRUE           ;079380|A545    |000045;
                        BEQ CODE_079386                      ;079382|F002    |079386;
                        BPL CODE_079389                      ;079384|1003    |079389;
@@ -2434,9 +2432,9 @@ mainGameState0f_endingScene:
                        BEQ CODE_07943C                      ;079405|F035    |07943C;
                        JSR.W CODE_079998                    ;079407|209899  |079998;
                        BCC CODE_079458                      ;07940A|904C    |079458;
-                       LDA.W DATA8_079B8D                   ;07940C|AD8D9B  |079B8D;
+                       LDA.W simonJumpSpdLo                 ;07940C|AD8D9B  |079B8D;
                        STA.W r7_X_screen_AddressLo          ;07940F|8DDC04  |0704DC;
-                       LDA.W DATA8_079B8E                   ;079412|AD8E9B  |079B8E;
+                       LDA.W simonJumpSpdHi                 ;079412|AD8E9B  |079B8E;
                        STA.W r7_X_screen_AddressHiher       ;079415|8DF804  |0704F8;
                        LDA.B #$00                           ;079418|A900    |      ;
                        STA.W r7_verticalDirection           ;07941A|8D1405  |070514;
@@ -2503,11 +2501,11 @@ mainGameState0f_endingScene:
                                                             ;      |        |      ;
           CODE_07947D:
                        STA.B r_scroll_Speed_Subpixel        ;07947D|853D    |00003D;
-                       STY.B r_player_setStairState         ;07947F|843E    |00003E;
+                       STY.B r_scroll_Speed                 ;07947F|843E    |00003E;
                        RTS                                  ;079481|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_079482:
+simonState_01_initJump:
                        LDA.B r_player_yPosLow               ;079482|A53F    |00003F;
                        SEC                                  ;079484|38      |      ;
                        SBC.B #$E0                           ;079485|E9E0    |      ;
@@ -2592,7 +2590,7 @@ mainGameState0f_endingScene:
                        STA.W r7_entity_ID                   ;07950C|8D3404  |070434;
                        BEQ CODE_0794C5                      ;07950F|F0B4    |0794C5;
                                                             ;      |        |      ;
-          CODE_079511:
+   simonState_02_whip:
                        JSR.W CODE_079A1D                    ;079511|201D9A  |079A1D;
                        BCC CODE_079517                      ;079514|9001    |079517;
                        RTS                                  ;079516|60      |      ;
@@ -2618,7 +2616,7 @@ mainGameState0f_endingScene:
                        RTS                                  ;079538|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_079539:
+   simonState_03_duck:
                        JSR.W CODE_079A1D                    ;079539|201D9A  |079A1D;
                        BCC CODE_07953F                      ;07953C|9001    |07953F;
                        RTS                                  ;07953E|60      |      ;
@@ -2671,7 +2669,7 @@ mainGameState0f_endingScene:
                        JMP.W CODE_079BBA                    ;079583|4CBA9B  |079BBA;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_079586:
+  simonState_04_stair:
                        LDA.B r_player_HP_HUD_TRUE           ;079586|A545    |000045;
                        BEQ CODE_07958F                      ;079588|F005    |07958F;
                        JSR.W CODE_079A1D                    ;07958A|201D9A  |079A1D;
@@ -2725,8 +2723,8 @@ mainGameState0f_endingScene:
           CODE_0795E1:
                        JSR.W CODE_07962D                    ;0795E1|202D96  |07962D;
                                                             ;      |        |      ;
-          CODE_0795E4:
-                       JSR.W CODE_079FF3                    ;0795E4|20F39F  |079FF3;
+   stairCheckAndTrans:
+                       JSR.W stairTransitCheck              ;0795E4|20F39F  |079FF3;
                        BCC CODE_0795F6                      ;0795E7|900D    |0795F6;
                        LDA.B #$05                           ;0795E9|A905    |      ;
                        STA.B r_game_state                   ;0795EB|8518    |000018;
@@ -2786,23 +2784,23 @@ mainGameState0f_endingScene:
                        TXA                                  ;07963B|8A      |      ;
                        LDX.W r7_verticalDirection           ;07963C|AE1405  |070514;
                        CLC                                  ;07963F|18      |      ;
-                       ADC.W DATA8_079653,X                 ;079640|7D5396  |079653;
+                       ADC.W simonStairSpriteIndex,X        ;079640|7D5396  |079653;
                        TAY                                  ;079643|A8      |      ;
-                       LDA.W DATA8_079657,X                 ;079644|BD5796  |079657;
+                       LDA.W simonMirrorTimer,X             ;079644|BD5796  |079657;
                        STA.W r7_entity_spriteMirror         ;079647|8D5004  |070450;
                        LDA.W r7_entity_counter              ;07964A|AD4C05  |07054C;
-                       BNE CODE_0795E4                      ;07964D|D095    |0795E4;
+                       BNE stairCheckAndTrans               ;07964D|D095    |0795E4;
                        TYA                                  ;07964F|98      |      ;
                        JMP.W CODE_079BBA                    ;079650|4CBA9B  |079BBA;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-         DATA8_079653:
+simonStairSpriteIndex:
                        db $0D,$0F,$0F,$0D                   ;079653|        |      ;
                                                             ;      |        |      ;
-         DATA8_079657:
+     simonMirrorTimer:
                        db $00,$01,$00,$01                   ;079657|        |      ;
                                                             ;      |        |      ;
-          CODE_07965B:
+   simonState_05_hurt:
                        LDA.W r7_entity_counter              ;07965B|AD4C05  |07054C;
                        BMI CODE_07966D                      ;07965E|300D    |07966D;
                        DEC.W r7_entity_counter              ;079660|CE4C05  |07054C;
@@ -2878,9 +2876,9 @@ mainGameState0f_endingScene:
                        JSR.W CODE_079AF8                    ;0796D9|20F89A  |079AF8;
                        LDA.B #$04                           ;0796DC|A904    |      ;
                        STA.W r7_entity_counter              ;0796DE|8D4C05  |07054C;
-                       LDA.W DATA8_079BA5                   ;0796E1|ADA59B  |079BA5;
+                       LDA.W simonHurtSpdLo                 ;0796E1|ADA59B  |079BA5;
                        STA.W r7_X_screen_AddressLo          ;0796E4|8DDC04  |0704DC;
-                       LDA.W DATA8_079BA6                   ;0796E7|ADA69B  |079BA6;
+                       LDA.W simonJumpSpdPoHi               ;0796E7|ADA69B  |079BA6;
                        STA.W r7_X_screen_AddressHiher       ;0796EA|8DF804  |0704F8;
                        LDA.B #$00                           ;0796ED|A900    |      ;
                        STA.W r7_verticalDirection           ;0796EF|8D1405  |070514;
@@ -2913,7 +2911,7 @@ mainGameState0f_endingScene:
                        JMP.W CODE_079605                    ;07971D|4C0596  |079605;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_079720:
+        simonState_06:
                        JSR.W CODE_079A1D                    ;079720|201D9A  |079A1D;
                        BCC CODE_079726                      ;079723|9001    |079726;
                        RTS                                  ;079725|60      |      ;
@@ -2945,7 +2943,7 @@ mainGameState0f_endingScene:
                        JMP.W CODE_079458                    ;079754|4C5894  |079458;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_079757:
+   simonState_07_fall:
                        INC.W r7_fallDistance                ;079757|EE4301  |070143;
                        LDA.B #$00                           ;07975A|A900    |      ;
                        JSR.W CODE_079BBA                    ;07975C|20BA9B  |079BBA;
@@ -2995,7 +2993,7 @@ mainGameState0f_endingScene:
                        JMP.W CODE_07A1E5                    ;0797A7|4CE5A1  |07A1E5;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0797AA:
+   simonState_08_dead:
                        JSR.W CODE_079A62                    ;0797AA|20629A  |079A62;
                        STA.W r7_entity_Y_Pos                ;0797AD|8D5403  |070354;
                        LDX.B #$00                           ;0797B0|A200    |      ;
@@ -3046,7 +3044,7 @@ mainGameState0f_endingScene:
                        RTS                                  ;0797F1|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0797F2:
+   simonState_09_fall:
                        JSR.W CODE_079A1D                    ;0797F2|201D9A  |079A1D;
                        BCC CODE_0797F8                      ;0797F5|9001    |0797F8;
                        RTS                                  ;0797F7|60      |      ;
@@ -3058,7 +3056,7 @@ mainGameState0f_endingScene:
                        STA.B r_inputHeld_1                  ;0797FC|85F7    |0000F7;
                        DEC.W r7_entity_counter              ;0797FE|CE4C05  |07054C;
                        BMI CODE_079806                      ;079801|3003    |079806;
-                       JMP.W CODE_079539                    ;079803|4C3995  |079539;
+                       JMP.W simonState_03_duck             ;079803|4C3995  |079539;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_079806:
@@ -3110,7 +3108,7 @@ mainGameState0f_endingScene:
                        LDA.B r_scroll_Speed_Subpixel        ;07984F|A53D    |00003D;
                        CLC                                  ;079851|18      |      ;
                        ADC.B r_cam_XPos_SubPos              ;079852|652D    |00002D;
-                       LDA.B r_player_setStairState         ;079854|A53E    |00003E;
+                       LDA.B r_scroll_Speed                 ;079854|A53E    |00003E;
                        ADC.B r_cam_XPos_SubPosLo            ;079856|652E    |00002E;
                        STA.B r_temp_processing_ID           ;079858|854B    |00004B;
                        LDA.B #$00                           ;07985A|A900    |      ;
@@ -3128,7 +3126,7 @@ mainGameState0f_endingScene:
                                                             ;      |        |      ;
           CODE_079870:
                        LDY.B r_cam_XPos_SubPosHi            ;079870|A42F    |00002F;
-                       LDA.B r_player_setStairState         ;079872|A53E    |00003E;
+                       LDA.B r_scroll_Speed                 ;079872|A53E    |00003E;
                        STA.B r_temp_processing_ID           ;079874|854B    |00004B;
                        LDA.B r_cam_XPos_SubPos              ;079876|A52D    |00002D;
                        SEC                                  ;079878|38      |      ;
@@ -3192,7 +3190,7 @@ mainGameState0f_endingScene:
                        ADC.B r_scroll_Speed_Subpixel        ;0798C3|653D    |00003D;
                        TAY                                  ;0798C5|A8      |      ;
                        LDA.W r7_entity_X_Pos                ;0798C6|AD8C03  |07038C;
-                       ADC.B r_player_setStairState         ;0798C9|653E    |00003E;
+                       ADC.B r_scroll_Speed                 ;0798C9|653E    |00003E;
                        CMP.B #$F0                           ;0798CB|C9F0    |      ;
                        BEQ CODE_07990A                      ;0798CD|F03B    |07990A;
                        STA.W r7_entity_X_Pos                ;0798CF|8D8C03  |07038C;
@@ -3212,7 +3210,7 @@ mainGameState0f_endingScene:
           CODE_0798E5:
                        TXA                                  ;0798E5|8A      |      ;
                        SEC                                  ;0798E6|38      |      ;
-                       SBC.B r_player_setStairState         ;0798E7|E53E    |00003E;
+                       SBC.B r_scroll_Speed                 ;0798E7|E53E    |00003E;
                        CMP.B #$08                           ;0798E9|C908    |      ;
                        BEQ CODE_07990A                      ;0798EB|F01D    |07990A;
                        STA.W r7_entity_X_Pos                ;0798ED|8D8C03  |07038C;
@@ -3261,7 +3259,7 @@ calculateSimonSpawnPos:
                        CLC                                  ;079925|18      |      ;
                        ADC.B r_cam_XPos_SubPos              ;079926|652D    |00002D;
                        STA.B r_cam_XPos_SubPos              ;079928|852D    |00002D;
-                       LDA.B r_player_setStairState         ;07992A|A53E    |00003E;
+                       LDA.B r_scroll_Speed                 ;07992A|A53E    |00003E;
                        ADC.B r_cam_XPos_SubPosLo            ;07992C|652E    |00002E;
                        STA.B r_cam_XPos_SubPosLo            ;07992E|852E    |00002E;
                        STA.B $01                            ;079930|8501    |000001;
@@ -3283,7 +3281,7 @@ calculateSimonSpawnPos:
           CODE_079944:
                        LDA.B r_cam_XPos_SubPosLo            ;079944|A52E    |00002E;
                        STA.B $00                            ;079946|8500    |000000;
-                       LDA.B r_player_setStairState         ;079948|A53E    |00003E;
+                       LDA.B r_scroll_Speed                 ;079948|A53E    |00003E;
                        STA.B r_temp_processing_ID           ;07994A|854B    |00004B;
                        LDA.B r_cam_XPos_SubPos              ;07994C|A52D    |00002D;
                        SEC                                  ;07994E|38      |      ;
@@ -3668,33 +3666,40 @@ calculateSimonSpawnPos:
                        CLC                                  ;079B89|18      |      ;
                        RTS                                  ;079B8A|60      |      ;
                                                             ;      |        |      ;
+                                                            ;      |        |      ;
+             jumpData:
                        db $38,$60                           ;079B8B|        |      ;
                                                             ;      |        |      ;
-         DATA8_079B8D:
-                       db $90                               ;079B8D|        |      ;
+       simonJumpSpdLo:
+                       dw simonJumpSpeedTable               ;079B8D|        |079B90;
+                       db $80                               ;079B8F|        |      ;
                                                             ;      |        |      ;
-         DATA8_079B8E:
-                       db $9B,$80,$FB,$FB,$FD,$FD,$FD,$FD   ;079B8E|        |      ;
-                       db $FD,$FE,$FE,$FE,$FF,$FF,$FF,$FF   ;079B96|        |      ;
-                       db $00,$FF,$00,$00,$00,$00,$81       ;079B9E|        |      ;
+  simonJumpSpeedTable:
+                       db $FB,$FB,$FD,$FD,$FD,$FD,$FD,$FE   ;079B90|        |      ;
+                       db $FE,$FE,$FF,$FF,$FF,$FF,$00,$FF   ;079B98|        |      ;
+                       db $00,$00,$00,$00                   ;079BA0|        |      ;
                                                             ;      |        |      ;
-         DATA8_079BA5:
-                       db $A8                               ;079BA5|        |      ;
+             hurtData:
+                       db $81                               ;079BA4|        |      ;
                                                             ;      |        |      ;
-         DATA8_079BA6:
-                       db $9B,$80,$FD,$FD,$FE,$FF,$FF,$FF   ;079BA6|        |      ;
-                       db $FF,$FF,$00,$FF,$00,$00,$00,$00   ;079BAE|        |      ;
-                       db $00,$00,$00,$81                   ;079BB6|        |      ;
+       simonHurtSpdLo:
+                       dw simonHurtFallSpeedTabel           ;079BA5|        |079BA8;
+                       db $80                               ;079BA7|        |      ;
+                                                            ;      |        |      ;
+simonHurtFallSpeedTabel:
+                       db $FD,$FD,$FE,$FF,$FF,$FF,$FF,$FF   ;079BA8|        |      ;
+                       db $00,$FF,$00,$00,$00,$00,$00,$00   ;079BB0|        |      ;
+                       db $00,$81                           ;079BB8|        |      ;
                                                             ;      |        |      ;
           CODE_079BBA:
                        STA.W $0159                          ;079BBA|8D5901  |070159;
                        TAX                                  ;079BBD|AA      |      ;
-                       LDA.W DATA8_079BF1,X                 ;079BBE|BDF19B  |079BF1;
+                       LDA.W simonsAnimFrameIndex,X         ;079BBE|BDF19B  |079BF1;
                        TAX                                  ;079BC1|AA      |      ;
                        LDA.B r_player_iFrameTimer           ;079BC2|A55B    |00005B;
                        BNE CODE_079BDB                      ;079BC4|D015    |079BDB;
                        LDA.B r_player_potionTimer           ;079BC6|A57D    |00007D;
-                       BEQ CODE_079BE3                      ;079BC8|F019    |079BE3;
+                       BEQ storeSimonAnimIndex              ;079BC8|F019    |079BE3;
                        DEC.B r_player_potionTimer           ;079BCA|C67D    |00007D;
                        LDA.B r_player_potionTimer           ;079BCC|A57D    |00007D;
                        CMP.B #$80                           ;079BCE|C980    |      ;
@@ -3707,10 +3712,10 @@ calculateSimonSpawnPos:
           CODE_079BDB:
                        LDA.B r_frame_Counter                ;079BDB|A51A    |00001A;
                        AND.B #$01                           ;079BDD|2901    |      ;
-                       BNE CODE_079BE3                      ;079BDF|D002    |079BE3;
+                       BNE storeSimonAnimIndex              ;079BDF|D002    |079BE3;
                        LDX.B #$00                           ;079BE1|A200    |      ;
                                                             ;      |        |      ;
-          CODE_079BE3:
+  storeSimonAnimIndex:
                        STX.W r7_entity_spriteID             ;079BE3|8E1C03  |07031C;
                        LDA.B #$00                           ;079BE6|A900    |      ;
                        STA.W r7_entity_PalOff               ;079BE8|8D3803  |070338;
@@ -3719,7 +3724,7 @@ calculateSimonSpawnPos:
                        RTS                                  ;079BF0|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-         DATA8_079BF1:
+ simonsAnimFrameIndex:
                        db $01,$02,$03,$04,$05,$06,$07,$08   ;079BF1|        |      ;
                        db $08,$09,$0A,$0B,$0B,$02,$0E,$02   ;079BF9|        |      ;
                        db $0F,$19,$97,$A4,$A5,$A6,$AA,$AB   ;079C01|        |      ;
@@ -4086,7 +4091,7 @@ calculateSimonSpawnPos:
                        ADC.B r_scroll_Speed_Subpixel        ;079E30|653D    |00003D;
                        STA.W r7_entity_Y_PosSub             ;079E32|8D7003  |070370;
                        LDA.B r_player_yPosLow               ;079E35|A53F    |00003F;
-                       ADC.B r_player_setStairState         ;079E37|653E    |00003E;
+                       ADC.B r_scroll_Speed                 ;079E37|653E    |00003E;
                        STA.B r_player_yPosLow               ;079E39|853F    |00003F;
                        RTS                                  ;079E3B|60      |      ;
                                                             ;      |        |      ;
@@ -4097,7 +4102,7 @@ calculateSimonSpawnPos:
                        SBC.B r_scroll_Speed_Subpixel        ;079E40|E53D    |00003D;
                        STA.W r7_entity_Y_PosSub             ;079E42|8D7003  |070370;
                        LDA.B r_player_yPosLow               ;079E45|A53F    |00003F;
-                       SBC.B r_player_setStairState         ;079E47|E53E    |00003E;
+                       SBC.B r_scroll_Speed                 ;079E47|E53E    |00003E;
                        STA.B r_player_yPosLow               ;079E49|853F    |00003F;
                        RTS                                  ;079E4B|60      |      ;
                                                             ;      |        |      ;
@@ -4108,7 +4113,7 @@ calculateSimonSpawnPos:
                        ADC.B r_scroll_Speed_Subpixel        ;079E50|653D    |00003D;
                        STA.W r7_entity_X_PosSub             ;079E52|8DA803  |0703A8;
                        LDA.W r7_entity_X_Pos                ;079E55|AD8C03  |07038C;
-                       ADC.B r_player_setStairState         ;079E58|653E    |00003E;
+                       ADC.B r_scroll_Speed                 ;079E58|653E    |00003E;
                        STA.W r7_entity_X_Pos                ;079E5A|8D8C03  |07038C;
                        RTS                                  ;079E5D|60      |      ;
                                                             ;      |        |      ;
@@ -4119,7 +4124,7 @@ updateXspeed_minus_b6:
                        SBC.B r_scroll_Speed_Subpixel        ;079E62|E53D    |00003D;
                        STA.W r7_entity_X_PosSub             ;079E64|8DA803  |0703A8;
                        LDA.W r7_entity_X_Pos                ;079E67|AD8C03  |07038C;
-                       SBC.B r_player_setStairState         ;079E6A|E53E    |00003E;
+                       SBC.B r_scroll_Speed                 ;079E6A|E53E    |00003E;
                        STA.W r7_entity_X_Pos                ;079E6C|8D8C03  |07038C;
                        RTS                                  ;079E6F|60      |      ;
                                                             ;      |        |      ;
@@ -4364,7 +4369,7 @@ updateXspeed_minus_b6:
                        RTS                                  ;079FF2|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_079FF3:
+    stairTransitCheck:
                        LDA.B r_player_yPosLow               ;079FF3|A53F    |00003F;
                        CMP.B #$D0                           ;079FF5|C9D0    |      ;
                        BEQ CODE_07A006                      ;079FF7|F00D    |07A006;
@@ -6427,7 +6432,7 @@ storeTile2updateTable:
                        LDA.W $0142                          ;07ACC4|AD4201  |070142;
                        AND.B #$FB                           ;07ACC7|29FB    |      ;
                        STA.W $0142                          ;07ACC9|8D4201  |070142;
-                       JMP.W CODE_07AD4F                    ;07ACCC|4C4FAD  |07AD4F;
+                       JMP.W simonWalkSpeed                 ;07ACCC|4C4FAD  |07AD4F;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_07ACCF:
@@ -6464,7 +6469,7 @@ storeTile2updateTable:
                        LDA.B #$01                           ;07AD09|A901    |      ;
                        STA.W r7_entity_Y_PosSub,X           ;07AD0B|9D7003  |070370;
                        LDA.B #$00                           ;07AD0E|A900    |      ;
-                       STA.B r_player_setStairState         ;07AD10|853E    |00003E;
+                       STA.B r_scroll_Speed                 ;07AD10|853E    |00003E;
                        LDA.B #$01                           ;07AD12|A901    |      ;
                        STA.B $10                            ;07AD14|8510    |000010;
                        LDX.B r_temp_data02                  ;07AD16|A64E    |00004E;
@@ -6496,25 +6501,25 @@ storeTile2updateTable:
                                                             ;      |        |      ;
           CODE_07AD46:
                        ASL.B r_scroll_Speed_Subpixel        ;07AD46|063D    |00003D;
-                       ROL.B r_player_setStairState         ;07AD48|263E    |00003E;
+                       ROL.B r_scroll_Speed                 ;07AD48|263E    |00003E;
                        DEY                                  ;07AD4A|88      |      ;
                        BPL CODE_07AD46                      ;07AD4B|10F9    |07AD46;
                        SEC                                  ;07AD4D|38      |      ;
                        RTS                                  ;07AD4E|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_07AD4F:
+       simonWalkSpeed:
                        LDA.B #$00                           ;07AD4F|A900    |      ;
                        STA.B r_scroll_Speed_Subpixel        ;07AD51|853D    |00003D;
                        LDA.B #$01                           ;07AD53|A901    |      ;
-                       STA.B r_player_setStairState         ;07AD55|853E    |00003E;
+                       STA.B r_scroll_Speed                 ;07AD55|853E    |00003E;
                        LDA.W r7_entity_State                ;07AD57|AD6C04  |07046C;
                        CMP.B #$04                           ;07AD5A|C904    |      ;
                        BNE CODE_07AD66                      ;07AD5C|D008    |07AD66;
                        LDA.B #$80                           ;07AD5E|A980    |      ;
                        STA.B r_scroll_Speed_Subpixel        ;07AD60|853D    |00003D;
                        LDA.B #$00                           ;07AD62|A900    |      ;
-                       STA.B r_player_setStairState         ;07AD64|853E    |00003E;
+                       STA.B r_scroll_Speed                 ;07AD64|853E    |00003E;
                                                             ;      |        |      ;
           CODE_07AD66:
                        CLC                                  ;07AD66|18      |      ;
@@ -6522,7 +6527,7 @@ storeTile2updateTable:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_07AD68:
-                       JSR.W CODE_07AD4F                    ;07AD68|204FAD  |07AD4F;
+                       JSR.W simonWalkSpeed                 ;07AD68|204FAD  |07AD4F;
                        LDA.W r7_input_HeldCopy              ;07AD6B|AD8405  |070584;
                        AND.B #$03                           ;07AD6E|2903    |      ;
                        STA.B $10                            ;07AD70|8510    |000010;
@@ -7605,7 +7610,7 @@ titlescreenBatPosData:
                        LDY.B #$06                           ;07C09D|A006    |      ;
                        STY.B r_bank_prev                    ;07C09F|8427    |000027;
                        JSR.W CODE_07C8CD                    ;07C0A1|20CDC8  |07C8CD;
-                       JSR.W CODE_07C1E4                    ;07C0A4|20E4C1  |07C1E4;
+                       JSR.W mainGameLoop                   ;07C0A4|20E4C1  |07C1E4;
                        LDY.B #$00                           ;07C0A7|A000    |      ;
                        JSR.W bankSwap_backupYto27           ;07C0A9|20D6C1  |07C1D6;
                        db $20                               ;07C0AC|        |      ; FIXME
@@ -7840,7 +7845,7 @@ bankSwap_restoreFrom24:
                        RTS                                  ;07C1E3|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_07C1E4:
+         mainGameLoop:
                        INC.B r_frame_Counter                ;07C1E4|E61A    |00001A;
                        LDA.B r_game_state                   ;07C1E6|A518    |000018;
                        CMP.B #$03                           ;07C1E8|C903    |      ;
@@ -8336,7 +8341,7 @@ mainGameState08_transition:
                        LDA.B #$50                           ;07C4ED|A950    |      ;
                        STA.B r_scroll_Speed_Subpixel        ;07C4EF|853D    |00003D;
                        LDA.B #$00                           ;07C4F1|A900    |      ;
-                       STA.B r_player_setStairState         ;07C4F3|853E    |00003E;
+                       STA.B r_scroll_Speed                 ;07C4F3|853E    |00003E;
                        LDX.B r_game_sub_state               ;07C4F5|A619    |000019;
                        BNE CODE_07C55D                      ;07C4F7|D064    |07C55D;
                        LDX.B #$B8                           ;07C4F9|A2B8    |      ;
@@ -8696,7 +8701,7 @@ mainGameState08_transition:
                        LDA.B #$80                           ;07C716|A980    |      ;
                        STA.B r_scroll_Speed_Subpixel        ;07C718|853D    |00003D;
                        LDA.B #$01                           ;07C71A|A901    |      ;
-                       STA.B r_player_setStairState         ;07C71C|853E    |00003E;
+                       STA.B r_scroll_Speed                 ;07C71C|853E    |00003E;
                        LDA.B r_cam_XPos_SubPosHi            ;07C71E|A52F    |00002F;
                        BEQ CODE_07C730                      ;07C720|F00E    |07C730;
                        LDX.B #$00                           ;07C722|A200    |      ;
@@ -9087,8 +9092,8 @@ refillHealthLoadCheckpoint:
                        STA.W r7_entity_State                ;07C9A2|8D6C04  |07046C;
                        STA.B r_scroll_Speed_Subpixel        ;07C9A5|853D    |00003D;
                        STA.B r_player_hurtTimer             ;07C9A7|8547    |000047;
-                       STA.B r_player_setStairState         ;07C9A9|853E    |00003E;
-                       INC.B r_player_setStairState         ;07C9AB|E63E    |00003E;
+                       STA.B r_scroll_Speed                 ;07C9A9|853E    |00003E;
+                       INC.B r_scroll_Speed                 ;07C9AB|E63E    |00003E;
                        LDA.B #$04                           ;07C9AD|A904    |      ;
                        STA.B r_scroll_State                 ;07C9AF|853C    |00003C;
                        LDX.B r_stage                        ;07C9B1|A628    |000028;
@@ -9870,7 +9875,7 @@ tileMapPointerTableLo:
                        JSR.W bankSwap_backupYto27           ;07CF16|20D6C1  |07C1D6;
                        JSR.W CODE_07E8F0                    ;07CF19|20F0E8  |07E8F0;
                        JSR.W bankSwap_restoreFrom24         ;07CF1C|20D4C1  |07C1D4;
-                       JSR.W CODE_07F376                    ;07CF1F|2076F3  |07F376;
+                       JSR.W spawnerMain_00                 ;07CF1F|2076F3  |07F376;
                        JSR.W CODE_07A4AA                    ;07CF22|20AAA4  |07A4AA;
                        JMP.W CODE_07A63A                    ;07CF25|4C3AA6  |07A63A;
                                                             ;      |        |      ;
@@ -10305,9 +10310,9 @@ eventTrackerWrite2Level:
                        LDA.B ($08),Y                        ;07D1CF|B108    |000008;
                        ASL A                                ;07D1D1|0A      |      ;
                        TAY                                  ;07D1D2|A8      |      ;
-                       LDA.W DATA8_07D6C6,Y                 ;07D1D3|B9C6D6  |07D6C6;
+                       LDA.W enemyPlacementLo,Y             ;07D1D3|B9C6D6  |07D6C6;
                        STA.B $0A                            ;07D1D6|850A    |00000A;
-                       LDA.W DATA8_07D6C7,Y                 ;07D1D8|B9C7D6  |07D6C7;
+                       LDA.W enemyPlacementHi,Y             ;07D1D8|B9C7D6  |07D6C7;
                        STA.B $0B                            ;07D1DB|850B    |00000B;
                        LDY.B #$00                           ;07D1DD|A000    |      ;
                        LDA.B ($0A),Y                        ;07D1DF|B10A    |00000A;
@@ -10345,18 +10350,18 @@ eventTrackerWrite2Level:
                        ASL A                                ;07D219|0A      |      ;
                        BCS CODE_07D22A                      ;07D21A|B00E    |07D22A;
                        TAY                                  ;07D21C|A8      |      ;
-                       LDA.W DATA8_07D6C6,Y                 ;07D21D|B9C6D6  |07D6C6;
+                       LDA.W enemyPlacementLo,Y             ;07D21D|B9C6D6  |07D6C6;
                        STA.B $0A                            ;07D220|850A    |00000A;
-                       LDA.W DATA8_07D6C7,Y                 ;07D222|B9C7D6  |07D6C7;
+                       LDA.W enemyPlacementHi,Y             ;07D222|B9C7D6  |07D6C7;
                        STA.B $0B                            ;07D225|850B    |00000B;
                        JMP.W CODE_07D235                    ;07D227|4C35D2  |07D235;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_07D22A:
                        TAY                                  ;07D22A|A8      |      ;
-                       LDA.W DATA8_07D7C6,Y                 ;07D22B|B9C6D7  |07D7C6;
+                       LDA.W candlePlacerLo,Y               ;07D22B|B9C6D7  |07D7C6;
                        STA.B $0A                            ;07D22E|850A    |00000A;
-                       LDA.W DATA8_07D7C7,Y                 ;07D230|B9C7D7  |07D7C7;
+                       LDA.W candlePlacerHi,Y               ;07D230|B9C7D7  |07D7C7;
                        STA.B $0B                            ;07D233|850B    |00000B;
                                                             ;      |        |      ;
           CODE_07D235:
@@ -10699,127 +10704,671 @@ entityTracker_lvl11_2:
                        db $00,$BD,$00,$00,$00,$00,$00,$00   ;07D6BA|        |      ;
                        db $00,$00,$00,$00                   ;07D6C2|        |      ;
                                                             ;      |        |      ;
-         DATA8_07D6C6:
-                       db $44                               ;07D6C6|        |      ;
+     enemyPlacementLo:
+                       dw enemyPlace00                      ;07D6C6|        |07D844;
+                       dw enemyPlace01                      ;07D6C8|        |07D845;
+                       dw enemyPlace02                      ;07D6CA|        |07D848;
+                       dw enemyPlace03                      ;07D6CC|        |07D84B;
+                       dw enemyPlace04                      ;07D6CE|        |07D84E;
+                       dw enemyPlace05                      ;07D6D0|        |07D851;
+                       dw enemyPlace06                      ;07D6D2|        |07D854;
+                       dw enemyPlace07                      ;07D6D4|        |07D857;
+                       dw enemyPlace08                      ;07D6D6|        |07D85A;
+                       dw enemyPlace09                      ;07D6D8|        |07D85D;
+                       dw enemyPlace0a                      ;07D6DA|        |07D860;
+                       dw enemyPlace0b                      ;07D6DC|        |07D863;
+                       dw enemyPlace0c                      ;07D6DE|        |07D866;
+                       dw enemyPlace0d                      ;07D6E0|        |07D869;
+                       dw enemyPlace0e                      ;07D6E2|        |07D86C;
+                       dw enemyPlace0e                      ;07D6E4|        |07D86C;
+                       dw enemyPlace10                      ;07D6E6|        |07D86F;
+                       dw enemyPlace11                      ;07D6E8|        |07D872;
+                       dw enemyPlace12                      ;07D6EA|        |07D875;
+                       dw enemyPlace13                      ;07D6EC|        |07D878;
+                       dw enemyPlace14                      ;07D6EE|        |07D87B;
+                       dw enemyPlace14                      ;07D6F0|        |07D87B;
+                       dw enemyPlace16                      ;07D6F2|        |07D87E;
+                       dw enemyPlace1e                      ;07D6F4|        |07D881;
+                       dw enemyPlace1e                      ;07D6F6|        |07D881;
+                       dw enemyPlace1e                      ;07D6F8|        |07D881;
+                       dw enemyPlace1f                      ;07D6FA|        |07D884;
+                       dw enemyPlace1f                      ;07D6FC|        |07D884;
+                       dw enemyPlace1f                      ;07D6FE|        |07D884;
+                       dw enemyPlace1f                      ;07D700|        |07D884;
+                       dw enemyPlace17                      ;07D702|        |07D887;
+                       dw enemyPlace18                      ;07D704|        |07D88A;
+                       dw enemyPlace18                      ;07D706|        |07D88A;
+                       dw enemyPlace18                      ;07D708|        |07D88A;
+                       dw enemyPlace22                      ;07D70A|        |07D88D;
+                       dw enemyPlace23                      ;07D70C|        |07D890;
+                       dw enemyPlace24                      ;07D70E|        |07D893;
+                       dw enemyPlace24                      ;07D710|        |07D893;
+                       dw enemyPlace26                      ;07D712|        |07D896;
+                       dw enemyPlace27                      ;07D714|        |07D899;
+                       dw enemyPlace28                      ;07D716|        |07D89C;
+                       dw enemyPlace29                      ;07D718|        |07D89F;
+                       dw enemyPlace2a                      ;07D71A|        |07D8A2;
+                       dw enemyPlace2a                      ;07D71C|        |07D8A2;
+                       dw enemyPlace2c                      ;07D71E|        |07D8A5;
+                       dw enemyPlace2d                      ;07D720|        |07D8A8;
+                       dw enemyPlace2e                      ;07D722|        |07D8AB;
+                       dw enemyPlace2f                      ;07D724|        |07D8AE;
+                       dw enemyPlace30                      ;07D726|        |07D8B1;
+                       dw enemyPlace31                      ;07D728|        |07D8B4;
+                       dw enemyPlace32                      ;07D72A|        |07D8B7;
+                       dw enemyPlace33                      ;07D72C|        |07D8BA;
+                       dw enemyPlace34                      ;07D72E|        |07D8BD;
+                       dw enemyPlace34                      ;07D730|        |07D8BD;
+                       dw enemyPlace35                      ;07D732|        |07D8C0;
+                       dw enemyPlace36                      ;07D734|        |07D8C3;
+                       dw enemyPlace37                      ;07D736|        |07D8C6;
+                       dw enemyPlace38                      ;07D738|        |07D8C9;
+                       dw enemyPlace39                      ;07D73A|        |07D8CC;
+                       dw enemyPlace3a                      ;07D73C|        |07D8CF;
+                       dw enemyPlace3c                      ;07D73E|        |07D8D2;
+                       dw enemyPlace3d                      ;07D740|        |07D8D5;
+                       dw enemyPlace3e                      ;07D742|        |07D8D8;
+                       dw enemyPlace3f                      ;07D744|        |07D8DB;
+                       dw enemyPlace40                      ;07D746|        |07D8DE;
+                       dw enemyPlace41                      ;07D748|        |07D8E1;
+                       dw enemyPlace42                      ;07D74A|        |07D8E4;
+                       dw enemyPlace43                      ;07D74C|        |07D8E7;
+                       dw enemyPlace44                      ;07D74E|        |07D8EA;
+                       dw enemyPlace45                      ;07D750|        |07D8ED;
+                       dw enemyPlace45                      ;07D752|        |07D8ED;
+                       dw enemyPlace45                      ;07D754|        |07D8ED;
+                       dw enemyPlace45                      ;07D756|        |07D8ED;
+                       dw enemyPlace45                      ;07D758|        |07D8ED;
+                       dw enemyPlace45                      ;07D75A|        |07D8ED;
+                       dw enemyPlace45                      ;07D75C|        |07D8ED;
+                       dw enemyPlace45                      ;07D75E|        |07D8ED;
+                       dw enemyPlace45                      ;07D760|        |07D8ED;
+                       dw enemyPlace45                      ;07D762|        |07D8ED;
+                       dw enemyPlace45                      ;07D764|        |07D8ED;
+                       dw enemyPlace45                      ;07D766|        |07D8ED;
+                       dw enemyPlace51                      ;07D768|        |07D8F2;
+                       dw enemyPlace52                      ;07D76A|        |07D8F5;
+                       dw enemyPlace53                      ;07D76C|        |07D8FA;
+                       dw enemyPlace54                      ;07D76E|        |07D8FF;
+                       dw enemyPlace55                      ;07D770|        |07D904;
+                       dw enemyPlace56                      ;07D772|        |07D908;
+                       dw enemyPlace57                      ;07D774|        |07D90A;
+                       dw enemyPlace58                      ;07D776|        |07D90C;
+                       dw enemyPlace59                      ;07D778|        |07D910;
+                       dw enemyPlace5a                      ;07D77A|        |07D914;
+                       dw enemyPlace5b                      ;07D77C|        |07D918;
+                       dw enemyPlace5c                      ;07D77E|        |07D91C;
+                       dw enemyPlace5d                      ;07D780|        |07D920;
+                       dw enemyPlace5e                      ;07D782|        |07D924;
+                       dw enemyPlace5f                      ;07D784|        |07D926;
+                       dw enemyPlace60                      ;07D786|        |07D92A;
+                       dw enemyPlace61                      ;07D788|        |07D92C;
+                       dw enemyPlace62                      ;07D78A|        |07D930;
+                       dw enemyPlace63                      ;07D78C|        |07D934;
+                       dw enemyPlace64                      ;07D78E|        |07D936;
+                       dw enemyPlace65                      ;07D790|        |07D938;
+                       dw enemyPlace66                      ;07D792|        |07D93C;
+                       dw enemyPlace67                      ;07D794|        |07D940;
+                       dw enemyPlace68                      ;07D796|        |07D942;
+                       dw enemyPlace69                      ;07D798|        |07D944;
+                       dw enemyPlace6a                      ;07D79A|        |07D948;
+                       dw enemyPlace6b                      ;07D79C|        |07D94C;
+                       dw enemyPlace6c                      ;07D79E|        |07D950;
+                       dw enemyPlace6d                      ;07D7A0|        |07D954;
+                       dw enemyPlace6e                      ;07D7A2|        |07D958;
+                       dw enemyPlace6f                      ;07D7A4|        |07D95C;
+                       dw enemyPlace70                      ;07D7A6|        |07D960;
+                       dw enemyPlace71                      ;07D7A8|        |07D964;
+                       dw enemyPlace72                      ;07D7AA|        |07D966;
+                       dw enemyPlace73                      ;07D7AC|        |07D968;
+                       dw enemyPlace74                      ;07D7AE|        |07D96C;
+                       dw enemyPlace75                      ;07D7B0|        |07D96E;
+                       dw enemyPlace76                      ;07D7B2|        |07D972;
+                       dw enemyPlace77                      ;07D7B4|        |07D974;
+                       dw enemyPlace78                      ;07D7B6|        |07D978;
+                       dw enemyPlace79                      ;07D7B8|        |07D97C;
+                       dw enemyPlace7a                      ;07D7BA|        |07D980;
+                       dw enemyPlace7b                      ;07D7BC|        |07D984;
+                       dw enemyPlace7b                      ;07D7BE|        |07D984;
+                       dw enemyPlace7b                      ;07D7C0|        |07D984;
+                       dw enemyPlace7b                      ;07D7C2|        |07D984;
+                       dw enemyPlace7b                      ;07D7C4|        |07D984;
                                                             ;      |        |      ;
-         DATA8_07D6C7:
-                       db $D8,$45,$D8,$48,$D8,$4B,$D8,$4E   ;07D6C7|        |      ;
-                       db $D8,$51,$D8,$54,$D8,$57,$D8,$5A   ;07D6CF|        |      ;
-                       db $D8,$5D,$D8,$60,$D8,$63,$D8,$66   ;07D6D7|        |      ;
-                       db $D8,$69,$D8,$6C,$D8,$6C,$D8,$6F   ;07D6DF|        |      ;
-                       db $D8,$72,$D8,$75,$D8,$78,$D8,$7B   ;07D6E7|        |      ;
-                       db $D8,$7B,$D8,$7E,$D8,$81,$D8,$81   ;07D6EF|        |      ;
-                       db $D8,$81,$D8,$84,$D8,$84,$D8,$84   ;07D6F7|        |      ;
-                       db $D8,$84,$D8,$87,$D8,$8A,$D8,$8A   ;07D6FF|        |      ;
-                       db $D8,$8A,$D8,$8D,$D8,$90,$D8,$93   ;07D707|        |      ;
-                       db $D8,$93,$D8,$96,$D8,$99,$D8,$9C   ;07D70F|        |      ;
-                       db $D8,$9F,$D8,$A2,$D8,$A2,$D8,$A5   ;07D717|        |      ;
-                       db $D8,$A8,$D8,$AB,$D8,$AE,$D8,$B1   ;07D71F|        |      ;
-                       db $D8,$B4,$D8,$B7,$D8,$BA,$D8,$BD   ;07D727|        |      ;
-                       db $D8,$BD,$D8,$C0,$D8,$C3,$D8,$C6   ;07D72F|        |      ;
-                       db $D8,$C9,$D8,$CC,$D8,$CF,$D8,$D2   ;07D737|        |      ;
-                       db $D8,$D5,$D8,$D8,$D8,$DB,$D8,$DE   ;07D73F|        |      ;
-                       db $D8,$E1,$D8,$E4,$D8,$E7,$D8,$EA   ;07D747|        |      ;
-                       db $D8,$ED,$D8,$ED,$D8,$ED,$D8,$ED   ;07D74F|        |      ;
-                       db $D8,$ED,$D8,$ED,$D8,$ED,$D8,$ED   ;07D757|        |      ;
-                       db $D8,$ED,$D8,$ED,$D8,$ED,$D8,$ED   ;07D75F|        |      ;
-                       db $D8,$F2,$D8,$F5,$D8,$FA,$D8,$FF   ;07D767|        |      ;
-                       db $D8,$04,$D9,$08,$D9,$0A,$D9,$0C   ;07D76F|        |      ;
-                       db $D9,$10,$D9,$14,$D9,$18,$D9,$1C   ;07D777|        |      ;
-                       db $D9,$20,$D9,$24,$D9,$26,$D9,$2A   ;07D77F|        |      ;
-                       db $D9,$2C,$D9,$30,$D9,$34,$D9,$36   ;07D787|        |      ;
-                       db $D9,$38,$D9,$3C,$D9,$40,$D9,$42   ;07D78F|        |      ;
-                       db $D9,$44,$D9,$48,$D9,$4C,$D9,$50   ;07D797|        |      ;
-                       db $D9,$54,$D9,$58,$D9,$5C,$D9,$60   ;07D79F|        |      ;
-                       db $D9,$64,$D9,$66,$D9,$68,$D9,$6C   ;07D7A7|        |      ;
-                       db $D9,$6E,$D9,$72,$D9,$74,$D9,$78   ;07D7AF|        |      ;
-                       db $D9,$7C,$D9,$80,$D9,$84,$D9,$84   ;07D7B7|        |      ;
-                       db $D9,$84,$D9,$84,$D9,$84,$D9       ;07D7BF|        |      ;
+       candlePlacerLo:
+                       dw enemyPlace7b                      ;07D7C6|        |07D984;
+                       dw enemyPlace_81                     ;07D7C8|        |07D986;
+                       dw enemyPlace_82                     ;07D7CA|        |07D98A;
+                       dw enemyPlace_83                     ;07D7CC|        |07D98E;
+                       dw enemyPlace_84                     ;07D7CE|        |07D992;
+                       dw enemyPlace_85                     ;07D7D0|        |07D996;
+                       dw enemyPlace_86                     ;07D7D2|        |07D99A;
+                       dw enemyPlace_87                     ;07D7D4|        |07D99E;
+                       dw enemyPlace_88                     ;07D7D6|        |07D9A0;
+                       dw enemyPlace_89                     ;07D7D8|        |07D9A4;
+                       dw enemyPlace_8a                     ;07D7DA|        |07D9A6;
+                       dw enemyPlace_8b                     ;07D7DC|        |07D9AA;
+                       dw enemyPlace_8c                     ;07D7DE|        |07D9AE;
+                       dw enemyPlace_8d                     ;07D7E0|        |07D9B2;
+                       dw enemyPlace_8d                     ;07D7E2|        |07D9B2;
+                       dw enemyPlace_8d                     ;07D7E4|        |07D9B2;
+                       dw enemyPlace_8d                     ;07D7E6|        |07D9B2;
+                       dw enemyPlace_91                     ;07D7E8|        |07D9B4;
+                       dw enemyPlace_92                     ;07D7EA|        |07D9B8;
+                       dw enemyPlace_93                     ;07D7EC|        |07D9BC;
+                       dw enemyPlace_94                     ;07D7EE|        |07D9C0;
+                       dw enemyPlace_95                     ;07D7F0|        |07D9C4;
+                       dw enemyPlace_96                     ;07D7F2|        |07D9C8;
+                       dw enemyPlace_97                     ;07D7F4|        |07D9CC;
+                       dw enemyPlace_98                     ;07D7F6|        |07D9CE;
+                       dw enemyPlace_99                     ;07D7F8|        |07D9D2;
+                       dw enemyPlace_9a                     ;07D7FA|        |07D9D6;
+                       dw enemyPlace_9b                     ;07D7FC|        |07D9D8;
+                       dw enemyPlace_9c                     ;07D7FE|        |07D9DA;
+                       dw enemyPlace_9d                     ;07D800|        |07D9DE;
+                       dw enemyPlace_9e                     ;07D802|        |07D9E2;
+                       dw enemyPlace_9f                     ;07D804|        |07D9E6;
+                       dw enemyPlace_a0                     ;07D806|        |07D9E8;
+                       dw enemyPlace_a1                     ;07D808|        |07D9EC;
+                       dw enemyPlace_a2                     ;07D80A|        |07D9EE;
+                       dw enemyPlace_a3                     ;07D80C|        |07D9F2;
+                       dw enemyPlace_a4                     ;07D80E|        |07D9F4;
+                       dw enemyPlace_a5                     ;07D810|        |07D9F8;
+                       dw enemyPlace_a6                     ;07D812|        |07D9FC;
+                       dw enemyPlace_a7                     ;07D814|        |07DA00;
+                       dw enemyPlace_a8                     ;07D816|        |07DA02;
+                       dw enemyPlace_a9                     ;07D818|        |07DA06;
+                       dw enemyPlace_aa                     ;07D81A|        |07DA0A;
+                       dw enemyPlace_ab                     ;07D81C|        |07DA0E;
+                       dw enemyPlace_ac                     ;07D81E|        |07DA10;
+                       dw enemyPlace_ad                     ;07D820|        |07DA12;
+                       dw enemyPlace_ad                     ;07D822|        |07DA12;
+                       dw enemyPlace_ad                     ;07D824|        |07DA12;
+                       dw enemyPlace_ad                     ;07D826|        |07DA12;
+                       dw enemyPlace_b1                     ;07D828|        |07DA16;
+                       dw enemyPlace_b2                     ;07D82A|        |07DA18;
+                       dw enemyPlace_b3                     ;07D82C|        |07DA1C;
+                       dw enemyPlace_b4                     ;07D82E|        |07DA1E;
+                       dw enemyPlace_b5                     ;07D830|        |07DA22;
+                       dw enemyPlace_b6                     ;07D832|        |07DA24;
+                       dw enemyPlace_b7                     ;07D834|        |07DA26;
+                       dw enemyPlace_b8                     ;07D836|        |07DA2A;
+                       dw enemyPlace_b9                     ;07D838|        |07DA2E;
+                       dw enemyPlace_ba                     ;07D83A|        |07DA32;
+                       dw enemyPlace_bb                     ;07D83C|        |07DA36;
+                       dw enemyPlace_bc                     ;07D83E|        |07DA38;
+                       dw enemyPlace_bd                     ;07D840|        |07DA3C;
+                       dw enemyPlace_be                     ;07D842|        |07DA40;
                                                             ;      |        |      ;
-         DATA8_07D7C6:
-                       db $84                               ;07D7C6|        |      ;
+         enemyPlace00:
+                       db $00                               ;07D844|        |      ;
                                                             ;      |        |      ;
-         DATA8_07D7C7:
-                       db $D9,$86,$D9,$8A,$D9,$8E,$D9,$92   ;07D7C7|        |      ;
-                       db $D9,$96,$D9,$9A,$D9,$9E,$D9,$A0   ;07D7CF|        |      ;
-                       db $D9,$A4,$D9,$A6,$D9,$AA,$D9,$AE   ;07D7D7|        |      ;
-                       db $D9,$B2,$D9,$B2,$D9,$B2,$D9,$B2   ;07D7DF|        |      ;
-                       db $D9,$B4,$D9,$B8,$D9,$BC,$D9,$C0   ;07D7E7|        |      ;
-                       db $D9,$C4,$D9,$C8,$D9,$CC,$D9,$CE   ;07D7EF|        |      ;
-                       db $D9,$D2,$D9,$D6,$D9,$D8,$D9,$DA   ;07D7F7|        |      ;
-                       db $D9,$DE,$D9,$E2,$D9,$E6,$D9,$E8   ;07D7FF|        |      ;
-                       db $D9,$EC,$D9,$EE,$D9,$F2,$D9,$F4   ;07D807|        |      ;
-                       db $D9,$F8,$D9,$FC,$D9,$00,$DA,$02   ;07D80F|        |      ;
-                       db $DA,$06,$DA,$0A,$DA,$0E,$DA,$10   ;07D817|        |      ;
-                       db $DA,$12,$DA,$12,$DA,$12,$DA,$12   ;07D81F|        |      ;
-                       db $DA,$16,$DA,$18,$DA,$1C,$DA,$1E   ;07D827|        |      ;
-                       db $DA,$22,$DA,$24,$DA,$26,$DA,$2A   ;07D82F|        |      ;
-                       db $DA,$2E,$DA,$32,$DA,$36,$DA,$38   ;07D837|        |      ;
-                       db $DA,$3C,$DA,$40,$DA,$00,$01,$20   ;07D83F|        |      ;
-                       db $80,$01,$20,$70,$01,$20,$C0,$01   ;07D847|        |      ;
-                       db $20,$B0,$4F,$18,$48,$4F,$28,$78   ;07D84F|        |      ;
-                       db $4F,$28,$58,$4F,$10,$C8,$02,$2C   ;07D857|        |      ;
-                       db $50,$4E,$30,$90,$4E,$38,$50,$4E   ;07D85F|        |      ;
-                       db $20,$70,$03,$20,$B8,$4F,$10,$58   ;07D867|        |      ;
-                       db $4F,$28,$98,$4F,$0C,$48,$4F,$30   ;07D86F|        |      ;
-                       db $40,$4F,$2C,$48,$04,$20,$80,$05   ;07D877|        |      ;
-                       db $20,$90,$06,$20,$90,$47,$30,$40   ;07D87F|        |      ;
-                       db $47,$10,$58,$48,$10,$60,$48,$30   ;07D887|        |      ;
-                       db $A0,$4A,$18,$50,$50,$20,$90,$50   ;07D88F|        |      ;
-                       db $20,$B0,$51,$38,$88,$51,$38,$68   ;07D897|        |      ;
-                       db $12,$20,$50,$4A,$20,$B0,$4A,$20   ;07D89F|        |      ;
-                       db $50,$53,$20,$B0,$53,$20,$50,$50   ;07D8A7|        |      ;
-                       db $20,$50,$50,$30,$70,$4C,$30,$98   ;07D8AF|        |      ;
-                       db $4C,$20,$B8,$4C,$30,$78,$59,$30   ;07D8B7|        |      ;
-                       db $40,$5B,$30,$90,$5C,$30,$B8,$5A   ;07D8BF|        |      ;
-                       db $20,$B8,$58,$20,$30,$5D,$20,$E0   ;07D8C7|        |      ;
-                       db $8D,$20,$B0,$0D,$20,$50,$4E,$38   ;07D8CF|        |      ;
-                       db $60,$4E,$38,$40,$5E,$20,$40,$5E   ;07D8D7|        |      ;
-                       db $20,$B0,$54,$30,$78,$54,$20,$B0   ;07D8DF|        |      ;
-                       db $4E,$38,$B0,$54,$30,$A8,$FF,$04   ;07D8E7|        |      ;
-                       db $FE,$20,$B0,$FE,$20,$B0,$FF,$21   ;07D8EF|        |      ;
-                       db $FE,$20,$B0,$FF,$11,$FE,$20,$B0   ;07D8F7|        |      ;
-                       db $FF,$08,$FE,$20,$B0,$FF,$11,$20   ;07D8FF|        |      ;
-                       db $B8,$20,$B8,$20,$58,$FF,$21,$20   ;07D907|        |      ;
-                       db $B8,$FF,$0B,$20,$38,$FF,$04,$20   ;07D90F|        |      ;
-                       db $58,$FF,$21,$20,$B8,$FF,$0A,$20   ;07D917|        |      ;
-                       db $38,$FF,$21,$20,$48,$20,$48,$FF   ;07D91F|        |      ;
-                       db $0F,$20,$48,$20,$48,$FF,$04,$30   ;07D927|        |      ;
-                       db $48,$FF,$04,$20,$98,$20,$58,$20   ;07D92F|        |      ;
-                       db $78,$FF,$0E,$20,$58,$FF,$0D,$20   ;07D937|        |      ;
-                       db $98,$20,$98,$20,$58,$FF,$21,$20   ;07D93F|        |      ;
-                       db $98,$FF,$21,$20,$48,$FF,$21,$20   ;07D947|        |      ;
-                       db $98,$FF,$11,$20,$98,$FF,$21,$30   ;07D94F|        |      ;
-                       db $B8,$FF,$11,$30,$48,$FF,$11,$30   ;07D957|        |      ;
-                       db $B8,$FF,$04,$20,$88,$20,$48,$20   ;07D95F|        |      ;
-                       db $A8,$FF,$21,$20,$48,$20,$88,$FF   ;07D967|        |      ;
-                       db $0B,$20,$88,$20,$48,$FF,$11,$20   ;07D96F|        |      ;
-                       db $88,$FF,$0D,$20,$48,$FF,$04,$20   ;07D977|        |      ;
-                       db $88,$FF,$09,$20,$88,$20,$68,$FF   ;07D97F|        |      ;
-                       db $04,$20,$68,$FF,$0F,$20,$68,$FF   ;07D987|        |      ;
-                       db $21,$20,$88,$FF,$04,$20,$88,$FF   ;07D98F|        |      ;
-                       db $11,$20,$48,$FF,$0B,$20,$48,$20   ;07D997|        |      ;
-                       db $80,$FF,$04,$20,$88,$20,$88,$FF   ;07D99F|        |      ;
-                       db $08,$20,$88,$FF,$21,$20,$88,$FF   ;07D9A7|        |      ;
-                       db $04,$20,$88,$10,$38,$FF,$21,$10   ;07D9AF|        |      ;
-                       db $38,$FF,$04,$10,$98,$FF,$0B,$10   ;07D9B7|        |      ;
-                       db $98,$FF,$09,$10,$98,$FF,$08,$10   ;07D9BF|        |      ;
-                       db $38,$FF,$04,$10,$58,$10,$90,$FF   ;07D9C7|        |      ;
-                       db $21,$10,$98,$FF,$0F,$10,$38,$10   ;07D9CF|        |      ;
-                       db $98,$10,$98,$FF,$11,$10,$98,$FF   ;07D9D7|        |      ;
-                       db $04,$10,$78,$FF,$0A,$10,$70,$10   ;07D9DF|        |      ;
-                       db $70,$FF,$21,$20,$A8,$20,$B8,$FF   ;07D9E7|        |      ;
-                       db $0B,$20,$B8,$20,$A8,$FF,$04,$20   ;07D9EF|        |      ;
-                       db $68,$FF,$0D,$20,$A8,$FF,$11,$20   ;07D9F7|        |      ;
-                       db $78,$28,$88,$FF,$09,$28,$48,$FF   ;07D9FF|        |      ;
-                       db $0F,$20,$68,$FF,$08,$20,$68,$20   ;07DA07|        |      ;
-                       db $98,$20,$68,$FF,$0D,$20,$88,$20   ;07DA0F|        |      ;
-                       db $A8,$FF,$0F,$20,$68,$20,$68,$FF   ;07DA17|        |      ;
-                       db $04,$20,$48,$20,$48,$20,$88,$FF   ;07DA1F|        |      ;
-                       db $08,$20,$48,$FF,$11,$20,$A8,$FF   ;07DA27|        |      ;
-                       db $04,$20,$48,$FF,$0B,$20,$88,$20   ;07DA2F|        |      ;
-                       db $88,$FF,$04,$20,$88,$FF,$09,$20   ;07DA37|        |      ;
-                       db $68,$FF,$21,$20,$88               ;07DA3F|        |      ;
+         enemyPlace01:
+                       db $01,$20,$80                       ;07D845|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace02:
+                       db $01,$20,$70                       ;07D848|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace03:
+                       db $01,$20,$C0                       ;07D84B|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace04:
+                       db $01,$20,$B0                       ;07D84E|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace05:
+                       db $4F,$18,$48                       ;07D851|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace06:
+                       db $4F,$28,$78                       ;07D854|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace07:
+                       db $4F,$28,$58                       ;07D857|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace08:
+                       db $4F,$10,$C8                       ;07D85A|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace09:
+                       db $02,$2C,$50                       ;07D85D|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace0a:
+                       db $4E,$30,$90                       ;07D860|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace0b:
+                       db $4E,$38,$50                       ;07D863|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace0c:
+                       db $4E,$20,$70                       ;07D866|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace0d:
+                       db $03,$20,$B8                       ;07D869|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace0e:
+                       db $4F,$10,$58                       ;07D86C|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace10:
+                       db $4F,$28,$98                       ;07D86F|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace11:
+                       db $4F,$0C,$48                       ;07D872|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace12:
+                       db $4F,$30,$40                       ;07D875|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace13:
+                       db $4F,$2C,$48                       ;07D878|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace14:
+                       db $04,$20,$80                       ;07D87B|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace16:
+                       db $05,$20,$90                       ;07D87E|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace1e:
+                       db $06,$20,$90                       ;07D881|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace1f:
+                       db $47,$30,$40                       ;07D884|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace17:
+                       db $47,$10,$58                       ;07D887|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace18:
+                       db $48,$10,$60                       ;07D88A|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace22:
+                       db $48,$30,$A0                       ;07D88D|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace23:
+                       db $4A,$18,$50                       ;07D890|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace24:
+                       db $50,$20,$90                       ;07D893|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace26:
+                       db $50,$20,$B0                       ;07D896|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace27:
+                       db $51,$38,$88                       ;07D899|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace28:
+                       db $51,$38,$68                       ;07D89C|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace29:
+                       db $12,$20,$50                       ;07D89F|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace2a:
+                       db $4A,$20,$B0                       ;07D8A2|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace2c:
+                       db $4A,$20,$50                       ;07D8A5|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace2d:
+                       db $53,$20,$B0                       ;07D8A8|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace2e:
+                       db $53,$20,$50                       ;07D8AB|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace2f:
+                       db $50,$20,$50                       ;07D8AE|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace30:
+                       db $50,$30,$70                       ;07D8B1|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace31:
+                       db $4C,$30,$98                       ;07D8B4|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace32:
+                       db $4C,$20,$B8                       ;07D8B7|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace33:
+                       db $4C,$30,$78                       ;07D8BA|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace34:
+                       db $59,$30,$40                       ;07D8BD|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace35:
+                       db $5B,$30,$90                       ;07D8C0|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace36:
+                       db $5C,$30,$B8                       ;07D8C3|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace37:
+                       db $5A,$20,$B8                       ;07D8C6|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace38:
+                       db $58,$20,$30                       ;07D8C9|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace39:
+                       db $5D,$20,$E0                       ;07D8CC|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace3a:
+                       db $8D,$20,$B0                       ;07D8CF|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace3c:
+                       db $0D,$20,$50                       ;07D8D2|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace3d:
+                       db $4E,$38,$60                       ;07D8D5|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace3e:
+                       db $4E,$38,$40                       ;07D8D8|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace3f:
+                       db $5E,$20,$40                       ;07D8DB|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace40:
+                       db $5E,$20,$B0                       ;07D8DE|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace41:
+                       db $54,$30,$78                       ;07D8E1|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace42:
+                       db $54,$20,$B0                       ;07D8E4|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace43:
+                       db $4E,$38,$B0                       ;07D8E7|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace44:
+                       db $54,$30,$A8                       ;07D8EA|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace45:
+                       db $FF,$04,$FE,$20,$B0               ;07D8ED|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace51:
+                       db $FE,$20,$B0                       ;07D8F2|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace52:
+                       db $FF,$21,$FE,$20,$B0               ;07D8F5|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace53:
+                       db $FF,$11,$FE,$20,$B0               ;07D8FA|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace54:
+                       db $FF,$08,$FE,$20,$B0               ;07D8FF|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace55:
+                       db $FF,$11,$20,$B8                   ;07D904|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace56:
+                       db $20,$B8                           ;07D908|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace57:
+                       db $20,$58                           ;07D90A|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace58:
+                       db $FF,$21,$20,$B8                   ;07D90C|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace59:
+                       db $FF,$0B,$20,$38                   ;07D910|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace5a:
+                       db $FF,$04,$20,$58                   ;07D914|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace5b:
+                       db $FF,$21,$20,$B8                   ;07D918|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace5c:
+                       db $FF,$0A,$20,$38                   ;07D91C|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace5d:
+                       db $FF,$21,$20,$48                   ;07D920|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace5e:
+                       db $20,$48                           ;07D924|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace5f:
+                       db $FF,$0F,$20,$48                   ;07D926|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace60:
+                       db $20,$48                           ;07D92A|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace61:
+                       db $FF,$04,$30,$48                   ;07D92C|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace62:
+                       db $FF,$04,$20,$98                   ;07D930|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace63:
+                       db $20,$58                           ;07D934|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace64:
+                       db $20,$78                           ;07D936|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace65:
+                       db $FF,$0E,$20,$58                   ;07D938|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace66:
+                       db $FF,$0D,$20,$98                   ;07D93C|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace67:
+                       db $20,$98                           ;07D940|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace68:
+                       db $20,$58                           ;07D942|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace69:
+                       db $FF,$21,$20,$98                   ;07D944|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace6a:
+                       db $FF,$21,$20,$48                   ;07D948|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace6b:
+                       db $FF,$21,$20,$98                   ;07D94C|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace6c:
+                       db $FF,$11,$20,$98                   ;07D950|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace6d:
+                       db $FF,$21,$30,$B8                   ;07D954|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace6e:
+                       db $FF,$11,$30,$48                   ;07D958|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace6f:
+                       db $FF,$11,$30,$B8                   ;07D95C|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace70:
+                       db $FF,$04,$20,$88                   ;07D960|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace71:
+                       db $20,$48                           ;07D964|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace72:
+                       db $20,$A8                           ;07D966|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace73:
+                       db $FF,$21,$20,$48                   ;07D968|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace74:
+                       db $20,$88                           ;07D96C|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace75:
+                       db $FF,$0B,$20,$88                   ;07D96E|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace76:
+                       db $20,$48                           ;07D972|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace77:
+                       db $FF,$11,$20,$88                   ;07D974|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace78:
+                       db $FF,$0D,$20,$48                   ;07D978|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace79:
+                       db $FF,$04,$20,$88                   ;07D97C|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace7a:
+                       db $FF,$09,$20,$88                   ;07D980|        |      ;
+                                                            ;      |        |      ;
+         enemyPlace7b:
+                       db $20,$68                           ;07D984|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_81:
+                       db $FF,$04,$20,$68                   ;07D986|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_82:
+                       db $FF,$0F,$20,$68                   ;07D98A|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_83:
+                       db $FF,$21,$20,$88                   ;07D98E|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_84:
+                       db $FF,$04,$20,$88                   ;07D992|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_85:
+                       db $FF,$11,$20,$48                   ;07D996|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_86:
+                       db $FF,$0B,$20,$48                   ;07D99A|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_87:
+                       db $20,$80                           ;07D99E|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_88:
+                       db $FF,$04,$20,$88                   ;07D9A0|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_89:
+                       db $20,$88                           ;07D9A4|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_8a:
+                       db $FF,$08,$20,$88                   ;07D9A6|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_8b:
+                       db $FF,$21,$20,$88                   ;07D9AA|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_8c:
+                       db $FF,$04,$20,$88                   ;07D9AE|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_8d:
+                       db $10,$38                           ;07D9B2|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_91:
+                       db $FF,$21,$10,$38                   ;07D9B4|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_92:
+                       db $FF,$04,$10,$98                   ;07D9B8|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_93:
+                       db $FF,$0B,$10,$98                   ;07D9BC|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_94:
+                       db $FF,$09,$10,$98                   ;07D9C0|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_95:
+                       db $FF,$08,$10,$38                   ;07D9C4|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_96:
+                       db $FF,$04,$10,$58                   ;07D9C8|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_97:
+                       db $10,$90                           ;07D9CC|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_98:
+                       db $FF,$21,$10,$98                   ;07D9CE|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_99:
+                       db $FF,$0F,$10,$38                   ;07D9D2|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_9a:
+                       db $10,$98                           ;07D9D6|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_9b:
+                       db $10,$98                           ;07D9D8|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_9c:
+                       db $FF,$11,$10,$98                   ;07D9DA|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_9d:
+                       db $FF,$04,$10,$78                   ;07D9DE|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_9e:
+                       db $FF,$0A,$10,$70                   ;07D9E2|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_9f:
+                       db $10,$70                           ;07D9E6|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_a0:
+                       db $FF,$21,$20,$A8                   ;07D9E8|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_a1:
+                       db $20,$B8                           ;07D9EC|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_a2:
+                       db $FF,$0B,$20,$B8                   ;07D9EE|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_a3:
+                       db $20,$A8                           ;07D9F2|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_a4:
+                       db $FF,$04,$20,$68                   ;07D9F4|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_a5:
+                       db $FF,$0D,$20,$A8                   ;07D9F8|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_a6:
+                       db $FF,$11,$20,$78                   ;07D9FC|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_a7:
+                       db $28,$88                           ;07DA00|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_a8:
+                       db $FF,$09,$28,$48                   ;07DA02|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_a9:
+                       db $FF,$0F,$20,$68                   ;07DA06|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_aa:
+                       db $FF,$08,$20,$68                   ;07DA0A|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_ab:
+                       db $20,$98                           ;07DA0E|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_ac:
+                       db $20,$68                           ;07DA10|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_ad:
+                       db $FF,$0D,$20,$88                   ;07DA12|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_b1:
+                       db $20,$A8                           ;07DA16|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_b2:
+                       db $FF,$0F,$20,$68                   ;07DA18|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_b3:
+                       db $20,$68                           ;07DA1C|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_b4:
+                       db $FF,$04,$20,$48                   ;07DA1E|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_b5:
+                       db $20,$48                           ;07DA22|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_b6:
+                       db $20,$88                           ;07DA24|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_b7:
+                       db $FF,$08,$20,$48                   ;07DA26|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_b8:
+                       db $FF,$11,$20,$A8                   ;07DA2A|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_b9:
+                       db $FF,$04,$20,$48                   ;07DA2E|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_ba:
+                       db $FF,$0B,$20,$88                   ;07DA32|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_bb:
+                       db $20,$88                           ;07DA36|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_bc:
+                       db $FF,$04,$20,$88                   ;07DA38|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_bd:
+                       db $FF,$09,$20,$68                   ;07DA3C|        |      ;
+                                                            ;      |        |      ;
+        enemyPlace_be:
+                       db $FF,$21,$20,$88                   ;07DA40|        |      ;
                                                             ;      |        |      ;
 subwSpawnHeartSubstract:
                        LDY.B r_weapon_Multi                 ;07DA44|A464    |000064;
@@ -11057,7 +11606,7 @@ notEnoughHearts_clock:
                        JMP.W storeSpeed_AYsub_Xpos          ;07DB9E|4C72EC  |07EC72;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-enemyAI_subweaponThrow:
+enemyAI_17_subweaponThrow:
                        LDY.W r7_input_HeldCopy,X            ;07DBA1|BC8405  |070584;
                        BEQ dagger_obj                       ;07DBA4|F0E7    |07DB8D;
                        DEY                                  ;07DBA6|88      |      ;
@@ -11067,11 +11616,11 @@ enemyAI_subweaponThrow:
                                                             ;      |        |      ;
           CODE_07DBAC:
                        DEY                                  ;07DBAC|88      |      ;
-                       BEQ enemyAI_subweaponThrow           ;07DBAD|F0F2    |07DBA1;
+                       BEQ enemyAI_17_subweaponThrow        ;07DBAD|F0F2    |07DBA1;
                        DEY                                  ;07DBAF|88      |      ;
                        BEQ holyWater_obj                    ;07DBB0|F013    |07DBC5;
                        DEY                                  ;07DBB2|88      |      ;
-                       BEQ enemyAI_subweaponThrow           ;07DBB3|F0EC    |07DBA1;
+                       BEQ enemyAI_17_subweaponThrow        ;07DBB3|F0EC    |07DBA1;
                        DEY                                  ;07DBB5|88      |      ;
                        BNE CODE_07DBBB                      ;07DBB6|D003    |07DBBB;
                        JMP.W axe_obj                        ;07DBB8|4CCADC  |07DCCA;
@@ -11093,7 +11642,7 @@ enemyAI_subweaponThrow:
                        BEQ CODE_07DBD0                      ;07DBC8|F006    |07DBD0;
                        DEY                                  ;07DBCA|88      |      ;
                        BEQ CODE_07DBE6                      ;07DBCB|F019    |07DBE6;
-                       JMP.W CODE_07EB5A                    ;07DBCD|4C5AEB  |07EB5A;
+                       JMP.W enemyAI_disapearCount          ;07DBCD|4C5AEB  |07EB5A;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_07DBD0:
@@ -11306,7 +11855,7 @@ enemyAI_subweaponThrow:
                        RTS                                  ;07DD3C|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-    enemyAI_2d_candle:
+    enemyAI_26_candle:
                        JSR.W CODE_07DD14                    ;07DD3D|2014DD  |07DD14;
                        LDA.W r7_entity_spAtr,X              ;07DD40|BD0003  |070300;
                        BNE CODE_07DD5A                      ;07DD43|D015    |07DD5A;
@@ -11788,7 +12337,7 @@ enemyAI_subweaponThrow:
          DATA8_07E092:
                        db $00,$63,$AD,$AE,$AF               ;07E092|        |      ;
                                                             ;      |        |      ;
-       Zombie_00_Hurt:
+      oneShot_00_Hurt:
                        JSR.W CODE_07E024                    ;07E097|2024E0  |07E024;
                                                             ;      |        |      ;
           CODE_07E09A:
@@ -11939,7 +12488,7 @@ enemyAI_subweaponThrow:
                        CPX.B #$0B                           ;07E181|E00B    |      ;
                        BCC CODE_07E173                      ;07E183|90EE    |07E173;
                        LDX.B #$04                           ;07E185|A204    |      ;
-                       JMP.W Zombie_00_Hurt                 ;07E187|4C97E0  |07E097;
+                       JMP.W oneShot_00_Hurt                ;07E187|4C97E0  |07E097;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_07E18A:
@@ -11980,7 +12529,7 @@ enemyAI_subweaponThrow:
                                                             ;      |        |      ;
           CODE_07E1B6:
                        JSR.W CODE_07E4CC                    ;07E1B6|20CCE4  |07E4CC;
-                       JMP.W Zombie_00_Hurt                 ;07E1B9|4C97E0  |07E097;
+                       JMP.W oneShot_00_Hurt                ;07E1B9|4C97E0  |07E097;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_07E1BC:
@@ -12694,30 +13243,30 @@ DraculasHurt_01_AndSecondForm:
                        JSR.W gJumpTableFromStack            ;07E576|206DCA  |07CA6D;
                                                             ;      |        |      ;
     enemyHurtRoutines:
-                       dw Zombie_00_Hurt                    ;07E579|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E57B|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E57D|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E57F|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E579|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E57B|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E57D|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E57F|        |07E097;
                        dw DraculasHurt_01_AndSecondForm     ;07E581|        |07E33F;
-                       dw Zombie_00_Hurt                    ;07E583|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E585|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E587|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E583|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E585|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E587|        |07E097;
                        dw SpearKnight_03_Hurt               ;07E589|        |07E1AB;
-                       dw Zombie_00_Hurt                    ;07E58B|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E58B|        |07E097;
                        dw axeKnight_05_hurt                 ;07E58D|        |07E208;
-                       dw Zombie_00_Hurt                    ;07E58F|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E591|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E58F|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E591|        |07E097;
                        dw ghost_06_hurt                     ;07E593|        |07E1A7;
                        dw bonePillar_07_hurt                ;07E595|        |07E18D;
-                       dw Zombie_00_Hurt                    ;07E597|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E599|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E59B|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E59D|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E597|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E599|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E59B|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E59D|        |07E097;
                        dw redSkelly_08_hurt                 ;07E59F|        |07E1F3;
                        dw boneDragon_09_hurt                ;07E5A1|        |07E16A;
                        dw boneDragonNeck_0a_hurt            ;07E5A3|        |07E332;
                        dw boneDragonNeck_0a_hurt            ;07E5A5|        |07E332;
-                       dw Zombie_00_Hurt                    ;07E5A7|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E5A7|        |07E097;
                        dw bossMedusaAndDeath_0b_hurt        ;07E5A9|        |07E276;
                        dw bossBat_0c_hurt                   ;07E5AB|        |07E279;
                        dw bossMummy_0d_hurt                 ;07E5AD|        |07E2CC;
@@ -12726,14 +13275,14 @@ DraculasHurt_01_AndSecondForm:
                        dw DraculasHurt_0f_AndSecondForm     ;07E5B3|        |07E31B;
                        dw phantomBat_10_hurt                ;07E5B5|        |07E1A3;
                        dw bossIgor_10_hurt                  ;07E5B7|        |07E395;
-                       dw Zombie_00_Hurt                    ;07E5B9|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E5BB|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E5BD|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E5BF|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E5C1|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E5C3|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E5C5|        |07E097;
-                       dw Zombie_00_Hurt                    ;07E5C7|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E5B9|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E5BB|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E5BD|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E5BF|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E5C1|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E5C3|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E5C5|        |07E097;
+                       dw oneShot_00_Hurt                   ;07E5C7|        |07E097;
                        dw candle_12_hurt                    ;07E5C9|        |07E3D7;
                        dw candle_12_hurt                    ;07E5CB|        |07E3D7;
                        dw candle_12_hurt                    ;07E5CD|        |07E3D7;
@@ -13338,37 +13887,37 @@ calculateEnemyHitbox00:
                        dw enemyAI_14_boneDragonHead         ;07E984|        |068ADA;
                        dw enemyAI_15_boneDragonNeck         ;07E986|        |068BF9;
                        dw enemyAI_16_boneDragonNeck         ;07E988|        |068C51;
-                       dw enemyAI_subweaponThrow            ;07E98A|        |07DBA1;
-                       dw enemyAI_19_bossDeath              ;07E98C|        |068EB8;
-                       dw enemyAI_1a_bossPhantimBat         ;07E98E|        |0680C7;
-                       dw enemyAI_1b_mummy                  ;07E990|        |068644;
-                       dw enemyAI_1c_bossMedusa             ;07E992|        |0682C5;
-                       dw enemyAI_1d_bossFrankMonster       ;07E994|        |0689E2;
-                       dw enemyAI_1e_bossDracula            ;07E996|        |0694E6;
-                       dw enemyAI_1f_boss_X                 ;07E998|        |06935E;
-                       dw enemyAI_20_bossIgor               ;07E99A|        |06893F;
-                       dw enemyAI_21_seekingFireBall        ;07E99C|        |07EC7A;
-                       dw enemyAI_21_seekingFireBall        ;07E99E|        |07EC7A; dracs cloaths
-                       dw enemyAI_27_enemyAxe               ;07E9A0|        |06863E;
-                       dw enemyAI_28_candle                 ;07E9A2|        |07EB57;
-                       dw enemyAI_29_candle                 ;07E9A4|        |07EB54;
-                       dw enemyAI_29_candle                 ;07E9A6|        |07EB54;
-                       dw enemyAI_28_candle                 ;07E9A8|        |07EB57;
-                       dw CODE_078DC6                       ;07E9AA|        |078DC6;
-                       dw enemyAI_2d_candle                 ;07E9AC|        |07DD3D;
-                       dw enemyAI_2d_candle                 ;07E9AE|        |07DD3D;
-                       dw enemyAI_2d_candle                 ;07E9B0|        |07DD3D;
-                       dw enemyAI_2d_candle                 ;07E9B2|        |07DD3D;
-                       dw enemyAI_2d_candle                 ;07E9B4|        |07DD3D;
-                       dw enemyAI_2d_candle                 ;07E9B6|        |07DD3D;
-                       dw enemyAI_2d_candle                 ;07E9B8|        |07DD3D;
-                       dw enemyAI_collectable               ;07E9BA|        |07DE12;
-                       dw CODE_07EB5A                       ;07E9BC|        |07EB5A;
-                       dw CODE_07EB65                       ;07E9BE|        |07EB65;
-                       dw clearEntityID_pullStackPointer    ;07E9C0|        |07EC60;
-                       dw CODE_07EB5A                       ;07E9C2|        |07EB5A;
-                       dw CODE_07EB36                       ;07E9C4|        |07EB36;
-                       dw enemyAI_29_candle                 ;07E9C6|        |07EB54;
+                       dw enemyAI_17_subweaponThrow         ;07E98A|        |07DBA1;
+                       dw enemyAI_18_bossDeath              ;07E98C|        |068EB8;
+                       dw enemyAI_19_bossPhantimBat         ;07E98E|        |0680C7;
+                       dw enemyAI_1a_bossMummy              ;07E990|        |068644;
+                       dw enemyAI_1b_bossMedusa             ;07E992|        |0682C5;
+                       dw enemyAI_1c_bossFrankMonster       ;07E994|        |0689E2;
+                       dw enemyAI_1d_bossDracula            ;07E996|        |0694E6;
+                       dw enemyAI_1e_bossPhantomBat2        ;07E998|        |06935E;
+                       dw enemyAI_1f_bossIgor               ;07E99A|        |06893F;
+                       dw enemyAI_20_seekingFireBall        ;07E99C|        |07EC7A;
+                       dw enemyAI_20_seekingFireBall        ;07E99E|        |07EC7A; dracs cloaths
+                       dw enemyAI_22_enemyAxe               ;07E9A0|        |06863E;
+                       dw enemyAI_23_candle                 ;07E9A2|        |07EB57; 23
+                       dw enemyAI_24_candle                 ;07E9A4|        |07EB54; 24
+                       dw enemyAI_24_candle                 ;07E9A6|        |07EB54; 25
+                       dw enemyAI_23_candle                 ;07E9A8|        |07EB57; 26
+                       dw enemyAI_27_candle                 ;07E9AA|        |068DC6; 27
+                       dw enemyAI_26_candle                 ;07E9AC|        |07DD3D; 28
+                       dw enemyAI_26_candle                 ;07E9AE|        |07DD3D; 29
+                       dw enemyAI_26_candle                 ;07E9B0|        |07DD3D; 2a
+                       dw enemyAI_26_candle                 ;07E9B2|        |07DD3D; 2b
+                       dw enemyAI_26_candle                 ;07E9B4|        |07DD3D; 2c
+                       dw enemyAI_26_candle                 ;07E9B6|        |07DD3D; 2d
+                       dw enemyAI_26_candle                 ;07E9B8|        |07DD3D; 2e
+                       dw enemyAI_collectable               ;07E9BA|        |07DE12; 2f
+                       dw enemyAI_disapearCount             ;07E9BC|        |07EB5A; 30
+                       dw CODE_07EB65                       ;07E9BE|        |07EB65; 31
+                       dw clearEntityID_pullStackPointer    ;07E9C0|        |07EC60; 32
+                       dw enemyAI_disapearCount             ;07E9C2|        |07EB5A; 33
+                       dw CODE_07EB36                       ;07E9C4|        |07EB36; 34
+                       dw enemyAI_24_candle                 ;07E9C6|        |07EB54; 35
                                                             ;      |        |      ;
          DATA8_07E9C8:
                        db $E5                               ;07E9C8|        |      ;
@@ -13632,14 +14181,14 @@ getEntetyID_VeriousChecks:
                        RTS                                  ;07EB53|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-    enemyAI_29_candle:
+    enemyAI_24_candle:
                        JSR.W gravity_00                     ;07EB54|2050EC  |07EC50;
                                                             ;      |        |      ;
-    enemyAI_28_candle:
+    enemyAI_23_candle:
                        JMP.W entityKeepWalking              ;07EB57|4C48EE  |07EE48;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_07EB5A:
+enemyAI_disapearCount:
                        DEC.W r7_whipTimer,X                 ;07EB5A|DE6805  |070568;
                        BNE CODE_07EB64                      ;07EB5D|D005    |07EB64;
                        LDA.B #$32                           ;07EB5F|A932    |      ;
@@ -13824,7 +14373,7 @@ storeSpeed_AYsub_Xpos:
                        RTS                                  ;07EC79|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-enemyAI_21_seekingFireBall:
+enemyAI_20_seekingFireBall:
                        JSR.W entityKeepWalking              ;07EC7A|2048EE  |07EE48;
                                                             ;      |        |      ;
 updateSpriteSpeedLeftOrRight:
@@ -14035,7 +14584,7 @@ enemyAI_10_blueSkelly:
                        RTS                                  ;07EDA4|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-    bitTrick2InitBoss:
+             bitTrick:
                        LDA.B $02                            ;07EDA5|A502    |000002;
                        LDY.B $01                            ;07EDA7|A401    |000001;
                        LSR.B $01                            ;07EDA9|4601    |000001;
@@ -14072,7 +14621,7 @@ enemyAI_10_blueSkelly:
                        LDA.W r7_entity_Y_Pos                ;07EDDD|AD5403  |070354;
                        STA.B $00                            ;07EDE0|8500    |000000;
                        JSR.W aOtherScreenR00                ;07EDE2|20BBEE  |07EEBB;
-                       JSR.W bitTrick2InitBoss              ;07EDE5|20A5ED  |07EDA5;
+                       JSR.W bitTrick                       ;07EDE5|20A5ED  |07EDA5;
                        LDA.B $09                            ;07EDE8|A509    |000009;
                        BNE CODE_07EDFD                      ;07EDEA|D011    |07EDFD;
                        LDY.B #$C0                           ;07EDEC|A0C0    |      ;
@@ -14322,7 +14871,7 @@ updateYposSpeed_minus:
                        RTS                                  ;07EF68|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-      aOtherScreenR02:
+    followPlayersXpos:
                        LDA.W r7_entity_spAtr,X              ;07EF69|BD0003  |070300;
                        AND.B #$01                           ;07EF6C|2901    |      ;
                        BEQ facePlayer                       ;07EF6E|F00C    |07EF7C;
@@ -15100,7 +15649,7 @@ spriteAnimationBytes01:
                        RTS                                  ;07F375|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_07F376:
+       spawnerMain_00:
                        LDY.B #$00                           ;07F376|A000    |      ;
                                                             ;      |        |      ;
           CODE_07F378:
@@ -15242,7 +15791,7 @@ spriteAnimationBytes01:
                        RTS                                  ;07F462|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-      markSpawnerSlot:
+          setBossFlag:
                        LDA.W r7_spawner_Slot_State,Y        ;07F463|B96C01  |07016C;
                        ORA.B #$80                           ;07F466|0980    |      ;
                        STA.W r7_spawner_Slot_State,Y        ;07F468|996C01  |07016C;
@@ -15251,12 +15800,12 @@ spriteAnimationBytes01:
                        RTS                                  ;07F46F|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_07F470:
+      beforeBossClear:
                        LDX.B #$04                           ;07F470|A204    |      ;
                                                             ;      |        |      ;
-          CODE_07F472:
+   setNextSlot2_clear:
                        LDA.W r7_entity_ID,X                 ;07F472|BD3404  |070434;
-                       CMP.B #$1A                           ;07F475|C91A    |      ;
+                       CMP.B #$1A                           ;07F475|C91A    |      ; skip if mummy boss
                        BEQ CODE_07F47E                      ;07F477|F005    |07F47E;
                        LDA.B #$32                           ;07F479|A932    |      ;
                        STA.W r7_entity_ID,X                 ;07F47B|9D3404  |070434;
@@ -15264,7 +15813,7 @@ spriteAnimationBytes01:
           CODE_07F47E:
                        INX                                  ;07F47E|E8      |      ;
                        CPX.B #$0E                           ;07F47F|E00E    |      ;
-                       BCC CODE_07F472                      ;07F481|90EF    |07F472;
+                       BCC setNextSlot2_clear               ;07F481|90EF    |07F472;
                        RTS                                  ;07F483|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -15286,7 +15835,7 @@ spriteAnimationBytes01:
           CODE_07F495:
                        ORA.B #$80                           ;07F495|0980    |      ;
                        STA.W r7_spawner_Slot_State,Y        ;07F497|996C01  |07016C;
-                       JSR.W CODE_07F470                    ;07F49A|2070F4  |07F470;
+                       JSR.W beforeBossClear                ;07F49A|2070F4  |07F470;
                        JSR.W CODE_07F4A9                    ;07F49D|20A9F4  |07F4A9;
                        LDX.B #$07                           ;07F4A0|A207    |      ;
                        STX.B $0D                            ;07F4A2|860D    |00000D;
@@ -15471,7 +16020,7 @@ spriteAnimationBytes01:
                                                             ;      |        |      ;
           CODE_07F594:
                        STX.B $0D                            ;07F594|860D    |00000D;
-                       JSR.W markSpawnerSlot                ;07F596|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;07F596|2063F4  |07F463;
                        LDA.B #$3C                           ;07F599|A93C    |      ;
                        STA.W r7_entity_counter,X            ;07F59B|9D4C05  |07054C;
                        LDA.B #$4D                           ;07F59E|A94D    |      ; hunch back sitting animation
@@ -15506,7 +16055,7 @@ spriteAnimationBytes01:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_07F5C6:
-                       JSR.W markSpawnerSlot                ;07F5C6|2063F4  |07F463;
+                       JSR.W setBossFlag                    ;07F5C6|2063F4  |07F463;
                        LDA.B #$18                           ;07F5C9|A918    |      ;
                        STA.W r7_entity_counter,X            ;07F5CB|9D4C05  |07054C;
                        LDA.B #$48                           ;07F5CE|A948    |      ;
@@ -16478,7 +17027,7 @@ levelScrollDirections:
                        dw stairDataLevel_12                 ;07FC10|        |078B34;
                                                             ;      |        |      ;
       doorTriggerData:
-                       dw $F000,$F060,$F061,$F070           ;07FC12|        |      ;
+                       dw $F000,$F060,$F061,$F070           ;07FC12|        |      ; Ypos+room, Xpos
                        dw $1761,$1781,$10C1,$E891           ;07FC1A|        |      ;
                        dw $E871,$E871,$D040,$F2B0           ;07FC22|        |      ;
                        dw $F0B1,$E8B1,$1CB1,$0000           ;07FC2A|        |      ;

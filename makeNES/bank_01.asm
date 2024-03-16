@@ -170,12 +170,12 @@ updateTablePPUsetDest:
                        LDA.B r_temp_processing_ID           ;0180FD|A54B    |00004B;
                        BNE CODE_01815A                      ;0180FF|D059    |01815A;
                        LDA.B $00                            ;018101|A500    |000000;
-                       BNE CODE_01810A                      ;018103|D005    |01810A;
+                       BNE flashingObj_00                   ;018103|D005    |01810A;
                        LDA.B ($08),Y                        ;018105|B108    |000008;
                        JMP.W CODE_018110                    ;018107|4C1081  |018110;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_01810A:
+       flashingObj_00:
                        LDA.B ($08),Y                        ;01810A|B108    |000008;
                        AND.B #$DC                           ;01810C|29DC    |      ;
                        ORA.B $00                            ;01810E|0500    |000000;
@@ -238,12 +238,12 @@ updateTablePPUsetDest:
                                                             ;      |        |      ;
           CODE_01815A:
                        LDA.B $00                            ;01815A|A500    |000000;
-                       BNE CODE_018163                      ;01815C|D005    |018163;
+                       BNE flashingObj_01                   ;01815C|D005    |018163;
                        LDA.B ($08),Y                        ;01815E|B108    |000008;
                        JMP.W CODE_018169                    ;018160|4C6981  |018169;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_018163:
+       flashingObj_01:
                        LDA.B ($08),Y                        ;018163|B108    |000008;
                        AND.B #$DC                           ;018165|29DC    |      ;
                        ORA.B $00                            ;018167|0500    |000000;
@@ -1971,22 +1971,22 @@ spriteAssemblyPointers00Hi:
                        dw sprAss_03_simonWalk               ;018FC4|        |0191B6;
                        dw sprAss_02_simonWalk               ;018FC6|        |0191A8;
                        dw sprAss_05_simonCrouch             ;018FC8|        |0191C4;
-                       dw sprAss_06_                        ;018FCA|        |0191D2;
-                       dw sprAss_07_                        ;018FCC|        |0191DD;
-                       dw sprAss_08_                        ;018FCE|        |0191E5;
-                       dw sprAss_09_                        ;018FD0|        |0191F3;
-                       dw sprAss_0a_                        ;018FD2|        |0191FE;
-                       dw sprAss_0b_                        ;018FD4|        |019206;
+                       dw sprAss_06_simonWhip00             ;018FCA|        |0191D2;
+                       dw sprAss_07_simonWhip01             ;018FCC|        |0191DD;
+                       dw sprAss_08_simonWhip02             ;018FCE|        |0191E5;
+                       dw sprAss_09_simonDuckWhip00         ;018FD0|        |0191F3;
+                       dw sprAss_0a_simonDuckWhip01         ;018FD2|        |0191FE;
+                       dw sprAss_0b_simonDuckWhip02         ;018FD4|        |019206;
                        dw sprAss_0c_                        ;018FD6|        |019214;
                        dw sprAss_0d_simonStairUp            ;018FD8|        |019219;
                        dw sprAss_0d_simonStairUp            ;018FDA|        |019219;
                        dw sprAss_0f_simonStairDown          ;018FDC|        |019227;
-                       dw sprAss_10_                        ;018FDE|        |019235;
-                       dw sprAss_11_                        ;018FE0|        |01923D;
+                       dw sprAss_10_whipWindupSmall_00      ;018FDE|        |019235;
+                       dw sprAss_11_whipWindupSmall_01      ;018FE0|        |01923D;
                        dw sprAss_12_whipHand                ;018FE2|        |019245;
                        dw sprAss_13_whipShort               ;018FE4|        |01924E;
-                       dw sprAss_14_whipWind                ;018FE6|        |019256;
-                       dw sprAss_15_whipWind                ;018FE8|        |01925E;
+                       dw sprAss_14_whipWindup_00           ;018FE6|        |019256;
+                       dw sprAss_15_whipWindup_01           ;018FE8|        |01925E;
                        dw sprAss_16_whipChainHand           ;018FEA|        |019266;
                        dw sprAss_17_whipChainShort          ;018FEC|        |01926F;
                        dw sprAss_18_whipChainLong           ;018FEE|        |019277;
@@ -2001,166 +2001,166 @@ spriteAssemblyPointers00Hi:
                        dw sprAss_20_zombie                  ;019000|        |0192C4;
                        dw sprAss_22_redSkelly               ;019002|        |019869;
                        dw sprAss_23_redSkelly               ;019004|        |019877;
-                       dw sprAss_24_2ndDracula              ;019006|        |019942;
+                       dw sprAss_24_2ndDrac_Jump_00         ;019006|        |019942;
                        dw sprAss_25_holyWaterShot           ;019008|        |01941C;
                        dw sprAss_26_bigHeart                ;01900A|        |01943A;
                        dw sprAss_27_boomerangShot           ;01900C|        |019421;
                        dw sprAss_28_boomerangCollectable    ;01900E|        |01942A;
-                       dw sprAss_29_                        ;019010|        |019432;
-                       dw sprAss_2a_                        ;019012|        |019443;
-                       dw sprAss_2b_                        ;019014|        |01944B;
+                       dw sprAss_29_boomerangShot           ;019010|        |019432;
+                       dw sprAss_2a_oneUp                   ;019012|        |019443;
+                       dw sprAss_2b_holyWater               ;019014|        |01944B;
                        dw sprAss_2c_potion                  ;019016|        |019453;
                        dw sprAss_2d_clock                   ;019018|        |01945B;
                        dw sprAss_2e_enemyFlame              ;01901A|        |0192D2;
-                       dw sprAss_2f_                        ;01901C|        |0192D7;
-                       dw sprAss_30_                        ;01901E|        |0192DC;
+                       dw sprAss_2f_flame                   ;01901C|        |0192D7;
+                       dw sprAss_30_flame                   ;01901E|        |0192DC;
                        dw sprAss_31_candle                  ;019020|        |0192F3;
-                       dw sprAss_32_                        ;019022|        |0192F8;
-                       dw sprAss_32_                        ;019024|        |0192F8;
-                       dw sprAss_32_                        ;019026|        |0192F8;
-                       dw sprAss_32_                        ;019028|        |0192F8;
-                       dw sprAss_32_                        ;01902A|        |0192F8;
-                       dw sprAss_37_candle                  ;01902C|        |019302;
-                       dw sprAss_38_                        ;01902E|        |019310;
-                       dw sprAss_39_merman                  ;019030|        |01931B;
+                       dw sprAss_32_candle                  ;019022|        |0192F8;
+                       dw sprAss_32_candle                  ;019024|        |0192F8;
+                       dw sprAss_32_candle                  ;019026|        |0192F8;
+                       dw sprAss_32_candle                  ;019028|        |0192F8;
+                       dw sprAss_32_candle                  ;01902A|        |0192F8;
+                       dw sprAss_37_fishMan                 ;01902C|        |019302;
+                       dw sprAss_38_fishMan                 ;01902E|        |019310;
+                       dw sprAss_39_fishMan                 ;019030|        |01931B;
                        dw sprAss_3a_eagle                   ;019032|        |01953B;
-                       dw sprAss_3b_                        ;019034|        |019555;
-                       dw sprAss_3b_                        ;019036|        |019555;
-                       dw sprAss_3d_                        ;019038|        |019329;
-                       dw sprAss_3d_                        ;01903A|        |019329;
+                       dw sprAss_3b_eagle                   ;019034|        |019555;
+                       dw sprAss_3b_eagle                   ;019036|        |019555;
+                       dw sprAss_3d_bubble                  ;019038|        |019329;
+                       dw sprAss_3d_bubble                  ;01903A|        |019329;
                        dw sprAss_3d_splash                  ;01903C|        |0197BD;
-                       dw sprAss_40_                        ;01903E|        |0197C5;
+                       dw sprAss_40_raven                   ;01903E|        |0197C5;
                        dw sprAss_41_raven                   ;019040|        |0197CD;
-                       dw sprAss_40_                        ;019042|        |0197C5;
-                       dw sprAss_42_                        ;019044|        |0192FD;
+                       dw sprAss_40_raven                   ;019042|        |0197C5;
+                       dw sprAss_42_raven                   ;019044|        |0192FD;
                        dw sprAss_44_bat                     ;019046|        |0193B0;
                        dw sprAss_45_medusa                  ;019048|        |0193B8;
-                       dw sprAss_46_                        ;01904A|        |0193C0;
+                       dw sprAss_46_bat                     ;01904A|        |0193C0;
                        dw sprAss_45_medusa                  ;01904C|        |0193B8;
                        dw sprAss_48_raven                   ;01904E|        |0197B5;
                        dw sprAss_49_moneybag                ;019050|        |01932E;
                        dw sprAss_4a_heart                   ;019052|        |019336;
                        dw sprAss_4b_meatChop                ;019054|        |01933B;
                        dw sprAss_4c_axe                     ;019056|        |019577;
-                       dw sprAss_4d_                        ;019058|        |01957F;
-                       dw sprAss_4e_                        ;01905A|        |019587;
-                       dw sprAss_4f_                        ;01905C|        |01958F;
+                       dw sprAss_4d_axe                     ;019058|        |01957F;
+                       dw sprAss_4e_axe                     ;01905A|        |019587;
+                       dw sprAss_4f_axe                     ;01905C|        |01958F;
                        dw sprAss_50_dagger                  ;01905E|        |01956F;
                        dw sprAss_51_doubleShot              ;019060|        |019597;
                        dw sprAss_52_tripleShot              ;019062|        |01959F;
                        dw sprAss_53_mummyShot               ;019064|        |0197A5;
-                       dw sprAss_54_                        ;019066|        |0197AD;
+                       dw sprAss_54_mummyShot               ;019066|        |0197AD;
                        dw sprAss_55_candleDtand             ;019068|        |01965E;
                        dw sprAss_56_                        ;01906A|        |01966F;
                        dw sprAss_57_draculaChunk            ;01906C|        |01993A;
                        dw sprAss_57_draculaChunk            ;01906E|        |01993A;
                        dw sprAss_57_draculaChunk            ;019070|        |01993A;
                        dw sprAss_2e_enemyFlame              ;019072|        |0192D2;
-                       dw sprAss_2f_                        ;019074|        |0192D7;
-                       dw sprAss_30_                        ;019076|        |0192DC;
-                       dw sprAss_5d_                        ;019078|        |0192E1;
-                       dw sprAss_5e_                        ;01907A|        |0192EA;
-                       dw sprAss_5f_                        ;01907C|        |01935A;
-                       dw sprAss_60_                        ;01907E|        |019362;
-                       dw sprAss_61_                        ;019080|        |01936A;
-                       dw sprAss_62_                        ;019082|        |019372;
-                       dw sprAss_63_                        ;019084|        |01937A;
+                       dw sprAss_2f_flame                   ;019074|        |0192D7;
+                       dw sprAss_30_flame                   ;019076|        |0192DC;
+                       dw sprAss_5d_torchFlame              ;019078|        |0192E1;
+                       dw sprAss_5e_torchFlame              ;01907A|        |0192EA;
+                       dw sprAss_5f_point100                ;01907C|        |01935A;
+                       dw sprAss_60_point200                ;01907E|        |019362;
+                       dw sprAss_61_point400                ;019080|        |01936A;
+                       dw sprAss_62_point700                ;019082|        |019372;
+                       dw sprAss_63_point1000               ;019084|        |01937A;
                        dw sprAss_64_ghost                   ;019086|        |0196B0;
-                       dw sprAss_65_                        ;019088|        |0196B8;
+                       dw sprAss_65_ghost                   ;019088|        |0196B8;
                        dw sprAss_66_spark                   ;01908A|        |019392;
                        dw sprAss_67_mummy                   ;01908C|        |019769;
-                       dw sprAss_68_                        ;01908E|        |01977D;
-                       dw sprAss_69_                        ;019090|        |019791;
-                       dw sprAss_68_                        ;019092|        |01977D;
-                       dw sprAss_68_                        ;019094|        |01977D;
-                       dw sprAss_68_                        ;019096|        |01977D;
-                       dw sprAss_6d_2ndDracula3             ;019098|        |0199BE;
+                       dw sprAss_68_mummy                   ;01908E|        |01977D;
+                       dw sprAss_69_mummy                   ;019090|        |019791;
+                       dw sprAss_68_mummy                   ;019092|        |01977D;
+                       dw sprAss_68_mummy                   ;019094|        |01977D;
+                       dw sprAss_68_mummy                   ;019096|        |01977D;
+                       dw sprAss_6d_2ndDrac_jump_02         ;019098|        |0199BE;
                        dw sprAss_6e_whipUpgrade             ;01909A|        |019344;
                        dw sprAss_6e_whipUpgrade             ;01909C|        |019344;
                        dw sprAss_70_ani70                   ;01909E|        |019343;
                        dw sprAss_71_                        ;0190A0|        |01934C;
-                       dw sprAss_72_cross                   ;0190A2|        |01934D;
-                       dw sprAss_73_                        ;0190A4|        |019397;
-                       dw sprAss_74_                        ;0190A6|        |01939F;
+                       dw sprAss_72_rossery                 ;0190A2|        |01934D;
+                       dw sprAss_73_medusa                  ;0190A4|        |019397;
+                       dw sprAss_74_medusa                  ;0190A6|        |01939F;
                        dw sprAss_75_snake                   ;0190A8|        |0196C0;
-                       dw sprAss_76_                        ;0190AA|        |0196C8;
+                       dw sprAss_76_snake                   ;0190AA|        |0196C8;
                        dw sprAss_77_ani77                   ;0190AC|        |0196D0;
                        dw sprAss_78_medusaBoss              ;0190AE|        |0196EB;
-                       dw sprAss_79_                        ;0190B0|        |019706;
-                       dw sprAss_7a_2ndDracula4             ;0190B2|        |0199D0;
-                       dw sprAss_7b_                        ;0190B4|        |0199E2;
-                       dw sprAss_7c_                        ;0190B6|        |019355;
-                       dw sprAss_7d_                        ;0190B8|        |019748;
-                       dw sprAss_7d_                        ;0190BA|        |019748;
+                       dw sprAss_79_medusaBoss              ;0190B0|        |019706;
+                       dw sprAss_7a_2ndDrac_landing         ;0190B2|        |0199D0;
+                       dw sprAss_7b_2ndDrac_shooting        ;0190B4|        |0199E2;
+                       dw sprAss_7c_stone                   ;0190B6|        |019355;
+                       dw sprAss_7d_batWall                 ;0190B8|        |019748;
+                       dw sprAss_7d_batWall                 ;0190BA|        |019748;
                        dw sprAss_7f_sleepingBat             ;0190BC|        |0198C8;
                                                             ;      |        |      ;
 spriteAssemblyPointers01Hi:
-                       dw sprAss_80_                        ;0190BE|        |0198D6;
-                       dw sprAss_81_                        ;0190C0|        |0198E4;
-                       dw sprAss_82_anim                    ;0190C2|        |0193C8;
-                       dw sprAss_83_                        ;0190C4|        |0193D0;
-                       dw sprAss_84_                        ;0190C6|        |0193D8;
+                       dw sprAss_80_bossKillFlame           ;0190BE|        |0198D6;
+                       dw sprAss_81_bossKillFlame           ;0190C0|        |0198E4;
+                       dw sprAss_82_hunchBack               ;0190C2|        |0193C8;
+                       dw sprAss_83_hunchBack               ;0190C4|        |0193D0;
+                       dw sprAss_84_hunchBack               ;0190C6|        |0193D8;
                        dw sprAss_85_axeArmor                ;0190C8|        |019838;
-                       dw sprAss_86_                        ;0190CA|        |019846;
-                       dw sprAss_73_                        ;0190CC|        |019397;
+                       dw sprAss_86_axeArmor                ;0190CA|        |019846;
+                       dw sprAss_73_medusa                  ;0190CC|        |019397;
                        dw sprAss_88_hunchback               ;0190CE|        |019751;
-                       dw sprAss_89_                        ;0190D0|        |019759;
-                       dw sprAss_8a_                        ;0190D2|        |019761;
-                       dw sprAss_89_                        ;0190D4|        |019759;
+                       dw sprAss_89_bat                     ;0190D0|        |019759;
+                       dw sprAss_8a_bat                     ;0190D2|        |019761;
+                       dw sprAss_89_bat                     ;0190D4|        |019759;
                        dw sprAss_8c_bossFlames              ;0190D6|        |0193E0;
-                       dw sprAss_8d_                        ;0190D8|        |0193F4;
-                       dw sprAss_8e_                        ;0190DA|        |019408;
+                       dw sprAss_8d_bossFlames              ;0190D8|        |0193F4;
+                       dw sprAss_8e_bossFlames              ;0190DA|        |019408;
                        dw sprAss_8f_frankenstein            ;0190DC|        |0197D5;
-                       dw sprAss_90_                        ;0190DE|        |0197E9;
-                       dw sprAss_91_                        ;0190E0|        |0197FD;
-                       dw sprAss_90_                        ;0190E2|        |0197E9;
+                       dw sprAss_90_frankenstein            ;0190DE|        |0197E9;
+                       dw sprAss_91_frankenstein            ;0190E0|        |0197FD;
+                       dw sprAss_90_frankenstein            ;0190E2|        |0197E9;
                        dw sprAss_00_invisible               ;0190E4|        |01919C;
                        dw sprAss_94_                        ;0190E6|        |019AA9;
-                       dw sprAss_95_                        ;0190E8|        |019463;
+                       dw sprAss_95_stone                   ;0190E8|        |019463;
                        dw sprAss_96_                        ;0190EA|        |019ADA;
-                       dw sprAss_97_                        ;0190EC|        |019468;
-                       dw sprAss_98_                        ;0190EE|        |019477;
-                       dw sprAss_99_                        ;0190F0|        |019486;
+                       dw sprAss_97_simonHurt               ;0190EC|        |019468;
+                       dw sprAss_98_simonDead               ;0190EE|        |019477;
+                       dw sprAss_99_simonDead               ;0190F0|        |019486;
                        dw sprAss_9a_knight                  ;0190F2|        |019721;
-                       dw sprAss_9b_                        ;0190F4|        |01972F;
-                       dw sprAss_9c_                        ;0190F6|        |01973D;
-                       dw sprAss_9b_                        ;0190F8|        |01972F;
-                       dw sprAss_9e_anim                    ;0190FA|        |019495;
+                       dw sprAss_9b_knight                  ;0190F4|        |01972F;
+                       dw sprAss_9c_knight                  ;0190F6|        |01973D;
+                       dw sprAss_9b_knight                  ;0190F8|        |01972F;
+                       dw sprAss_9e_bonePillar              ;0190FA|        |019495;
                        dw sprAss_9f_sleepingBatBoss         ;0190FC|        |019625;
                        dw sprAss_a0_phantomBat              ;0190FE|        |01962E;
                        dw sprAss_a1_                        ;019100|        |019649;
                        dw sprAss_a2_magicBall               ;019102|        |0194A4;
-                       dw sprAss_a3_                        ;019104|        |0194AD;
-                       dw sprAss_a4_                        ;019106|        |0194B6;
-                       dw sprAss_a5_                        ;019108|        |0194C5;
-                       dw sprAss_a6_                        ;01910A|        |0194D1;
-                       dw sprAss_a7_                        ;01910C|        |0194E0;
-                       dw sprAss_a7_                        ;01910E|        |0194E0;
-                       dw sprAss_a7_                        ;019110|        |0194E0;
-                       dw sprAss_a7_                        ;019112|        |0194E0;
-                       dw sprAss_ab_                        ;019114|        |0194EF;
-                       dw sprAss_ac_                        ;019116|        |0194FB;
-                       dw sprAss_ad                         ;019118|        |019382;
-                       dw sprAss_ae                         ;01911A|        |01938A;
+                       dw sprAss_a3_magicBall               ;019104|        |0194AD;
+                       dw sprAss_a4_simonWhipStair          ;019106|        |0194B6;
+                       dw sprAss_a5_simonWhipStair          ;019108|        |0194C5;
+                       dw sprAss_a6_simonWhipStair          ;01910A|        |0194D1;
+                       dw sprAss_a7_simonWhipStair          ;01910C|        |0194E0;
+                       dw sprAss_a7_simonWhipStair          ;01910E|        |0194E0;
+                       dw sprAss_a7_simonWhipStair          ;019110|        |0194E0;
+                       dw sprAss_a7_simonWhipStair          ;019112|        |0194E0;
+                       dw sprAss_ab_simonWhipStair          ;019114|        |0194EF;
+                       dw sprAss_ac_simonWhipStair          ;019116|        |0194FB;
+                       dw sprAss_ad_point2000               ;019118|        |019382;
+                       dw sprAss_ae_point4000               ;01911A|        |01938A;
                        dw sprAss_66_spark                   ;01911C|        |019392;
                        dw sprAss_66_spark                   ;01911E|        |019392;
                        dw sprAss_b1_skeleton                ;019120|        |01950A;
-                       dw sprAss_b2_                        ;019122|        |019518;
+                       dw sprAss_b2_skeleton                ;019122|        |019518;
                        dw sprAss_b3_skeletonBone            ;019124|        |019536;
-                       dw sprAss_b4_                        ;019126|        |01952E;
-                       dw sprAss_b5_                        ;019128|        |019526;
+                       dw sprAss_b4_bone                    ;019126|        |01952E;
+                       dw sprAss_b5_bone                    ;019128|        |019526;
                        dw sprAss_b6_sittingDog              ;01912A|        |01967B;
                        dw sprAss_b7_runningDog              ;01912C|        |019686;
                        dw sprAss_b8_jumpingDog              ;01912E|        |019694;
-                       dw sprAss_b9_                        ;019130|        |0196A2;
-                       dw sprAss_ba_                        ;019132|        |019828;
-                       dw sprAss_bb_                        ;019134|        |019830;
-                       dw sprAss_bb_                        ;019136|        |019830;
-                       dw sprAss_bb_                        ;019138|        |019830;
-                       dw sprAss_bb_                        ;01913A|        |019830;
-                       dw sprAss_ba_                        ;01913C|        |019828;
-                       dw sprAss_ba_                        ;01913E|        |019828;
-                       dw sprAss_ba_                        ;019140|        |019828;
+                       dw sprAss_b9_runningDog              ;019130|        |0196A2;
+                       dw sprAss_ba_skellyColap             ;019132|        |019828;
+                       dw sprAss_bb_skellyColap             ;019134|        |019830;
+                       dw sprAss_bb_skellyColap             ;019136|        |019830;
+                       dw sprAss_bb_skellyColap             ;019138|        |019830;
+                       dw sprAss_bb_skellyColap             ;01913A|        |019830;
+                       dw sprAss_ba_skellyColap             ;01913C|        |019828;
+                       dw sprAss_ba_skellyColap             ;01913E|        |019828;
+                       dw sprAss_ba_skellyColap             ;019140|        |019828;
                        dw sprAss_c2_BossDeath               ;019142|        |019885;
                        dw sprAss_c2_BossDeath               ;019144|        |019885;
                        dw sprAss_c4_hatchet                 ;019146|        |0198A8;
@@ -2168,19 +2168,19 @@ spriteAssemblyPointers01Hi:
                        dw sprAss_c6_hatchet                 ;01914A|        |0198B0;
                        dw sprAss_c7_hatchet                 ;01914C|        |0198B8;
                        dw sprAss_c8_hatchet                 ;01914E|        |0198C0;
-                       dw sprAss_c9_                        ;019150|        |0195A7;
-                       dw sprAss_ca_                        ;019152|        |0195B5;
-                       dw sprAss_cb_                        ;019154|        |0195C0;
-                       dw sprAss_cc_                        ;019156|        |0195C8;
-                       dw sprAss_cd_                        ;019158|        |019811;
-                       dw sprAss_ce_                        ;01915A|        |019819;
-                       dw sprAss_cf_                        ;01915C|        |019821;
+                       dw sprAss_c9_platform                ;019150|        |0195A7;
+                       dw sprAss_ca_platform3               ;019152|        |0195B5;
+                       dw sprAss_cb_platform2               ;019154|        |0195C0;
+                       dw sprAss_cc_platform1               ;019156|        |0195C8;
+                       dw sprAss_cd_boneDragHead            ;019158|        |019811;
+                       dw sprAss_ce_boneDragHead            ;01915A|        |019819;
+                       dw sprAss_cf_boneDragNeck            ;01915C|        |019821;
                        dw sprAss_d0_Dracula                 ;01915E|        |0198F2;
                        dw sprAss_d1_Dracula1                ;019160|        |01990F;
                        dw sprAss_d2_Dracula2                ;019162|        |019935;
-                       dw sprAss_d3_2ndDracula5             ;019164|        |019A05;
-                       dw sprAss_d4_                        ;019166|        |019A22;
-                       dw sprAss_d5_2ndDracula2             ;019168|        |01997A;
+                       dw sprAss_d3_2ndDrac_stand_00        ;019164|        |019A05;
+                       dw sprAss_d4_2ndDrac_stand_01        ;019166|        |019A22;
+                       dw sprAss_d5_2ndDrac_jump_01         ;019168|        |01997A;
                        dw sprAss_d6_                        ;01916A|        |019A80;
                        dw sprAss_d7_                        ;01916C|        |019A85;
                        dw sprAss_d8_                        ;01916E|        |019A8E;
@@ -2190,13 +2190,13 @@ spriteAssemblyPointers01Hi:
                        dw sprAss_dc_                        ;019176|        |019A4D;
                        dw sprAss_dd_                        ;019178|        |019A58;
                        dw sprAss_de_                        ;01917A|        |019A6C;
-                       dw sprAss_df_                        ;01917C|        |0195CD;
+                       dw sprAss_df_crown                   ;01917C|        |0195CD;
                        dw sprAss_e0_                        ;01917E|        |0195D5;
                        dw sprAss_e1_                        ;019180|        |0195DD;
                        dw sprAss_e2_                        ;019182|        |0195E5;
                        dw sprAss_e3_                        ;019184|        |0195EA;
                        dw sprAss_e4_                        ;019186|        |0195F2;
-                       dw sprAss_e5_                        ;019188|        |0195F7;
+                       dw sprAss_e5_oneUp                   ;019188|        |0195F7;
                        dw sprAss_e6_                        ;01918A|        |019B03;
                        dw sprAss_e7_                        ;01918C|        |019B18;
                        dw sprAss_e8_                        ;01918E|        |019B35;
@@ -2226,25 +2226,25 @@ sprAss_05_simonCrouch:
                        db $04,$E8,$02,$40,$00,$E9,$04,$F8   ;0191C4|        |      ;
                        db $09,$32,$00,$09,$34,$F8           ;0191CC|        |      ;
                                                             ;      |        |      ;
-           sprAss_06_:
+sprAss_06_simonWhip00:
                        db $04,$E0,$1A,$40,$F8,$E1,$1C,$F0   ;0191D2|        |      ;
                        db $80,$ED,$91                       ;0191DA|        |      ;
                                                             ;      |        |      ;
-           sprAss_07_:
+sprAss_07_simonWhip01:
                        db $03,$E0,$22,$40,$F8,$80,$ED,$91   ;0191DD|        |      ;
                                                             ;      |        |      ;
-           sprAss_08_:
+sprAss_08_simonWhip02:
                        db $04,$E0,$2A,$40,$F8,$E1,$28,$00   ;0191E5|        |      ;
                        db $01,$08,$F8,$01,$06,$00           ;0191ED|        |      ;
                                                             ;      |        |      ;
-           sprAss_09_:
+sprAss_09_simonDuckWhip00:
                        db $04,$E8,$1A,$40,$F8,$E9,$1C,$F0   ;0191F3|        |      ;
                        db $80,$0E,$92                       ;0191FB|        |      ;
                                                             ;      |        |      ;
-           sprAss_0a_:
+sprAss_0a_simonDuckWhip01:
                        db $03,$E8,$22,$40,$F8,$80,$0E,$92   ;0191FE|        |      ;
                                                             ;      |        |      ;
-           sprAss_0b_:
+sprAss_0b_simonDuckWhip02:
                        db $04,$E8,$2A,$40,$F8,$E9,$28,$00   ;019206|        |      ;
                        db $09,$34,$F8,$09,$32,$00           ;01920E|        |      ;
                                                             ;      |        |      ;
@@ -2259,10 +2259,10 @@ sprAss_0f_simonStairDown:
                        db $04,$E0,$12,$40,$00,$E1,$14,$F8   ;019227|        |      ;
                        db $01,$4C,$00,$01,$34,$F8           ;01922F|        |      ;
                                                             ;      |        |      ;
-           sprAss_10_:
+sprAss_10_whipWindupSmall_00:
                        db $02,$E0,$1E,$41,$FC,$01,$20,$FC   ;019235|        |      ;
                                                             ;      |        |      ;
-           sprAss_11_:
+sprAss_11_whipWindupSmall_01:
                        db $02,$F0,$26,$41,$FC,$E1,$24,$04   ;01923D|        |      ;
                                                             ;      |        |      ;
    sprAss_12_whipHand:
@@ -2272,10 +2272,10 @@ sprAss_0f_simonStairDown:
   sprAss_13_whipShort:
                        db $02,$EE,$2E,$41,$F4,$EF,$30,$FC   ;01924E|        |      ;
                                                             ;      |        |      ;
-   sprAss_14_whipWind:
+sprAss_14_whipWindup_00:
                        db $02,$E0,$46,$41,$FC,$01,$48,$FC   ;019256|        |      ;
                                                             ;      |        |      ;
-   sprAss_15_whipWind:
+sprAss_15_whipWindup_01:
                        db $02,$F0,$58,$41,$FC,$E1,$56,$04   ;01925E|        |      ;
                                                             ;      |        |      ;
 sprAss_16_whipChainHand:
@@ -2311,42 +2311,42 @@ sprAss_18_whipChainLong:
  sprAss_2e_enemyFlame:
                        db $01,$F0,$91,$03,$FC               ;0192D2|        |      ;
                                                             ;      |        |      ;
-           sprAss_2f_:
+      sprAss_2f_flame:
                        db $01,$F0,$93,$03,$FC               ;0192D7|        |      ;
                                                             ;      |        |      ;
-           sprAss_30_:
+      sprAss_30_flame:
                        db $01,$F0,$95,$03,$FC               ;0192DC|        |      ;
                                                             ;      |        |      ;
-           sprAss_5d_:
+ sprAss_5d_torchFlame:
                        db $02,$F0,$97,$03,$F8,$F0,$97,$43   ;0192E1|        |      ;
                        db $00                               ;0192E9|        |      ;
                                                             ;      |        |      ;
-           sprAss_5e_:
+ sprAss_5e_torchFlame:
                        db $02,$F0,$99,$03,$F8,$F0,$99,$43   ;0192EA|        |      ;
                        db $00                               ;0192F2|        |      ;
                                                             ;      |        |      ;
      sprAss_31_candle:
                        db $01,$F0,$40,$03,$FC               ;0192F3|        |      ;
                                                             ;      |        |      ;
-           sprAss_32_:
+     sprAss_32_candle:
                        db $01,$F0,$50,$03,$FC               ;0192F8|        |      ;
                                                             ;      |        |      ;
-           sprAss_42_:
+      sprAss_42_raven:
                        db $01,$F0,$68,$03,$FC               ;0192FD|        |      ;
                                                             ;      |        |      ;
-     sprAss_37_candle:
+    sprAss_37_fishMan:
                        db $04,$00,$A6,$43,$F8,$01,$A4,$00   ;019302|        |      ;
                        db $E1,$A2,$F8,$E1,$A0,$00           ;01930A|        |      ;
                                                             ;      |        |      ;
-           sprAss_38_:
+    sprAss_38_fishMan:
                        db $04,$00,$AA,$43,$F8,$01,$A8,$00   ;019310|        |      ;
                        db $80,$0A,$93                       ;019318|        |      ;
                                                             ;      |        |      ;
-     sprAss_39_merman:
+    sprAss_39_fishMan:
                        db $04,$E2,$AE,$43,$F8,$E3,$AC,$00   ;01931B|        |      ;
                        db $01,$8E,$F8,$01,$8C,$00           ;019323|        |      ;
                                                             ;      |        |      ;
-           sprAss_3d_:
+     sprAss_3d_bubble:
                        db $01,$F0,$9E,$01,$FC               ;019329|        |      ;
                                                             ;      |        |      ;
    sprAss_49_moneybag:
@@ -2367,40 +2367,40 @@ sprAss_6e_whipUpgrade:
            sprAss_71_:
                        db $02                               ;01934C|        |      ;
                                                             ;      |        |      ;
-      sprAss_72_cross:
+    sprAss_72_rossery:
                        db $02,$F0,$AD,$02,$F8,$F1,$AF,$00   ;01934D|        |      ;
                                                             ;      |        |      ;
-           sprAss_7c_:
+      sprAss_7c_stone:
                        db $01,$00,$74,$00,$00               ;019355|        |      ;
                                                             ;      |        |      ;
-           sprAss_5f_:
+   sprAss_5f_point100:
                        db $02,$F0,$C9,$02,$F8,$F1,$C5,$00   ;01935A|        |      ;
                                                             ;      |        |      ;
-           sprAss_60_:
+   sprAss_60_point200:
                        db $02,$F0,$CB,$02,$F8,$F1,$C5,$00   ;019362|        |      ;
                                                             ;      |        |      ;
-           sprAss_61_:
+   sprAss_61_point400:
                        db $02,$F0,$CD,$02,$F8,$F1,$C5,$00   ;01936A|        |      ;
                                                             ;      |        |      ;
-           sprAss_62_:
+   sprAss_62_point700:
                        db $02,$F0,$CF,$02,$F8,$F1,$C5,$00   ;019372|        |      ;
                                                             ;      |        |      ;
-           sprAss_63_:
+  sprAss_63_point1000:
                        db $02,$F0,$C9,$02,$F8,$F1,$C7,$00   ;01937A|        |      ;
                                                             ;      |        |      ;
-            sprAss_ad:
+  sprAss_ad_point2000:
                        db $02,$F0,$CB,$02,$F8,$F1,$C7,$00   ;019382|        |      ;
                                                             ;      |        |      ;
-            sprAss_ae:
+  sprAss_ae_point4000:
                        db $02,$F0,$CD,$02,$F8,$F1,$C7,$00   ;01938A|        |      ;
                                                             ;      |        |      ;
       sprAss_66_spark:
                        db $01,$00,$70,$03,$00               ;019392|        |      ;
                                                             ;      |        |      ;
-           sprAss_73_:
+     sprAss_73_medusa:
                        db $02,$F0,$EA,$42,$F8,$F1,$E8,$00   ;019397|        |      ;
                                                             ;      |        |      ;
-           sprAss_74_:
+     sprAss_74_medusa:
                        db $02,$F0,$EE,$42,$F8,$F1,$EC,$00   ;01939F|        |      ;
                        db $02,$F0,$9C,$03,$F8,$F0,$9C,$43   ;0193A7|        |      ;
                        db $00                               ;0193AF|        |      ;
@@ -2411,16 +2411,16 @@ sprAss_6e_whipUpgrade:
      sprAss_45_medusa:
                        db $02,$F0,$96,$43,$F8,$F1,$94,$00   ;0193B8|        |      ;
                                                             ;      |        |      ;
-           sprAss_46_:
+        sprAss_46_bat:
                        db $02,$F0,$9A,$43,$F8,$F1,$98,$00   ;0193C0|        |      ;
                                                             ;      |        |      ;
-       sprAss_82_anim:
+  sprAss_82_hunchBack:
                        db $02,$F0,$7A,$43,$F8,$F1,$78,$00   ;0193C8|        |      ;
                                                             ;      |        |      ;
-           sprAss_83_:
+  sprAss_83_hunchBack:
                        db $02,$F0,$7E,$43,$F8,$F1,$7C,$00   ;0193D0|        |      ;
                                                             ;      |        |      ;
-           sprAss_84_:
+  sprAss_84_hunchBack:
                        db $02,$F0,$7E,$43,$F8,$F1,$78,$00   ;0193D8|        |      ;
                                                             ;      |        |      ;
  sprAss_8c_bossFlames:
@@ -2428,12 +2428,12 @@ sprAss_6e_whipUpgrade:
                        db $E1,$91,$04,$01,$91,$F4,$01,$91   ;0193E8|        |      ;
                        db $FC,$01,$91,$04                   ;0193F0|        |      ;
                                                             ;      |        |      ;
-           sprAss_8d_:
+ sprAss_8d_bossFlames:
                        db $06,$E0,$93,$03,$F4,$E1,$93,$FC   ;0193F4|        |      ;
                        db $E1,$93,$04,$01,$93,$F4,$01,$93   ;0193FC|        |      ;
                        db $FC,$01,$93,$04                   ;019404|        |      ;
                                                             ;      |        |      ;
-           sprAss_8e_:
+ sprAss_8e_bossFlames:
                        db $06,$E0,$95,$03,$F4,$E1,$95,$FC   ;019408|        |      ;
                        db $E1,$95,$04,$01,$95,$F4,$01,$95   ;019410|        |      ;
                        db $FC,$01,$95,$04                   ;019418|        |      ;
@@ -2448,17 +2448,17 @@ sprAss_27_boomerangShot:
 sprAss_28_boomerangCollectable:
                        db $02,$F0,$52,$02,$F8,$F1,$54,$00   ;01942A|        |      ;
                                                             ;      |        |      ;
-           sprAss_29_:
+sprAss_29_boomerangShot:
                        db $02,$F0,$54,$42,$F8,$F1,$52,$00   ;019432|        |      ;
                                                             ;      |        |      ;
    sprAss_26_bigHeart:
                        db $02,$F0,$BF,$03,$F8,$F0,$BF,$43   ;01943A|        |      ;
                        db $00                               ;019442|        |      ;
                                                             ;      |        |      ;
-           sprAss_2a_:
+      sprAss_2a_oneUp:
                        db $02,$F0,$B1,$02,$F8,$F1,$B3,$00   ;019443|        |      ;
                                                             ;      |        |      ;
-           sprAss_2b_:
+  sprAss_2b_holyWater:
                        db $02,$F0,$A1,$02,$F8,$F1,$A3,$00   ;01944B|        |      ;
                                                             ;      |        |      ;
      sprAss_2c_potion:
@@ -2467,22 +2467,22 @@ sprAss_28_boomerangCollectable:
       sprAss_2d_clock:
                        db $02,$F0,$89,$02,$F8,$F1,$8B,$00   ;01945B|        |      ;
                                                             ;      |        |      ;
-           sprAss_95_:
+      sprAss_95_stone:
                        db $01,$00,$74,$01,$00               ;019463|        |      ;
                                                             ;      |        |      ;
-           sprAss_97_:
+  sprAss_97_simonHurt:
                        db $04,$E0,$3A,$40,$00,$E1,$3C,$F8   ;019468|        |      ;
                        db $00,$4C,$40,$00,$01,$34,$F8       ;019470|        |      ;
                                                             ;      |        |      ;
-           sprAss_98_:
+  sprAss_98_simonDead:
                        db $04,$00,$6E,$40,$F8,$01,$5E,$00   ;019477|        |      ;
                        db $00,$4E,$40,$08,$01,$3E,$10       ;01947F|        |      ;
                                                             ;      |        |      ;
-           sprAss_99_:
+  sprAss_99_simonDead:
                        db $04,$F0,$3A,$40,$00,$F1,$3C,$F8   ;019486|        |      ;
                        db $10,$32,$40,$00,$11,$34,$F8       ;01948E|        |      ;
                                                             ;      |        |      ;
-       sprAss_9e_anim:
+ sprAss_9e_bonePillar:
                        db $04,$E0,$E2,$41,$F8,$E1,$E0,$00   ;019495|        |      ;
                        db $00,$E0,$01,$F8,$01,$E2,$00       ;01949D|        |      ;
                                                             ;      |        |      ;
@@ -2490,31 +2490,31 @@ sprAss_28_boomerangCollectable:
                        db $02,$F0,$5A,$03,$F8,$F0,$5A,$43   ;0194A4|        |      ;
                        db $00                               ;0194AC|        |      ;
                                                             ;      |        |      ;
-           sprAss_a3_:
+  sprAss_a3_magicBall:
                        db $02,$F0,$5C,$03,$F8,$F0,$5C,$43   ;0194AD|        |      ;
                        db $00                               ;0194B5|        |      ;
                                                             ;      |        |      ;
-           sprAss_a4_:
+sprAss_a4_simonWhipStair:
                        db $04,$DC,$1A,$40,$F8,$DD,$1C,$F0   ;0194B6|        |      ;
                        db $FC,$36,$40,$00,$FD,$38,$F8       ;0194BE|        |      ;
                                                             ;      |        |      ;
-           sprAss_a5_:
+sprAss_a5_simonWhipStair:
                        db $03,$DC,$22,$40,$F8,$FC,$36,$40   ;0194C5|        |      ;
                        db $00,$FD,$38,$F8                   ;0194CD|        |      ;
                                                             ;      |        |      ;
-           sprAss_a6_:
+sprAss_a6_simonWhipStair:
                        db $04,$DC,$2A,$40,$F8,$DD,$28,$00   ;0194D1|        |      ;
                        db $FC,$38,$40,$F8,$FD,$36,$00       ;0194D9|        |      ;
                                                             ;      |        |      ;
-           sprAss_a7_:
+sprAss_a7_simonWhipStair:
                        db $04,$E0,$1A,$40,$F8,$E1,$1C,$F0   ;0194E0|        |      ;
                        db $00,$4C,$40,$00,$01,$34,$F8       ;0194E8|        |      ;
                                                             ;      |        |      ;
-           sprAss_ab_:
+sprAss_ab_simonWhipStair:
                        db $03,$E0,$22,$40,$F8,$00,$4C,$40   ;0194EF|        |      ;
                        db $00,$01,$34,$F8                   ;0194F7|        |      ;
                                                             ;      |        |      ;
-           sprAss_ac_:
+sprAss_ac_simonWhipStair:
                        db $04,$E0,$2A,$40,$F8,$E1,$28,$00   ;0194FB|        |      ;
                        db $00,$34,$40,$F8,$01,$4C,$00       ;019503|        |      ;
                                                             ;      |        |      ;
@@ -2522,14 +2522,14 @@ sprAss_28_boomerangCollectable:
                        db $04,$E0,$82,$41,$F8,$E1,$80,$00   ;01950A|        |      ;
                        db $01,$86,$F8,$01,$84,$00           ;019512|        |      ;
                                                             ;      |        |      ;
-           sprAss_b2_:
+   sprAss_b2_skeleton:
                        db $04,$E0,$8A,$41,$F8,$E1,$88,$00   ;019518|        |      ;
                        db $01,$8E,$F8,$01,$8C,$00           ;019520|        |      ;
                                                             ;      |        |      ;
-           sprAss_b5_:
+       sprAss_b5_bone:
                        db $02,$F0,$96,$41,$F8,$F1,$94,$00   ;019526|        |      ;
                                                             ;      |        |      ;
-           sprAss_b4_:
+       sprAss_b4_bone:
                        db $02,$F0,$94,$01,$F8,$F1,$96,$00   ;01952E|        |      ;
                                                             ;      |        |      ;
 sprAss_b3_skeletonBone:
@@ -2541,7 +2541,7 @@ sprAss_b3_skeletonBone:
                        db $F0,$01,$BC,$F8,$01,$BA,$00,$01   ;01954B|        |      ;
                        db $B8,$08                           ;019553|        |      ;
                                                             ;      |        |      ;
-           sprAss_3b_:
+      sprAss_3b_eagle:
                        db $08,$E0,$C6,$41,$F0,$E1,$C4,$F8   ;019555|        |      ;
                        db $E1,$C2,$00,$E1,$C0,$08,$01,$CE   ;01955D|        |      ;
                        db $F0,$01,$CC,$F8,$01,$CA,$00,$01   ;019565|        |      ;
@@ -2553,13 +2553,13 @@ sprAss_b3_skeletonBone:
         sprAss_4c_axe:
                        db $02,$F0,$B7,$01,$F8,$F1,$B9,$00   ;019577|        |      ;
                                                             ;      |        |      ;
-           sprAss_4d_:
+        sprAss_4d_axe:
                        db $02,$F0,$B9,$41,$F8,$F1,$B7,$00   ;01957F|        |      ;
                                                             ;      |        |      ;
-           sprAss_4e_:
+        sprAss_4e_axe:
                        db $02,$F0,$B9,$C1,$F8,$F1,$B7,$00   ;019587|        |      ;
                                                             ;      |        |      ;
-           sprAss_4f_:
+        sprAss_4f_axe:
                        db $02,$F0,$B7,$81,$F8,$F1,$B9,$00   ;01958F|        |      ;
                                                             ;      |        |      ;
  sprAss_51_doubleShot:
@@ -2568,21 +2568,21 @@ sprAss_b3_skeletonBone:
  sprAss_52_tripleShot:
                        db $02,$F0,$A9,$03,$F8,$F1,$AB,$00   ;01959F|        |      ;
                                                             ;      |        |      ;
-           sprAss_c9_:
+   sprAss_c9_platform:
                        db $04,$00,$72,$00,$F0,$01,$72,$F8   ;0195A7|        |      ;
                        db $01,$72,$00,$01,$72,$08           ;0195AF|        |      ;
                                                             ;      |        |      ;
-           sprAss_ca_:
+  sprAss_ca_platform3:
                        db $03,$00,$72,$00,$F8,$01,$72,$00   ;0195B5|        |      ;
                        db $01,$72,$08                       ;0195BD|        |      ;
                                                             ;      |        |      ;
-           sprAss_cb_:
+  sprAss_cb_platform2:
                        db $02,$00,$72,$00,$00,$01,$72,$08   ;0195C0|        |      ;
                                                             ;      |        |      ;
-           sprAss_cc_:
+  sprAss_cc_platform1:
                        db $01,$00,$72,$00,$08               ;0195C8|        |      ;
                                                             ;      |        |      ;
-           sprAss_df_:
+      sprAss_df_crown:
                        db $02,$F0,$A0,$00,$F8,$F1,$A2,$00   ;0195CD|        |      ;
                                                             ;      |        |      ;
            sprAss_e0_:
@@ -2600,7 +2600,7 @@ sprAss_b3_skeletonBone:
            sprAss_e4_:
                        db $01,$F0,$BC,$00,$FC               ;0195F2|        |      ;
                                                             ;      |        |      ;
-           sprAss_e5_:
+      sprAss_e5_oneUp:
                        db $02,$F0,$B1,$00,$F8,$F1,$B3,$00   ;0195F7|        |      ;
                                                             ;      |        |      ;
            sprAss_19_:
@@ -2653,20 +2653,20 @@ sprAss_55_candleDtand:
                        db $04,$F0,$BE,$43,$F0,$F1,$BC,$F8   ;019694|        |      ;
                        db $F1,$BA,$00,$F1,$B8,$08           ;01969C|        |      ;
                                                             ;      |        |      ;
-           sprAss_b9_:
+ sprAss_b9_runningDog:
                        db $04,$F0,$CE,$43,$F0,$F1,$CC,$F8   ;0196A2|        |      ;
                        db $F1,$CA,$00,$F1,$C8,$08           ;0196AA|        |      ;
                                                             ;      |        |      ;
       sprAss_64_ghost:
                        db $02,$F0,$B2,$41,$F8,$F1,$B0,$00   ;0196B0|        |      ;
                                                             ;      |        |      ;
-           sprAss_65_:
+      sprAss_65_ghost:
                        db $02,$F0,$B4,$41,$F8,$F1,$B0,$00   ;0196B8|        |      ;
                                                             ;      |        |      ;
       sprAss_75_snake:
                        db $02,$EC,$F0,$42,$F8,$ED,$F2,$00   ;0196C0|        |      ;
                                                             ;      |        |      ;
-           sprAss_76_:
+      sprAss_76_snake:
                        db $02,$EC,$F6,$42,$F8,$ED,$F4,$00   ;0196C8|        |      ;
                                                             ;      |        |      ;
       sprAss_77_ani77:
@@ -2681,7 +2681,7 @@ sprAss_55_candleDtand:
                        db $42,$00,$E1,$D8,$08,$01,$DE,$00   ;0196FB|        |      ;
                        db $01,$DC,$08                       ;019703|        |      ;
                                                             ;      |        |      ;
-           sprAss_79_:
+ sprAss_79_medusaBoss:
                        db $08,$E0,$D0,$01,$F0,$E1,$D2,$F8   ;019706|        |      ;
                        db $01,$D4,$F0,$01,$D6,$F8,$E0,$D2   ;01970E|        |      ;
                        db $41,$00,$E1,$D0,$08,$01,$D6,$00   ;019716|        |      ;
@@ -2691,25 +2691,25 @@ sprAss_55_candleDtand:
                        db $04,$00,$86,$41,$F8,$01,$84,$00   ;019721|        |      ;
                        db $E3,$82,$F8,$E3,$80,$00           ;019729|        |      ;
                                                             ;      |        |      ;
-           sprAss_9b_:
+     sprAss_9b_knight:
                        db $04,$E0,$82,$41,$F8,$E1,$80,$00   ;01972F|        |      ;
                        db $01,$8A,$F8,$01,$88,$00           ;019737|        |      ;
                                                             ;      |        |      ;
-           sprAss_9c_:
+     sprAss_9c_knight:
                        db $04,$00,$8E,$41,$F8,$01,$8C,$00   ;01973D|        |      ;
                        db $80,$29,$97                       ;019745|        |      ;
                                                             ;      |        |      ;
-           sprAss_7d_:
+    sprAss_7d_batWall:
                        db $02,$F0,$9C,$01,$F8,$F0,$9C,$41   ;019748|        |      ;
                        db $00                               ;019750|        |      ;
                                                             ;      |        |      ;
   sprAss_88_hunchback:
                        db $02,$F0,$92,$41,$F8,$F1,$90,$00   ;019751|        |      ;
                                                             ;      |        |      ;
-           sprAss_89_:
+        sprAss_89_bat:
                        db $02,$F0,$96,$41,$F8,$F1,$94,$00   ;019759|        |      ;
                                                             ;      |        |      ;
-           sprAss_8a_:
+        sprAss_8a_bat:
                        db $02,$F0,$9A,$41,$F8,$F1,$98,$00   ;019761|        |      ;
                                                             ;      |        |      ;
       sprAss_67_mummy:
@@ -2717,12 +2717,12 @@ sprAss_55_candleDtand:
                        db $F1,$D6,$F8,$F1,$D4,$00,$11,$DA   ;019771|        |      ;
                        db $F8,$11,$D8,$00                   ;019779|        |      ;
                                                             ;      |        |      ;
-           sprAss_68_:
+      sprAss_68_mummy:
                        db $06,$D0,$DE,$41,$F8,$D1,$DC,$00   ;01977D|        |      ;
                        db $F1,$C2,$F8,$F1,$C0,$00,$11,$C6   ;019785|        |      ;
                        db $F8,$11,$C4,$00                   ;01978D|        |      ;
                                                             ;      |        |      ;
-           sprAss_69_:
+      sprAss_69_mummy:
                        db $06,$D0,$CA,$41,$F8,$D1,$C8,$00   ;019791|        |      ;
                        db $F1,$CE,$F8,$F1,$CC,$00,$11,$F2   ;019799|        |      ;
                        db $F8,$11,$F0,$00                   ;0197A1|        |      ;
@@ -2730,7 +2730,7 @@ sprAss_55_candleDtand:
   sprAss_53_mummyShot:
                        db $02,$F0,$F6,$41,$F8,$F1,$F4,$00   ;0197A5|        |      ;
                                                             ;      |        |      ;
-           sprAss_54_:
+  sprAss_54_mummyShot:
                        db $02,$F0,$FA,$41,$F8,$F1,$F8,$00   ;0197AD|        |      ;
                                                             ;      |        |      ;
       sprAss_48_raven:
@@ -2739,7 +2739,7 @@ sprAss_55_candleDtand:
      sprAss_3d_splash:
                        db $02,$F0,$A2,$43,$F8,$F1,$A0,$00   ;0197BD|        |      ;
                                                             ;      |        |      ;
-           sprAss_40_:
+      sprAss_40_raven:
                        db $02,$F0,$A6,$43,$F8,$F1,$A4,$00   ;0197C5|        |      ;
                                                             ;      |        |      ;
       sprAss_41_raven:
@@ -2750,36 +2750,36 @@ sprAss_8f_frankenstein:
                        db $F1,$F8,$F8,$F1,$F6,$00,$11,$E4   ;0197DD|        |      ;
                        db $F8,$11,$FA,$00                   ;0197E5|        |      ;
                                                             ;      |        |      ;
-           sprAss_90_:
+sprAss_90_frankenstein:
                        db $06,$D0,$E8,$41,$F8,$D1,$E6,$00   ;0197E9|        |      ;
                        db $F1,$EC,$F8,$F1,$EA,$00,$11,$F0   ;0197F1|        |      ;
                        db $F8,$11,$EE,$00                   ;0197F9|        |      ;
                                                             ;      |        |      ;
-           sprAss_91_:
+sprAss_91_frankenstein:
                        db $06,$D0,$DC,$41,$F8,$D1,$DA,$00   ;0197FD|        |      ;
                        db $F1,$E0,$F8,$F1,$DE,$00,$11,$E4   ;019805|        |      ;
                        db $F8,$11,$E2,$00                   ;01980D|        |      ;
                                                             ;      |        |      ;
-           sprAss_cd_:
+sprAss_cd_boneDragHead:
                        db $02,$F0,$D2,$41,$F8,$F1,$D0,$00   ;019811|        |      ;
                                                             ;      |        |      ;
-           sprAss_ce_:
+sprAss_ce_boneDragHead:
                        db $02,$F0,$D6,$41,$F8,$F1,$D4,$00   ;019819|        |      ;
                                                             ;      |        |      ;
-           sprAss_cf_:
+sprAss_cf_boneDragNeck:
                        db $01,$F0,$D8,$41,$FC,$EA,$EA       ;019821|        |      ;
                                                             ;      |        |      ;
-           sprAss_ba_:
+sprAss_ba_skellyColap:
                        db $02,$00,$98,$03,$F8,$01,$9A,$00   ;019828|        |      ;
                                                             ;      |        |      ;
-           sprAss_bb_:
+sprAss_bb_skellyColap:
                        db $02,$00,$9C,$03,$F8,$01,$9E,$00   ;019830|        |      ;
                                                             ;      |        |      ;
    sprAss_85_axeArmor:
                        db $06,$00,$AA,$41,$F4,$01,$A8,$FC   ;019838|        |      ;
                        db $01,$A6,$04,$80,$51,$98           ;019840|        |      ;
                                                             ;      |        |      ;
-           sprAss_86_:
+   sprAss_86_axeArmor:
                        db $06,$00,$90,$41,$F4,$01,$AE,$FC   ;019846|        |      ;
                        db $01,$AC,$04,$E1,$A4,$F4,$E1,$A2   ;01984E|        |      ;
                        db $FC,$E1,$A0,$04,$04,$E0,$E2,$41   ;019856|        |      ;
@@ -2817,11 +2817,11 @@ sprAss_7f_sleepingBat:
                        db $09,$C0,$91,$03,$F4,$C1,$91,$FC   ;0198C8|        |      ;
                        db $C1,$91,$04,$80,$E1,$93           ;0198D0|        |      ;
                                                             ;      |        |      ;
-           sprAss_80_:
+sprAss_80_bossKillFlame:
                        db $09,$C0,$93,$03,$F4,$C1,$93,$FC   ;0198D6|        |      ;
                        db $C1,$93,$04,$80,$F5,$93           ;0198DE|        |      ;
                                                             ;      |        |      ;
-           sprAss_81_:
+sprAss_81_bossKillFlame:
                        db $09,$C0,$95,$03,$F4,$C1,$95,$FC   ;0198E4|        |      ;
                        db $C1,$95,$04,$80,$09,$94           ;0198EC|        |      ;
                                                             ;      |        |      ;
@@ -2844,7 +2844,7 @@ sprAss_7f_sleepingBat:
 sprAss_57_draculaChunk:
                        db $02,$F0,$7A,$42,$F8,$F1,$78,$00   ;01993A|        |      ;
                                                             ;      |        |      ;
- sprAss_24_2ndDracula:
+sprAss_24_2ndDrac_Jump_00:
                        db $12,$F0,$B6,$42,$F8,$F1,$B4,$00   ;019942|        |      ;
                        db $F1,$B2,$08,$F1,$B0,$10,$11,$BA   ;01994A|        |      ;
                        db $F8,$11,$B8,$00,$B1,$84,$00,$B1   ;019952|        |      ;
@@ -2853,7 +2853,7 @@ sprAss_57_draculaChunk:
                        db $E8,$D1,$94,$F0,$D1,$92,$F8,$D1   ;01996A|        |      ;
                        db $90,$00,$D1,$8E,$08,$D1,$8C,$10   ;019972|        |      ;
                                                             ;      |        |      ;
-sprAss_d5_2ndDracula2:
+sprAss_d5_2ndDrac_jump_01:
                        db $16,$F0,$B6,$42,$F8,$F1,$B4,$00   ;01997A|        |      ;
                        db $F1,$B2,$08,$F1,$B0,$10,$11,$BA   ;019982|        |      ;
                        db $F8,$11,$B8,$00,$B1,$A6,$00,$B1   ;01998A|        |      ;
@@ -2864,31 +2864,31 @@ sprAss_d5_2ndDracula2:
                        db $D1,$AC,$F0,$D1,$AA,$F8,$D1,$90   ;0199B2|        |      ;
                        db $00,$D1,$8E,$08                   ;0199BA|        |      ;
                                                             ;      |        |      ;
-sprAss_6d_2ndDracula3:
+sprAss_6d_2ndDrac_jump_02:
                        db $14,$F0,$B0,$02,$F0,$F1,$B2,$F8   ;0199BE|        |      ;
                        db $F0,$B2,$42,$08,$F1,$B0,$10,$80   ;0199C6|        |      ;
                        db $8E,$99                           ;0199CE|        |      ;
                                                             ;      |        |      ;
-sprAss_7a_2ndDracula4:
+sprAss_7a_2ndDrac_landing:
                        db $10,$F0,$B0,$02,$F0,$F1,$B2,$F8   ;0199D0|        |      ;
                        db $F0,$B2,$42,$08,$F1,$B0,$10,$80   ;0199D8|        |      ;
                        db $56,$99                           ;0199E0|        |      ;
                                                             ;      |        |      ;
-           sprAss_7b_:
+sprAss_7b_2ndDrac_shooting:
                        db $18,$F0,$BE,$42,$F0,$F1,$BC,$F8   ;0199E2|        |      ;
                        db $F1,$B6,$08,$F1,$B4,$10,$11,$C2   ;0199EA|        |      ;
                        db $E8,$11,$C0,$F0,$11,$BA,$08,$11   ;0199F2|        |      ;
                        db $B8,$10,$B1,$84,$00,$B1,$82,$08   ;0199FA|        |      ;
                        db $80,$94,$99                       ;019A02|        |      ;
                                                             ;      |        |      ;
-sprAss_d3_2ndDracula5:
+sprAss_d3_2ndDrac_stand_00:
                        db $14,$F0,$BE,$42,$F0,$F1,$BC,$F8   ;019A05|        |      ;
                        db $F1,$B6,$08,$F1,$B4,$10,$11,$C2   ;019A0D|        |      ;
                        db $E8,$11,$C0,$F0,$11,$BA,$08,$11   ;019A15|        |      ;
                        db $B8,$10,$80,$56,$99               ;019A1D|        |      ;
                                                             ;      |        |      ;
-           sprAss_d4_:
-                       db $14,$F0,$BE,$42,$F0,$F1,$BC,$F8   ;019A22|        |      ;
+sprAss_d4_2ndDrac_stand_01:
+                       db $14,$F0,$BE,$42,$F0,$F1,$BC,$F8   ;019A22|        |      ; faces
                        db $F1,$B6,$08,$F1,$B4,$10,$11,$C2   ;019A2A|        |      ;
                        db $E8,$11,$C0,$F0,$11,$BA,$08,$11   ;019A32|        |      ;
                        db $B8,$10,$B1,$A6,$00,$B1,$A4,$08   ;019A3A|        |      ;

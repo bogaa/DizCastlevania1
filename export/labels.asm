@@ -27,7 +27,7 @@
                        r_tsa_refreshCutoff = $00003B        ;      |        |      ;
                        r_scroll_State = $00003C             ;      |        |      ;
                        r_scroll_Speed_Subpixel = $00003D    ;      |        |      ;
-                       r_player_setStairState = $00003E     ;      |        |      ;
+                       r_scroll_Speed = $00003E             ;      |        |      ;
                        r_player_yPosLow = $00003F           ;      |        |      ;
                        r_player_xPosLow = $000040           ;      |        |      ;
                        r_player_xPosHi = $000041            ;      |        |      ;
@@ -227,8 +227,8 @@
                        r_entity_animID = $0004C0            ;      |        |      ;
                        r_entrance_BatsAnimation = $0004C2   ;      |        |      ;
                        r_entrance_RightBatBobTiming = $0004C3;      |        |      ;
-                       r_X_screen_AddressLo = $0004DC       ;      |        |      ;
-                       r_X_screen_AddressHi = $0004DD       ;      |        |      ;
+                       r_entity_Ydirection = $0004DC        ;      |        |      ;
+                       ;      |        |      ;
                        r_entity_various = $0004DF           ;      |        |      ;
                        r_candleIndexForSlots = $0004EA      ;      |        |      ;
                        r_weapon_collisionID = $0004F0       ;      |        |      ;
@@ -293,7 +293,7 @@
                        r1_tsa_refreshCutoff = $01003B       ;      |        |      ;
                        r1_scroll_State = $01003C            ;      |        |      ;
                        r1_scroll_Speed_Subpixel = $01003D   ;      |        |      ;
-                       r1_player_setStairState = $01003E    ;      |        |      ;
+                       r1_scroll_Speed = $01003E            ;      |        |      ;
                        r1_player_yPosLow = $01003F          ;      |        |      ;
                        r1_player_xPosLow = $010040          ;      |        |      ;
                        r1_player_xPosHi = $010041           ;      |        |      ;
@@ -561,7 +561,7 @@
                        r2_tsa_refreshCutoff = $02003B       ;      |        |      ;
                        r2_scroll_State = $02003C            ;      |        |      ;
                        r2_scroll_Speed_Subpixel = $02003D   ;      |        |      ;
-                       r2_player_setStairState = $02003E    ;      |        |      ;
+                       r2_scroll_Speed = $02003E            ;      |        |      ;
                        r2_player_yPosLow = $02003F          ;      |        |      ;
                        r2_player_xPosLow = $020040          ;      |        |      ;
                        r2_player_xPosHi = $020041           ;      |        |      ;
@@ -827,7 +827,7 @@
                        r3_tsa_refreshCutoff = $03003B       ;      |        |      ;
                        r3_scroll_State = $03003C            ;      |        |      ;
                        r3_scroll_Speed_Subpixel = $03003D   ;      |        |      ;
-                       r3_player_setStairState = $03003E    ;      |        |      ;
+                       r3_scroll_Speed = $03003E            ;      |        |      ;
                        r3_player_yPosLow = $03003F          ;      |        |      ;
                        r3_player_xPosLow = $030040          ;      |        |      ;
                        r3_player_xPosHi = $030041           ;      |        |      ;
@@ -1093,7 +1093,7 @@
                        r4_tsa_refreshCutoff = $04003B       ;      |        |      ;
                        r4_scroll_State = $04003C            ;      |        |      ;
                        r4_scroll_Speed_Subpixel = $04003D   ;      |        |      ;
-                       r4_player_setStairState = $04003E    ;      |        |      ;
+                       r4_scroll_Speed = $04003E            ;      |        |      ;
                        r4_player_yPosLow = $04003F          ;      |        |      ;
                        r4_player_xPosLow = $040040          ;      |        |      ;
                        r4_player_xPosHi = $040041           ;      |        |      ;
@@ -1359,7 +1359,7 @@
                        r5_tsa_refreshCutoff = $05003B       ;      |        |      ;
                        r5_scroll_State = $05003C            ;      |        |      ;
                        r5_scroll_Speed_Subpixel = $05003D   ;      |        |      ;
-                       r5_player_setStairState = $05003E    ;      |        |      ;
+                       r5_scroll_Speed = $05003E            ;      |        |      ;
                        r5_player_yPosLow = $05003F          ;      |        |      ;
                        r5_player_xPosLow = $050040          ;      |        |      ;
                        r5_player_xPosHi = $050041           ;      |        |      ;
@@ -1625,7 +1625,7 @@
                        r6_tsa_refreshCutoff = $06003B       ;      |        |      ;
                        r6_scroll_State = $06003C            ;      |        |      ;
                        r6_scroll_Speed_Subpixel = $06003D   ;      |        |      ;
-                       r6_player_setStairState = $06003E    ;      |        |      ;
+                       r6_scroll_Speed = $06003E            ;      |        |      ;
                        r6_player_yPosLow = $06003F          ;      |        |      ;
                        r6_player_xPosLow = $060040          ;      |        |      ;
                        r6_player_xPosHi = $060041           ;      |        |      ;
@@ -1891,7 +1891,7 @@
                        r7_tsa_refreshCutoff = $07003B       ;      |        |      ;
                        r7_scroll_State = $07003C            ;      |        |      ;
                        r7_scroll_Speed_Subpixel = $07003D   ;      |        |      ;
-                       r7_player_setStairState = $07003E    ;      |        |      ;
+                       r7_scroll_Speed = $07003E            ;      |        |      ;
                        r7_player_yPosLow = $07003F          ;      |        |      ;
                        r7_player_xPosLow = $070040          ;      |        |      ;
                        r7_player_xPosHi = $070041           ;      |        |      ;
@@ -2128,8 +2128,12 @@
                        r7_scoreLow = $0707FC                ;      |        |      ;
                        r7_scoreMid = $0707FD                ;      |        |      ;
                        r7_scoreHigh = $0707FE               ;      |        |      ;
+                       simonJumpSpdHi = $079B8E             ;      |        |      ;
+                       simonJumpSpdPoHi = $079BA6           ;      |        |      ;
                        tileMapPointerTableHi = $07CBF2      ;      |        |      ;
                        eventTrackerPointer01 = $07D291      ;      |        |      ;
+                       enemyPlacementHi = $07D6C7           ;      |        |      ;
+                       candlePlacerHi = $07D7C7             ;      |        |      ;
                        TSA_blockPointersHi = $07F9FB        ;      |        |      ;
                        levelScenePoHi = $07FB24             ;      |        |      ;
                        levelDataPointerHi = $07FC39         ;      |        |      ;

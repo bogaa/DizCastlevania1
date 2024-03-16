@@ -120,7 +120,7 @@
                        RTS                                  ;0680C6|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-enemyAI_1a_bossPhantimBat:
+enemyAI_19_bossPhantimBat:
                        JSR.W FIXME_eea7_endRoutineWhileTimer;0680C7|20A7EE  |06EEA7;
                        LDA.W r6_entity_State,X              ;0680CA|BD6C04  |06046C;
                        AND.B #$7F                           ;0680CD|297F    |      ;
@@ -182,7 +182,7 @@ enemyAI_1a_bossPhantimBat:
                        SBC.B #$28                           ;06811D|E928    |      ;
                        STA.B $00                            ;06811F|8500    |000000;
                        JSR.W FIXME_eebb_aOtherScreenR00     ;068121|20BBEE  |06EEBB;
-                       JSR.W FIXME_eda5_bitTrick2InitBoss   ;068124|20A5ED  |06EDA5;
+                       JSR.W FIXME_eda5_bitTrick            ;068124|20A5ED  |06EDA5;
                        LDX.B r_temp_data02                  ;068127|A64E    |00004E;
                        LDA.B $09                            ;068129|A509    |000009;
                        BNE CODE_06813E                      ;06812B|D011    |06813E;
@@ -440,7 +440,7 @@ enemyAI_1a_bossPhantimBat:
                        RTS                                  ;0682C4|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-enemyAI_1c_bossMedusa:
+enemyAI_1b_bossMedusa:
                        JSR.W FIXME_eea7_endRoutineWhileTimer;0682C5|20A7EE  |06EEA7;
                        LDA.W r6_entity_State,X              ;0682C8|BD6C04  |06046C;
                        AND.B #$7F                           ;0682CB|297F    |      ;
@@ -803,7 +803,7 @@ enemyAI_07_hangingBat:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
      blueSkellyStates:
-                       JSR.W FIXME_ef69_aOtherScreenR02     ;0684FF|2069EF  |06EF69;
+                       JSR.W FIXME_ef69_followPlayersXpos   ;0684FF|2069EF  |06EF69;
                        LDA.W r6_entity_State,X              ;068502|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;068505|206DCA  |06CA6D;
                        dw CODE_068538                       ;068508|        |068538;
@@ -1009,12 +1009,12 @@ enemyAI_07_hangingBat:
                        RTS                                  ;06863D|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-  enemyAI_27_enemyAxe:
+  enemyAI_22_enemyAxe:
                        JSR.W FIXME_ef13_aOtherScreenR01     ;06863E|2013EF  |06EF13;
                        JMP.W FIXME_ee48_entityKeepWalking   ;068641|4C48EE  |06EE48;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-     enemyAI_1b_mummy:
+ enemyAI_1a_bossMummy:
                        JSR.W FIXME_eea7_endRoutineWhileTimer;068644|20A7EE  |06EEA7;
                        LDA.W r6_entity_State,X              ;068647|BD6C04  |06046C;
                        AND.B #$7F                           ;06864A|297F    |      ;
@@ -1089,7 +1089,7 @@ enemyAI_07_hangingBat:
                        LDA.B #$00                           ;0686B0|A900    |      ;
                        JSR.W FIXME_ec72_storeSpeed_AYsub_Xpos;0686B2|2072EC  |06EC72;
                                                             ;      |        |      ;
-          CODE_0686B5:
+      mummySetAnimGo2:
                        JSR.W FIXME_ef7c_facePlayer          ;0686B5|207CEF  |06EF7C;
                        LDA.B #$1B                           ;0686B8|A91B    |      ;
                        JSR.W FIXME_ef04_loadNewAnimIndex    ;0686BA|2004EF  |06EF04;
@@ -1167,7 +1167,7 @@ enemyAI_07_hangingBat:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_068729:
-                       JMP.W CODE_0686B5                    ;068729|4CB586  |0686B5;
+                       JMP.W mummySetAnimGo2                ;068729|4CB586  |0686B5;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_06872C:
@@ -1478,7 +1478,7 @@ enemyAI_07_hangingBat:
                        db $99,$54,$03,$A9,$C0,$99,$18,$04   ;068931|        |      ;
                        db $A9,$01,$99,$FC,$03,$60           ;068939|        |      ;
                                                             ;      |        |      ;
-  enemyAI_20_bossIgor:
+  enemyAI_1f_bossIgor:
                        LDA.W r6_whipTimer,X                 ;06893F|BD6805  |060568;
                        BEQ CODE_068956                      ;068942|F012    |068956;
                        LDY.B #$00                           ;068944|A000    |      ;
@@ -1581,7 +1581,7 @@ enemyAI_07_hangingBat:
          DATA8_0689DE:
                        db $03,$05,$04,$06                   ;0689DE|        |      ;
                                                             ;      |        |      ;
-enemyAI_1d_bossFrankMonster:
+enemyAI_1c_bossFrankMonster:
                        JSR.W FIXME_eea7_endRoutineWhileTimer;0689E2|20A7EE  |06EEA7;
                        JSR.W FIXME_ef7c_facePlayer          ;0689E5|207CEF  |06EF7C;
                        LDA.W r6_entity_State,X              ;0689E8|BD6C04  |06046C;
@@ -2021,7 +2021,7 @@ enemyAI_16_boneDragonNeck:
                        PLA                                  ;068C96|68      |      ;
                        JMP.W EMPTY_06EA77                   ;068C97|4C77EA  |06EA77;
                                                             ;      |        |      ;
-                       JSR.W FIXME_ef69_aOtherScreenR02     ;068C9A|2069EF  |06EF69;
+                       JSR.W FIXME_ef69_followPlayersXpos   ;068C9A|2069EF  |06EF69;
                        LDA.W r6_entity_State,X              ;068C9D|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;068CA0|206DCA  |06CA6D;
                        dw CODE_068CD3                       ;068CA3|        |068CD3;
@@ -2220,6 +2220,8 @@ enemyAI_16_boneDragonNeck:
                        STA.W r6_entity_X_SpeedSub,Y         ;068DC2|991804  |060418;
                        RTS                                  ;068DC5|60      |      ;
                                                             ;      |        |      ;
+                                                            ;      |        |      ;
+    enemyAI_27_candle:
                        LDY.W r6_entity_State,X              ;068DC6|BC6C04  |06046C;
                        BEQ CODE_068DD4                      ;068DC9|F009    |068DD4;
                        DEY                                  ;068DCB|88      |      ;
@@ -2369,7 +2371,7 @@ enemyAI_16_boneDragonNeck:
                        RTS                                  ;068EB7|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
- enemyAI_19_bossDeath:
+ enemyAI_18_bossDeath:
                        JSR.W FIXME_eea7_endRoutineWhileTimer;068EB8|20A7EE  |06EEA7;
                        JSR.W FIXME_ef7c_facePlayer          ;068EBB|207CEF  |06EF7C;
                        LDA.W r6_entity_State,X              ;068EBE|BD6C04  |06046C;
@@ -2686,7 +2688,7 @@ enemyAI_0b_hatchedDeath:
                                                             ;      |        |      ;
   enemyAI_0a_axeArmor:
                        JSR.W FIXME_eea7_endRoutineWhileTimer;0690AA|20A7EE  |06EEA7;
-                       JSR.W FIXME_ef69_aOtherScreenR02     ;0690AD|2069EF  |06EF69;
+                       JSR.W FIXME_ef69_followPlayersXpos   ;0690AD|2069EF  |06EF69;
                        LDA.W r6_entity_State,X              ;0690B0|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;0690B3|206DCA  |06CA6D;
                        dw CODE_0690BE                       ;0690B6|        |0690BE;
@@ -2875,7 +2877,7 @@ enemyAI_0b_hatchedDeath:
           CODE_0691BF:
                        DEC.W r6_X_screen_AddressLo,X        ;0691BF|DEDC04  |0604DC;
                        BNE CODE_0691D2                      ;0691C2|D00E    |0691D2;
-                       JSR.W FIXME_ef69_aOtherScreenR02     ;0691C4|2069EF  |06EF69;
+                       JSR.W FIXME_ef69_followPlayersXpos   ;0691C4|2069EF  |06EF69;
                        LDA.B r_randomValue                  ;0691C7|A56F    |00006F;
                        AND.B #$03                           ;0691C9|2903    |      ;
                        TAY                                  ;0691CB|A8      |      ;
@@ -2943,7 +2945,7 @@ enemyAI_0b_hatchedDeath:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
    blueSkellyStateS11:
-                       JSR.W FIXME_ef69_aOtherScreenR02     ;06922E|2069EF  |06EF69;
+                       JSR.W FIXME_ef69_followPlayersXpos   ;06922E|2069EF  |06EF69;
                        LDA.W r6_entity_State,X              ;069231|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;069234|206DCA  |06CA6D;
                        dw CODE_069267                       ;069237|        |069267;
@@ -3143,7 +3145,7 @@ enemyAI_0b_hatchedDeath:
                        RTS                                  ;06935D|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-    enemyAI_1f_boss_X:
+enemyAI_1e_bossPhantomBat2:
                        JSR.W FIXME_eea7_endRoutineWhileTimer;06935E|20A7EE  |06EEA7;
                        LDA.W r6_entity_State,X              ;069361|BD6C04  |06046C;
                        JSR.W FIXME_ca6d_jump4stack          ;069364|206DCA  |06CA6D;
@@ -3381,7 +3383,7 @@ enemyAI_0b_hatchedDeath:
                        JMP.W FIXME_ef56_updateYposSpeed_minus;0694E3|4C56EF  |06EF56;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-enemyAI_1e_bossDracula:
+enemyAI_1d_bossDracula:
                        LDA.B $7A                            ;0694E6|A57A    |00007A;
                        BNE bossCookyMonster                 ;0694E8|D033    |06951D;
                        LDA.W r6_entity_State,X              ;0694EA|BD6C04  |06046C;
@@ -3401,8 +3403,8 @@ enemyAI_1e_bossDracula:
                        dw draculaState04                    ;069507|        |0695E2;
                        dw draculaState05_clothFlicker       ;069509|        |0695F9;
                        dw draculaState06_appear             ;06950B|        |069628;
-                       dw draculaState07_open               ;06950D|        |06963F;
-                       dw draculaState08_shoot              ;06950F|        |069656;
+                       dw draculaState07_shoot              ;06950D|        |06963F;
+                       dw draculaState08_wait               ;06950F|        |069656;
                        dw draculaState09_headFlicker        ;069511|        |06966D;
                        dw draculaState0a_disappear          ;069513|        |06969D;
                        dw draculaState0b_flickerAppear      ;069515|        |0696D1;
@@ -3584,14 +3586,14 @@ draculaState06_appear:
                        JMP.W dracsHeadUpdate                ;06963C|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-  draculaState07_open:
+ draculaState07_shoot:
                        DEC.W r6_entity_counter,X            ;06963F|DE4C05  |06054C;
                        BEQ CODE_069647                      ;069642|F003    |069647;
                        JMP.W dracsHeadUpdate                ;069644|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_069647:
-                       JSR.W CODE_0699C3                    ;069647|20C399  |0699C3;
+                       JSR.W dracFireBallShot               ;069647|20C399  |0699C3;
                        LDX.B #$07                           ;06964A|A207    |      ;
                        LDA.B #$20                           ;06964C|A920    |      ;
                        LDY.B #$08                           ;06964E|A008    |      ;
@@ -3599,7 +3601,7 @@ draculaState06_appear:
                        JMP.W dracsHeadUpdate                ;069653|4C8095  |069580;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
- draculaState08_shoot:
+  draculaState08_wait:
                        DEC.W r6_entity_counter,X            ;069656|DE4C05  |06054C;
                        BEQ CODE_06965E                      ;069659|F003    |06965E;
                        JMP.W dracsHeadUpdate                ;06965B|4C8095  |069580;
@@ -4137,7 +4139,7 @@ spriteSpeedLoadCookieBoss:
                        JMP.W CODE_0699C5                    ;0699C0|4CC599  |0699C5;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_0699C3:
+     dracFireBallShot:
                        LDX.B #$07                           ;0699C3|A207    |      ;
                                                             ;      |        |      ;
           CODE_0699C5:
@@ -6930,7 +6932,7 @@ FIXME_ed82_spawnEntetyAtCurPos:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06ED9C|        |      ;
                        db $00                               ;06EDA4|        |      ;
                                                             ;      |        |      ;
-FIXME_eda5_bitTrick2InitBoss:
+  FIXME_eda5_bitTrick:
                        BRK #$00                             ;06EDA5|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EDA7|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EDAF|        |      ;
@@ -7026,7 +7028,7 @@ FIXME_ef56_updateYposSpeed_minus:
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF60|        |      ;
                        db $00                               ;06EF68|        |      ;
                                                             ;      |        |      ;
-FIXME_ef69_aOtherScreenR02:
+FIXME_ef69_followPlayersXpos:
                        BRK #$00                             ;06EF69|0000    |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF6B|        |      ;
                        db $00,$00,$00,$00,$00,$00,$00,$00   ;06EF73|        |      ;

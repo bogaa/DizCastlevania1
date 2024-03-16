@@ -2,6 +2,7 @@
         <sys:Item Key="98304" Value="bus conflict fix" />
         <sys:Item Key="100234" Value="not sure!! FIXME" />
         <sys:Item Key="100321" Value="soundEffect" />
+        <sys:Item Key="104994" Value="faces" />
         <sys:Item Key="163840" Value="bus conflict table " />
         <sys:Item Key="163848" Value="GFX_bank1" />
         <sys:Item Key="229376" Value="bus cunflict table" />
@@ -67,6 +68,25 @@
         <sys:Item Key="518255" Value="big Heart Value " />
         <sys:Item Key="518273" Value="meat healing Points" />
         <sys:Item Key="518558" Value="dracs cloaths " />
+        <sys:Item Key="518562" Value="23" />
+        <sys:Item Key="518564" Value="24" />
+        <sys:Item Key="518566" Value="25" />
+        <sys:Item Key="518568" Value="26" />
+        <sys:Item Key="518570" Value="27" />
+        <sys:Item Key="518572" Value="28" />
+        <sys:Item Key="518574" Value="29" />
+        <sys:Item Key="518576" Value="2a" />
+        <sys:Item Key="518578" Value="2b" />
+        <sys:Item Key="518580" Value="2c" />
+        <sys:Item Key="518582" Value="2d" />
+        <sys:Item Key="518584" Value="2e" />
+        <sys:Item Key="518586" Value="2f" />
+        <sys:Item Key="518588" Value="30" />
+        <sys:Item Key="518590" Value="31" />
+        <sys:Item Key="518592" Value="32" />
+        <sys:Item Key="518594" Value="33" />
+        <sys:Item Key="518596" Value="34" />
+        <sys:Item Key="518598" Value="35" />
         <sys:Item Key="519290" Value=" " />
         <sys:Item Key="519513" Value="FIXME" />
         <sys:Item Key="519522" Value="FIXME" />
@@ -74,11 +94,13 @@
         <sys:Item Key="519532" Value="FIXME" />
         <sys:Item Key="519847" Value="used for mummy boss" />
         <sys:Item Key="520764" Value="leangth, StartSpriteID,speed" />
+        <sys:Item Key="521333" Value="skip if mummy boss" />
         <sys:Item Key="521630" Value="hunch back sitting animation" />
         <sys:Item Key="522459" Value="not cleard is drawing the HUD (sprite 0, sprite zero hit)" />
         <sys:Item Key="522470" Value="cleared means we got a hit and sprite zerp hit is cleared. Set timer and continue" />
         <sys:Item Key="522716" Value="calculate range of collusion tiles" />
         <sys:Item Key="522827" Value="rossery flasth fur ID02 " />
+        <sys:Item Key="523282" Value="Ypos+room, Xpos" />
         <sys:Item Key="523358" Value="no boss" />
         <sys:Item Key="523361" Value="second screen" />
         <sys:Item Key="523364" Value="first screen second room" />
