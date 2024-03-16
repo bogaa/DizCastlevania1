@@ -2134,6 +2134,7 @@
                        eventTrackerPointer01 = $07D291      ;      |        |      ;
                        enemyPlacementHi = $07D6C7           ;      |        |      ;
                        candlePlacerHi = $07D7C7             ;      |        |      ;
+                       specialItemDropLo = $07E12D          ;      |        |      ;
                        TSA_blockPointersHi = $07F9FB        ;      |        |      ;
                        levelScenePoHi = $07FB24             ;      |        |      ;
                        levelDataPointerHi = $07FC39         ;      |        |      ;

@@ -7558,13 +7558,13 @@ titlescreenBatPosData:
                        ORA.B r_frame_Counter                ;07C032|051A    |00001A;
                        AND.B #$0F                           ;07C034|290F    |      ;
                        TAY                                  ;07C036|A8      |      ;
-                       LDA.W specialItemDropTable,Y         ;07C037|B93FC0  |07C03F;
+                       LDA.W RNG_values,Y                   ;07C037|B93FC0  |07C03F;
                        STA.B r_randomValue                  ;07C03A|856F    |00006F;
                        JMP.W wait4_NMI                      ;07C03C|4C30C0  |07C030;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
- specialItemDropTable:
-                       db $33,$BB,$3F,$80,$2E,$A9,$61,$87   ;07C03F|        |      ;
+           RNG_values:
+                       db $33,$BB,$3F,$80,$2E,$A9,$61,$87   ;07C03F|        |      ; mixes this number based on frames..
                        db $AD,$C3,$B2,$C8,$7C,$25,$48,$7A   ;07C047|        |      ;
                        db $4C,$B9,$C0                       ;07C04F|        |      ;
                                                             ;      |        |      ;
@@ -12402,7 +12402,7 @@ enemyAI_17_subweaponThrow:
                        RTS                                  ;07E0F3|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_07E0F4:
+    chooseTabel4Stage:
                        LDY.B #$00                           ;07E0F4|A000    |      ;
                        LDA.B r_stage                        ;07E0F6|A528    |000028;
                        BEQ CODE_07E107                      ;07E0F8|F00D    |07E107;
@@ -12424,12 +12424,12 @@ enemyAI_17_subweaponThrow:
                                                             ;      |        |      ;
           CODE_07E109:
                        INC.B r_player_SpecialDropID         ;07E109|E67B    |00007B;
-                       JSR.W CODE_07E0F4                    ;07E10B|20F4E0  |07E0F4;
+                       JSR.W chooseTabel4Stage              ;07E10B|20F4E0  |07E0F4;
                        ASL A                                ;07E10E|0A      |      ;
                        TAY                                  ;07E10F|A8      |      ;
-                       LDA.W DATA8_07E12C,Y                 ;07E110|B92CE1  |07E12C;
+                       LDA.W specialItemDropHi,Y            ;07E110|B92CE1  |07E12C;
                        STA.B r_temp_data00                  ;07E113|854C    |00004C;
-                       LDA.W DATA8_07E12D,Y                 ;07E115|B92DE1  |07E12D;
+                       LDA.W specialItemDropLo,Y            ;07E115|B92DE1  |07E12D;
                        STA.B r_temp_data01                  ;07E118|854D    |00004D;
                        LDA.B r_player_SpecialDropID         ;07E11A|A57B    |00007B;
                        AND.B #$03                           ;07E11C|2903    |      ;
@@ -12441,15 +12441,31 @@ enemyAI_17_subweaponThrow:
                        JMP.W CODE_07E0E2                    ;07E129|4CE2E0  |07E0E2;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-         DATA8_07E12C:
-                       db $38                               ;07E12C|        |      ;
+    specialItemDropHi:
+                       dw specialItemStage1                 ;07E12C|        |07E138;
+                       dw specialItemStage2                 ;07E12E|        |07E13C;
+                       dw specialItemStage3                 ;07E130|        |07E140;
+                       dw specialItemStage4                 ;07E132|        |07E144;
+                       dw specialItemStage5                 ;07E134|        |07E148;
+                       dw specialItemStage6                 ;07E136|        |07E14C;
                                                             ;      |        |      ;
-         DATA8_07E12D:
-                       db $E1,$3C,$E1,$40,$E1,$44,$E1,$48   ;07E12D|        |      ;
-                       db $E1,$4C,$E1,$0A,$0F,$0B,$00,$0B   ;07E135|        |      ;
-                       db $0A,$00,$09,$0A,$0A,$0E,$00,$0A   ;07E13D|        |      ;
-                       db $0E,$0D,$00,$00,$0F,$0E,$08,$09   ;07E145|        |      ;
-                       db $0F,$0A,$00                       ;07E14D|        |      ;
+    specialItemStage1:
+                       db $0A,$0F,$0B,$00                   ;07E138|        |      ;
+                                                            ;      |        |      ;
+    specialItemStage2:
+                       db $0B,$0A,$00,$09                   ;07E13C|        |      ;
+                                                            ;      |        |      ;
+    specialItemStage3:
+                       db $0A,$0A,$0E,$00                   ;07E140|        |      ;
+                                                            ;      |        |      ;
+    specialItemStage4:
+                       db $0A,$0E,$0D,$00                   ;07E144|        |      ;
+                                                            ;      |        |      ;
+    specialItemStage5:
+                       db $00,$0F,$0E,$08                   ;07E148|        |      ;
+                                                            ;      |        |      ;
+    specialItemStage6:
+                       db $09,$0F,$0A,$00                   ;07E14C|        |      ;
                                                             ;      |        |      ;
           CODE_07E150:
                        LDA.B $0D                            ;07E150|A50D    |00000D;

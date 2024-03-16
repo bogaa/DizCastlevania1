@@ -8634,7 +8634,7 @@
           <Value exs:type="ns1:Label" Name="wait4_NMI" Comment="" />
         </sys:Item>
         <sys:Item Key="507967">
-          <Value exs:type="ns1:Label" Name="specialItemDropTable" Comment="" />
+          <Value exs:type="ns1:Label" Name="RNG_values" Comment="" />
         </sys:Item>
         <sys:Item Key="507986">
           <Value exs:type="ns1:Label" Name="NMI" Comment="" />
@@ -9616,6 +9616,39 @@
         </sys:Item>
         <sys:Item Key="516247">
           <Value exs:type="ns1:Label" Name="oneShot_00_Hurt" Comment="" />
+        </sys:Item>
+        <sys:Item Key="516340">
+          <Value exs:type="ns1:Label" Name="chooseTabel4Stage" Comment="" />
+        </sys:Item>
+        <sys:Item Key="516396">
+          <Value exs:type="ns1:Label" Name="specialItemDropHi" Comment="" />
+        </sys:Item>
+        <sys:Item Key="516397">
+          <Value exs:type="ns1:Label" Name="specialItemDropLo" Comment="" />
+        </sys:Item>
+        <sys:Item Key="516400">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="516404">
+          <Value exs:type="ns1:Label" Name="" Comment="" />
+        </sys:Item>
+        <sys:Item Key="516408">
+          <Value exs:type="ns1:Label" Name="specialItemStage1" Comment="" />
+        </sys:Item>
+        <sys:Item Key="516412">
+          <Value exs:type="ns1:Label" Name="specialItemStage2" Comment="" />
+        </sys:Item>
+        <sys:Item Key="516416">
+          <Value exs:type="ns1:Label" Name="specialItemStage3" Comment="" />
+        </sys:Item>
+        <sys:Item Key="516420">
+          <Value exs:type="ns1:Label" Name="specialItemStage4" Comment="" />
+        </sys:Item>
+        <sys:Item Key="516424">
+          <Value exs:type="ns1:Label" Name="specialItemStage5" Comment="" />
+        </sys:Item>
+        <sys:Item Key="516428">
+          <Value exs:type="ns1:Label" Name="specialItemStage6" Comment="" />
         </sys:Item>
         <sys:Item Key="516458">
           <Value exs:type="ns1:Label" Name="boneDragon_09_hurt" Comment="" />
