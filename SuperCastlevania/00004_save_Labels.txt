@@ -105,10 +105,10 @@
           <Value exs:type="ns1:Label" Name="r_lvl_timer_Hi" Comment="" />
         </sys:Item>
         <sys:Item Key="68">
-          <Value exs:type="ns1:Label" Name="r_player_HP_HUD_Show" Comment="" />
+          <Value exs:type="ns1:Label" Name="r_player_health_HUD_Show" Comment="" />
         </sys:Item>
         <sys:Item Key="69">
-          <Value exs:type="ns1:Label" Name="r_player_HP_HUD_TRUE" Comment="" />
+          <Value exs:type="ns1:Label" Name="r_player_health_HUD_TRUE" Comment="" />
         </sys:Item>
         <sys:Item Key="70">
           <Value exs:type="ns1:Label" Name="r_lvlRoomNumber" Comment="" />
@@ -2181,16 +2181,16 @@
           <Value exs:type="ns1:Label" Name="sprAss_e0_" Comment="" />
         </sys:Item>
         <sys:Item Key="103901">
-          <Value exs:type="ns1:Label" Name="sprAss_e1_" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e1_tresaurHead_00" Comment="" />
         </sys:Item>
         <sys:Item Key="103909">
-          <Value exs:type="ns1:Label" Name="sprAss_e2_" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e2_tresaurHead_01" Comment="" />
         </sys:Item>
         <sys:Item Key="103914">
-          <Value exs:type="ns1:Label" Name="sprAss_e3_" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e3_tresaurHead_02" Comment="" />
         </sys:Item>
         <sys:Item Key="103922">
-          <Value exs:type="ns1:Label" Name="sprAss_e4_" Comment="" />
+          <Value exs:type="ns1:Label" Name="sprAss_e4_tresaurHead_03" Comment="" />
         </sys:Item>
         <sys:Item Key="103927">
           <Value exs:type="ns1:Label" Name="sprAss_e5_oneUp" Comment="" />
@@ -7052,6 +7052,9 @@
         <sys:Item Key="428808">
           <Value exs:type="ns1:Label" Name="boneDragonHead_state00" Comment="" />
         </sys:Item>
+        <sys:Item Key="428979">
+          <Value exs:type="ns1:Label" Name="boneDragonTimer" Comment="" />
+        </sys:Item>
         <sys:Item Key="429049">
           <Value exs:type="ns1:Label" Name="enemyAI_15_boneDragonNeck" Comment="" />
         </sys:Item>
@@ -8288,6 +8291,9 @@
         <sys:Item Key="492593">
           <Value exs:type="ns1:Label" Name="spawnerPlace06" Comment="" />
         </sys:Item>
+        <sys:Item Key="492597">
+          <Value exs:type="ns1:Label" Name="fishmanSpawnLvL_08before" Comment="" />
+        </sys:Item>
         <sys:Item Key="492698">
           <Value exs:type="ns1:Label" Name="spawner07" Comment="" />
         </sys:Item>
@@ -8326,6 +8332,9 @@
         </sys:Item>
         <sys:Item Key="493051">
           <Value exs:type="ns1:Label" Name="spawnerPlace04" Comment="" />
+        </sys:Item>
+        <sys:Item Key="493055">
+          <Value exs:type="ns1:Label" Name="fishmanSpawnLvL_08After" Comment="" />
         </sys:Item>
         <sys:Item Key="493156">
           <Value exs:type="ns1:Label" Name="spawner1a" Comment="" />
@@ -8392,6 +8401,9 @@
         </sys:Item>
         <sys:Item Key="494144">
           <Value exs:type="ns1:Label" Name="spawnerPlace05" Comment="" />
+        </sys:Item>
+        <sys:Item Key="494148">
+          <Value exs:type="ns1:Label" Name="fishmanSpawnLvL_0F" Comment="" />
         </sys:Item>
         <sys:Item Key="494249">
           <Value exs:type="ns1:Label" Name="spawner18" Comment="" />
@@ -9884,6 +9896,15 @@
         <sys:Item Key="518492">
           <Value exs:type="ns1:Label" Name="main_enemyTable_AI" Comment="" />
         </sys:Item>
+        <sys:Item Key="518600">
+          <Value exs:type="ns1:Label" Name="RTS_Hi_checks" Comment="" />
+        </sys:Item>
+        <sys:Item Key="518601">
+          <Value exs:type="ns1:Label" Name="RTS_Lo_checks" Comment="" />
+        </sys:Item>
+        <sys:Item Key="518629">
+          <Value exs:type="ns1:Label" Name="RTS_getEntetyID_VeriousChecks" Comment="" />
+        </sys:Item>
         <sys:Item Key="518630">
           <Value exs:type="ns1:Label" Name="getEntetyID_VeriousChecks" Comment="" />
         </sys:Item>
@@ -10078,6 +10099,9 @@
         </sys:Item>
         <sys:Item Key="520556">
           <Value exs:type="ns1:Label" Name="enemyAI_0e_bonePillar" Comment="" />
+        </sys:Item>
+        <sys:Item Key="520601">
+          <Value exs:type="ns1:Label" Name="bonePillarTimer" Comment="" />
         </sys:Item>
         <sys:Item Key="520658">
           <Value exs:type="ns1:Label" Name="resetFallSpeed" Comment="" />
@@ -10379,6 +10403,9 @@
         <sys:Item Key="521330">
           <Value exs:type="ns1:Label" Name="setNextSlot2_clear" Comment="" />
         </sys:Item>
+        <sys:Item Key="521348">
+          <Value exs:type="ns1:Label" Name="initSpawnedID" Comment="" />
+        </sys:Item>
         <sys:Item Key="521406">
           <Value exs:type="ns1:Label" Name="spawnerGetInitID" Comment="" />
         </sys:Item>
@@ -10460,6 +10487,9 @@
         <sys:Item Key="523044">
           <Value exs:type="ns1:Label" Name="levelScenePoHi" Comment="" />
         </sys:Item>
+        <sys:Item Key="523087">
+          <Value exs:type="ns1:Label" Name="music4eachLevel" Comment="" />
+        </sys:Item>
         <sys:Item Key="523163">
           <Value exs:type="ns1:Label" Name="palletForEachStage" Comment="" />
         </sys:Item>
@@ -10467,7 +10497,7 @@
           <Value exs:type="ns1:Label" Name="scrollLockTable_screenCount" Comment="" />
         </sys:Item>
         <sys:Item Key="523203">
-          <Value exs:type="ns1:Label" Name="levelScrollDirections" Comment="" />
+          <Value exs:type="ns1:Label" Name="levelDirections" Comment="" />
         </sys:Item>
         <sys:Item Key="523222">
           <Value exs:type="ns1:Label" Name="levelTableLeftExit" Comment="" />

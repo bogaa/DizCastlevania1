@@ -2193,10 +2193,10 @@ spriteAssemblyPointers01Hi:
                        dw sprAss_de_                        ;01917A|        |019A6C;
                        dw sprAss_df_crown                   ;01917C|        |0195CD;
                        dw sprAss_e0_                        ;01917E|        |0195D5;
-                       dw sprAss_e1_                        ;019180|        |0195DD;
-                       dw sprAss_e2_                        ;019182|        |0195E5;
-                       dw sprAss_e3_                        ;019184|        |0195EA;
-                       dw sprAss_e4_                        ;019186|        |0195F2;
+                       dw sprAss_e1_tresaurHead_00          ;019180|        |0195DD;
+                       dw sprAss_e2_tresaurHead_01          ;019182|        |0195E5;
+                       dw sprAss_e3_tresaurHead_02          ;019184|        |0195EA;
+                       dw sprAss_e4_tresaurHead_03          ;019186|        |0195F2;
                        dw sprAss_e5_oneUp                   ;019188|        |0195F7;
                        dw sprAss_e6_                        ;01918A|        |019B03;
                        dw sprAss_e7_                        ;01918C|        |019B18;
@@ -2589,16 +2589,16 @@ sprAss_b3_skeletonBone:
            sprAss_e0_:
                        db $02,$F0,$A4,$00,$F8,$F1,$A6,$00   ;0195D5|        |      ;
                                                             ;      |        |      ;
-           sprAss_e1_:
+sprAss_e1_tresaurHead_00:
                        db $02,$F0,$B8,$00,$FC,$F1,$BA,$00   ;0195DD|        |      ;
                                                             ;      |        |      ;
-           sprAss_e2_:
+sprAss_e2_tresaurHead_01:
                        db $01,$F0,$B6,$00,$FC               ;0195E5|        |      ;
                                                             ;      |        |      ;
-           sprAss_e3_:
+sprAss_e3_tresaurHead_02:
                        db $02,$F0,$BA,$40,$FC,$F1,$B8,$00   ;0195EA|        |      ;
                                                             ;      |        |      ;
-           sprAss_e4_:
+sprAss_e4_tresaurHead_03:
                        db $01,$F0,$BC,$00,$FC               ;0195F2|        |      ;
                                                             ;      |        |      ;
       sprAss_e5_oneUp:

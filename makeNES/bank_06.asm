@@ -1469,13 +1469,34 @@ enemyAI_07_hangingBat:
                        db $02                               ;068908|        |      ;
                                                             ;      |        |      ;
           birdSpeed02:
-                       db $80,$01,$40,$01,$40,$02,$80,$A9   ;068909|        |      ;
-                       db $08,$85,$4C,$86,$4E,$A0,$0C,$B9   ;068911|        |      ;
-                       db $34,$04,$F0,$05,$C8,$C0,$0E,$90   ;068919|        |      ;
-                       db $F6,$A9,$26,$85,$16,$A9,$08,$20   ;068921|        |      ;
-                       db $82,$ED,$BD,$54,$03,$38,$E5,$4C   ;068929|        |      ;
-                       db $99,$54,$03,$A9,$C0,$99,$18,$04   ;068931|        |      ;
-                       db $A9,$01,$99,$FC,$03,$60           ;068939|        |      ;
+                       db $80,$01,$40,$01,$40,$02,$80       ;068909|        |      ;
+                       LDA.B #$08                           ;068910|A908    |      ;
+                       STA.B r_temp_data00                  ;068912|854C    |00004C;
+                       STX.B r_temp_data02                  ;068914|864E    |00004E;
+                       LDY.B #$0C                           ;068916|A00C    |      ;
+                                                            ;      |        |      ;
+          CODE_068918:
+                       LDA.W r6_entity_ID,Y                 ;068918|B93404  |060434;
+                       BEQ CODE_068922                      ;06891B|F005    |068922;
+                       INY                                  ;06891D|C8      |      ;
+                       CPY.B #$0E                           ;06891E|C00E    |      ;
+                       BCC CODE_068918                      ;068920|90F6    |068918;
+                                                            ;      |        |      ;
+          CODE_068922:
+                       LDA.B #$26                           ;068922|A926    |      ;
+                       STA.B $16                            ;068924|8516    |000016;
+                       LDA.B #$08                           ;068926|A908    |      ;
+                       JSR.W FIXME_ed82_spawnEntetyAtCurPos ;068928|2082ED  |06ED82;
+                       LDA.W r6_entity_Y_Pos,X              ;06892B|BD5403  |060354;
+                       SEC                                  ;06892E|38      |      ;
+                       SBC.B r_temp_data00                  ;06892F|E54C    |00004C;
+                       STA.W r6_entity_Y_Pos,Y              ;068931|995403  |060354;
+                       LDA.B #$C0                           ;068934|A9C0    |      ;
+                       STA.W r6_entity_X_SpeedSub,Y         ;068936|991804  |060418;
+                       LDA.B #$01                           ;068939|A901    |      ;
+                       STA.W r6_entity_X_Speed,Y            ;06893B|99FC03  |0603FC;
+                       RTS                                  ;06893E|60      |      ;
+                                                            ;      |        |      ;
                                                             ;      |        |      ;
   enemyAI_1f_bossIgor:
                        LDA.W r6_whipTimer,X                 ;06893F|BD6805  |060568;
@@ -1835,7 +1856,7 @@ boneDragonHead_state00:
                        LDA.B r_randomValue                  ;068B70|A56F    |00006F;
                        AND.B #$03                           ;068B72|2903    |      ;
                        TAY                                  ;068B74|A8      |      ;
-                       LDA.W DATA8_068BB3,Y                 ;068B75|B9B38B  |068BB3;
+                       LDA.W boneDragonTimer,Y              ;068B75|B9B38B  |068BB3;
                        STA.W r6_entity_counter,X            ;068B78|9D4C05  |06054C;
                        LDA.W r6_X_screen_AddressLo,X        ;068B7B|BDDC04  |0604DC;
                        EOR.B #$03                           ;068B7E|4903    |      ;
@@ -1874,7 +1895,7 @@ boneDragonHead_state00:
                        JMP.W CODE_068B91                    ;068BB0|4C918B  |068B91;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-         DATA8_068BB3:
+      boneDragonTimer:
                        db $34,$24,$3C,$1C                   ;068BB3|        |      ;
                                                             ;      |        |      ;
           CODE_068BB7:
