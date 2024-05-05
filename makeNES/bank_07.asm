@@ -280,7 +280,7 @@ breakableBlockData_empty:
                        LDA.B #$49                           ;0781C1|A949    |      ;
                        STA.B $0E                            ;0781C3|850E    |00000E;
                        LDA.B #$19                           ;0781C5|A919    |      ;
-                       JMP.W CODE_07F484                    ;0781C7|4C84F4  |07F484;
+                       JMP.W initSpawnedID                  ;0781C7|4C84F4  |07F484;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
        level6StuffToo:
@@ -454,9 +454,9 @@ breakableBlockData_empty:
                                                             ;      |        |      ;
           CODE_0782EA:
                        LDA.B #$00                           ;0782EA|A900    |      ;
-                       STA.B r_player_HP_HUD_Show           ;0782EC|8544    |000044;
-                       STA.B r_player_HP_HUD_TRUE           ;0782EE|8545    |000045;
-                       LDA.B r_player_HP_HUD_Show           ;0782F0|A544    |000044;
+                       STA.B r_player_health_HUD_Show       ;0782EC|8544    |000044;
+                       STA.B r_player_health_HUD_TRUE       ;0782EE|8545    |000045;
+                       LDA.B r_player_health_HUD_Show       ;0782F0|A544    |000044;
                        STA.B r_temp_processing_ID           ;0782F2|854B    |00004B;
                        LDY.B #$67                           ;0782F4|A067    |      ;
                        STY.B r_temp_data03                  ;0782F6|844F    |00004F;
@@ -645,14 +645,14 @@ breakableBlockData_06:
                        LDA.B #$23                           ;078428|A923    |      ;
                        STA.B $0E                            ;07842A|850E    |00000E;
                        LDA.B #$1B                           ;07842C|A91B    |      ;
-                       JMP.W CODE_07F484                    ;07842E|4C84F4  |07F484;
+                       JMP.W initSpawnedID                  ;07842E|4C84F4  |07F484;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
        spawnerPlace06:
                        LDA.B r_secondQuestFlag              ;078431|A52B    |00002B;
                        BEQ CODE_078441                      ;078433|F00C    |078441;
                                                             ;      |        |      ;
-          CODE_078435:
+fishmanSpawnLvL_08before:
                        LDA.W r7_spawner_Slot_State,Y        ;078435|B96C01  |07016C;
                        CMP.B #$01                           ;078438|C901    |      ;
                        BNE CODE_078442                      ;07843A|D006    |078442;
@@ -934,7 +934,7 @@ breakableBlockData_08:
                        LDA.B r_secondQuestFlag              ;0785FB|A52B    |00002B;
                        BEQ CODE_07860B                      ;0785FD|F00C    |07860B;
                                                             ;      |        |      ;
-          CODE_0785FF:
+fishmanSpawnLvL_08After:
                        LDA.W r7_spawner_Slot_State,Y        ;0785FF|B96C01  |07016C;
                        CMP.B #$01                           ;078602|C901    |      ;
                        BNE CODE_07860C                      ;078604|D006    |07860C;
@@ -1017,7 +1017,7 @@ breakableBlockData_08:
                        LDA.B #$24                           ;07868A|A924    |      ;
                        STA.B $0E                            ;07868C|850E    |00000E;
                        LDA.B #$1A                           ;07868E|A91A    |      ;
-                       JMP.W CODE_07F484                    ;078690|4C84F4  |07F484;
+                       JMP.W initSpawnedID                  ;078690|4C84F4  |07F484;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
 mainGameState0b_transition:
@@ -1362,7 +1362,7 @@ empty_stairBlockEntery:
                        LDA.B #$25                           ;0788C8|A925    |      ;
                        STA.B $0E                            ;0788CA|850E    |00000E;
                        LDA.B #$1C                           ;0788CC|A91C    |      ;
-                       JSR.W CODE_07F484                    ;0788CE|2084F4  |07F484;
+                       JSR.W initSpawnedID                  ;0788CE|2084F4  |07F484;
                        LDX.B #$08                           ;0788D1|A208    |      ;
                        LDA.B #$1F                           ;0788D3|A91F    |      ;
                        JSR.W storeID_resetStats             ;0788D5|202CF4  |07F42C;
@@ -1576,7 +1576,7 @@ breakableBlockData_0f:
                        LDA.B r_secondQuestFlag              ;078A40|A52B    |00002B;
                        BEQ CODE_078A50                      ;078A42|F00C    |078A50;
                                                             ;      |        |      ;
-          CODE_078A44:
+   fishmanSpawnLvL_0F:
                        LDA.W r7_spawner_Slot_State,Y        ;078A44|B96C01  |07016C;
                        CMP.B #$01                           ;078A47|C901    |      ;
                        BNE CODE_078A51                      ;078A49|D006    |078A51;
@@ -1634,7 +1634,7 @@ breakableBlockData_0f:
                        LDA.B #$23                           ;078AAC|A923    |      ;
                        STA.B $0E                            ;078AAE|850E    |00000E;
                        LDA.B #$18                           ;078AB0|A918    |      ;
-                       JMP.W CODE_07F484                    ;078AB2|4C84F4  |07F484;
+                       JMP.W initSpawnedID                  ;078AB2|4C84F4  |07F484;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
     stairDataLevel_10:
@@ -1723,7 +1723,7 @@ breakableBlockData_12:
                        LDA.B #$23                           ;078B42|A923    |      ;
                        STA.B $0E                            ;078B44|850E    |00000E;
                        LDA.B #$1D                           ;078B46|A91D    |      ;
-                       JMP.W CODE_07F484                    ;078B48|4C84F4  |07F484;
+                       JMP.W initSpawnedID                  ;078B48|4C84F4  |07F484;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
 mainGameState0f_endingScene:
@@ -2348,7 +2348,7 @@ mainGameState0f_endingScene:
                        dw simonState_09_fall                ;07937E|        |0797F2;
                                                             ;      |        |      ;
         simonState_00:
-                       LDA.B r_player_HP_HUD_TRUE           ;079380|A545    |000045;
+                       LDA.B r_player_health_HUD_TRUE       ;079380|A545    |000045;
                        BEQ CODE_079386                      ;079382|F002    |079386;
                        BPL CODE_079389                      ;079384|1003    |079389;
                                                             ;      |        |      ;
@@ -2670,7 +2670,7 @@ simonState_01_initJump:
                                                             ;      |        |      ;
                                                             ;      |        |      ;
   simonState_04_stair:
-                       LDA.B r_player_HP_HUD_TRUE           ;079586|A545    |000045;
+                       LDA.B r_player_health_HUD_TRUE       ;079586|A545    |000045;
                        BEQ CODE_07958F                      ;079588|F005    |07958F;
                        JSR.W CODE_079A1D                    ;07958A|201D9A  |079A1D;
                        BCC CODE_079592                      ;07958D|9003    |079592;
@@ -2842,7 +2842,7 @@ simonStairSpriteIndex:
           CODE_0796A1:
                        LDA.B #$F0                           ;0796A1|A9F0    |      ;
                        JSR.W CODE_079A64                    ;0796A3|20649A  |079A64;
-                       LDA.B r_player_HP_HUD_TRUE           ;0796A6|A545    |000045;
+                       LDA.B r_player_health_HUD_TRUE       ;0796A6|A545    |000045;
                        BNE CODE_0796AD                      ;0796A8|D003    |0796AD;
                        JMP.W CODE_07A1E5                    ;0796AA|4CE5A1  |07A1E5;
                                                             ;      |        |      ;
@@ -4532,30 +4532,30 @@ updateXspeed_minus_b6:
                        LDA.B r_frame_Counter                ;07A0E0|A51A    |00001A;
                        AND.B #$01                           ;07A0E2|2901    |      ;
                        BNE CODE_07A110                      ;07A0E4|D02A    |07A110;
-                       LDA.B r_player_HP_HUD_TRUE           ;07A0E6|A545    |000045;
+                       LDA.B r_player_health_HUD_TRUE       ;07A0E6|A545    |000045;
                        BPL CODE_07A0EE                      ;07A0E8|1004    |07A0EE;
                        LDA.B #$00                           ;07A0EA|A900    |      ;
-                       STA.B r_player_HP_HUD_TRUE           ;07A0EC|8545    |000045;
+                       STA.B r_player_health_HUD_TRUE       ;07A0EC|8545    |000045;
                                                             ;      |        |      ;
           CODE_07A0EE:
-                       LDA.B r_player_HP_HUD_Show           ;07A0EE|A544    |000044;
+                       LDA.B r_player_health_HUD_Show       ;07A0EE|A544    |000044;
                        BMI CODE_07A110                      ;07A0F0|301E    |07A110;
                        STA.B r_temp_processing_ID           ;07A0F2|854B    |00004B;
-                       CMP.B r_player_HP_HUD_TRUE           ;07A0F4|C545    |000045;
+                       CMP.B r_player_health_HUD_TRUE       ;07A0F4|C545    |000045;
                        BNE CODE_07A0FB                      ;07A0F6|D003    |07A0FB;
                        JMP.W CODE_07A110                    ;07A0F8|4C10A1  |07A110;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_07A0FB:
                        DEC.B r_temp_processing_ID           ;07A0FB|C64B    |00004B;
-                       CMP.B r_player_HP_HUD_TRUE           ;07A0FD|C545    |000045;
+                       CMP.B r_player_health_HUD_TRUE       ;07A0FD|C545    |000045;
                        BCS CODE_07A105                      ;07A0FF|B004    |07A105;
                        INC.B r_temp_processing_ID           ;07A101|E64B    |00004B;
                        INC.B r_temp_processing_ID           ;07A103|E64B    |00004B;
                                                             ;      |        |      ;
           CODE_07A105:
                        LDA.B r_temp_processing_ID           ;07A105|A54B    |00004B;
-                       STA.B r_player_HP_HUD_Show           ;07A107|8544    |000044;
+                       STA.B r_player_health_HUD_Show       ;07A107|8544    |000044;
                        LDA.B #$67                           ;07A109|A967    |      ;
                        STA.B r_temp_data03                  ;07A10B|854F    |00004F;
                        JSR.W CODE_07A23B                    ;07A10D|203BA2  |07A23B;
@@ -4608,7 +4608,7 @@ updateXspeed_minus_b6:
                        JSR.W updateHUD_heartCount           ;07A169|20D0A1  |07A1D0;
                        JSR.W CODE_07A0CD                    ;07A16C|20CDA0  |07A0CD;
                        JSR.W CODE_07A296                    ;07A16F|2096A2  |07A296;
-                       LDA.B r_player_HP_HUD_Show           ;07A172|A544    |000044;
+                       LDA.B r_player_health_HUD_Show       ;07A172|A544    |000044;
                        STA.B r_temp_processing_ID           ;07A174|854B    |00004B;
                        LDY.B #$67                           ;07A176|A067    |      ;
                        STY.B r_temp_data03                  ;07A178|844F    |00004F;
@@ -7988,7 +7988,7 @@ mainGameState05_playState:
                        LDA.B r_DemoMode                     ;07C2C2|A5F4    |0000F4;
                        BNE CODE_07C2CE                      ;07C2C4|D008    |07C2CE;
                        LDX.B r_stage                        ;07C2C6|A628    |000028;
-                       LDA.W DATA8_07FB4F,X                 ;07C2C8|BD4FFB  |07FB4F;
+                       LDA.W music4eachLevel,X              ;07C2C8|BD4FFB  |07FB4F;
                        JSR.W playSFX                        ;07C2CB|20A7C1  |07C1A7;
                                                             ;      |        |      ;
           CODE_07C2CE:
@@ -9074,8 +9074,8 @@ spawnerData4EachLevel:
                                                             ;      |        |      ;
 refillHealthLoadCheckpoint:
                        LDA.B #$40                           ;07C98A|A940    |      ;
-                       STA.B r_player_HP_HUD_Show           ;07C98C|8544    |000044;
-                       STA.B r_player_HP_HUD_TRUE           ;07C98E|8545    |000045;
+                       STA.B r_player_health_HUD_Show       ;07C98C|8544    |000044;
+                       STA.B r_player_health_HUD_TRUE       ;07C98E|8545    |000045;
                        LDX.B #$05                           ;07C990|A205    |      ; starting Hearts
                        STX.B r_player_HeartCount            ;07C992|8671    |000071;
                                                             ;      |        |      ;
@@ -10052,7 +10052,7 @@ loadStartingScenePointer:
                                                             ;      |        |      ;
           CODE_07D025:
                        LDX.B r_stage                        ;07D025|A628    |000028;
-                       LDA.W levelScrollDirections,X        ;07D027|BDC3FB  |07FBC3;
+                       LDA.W levelDirections,X              ;07D027|BDC3FB  |07FBC3;
                        JSR.W CODE_07D01A                    ;07D02A|201AD0  |07D01A;
                        CMP.B #$0F                           ;07D02D|C90F    |      ;
                        BNE CODE_07D033                      ;07D02F|D002    |07D033;
@@ -13540,11 +13540,11 @@ calculateEnemyHitbox00:
                                                             ;      |        |      ;
      setDamage4Update:
                        STA.B r_temp_processing_ID           ;07E752|854B    |00004B;
-                       LDA.B r_player_HP_HUD_TRUE           ;07E754|A545    |000045;
+                       LDA.B r_player_health_HUD_TRUE       ;07E754|A545    |000045;
                        BMI CODE_07E75D                      ;07E756|3005    |07E75D;
                        SEC                                  ;07E758|38      |      ;
                        SBC.B r_temp_processing_ID           ;07E759|E54B    |00004B;
-                       STA.B r_player_HP_HUD_TRUE           ;07E75B|8545    |000045;
+                       STA.B r_player_health_HUD_TRUE       ;07E75B|8545    |000045;
                                                             ;      |        |      ;
           CODE_07E75D:
                        RTS                                  ;07E75D|60      |      ;
@@ -13709,7 +13709,7 @@ calculateEnemyHitbox00:
                        LDY.B #$05                           ;07E84A|A005    |      ;
                        JSR.W bankSwap_backupYto27           ;07E84C|20D6C1  |07C1D6;
                        LDA.B #$40                           ;07E84F|A940    |      ;
-                       STA.B r_player_HP_HUD_TRUE           ;07E851|8545    |000045;
+                       STA.B r_player_health_HUD_TRUE       ;07E851|8545    |000045;
                        LDA.B #$0C                           ;07E853|A90C    |      ;
                        STA.B r_game_state                   ;07E855|8518    |000018;
                        LDA.B #$00                           ;07E857|A900    |      ;
@@ -13735,7 +13735,7 @@ calculateEnemyHitbox00:
                        JSR.W playSFX                        ;07E876|20A7C1  |07C1A7;
                        LDY.B #$05                           ;07E879|A005    |      ;
                        JSR.W bankSwap_backupYto27           ;07E87B|20D6C1  |07C1D6;
-                       LDA.B r_player_HP_HUD_TRUE           ;07E87E|A545    |000045;
+                       LDA.B r_player_health_HUD_TRUE       ;07E87E|A545    |000045;
                        CLC                                  ;07E880|18      |      ;
                        ADC.B #$18                           ;07E881|6918    |      ; meat healing Points
                        CMP.B #$40                           ;07E883|C940    |      ;
@@ -13743,7 +13743,7 @@ calculateEnemyHitbox00:
                        LDA.B #$40                           ;07E887|A940    |      ;
                                                             ;      |        |      ;
           CODE_07E889:
-                       STA.B r_player_HP_HUD_TRUE           ;07E889|8545    |000045;
+                       STA.B r_player_health_HUD_TRUE       ;07E889|8545    |000045;
                        JMP.W getCurrentEntitySlot           ;07E88B|4CCEE7  |07E7CE;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
@@ -13872,9 +13872,9 @@ calculateEnemyHitbox00:
                        BCC CODE_07E940                      ;07E94D|90F1    |07E940;
                                                             ;      |        |      ;
           CODE_07E94F:
-                       LDA.W DATA8_07E9C9                   ;07E94F|ADC9E9  |07E9C9;
+                       LDA.W RTS_Lo_checks                  ;07E94F|ADC9E9  |07E9C9;
                        PHA                                  ;07E952|48      |      ;
-                       LDA.W DATA8_07E9C8                   ;07E953|ADC8E9  |07E9C8;
+                       LDA.W RTS_Hi_checks                  ;07E953|ADC8E9  |07E9C8;
                        PHA                                  ;07E956|48      |      ;
                        LDA.B r_temp_processing_ID           ;07E957|A54B    |00004B;
                        JSR.W gJumpTableFromStack            ;07E959|206DCA  |07CA6D;
@@ -13935,11 +13935,8 @@ calculateEnemyHitbox00:
                        dw CODE_07EB36                       ;07E9C4|        |07EB36; 34
                        dw enemyAI_24_candle                 ;07E9C6|        |07EB54; 35
                                                             ;      |        |      ;
-         DATA8_07E9C8:
-                       db $E5                               ;07E9C8|        |      ;
-                                                            ;      |        |      ;
-         DATA8_07E9C9:
-                       db $E9                               ;07E9C9|        |      ;
+        RTS_Hi_checks:
+                       dw RTS_getEntetyID_VeriousChecks     ;07E9C8|        |07E9E5;
                                                             ;      |        |      ;
           CODE_07E9CA:
                        LDA.W r7_entity_ID,X                 ;07E9CA|BD3404  |070434;
@@ -15241,7 +15238,7 @@ enemyAI_0e_bonePillar:
                        LDA.B r_randomValue                  ;07F185|A56F    |00006F;
                        AND.B #$03                           ;07F187|2903    |      ;
                        TAY                                  ;07F189|A8      |      ;
-                       LDA.W DATA8_07F199,Y                 ;07F18A|B999F1  |07F199;
+                       LDA.W bonePillarTimer,Y              ;07F18A|B999F1  |07F199;
                        LDY.B #$00                           ;07F18D|A000    |      ;
                                                             ;      |        |      ;
           CODE_07F18F:
@@ -15253,7 +15250,7 @@ enemyAI_0e_bonePillar:
                        JMP.W entityLoadStuff                ;07F196|4C94EE  |07EE94;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-         DATA8_07F199:
+      bonePillarTimer:
                        db $F0,$3C,$78,$B4                   ;07F199|        |      ;
                                                             ;      |        |      ;
           CODE_07F19D:
@@ -15833,7 +15830,7 @@ spriteAnimationBytes01:
                        RTS                                  ;07F483|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_07F484:
+        initSpawnedID:
                        JSR.W spawnerPlace00                 ;07F484|2047F4  |07F447;
                        LDA.B #$80                           ;07F487|A980    |      ;
                        STA.W r7_entity_State,X              ;07F489|9D6C04  |07046C;
@@ -16007,17 +16004,17 @@ spriteAnimationBytes01:
                        LDA.B r_stage                        ;07F56E|A528    |000028;
                        CMP.B #$0F                           ;07F570|C90F    |      ;
                        BNE CODE_07F577                      ;07F572|D003    |07F577;
-                       JMP.W CODE_078A44                    ;07F574|4C448A  |078A44;
+                       JMP.W fishmanSpawnLvL_0F             ;07F574|4C448A  |078A44;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_07F577:
                        CMP.B #$08                           ;07F577|C908    |      ;
                        BCC CODE_07F57E                      ;07F579|9003    |07F57E;
-                       JMP.W CODE_0785FF                    ;07F57B|4CFF85  |0785FF;
+                       JMP.W fishmanSpawnLvL_08After        ;07F57B|4CFF85  |0785FF;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
           CODE_07F57E:
-                       JMP.W CODE_078435                    ;07F57E|4C3584  |078435;
+                       JMP.W fishmanSpawnLvL_08before       ;07F57E|4C3584  |078435;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
             spawner0c:
@@ -16981,7 +16978,7 @@ mainGameState10_nothing:
                        dw lvl19_scenePointer                ;07FB4B|        |05ACE0;
                        dw lvl20_scenePointer                ;07FB4D|        |05B068;
                                                             ;      |        |      ;
-         DATA8_07FB4F:
+      music4eachLevel:
                        db $2A,$2A,$2A,$2A,$2D,$2D,$2D,$30   ;07FB4F|        |      ;
                        db $30,$30,$39,$2D,$2D,$36,$36,$36   ;07FB57|        |      ;
                        db $33,$33,$3C                       ;07FB5F|        |      ;
@@ -17011,7 +17008,7 @@ scrollLockTable_screenCount:
                        db $24,$55,$50,$50,$30,$14,$44,$33   ;07FBB8|        |      ;
                        db $50,$22,$22                       ;07FBC0|        |      ;
                                                             ;      |        |      ;
-levelScrollDirections:
+      levelDirections:
                        db $FF,$FF,$FF,$FF,$0F,$FF,$FF,$FF   ;07FBC3|        |      ;
                        db $FF,$FF,$FF,$FF,$FF,$FF,$3F,$1F   ;07FBCB|        |      ;
                        db $FF,$FF,$0F                       ;07FBD3|        |      ;

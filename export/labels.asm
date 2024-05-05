@@ -33,8 +33,8 @@
                        r_player_xPosHi = $000041            ;      |        |      ;
                        r_lvl_timer_Lo = $000042             ;      |        |      ;
                        r_lvl_timer_Hi = $000043             ;      |        |      ;
-                       r_player_HP_HUD_Show = $000044       ;      |        |      ;
-                       r_player_HP_HUD_TRUE = $000045       ;      |        |      ;
+                       r_player_health_HUD_Show = $000044   ;      |        |      ;
+                       r_player_health_HUD_TRUE = $000045   ;      |        |      ;
                        r_lvlRoomNumber = $000046            ;      |        |      ;
                        r_player_hurtTimer = $000047         ;      |        |      ;
                        r_bossScreen_Flag = $000048          ;      |        |      ;
@@ -2135,6 +2135,8 @@
                        enemyPlacementHi = $07D6C7           ;      |        |      ;
                        candlePlacerHi = $07D7C7             ;      |        |      ;
                        specialItemDropLo = $07E12D          ;      |        |      ;
+                       RTS_Lo_checks = $07E9C9              ;      |        |      ;
+                       RTS_getEntetyID_VeriousChecks = $07E9E5;      |        |      ;
                        TSA_blockPointersHi = $07F9FB        ;      |        |      ;
                        levelScenePoHi = $07FB24             ;      |        |      ;
                        levelDataPointerHi = $07FC39         ;      |        |      ;
