@@ -8552,6 +8552,15 @@
         <sys:Item Key="499699">
           <Value exs:type="ns1:Label" Name="stairTransitCheck" Comment="" />
         </sys:Item>
+        <sys:Item Key="499850">
+          <Value exs:type="ns1:Label" Name="updateHUD" Comment="" />
+        </sys:Item>
+        <sys:Item Key="499857">
+          <Value exs:type="ns1:Label" Name="updateHUD_unevenFrames" Comment="" />
+        </sys:Item>
+        <sys:Item Key="499890">
+          <Value exs:type="ns1:Label" Name="updateHUD_evenFrame" Comment="" />
+        </sys:Item>
         <sys:Item Key="500144">
           <Value exs:type="ns1:Label" Name="hudBorderSpriteSubWe" Comment="" />
         </sys:Item>
@@ -10489,6 +10498,12 @@
         </sys:Item>
         <sys:Item Key="523087">
           <Value exs:type="ns1:Label" Name="music4eachLevel" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523106">
+          <Value exs:type="ns1:Label" Name="doorSpriteYpos" Comment="" />
+        </sys:Item>
+        <sys:Item Key="523125">
+          <Value exs:type="ns1:Label" Name="doorPosPPU" Comment="" />
         </sys:Item>
         <sys:Item Key="523163">
           <Value exs:type="ns1:Label" Name="palletForEachStage" Comment="" />

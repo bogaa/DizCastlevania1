@@ -4479,14 +4479,14 @@ updateXspeed_minus_b6:
                        RTS                                  ;07A089|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_07A08A:
+            updateHUD:
                        LDA.B r_frame_Counter                ;07A08A|A51A    |00001A;
                        AND.B #$01                           ;07A08C|2901    |      ;
-                       BEQ CODE_07A091                      ;07A08E|F001    |07A091;
+                       BEQ updateHUD_unevenFrames           ;07A08E|F001    |07A091;
                        RTS                                  ;07A090|60      |      ;
                                                             ;      |        |      ;
                                                             ;      |        |      ;
-          CODE_07A091:
+updateHUD_unevenFrames:
                        JSR.W CODE_07CC7A                    ;07A091|207ACC  |07CC7A;
                        LDA.B r_game_state                   ;07A094|A518    |000018;
                        CMP.B #$05                           ;07A096|C905    |      ;
@@ -4497,13 +4497,13 @@ updateXspeed_minus_b6:
                        LDA.B r_pause_Flag                   ;07A0A0|A522    |000022;
                        BNE CODE_07A0CD                      ;07A0A2|D029    |07A0CD;
                        LDA.W $0560                          ;07A0A4|AD6005  |070560;
-                       BNE CODE_07A0B2                      ;07A0A7|D009    |07A0B2;
+                       BNE updateHUD_evenFrame              ;07A0A7|D009    |07A0B2;
                        LDA.B r_frame_Counter                ;07A0A9|A51A    |00001A;
                        AND.B #$3F                           ;07A0AB|293F    |      ;
                        BNE CODE_07A0CD                      ;07A0AD|D01E    |07A0CD;
                        JSR.W CODE_07A2AF                    ;07A0AF|20AFA2  |07A2AF;
                                                             ;      |        |      ;
-          CODE_07A0B2:
+  updateHUD_evenFrame:
                        LDA.B r_lvl_timer_Hi                 ;07A0B2|A543    |000043;
                        ORA.B r_lvl_timer_Lo                 ;07A0B4|0542    |000042;
                        BEQ CODE_07A0CD                      ;07A0B6|F015    |07A0CD;
@@ -8272,10 +8272,10 @@ mainGameState08_transition:
                        STA.B $25                            ;07C476|8525    |000025;
                        LDA.B r_stage                        ;07C478|A528    |000028;
                        TAX                                  ;07C47A|AA      |      ;
-                       LDA.W DATA8_07FB62,X                 ;07C47B|BD62FB  |07FB62;
+                       LDA.W doorSpriteYpos,X               ;07C47B|BD62FB  |07FB62;
                        AND.B #$F0                           ;07C47E|29F0    |      ;
                        STA.W $0357                          ;07C480|8D5703  |070357;
-                       LDA.W DATA8_07FB62,X                 ;07C483|BD62FB  |07FB62;
+                       LDA.W doorSpriteYpos,X               ;07C483|BD62FB  |07FB62;
                        AND.B #$01                           ;07C486|2901    |      ;
                        TAX                                  ;07C488|AA      |      ;
                        LDA.W CODE_07C4A2,X                  ;07C489|BDA2C4  |07C4A2;
@@ -8309,10 +8309,10 @@ mainGameState08_transition:
                        LDA.B r_stage                        ;07C4B4|A528    |000028;
                        ASL A                                ;07C4B6|0A      |      ;
                        TAY                                  ;07C4B7|A8      |      ;
-                       LDA.W DATA8_07FB75,Y                 ;07C4B8|B975FB  |07FB75;
+                       LDA.W doorPosPPU,Y                   ;07C4B8|B975FB  |07FB75;
                        STA.W r7_PPU_UPDATE_TABLE,X          ;07C4BB|9D0007  |070700;
                        INX                                  ;07C4BE|E8      |      ;
-                       LDA.W DATA8_07FB76,Y                 ;07C4BF|B976FB  |07FB76;
+                       LDA.W DATA16_07FB76,Y                ;07C4BF|B976FB  |07FB76;
                        STA.W r7_PPU_UPDATE_TABLE,X          ;07C4C2|9D0007  |070700;
                        LDY.B r_temp_processing_ID           ;07C4C5|A44B    |00004B;
                                                             ;      |        |      ;
@@ -16555,7 +16555,7 @@ spriteAnimationBytes01:
                        JSR.W CODE_07F868                    ;07F8BD|2068F8  |07F868;
                        LDA.B r_GFX_enabledFlag              ;07F8C0|A51B    |00001B;
                        BNE CODE_07F8C7                      ;07F8C2|D003    |07F8C7;
-                       JSR.W CODE_07A08A                    ;07F8C4|208AA0  |07A08A;
+                       JSR.W updateHUD                      ;07F8C4|208AA0  |07A08A;
                                                             ;      |        |      ;
           CODE_07F8C7:
                        LDX.B #$00                           ;07F8C7|A200    |      ;
@@ -16983,20 +16983,17 @@ mainGameState10_nothing:
                        db $30,$30,$39,$2D,$2D,$36,$36,$36   ;07FB57|        |      ;
                        db $33,$33,$3C                       ;07FB5F|        |      ;
                                                             ;      |        |      ;
-         DATA8_07FB62:
+       doorSpriteYpos:
                        db $00,$40,$40,$40,$40,$40,$60,$71   ;07FB62|        |      ;
                        db $50,$41,$41,$90,$41,$91,$91,$90   ;07FB6A|        |      ;
                        db $51,$51,$61                       ;07FB72|        |      ;
                                                             ;      |        |      ;
-         DATA8_07FB75:
-                       db $00                               ;07FB75|        |      ;
-                                                            ;      |        |      ;
-         DATA8_07FB76:
-                       db $00,$25,$1F,$25,$1F,$25,$1F,$40   ;07FB76|        |      ;
-                       db $78,$21,$01,$25,$81,$21,$DE,$25   ;07FB7E|        |      ;
-                       db $5E,$40,$78,$40,$78,$26,$5F,$40   ;07FB86|        |      ;
-                       db $78,$26,$5E,$22,$5E,$22,$42,$22   ;07FB8E|        |      ;
-                       db $78,$22,$78,$22,$78               ;07FB96|        |      ;
+           doorPosPPU:
+                       dw $0000,$1F25,$1F25,$1F25           ;07FB75|        |      ;
+                       dw $7840,$0121,$8125,$DE21           ;07FB7D|        |      ;
+                       dw $5E25,$7840,$7840,$5F26           ;07FB85|        |      ;
+                       dw $7840,$5E26,$5E22,$4222           ;07FB8D|        |      ;
+                       dw $7822,$7822,$7822                 ;07FB95|        |      ;
                                                             ;      |        |      ;
    palletForEachStage:
                        db $04,$04,$04,$04,$0E,$0E,$0E,$0F   ;07FB9B|        |      ;
